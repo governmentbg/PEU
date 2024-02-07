@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Издаване на дубликат на свидетелсво за управление на МПС при загуба, кражба или унищожаване - Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">   
+                        <div class="col-auto">                      
+                                <img class="mvr-logo" src="images/logo.png"> 
+                        </div>                                                       
+                        <div class="col header-title">
+                            <p>Република България<br />
+                            <strong>Министерство на вътрешните работи</strong></p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu"><span title="Потребител"><i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="d-none d-sm-inline-block">Потребител</span></span></button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <a class="dropdown-item" href="" role="menuitem">Вход</a>
+                                <a class="dropdown-item" href="" role="menuitem">Забравена парола</a>
+                                <a class="dropdown-item" href="" role="menuitem">Регистрация</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="page-header-wrapper section-wrapper fixed-content-width">
+            
+             <div class="breadcrumbs">
+                
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Издаване на дубликат на свидетелсво за управление на МПС при загуба, кражба или унищожаване</li>
+                    </ol>
+                </nav>
+            
+            </div>
+            
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Издаване на дубликат на свидетелсво за управление на МПС при загуба, кражба или унищожаване</h1>
+                    </div>
+                </div>
+            </div> 
+
+        </div>
+
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+
+            <div class="page-wrapper">
+
+                <div class="alert alert-info" role="alert">За да заявите избраната от Вас услуга, моля влезте в системата чрез <button class="btn btn-link alert-link font-weight-bold" type="button" title="Вход в системата">"Вход в системата"</button></div>
+
+                <div class="button-bar button-bar--service button-bar--responsive">
+                    <div class="right-side">
+                    </div>
+                    <div class="left-side">
+                        <a class="btn btn-primary" href="ui_PEAU/ui_03_Service_Съществуващо_заявление.html">Заяви услугата</a>
+                    </div>
+                </div>
+
+                <div>
+
+                    <p>При успешно подадено от Вас "Искане" за издаване на дубликат на свидетелство за управление на МПС, моля изчакайте системата да Ви предостави възможност да подадете "Заявление" за издаване на искания личен документ. </p> 
+
+                    <p>След разглеждане на подаденото от Вас "Заявление" от длъжностно лице, системата ще Ви уведоми с e-mail за дължимата сума и ще Ви предостави възможност за заплащането й по електронен път.</p>
+
+                    <p>Заявеният от Вас документ ще Ви бъде връчен на гише в структура на МВР и в срок, посочени в уведомително съобщение на Вашия e-mail.</p>
+
+                    <p>Справка за издаденият документ по услугата можете да направите на следния адрес: <a href="https://izdadeni.mvr.bg/nld2/nWeb2.nsf/fVerification" title="Справка за издаденият документ по услугата"> https://izdadeni.mvr.bg/nld2/nWeb2.nsf/fVerification</a></p>
+
+                    <h3>Необходими документи</h3>
+                    <p>Валиден документ за самоличност.</p>
+
+                    <h3>Такси</h3>
+                    <p><b>За услугата се заплаща такса</b></p>
+                    
+                    За издаване на дубликат на свидетелство за управление на моторно превозно средство (МПС) се събират следните такси:
+                    <ol>
+                        <li>за свидетелство за управление на МПС на лице до 58-годишна възраст - 25 лв.</li>
+                        <li>за свидетелство за управление на МПС на лице от 58 до 70-годишна възраст - 11 лв.</li>
+                        <li>за свидетелство за управление на МПС на лице с трайно намалена работоспособност или вид и степен на увреждане 50 и над 50 на сто - 3 лв.</li>
+                    </ol>
+
+
+                    <p>Освобождават се от заплащане на такса за издаване на свидетелство за управление на МПС лицата, навършили 70-годишна възраст</p>
+                    <p>За бързо издаване на дубликат на свидетелство за управление на МПС таксата се заплаща с увеличение два пъти.</p>
+                    <p>При издаване на дубликат на свидетелството за управление на МПС се събира и такса от 2 лв. за издаване на контролен талон към свидетелството.</p>
+
+                    <h5>Услугата може да бъде заплатена по един от следните начини:</h5>
+                    
+                    <p>На гише в административно звено за обслужване с банкова карта</p>
+                    <p>По банков път</p>
+                    
+                    <h3>Нормативна уредба</h3>
+
+                    
+                    <p> Административната услуга се предоставя по реда на ЗБЛД, ЗДвП и ПИБЛД на български гражданин или чужденец, с уредено право на пребиваване на територията на Р България или гражданин на ЕС, с уредено право на пребиваване на територията на Р България, който лично подава заявление. Срокът за изпълнение на услугата е 30 дни, считано от датата на заплащане на услугата.</p>
+                    
+
+                    <h5>Нормативни документи:</h5>
+                    <ul>
+                        <li><a href="#" title="">Закон за българските лични документи (ЗБЛД);</a></li>
+                        <li><a href="#" title="">Закон за движението по пътищата (ЗДвП);</a></li>
+                        <li><a href="#" title="">Правилник за издаване на българските лични документи (ПИБЛД);</a></li>
+                        <li>Наредба  І-157/01.10.2002 г. за условията и реда за издаване на свидетелство за управление на моторни превозни средства, отчета на водачите и тяхната дисциплина.</li>
+                    </ul>
+                    
+
+                    <h5>Условия за получателя на услугата:</h5>
+                    <ul>
+                        <li>Да е български гражданин или чужденец, с уредено право на пребиваване на територията на Р България или гражданин на ЕС, с уредено право на пребиваване на територията на Р България, като притежава:
+                            <ul>
+                            <li>ЕГН - за български гражданин;</li>
+                            <li>ЕГН и/или ЛНЧ - за чужденец;</li>
+                            <li>ЛН - за гражданин на ЕС.</li>
+                            </ul>
+                        </li>
+                        <li>Да е навършил 18 години;</li>
+                        <li>Да има валиден постоянен адрес на територията на Република България за българските граждани и валиден адрес на пребиваване за чужденците/граждани на ЕС;</li>
+                        <li>Да има издаден български личен документ по заявление, подадено лично до 59 месеца преди датата на подаване на електронното заявление и да са му снети необходимите биометричните данни;</li>
+                        <li>Да няма друго прието заявление за издаване на документ от същия вид, към момента на подаване на заявлението по електронен път;</li>
+                        <li>Да няма промяна на името, единния граждански номер, пола, гражданството или съществени и трайни изменения на образа на лицето;</li>
+                        <li>Допуска се подаване на заявление за издаване на свидетелство за управление на моторно превозно средство по електронен път в случаите на промяна на името, ако на лицето вече е била издадена лична карта с промененото име;</li>
+                        <li>Да не е под запрещение</li>
+                    </ul>
+
+                </div>
+
+                <div class="button-bar button-bar--service button-bar--responsive">
+                    <div class="right-side">
+                    </div>
+                    <div class="left-side">
+                        <a class="btn btn-primary" href="ui_PEAU/ui_03_Service_Съществуващо_заявление.html">Заяви услугата</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+        
+                        <ul>
+                            <li class="footer-link"><a href="#">Помощ</a></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        // Show Navigation
+        function toggleNav() {
+            $(".navbar-top-container--mobile").collapse('toggle');
+        };
+ 
+        $(document).ready(function () {
+
+        });
+
+
+    </script>
+    
+
+  </body>
+</html>

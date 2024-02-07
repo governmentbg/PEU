@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3111" xmlns="http://ereg.egov.bg/segment/R-3111" xmlns:cn="http://ereg.egov.bg/value/R-2122" xmlns:adr="http://ereg.egov.bg/segment/0009-000094"  xmlns:ct="http://ereg.egov.bg/segment/R-2123" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2123" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2122"/>
+  <xsd:element name="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesPersonData" type="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesPersonData" />
+  <xsd:complexType name="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesPersonData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявяване на услуга за издаване/подновяване на документ за правоспособност за работа с флуорирани парникови газове за физически лица</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PermanentAddress" type="adr:PersonAddress" minOccurs="0"  />
+      <xsd:element name="CurrentAddress" type="adr:PersonAddress" minOccurs="0" />
+      <xsd:element name="CertificateType" type="ct:CertificateType"  />
+      <xsd:element name="CertificateNumber" type="cn:CertificateNumber" minOccurs="0" />
+      <xsd:element name="DiplomaNumber" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

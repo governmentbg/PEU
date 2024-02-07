@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [idsrv]
+    AUTHORIZATION [dbo];
+

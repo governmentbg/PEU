@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3310" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/segment/R-3310"
+  xmlns:ed="http://ereg.egov.bg/segment/R-3302"
+  xmlns:pd="http://ereg.egov.bg/segment/R-3300" 
+	elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3300" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3302" />
+  <xsd:element name="DataForPrintSRMPSData" type="DataForPrintSRMPSData" />
+  <xsd:complexType name="DataForPrintSRMPSData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за притежател/ползвател.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="HolderData" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence >
+            <xsd:choice>
+              <xsd:element name="PersonData" type="pd:PersonData"/>
+              <xsd:element name="EntityData" type="ed:EntityData"/>
+            </xsd:choice>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UserData" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence >
+            <xsd:choice>
+              <xsd:element name="PersonData" type="pd:PersonData"/>
+              <xsd:element name="EntityData" type="ed:EntityData"/>
+            </xsd:choice>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOwners"  minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="NewOwner" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence >
+                  <xsd:choice>
+                    <xsd:element name="PersonData" type="pd:PersonData"/>
+                    <xsd:element name="EntityData" type="ed:EntityData"/>
+                  </xsd:choice>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema> 

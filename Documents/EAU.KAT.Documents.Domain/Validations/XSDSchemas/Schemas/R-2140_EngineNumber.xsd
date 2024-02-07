@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2140" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/value/R-2140"  elementFormDefault="qualified">
+  <xsd:simpleType name="EngineNumber">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номер на двигател на ПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

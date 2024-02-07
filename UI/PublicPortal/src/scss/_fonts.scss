@@ -1,0 +1,42 @@
+/* ----  Fonts  ---- */
+
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+/* BEGIN Regular */
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), local('Roboto-Regular'), url("../fonts/roboto/roboto-v20-latin_cyrillic-regular.woff2") format("woff2"), url("../fonts/roboto/roboto-v20-latin_cyrillic-regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* END Regular */
+  /* BEGIN Italic */
+  @font-face {
+    font-family: 'Roboto';
+    src: local('Roboto Italic'), local('Roboto-Italic'), url("../fonts/roboto/roboto-v20-latin_cyrillic-italic.woff2") format("woff2"), url("../fonts/roboto/roboto-v20-latin_cyrillic-italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  /* END Italic */
+  /* BEGIN Bold */
+  @font-face {
+    font-family: 'Roboto';
+    src: local('Roboto Bold'), local('Roboto-Bold'), url("../fonts/roboto/roboto-v20-latin_cyrillic-700.woff2") format("woff2"), url("../fonts/roboto/roboto-v20-latin_cyrillic-700.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  /* END Bold */
+  /* BEGIN Bold Italic */
+  @font-face {
+    font-family: 'Roboto';
+    src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'), url("../fonts/roboto/roboto-v20-latin_cyrillic-700italic.woff2") format("woff2"), url("../fonts/roboto/roboto-v20-latin_cyrillic-700italic.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+  }
+  /* END Bold Italic */
+
+/* ----  /Fonts  ---- */

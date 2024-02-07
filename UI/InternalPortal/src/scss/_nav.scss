@@ -1,0 +1,31 @@
+/* ----  Nav  ---- */
+	
+.nav-tabs {	
+	.nav-link {
+		text-decoration: none;
+		font-weight: bold;
+
+		padding: $template-container-padding-vertical $template-container-padding-horizontal * 2;
+
+		border-color: $gray-300;
+		background-color: $gray-100;
+
+		&.disabled {
+			border-color: $gray-300;
+		}
+		&:hover:not(.active) {
+			background-color: $gray-200;
+		}
+
+	}
+
+	.nav-item {
+		&.active {
+			@include media-breakpoint-down(xs) {
+				order: 100;
+			}					
+		}					
+	}
+}	
+	
+/* ----  /Nav  ---- */

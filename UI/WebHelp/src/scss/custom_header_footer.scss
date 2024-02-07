@@ -1,0 +1,21 @@
+/* WebHelp PEAU MVR */
+/* SOURCE SASS */
+
+    @import "src/bootstrap-4.4.1/scss/functions";
+    
+    @import "src/scss/bootstrap_variables"; // Custom variables
+    @import "src/bootstrap-4.4.1/scss/variables";
+
+    @import "src/bootstrap-4.4.1/scss/mixins";
+
+    @import "src/bootstrap-4.4.1/scss/reboot"; 
+    @import "src/bootstrap-4.4.1/scss/grid";
+    @import "src/bootstrap-4.4.1/scss/utilities/text";    
+// Template variables and mixins
+    @import "src/scss/style_variables";
+    @import "src/scss/style_mixins";
+
+// Main sections
+    @import "src/scss/header";
+    @import "src/scss/footer";
+    @import "src/scss/navigation";

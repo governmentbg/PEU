@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3026" xmlns="http://ereg.egov.bg/segment/R-3026" xmlns:vt="http://ereg.egov.bg/value/R-2044" xmlns:in="http://ereg.egov.bg/value/0008-000145" xmlns:iid="http://ereg.egov.bg/value/0008-000146"  xmlns:ii="http://ereg.egov.bg/value/0008-000147" xmlns:ids="http://ereg.egov.bg/value/R-2042" xmlns:idp="http://ereg.egov.bg/value/R-2046" xmlns:poc="http://ereg.egov.bg/value/R-2047" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000145" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000146" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000147" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2042"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2046"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2047"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2044"/>
+  <xsd:complexType name="VisaDocument">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Основни данни за Виза</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="VisaTypes" type="vt:VisaTypes" minOccurs="0" />
+      <xsd:element name="IdentityDocumentSeries" type="ids:IdentityDocumentSeries" minOccurs="0" />
+      <xsd:element name="IdentityNumber" type="in:IdentityNumber" minOccurs="0" />
+      <xsd:element name="IdentitityIssueDate" type="iid:IdentitityIssueDate" minOccurs="0" />
+      <xsd:element name="IdentityIssuer" type="ii:IdentityIssuer" minOccurs="0" />
+      <xsd:element name="IdentityDocumentPeriod" type="idp:IdentityDocumentPeriod" minOccurs="0" />
+      <xsd:element name="PurposeOfComing" type="poc:PurposeOfComing" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

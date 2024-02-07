@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Уведомление за поемане или снемане от охрана на обект при извършване на частна охранителна дейност - Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../../">
+
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <div class="skip-link">
+            <a href="#PAGE-CONTENT" class="skip-to-content">Пропусни основната навигация</a> 
+        </div>
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png" alt="">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu1"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <main class="content-wrapper">
+    
+        <div class="page-header-wrapper section-wrapper section-wrapper--margin-top fixed-content-width">
+            <div class="breadcrumbs">
+                
+                <nav aria-label="Път до текуща страница">
+                    <ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Приемане на уведомление за поемане или снемане от охрана на обект при извършване на частна охранителна дейност</li>
+                    </ol>
+                </nav>
+            
+            </div>
+        </div>
+        
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+            <div class="page-header" id="PAGE-CONTENT">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Уведомление за поемане или снемане от охрана на обект при извършване на частна охранителна дейност</h1>
+                    </div>
+                    <div class="col-auto">
+                        <div class="button-menu-container">                
+                            <button id="SHOW-MENU" type="button" class="button-menu collapsed d-md-none" aria-expanded="false">
+                                <i class="ui-icon ui-icon-sub-menu" aria-hidden="true"></i>
+                                <span class="sr-only">Покажи навигацията за избор на секция в заявлението</span>
+                            </button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+
+            <div class="nav-wrapper collapse" id="PAGE-NAV">
+                <div class="skip-link">
+                    <a href="#ARTICLE-CONTENT" class="skip-to-content">Пропусни навигацията за избор на секция в заявлението и премини към попълване на текущата секция</a>
+                </div>
+                <nav class="page-nav" aria-label="Секции в заявлението">
+                    <ul class="nav-section connected-nav-items">
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-processed"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('')">
+                                    Заявител
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-processed"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link " onclick="window.location.assign('ui_application/ЧОД/ui_application_03_EAU-53 Приемане на уведомление за поемане или снемане от охрана_02_Обстоятелства.html')">
+                                    Обстоятелства
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link active" onclick="window.location.assign('ui_application/ЧОД/ui_application_03_EAU-53 Приемане на уведомление за поемане или снемане от охрана_03_Данни за обекта за охрана-Прекратяване.html')">
+                                    Данни за обекта за охрана 
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class=" nav-link" onclick="window.location.assign('')">
+                                    Начин на получаване
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class=" nav-link" onclick="window.location.assign('')">
+                                    Политики и декларации
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('ui_application_06_04_Издаване на удостоверения за собственост на превозно средство/ui_application_04_Приложени документи.html#ARTICLE-CONTENT')">
+                                    Приложени документи
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="page-wrapper" id="ARTICLE-CONTENT">
+    
+                <div class="ui-form ui-form--input">
+                    <div class="text-danger font-italic text-monospace">( прототип при "Вид уведомление" за прекратяване на договор или заповед )</div>
+                    <h2 class="section-title">
+                        Данни за обекта за охрана&nbsp;<button type="button" class="btn btn-context-help" title="Контекстна помощ. Страницата се отваря в нов таб на браузъра."><span class="d-none">Контекстна помощ</span></button>
+                    </h2>
+
+                    <fieldset class="fields-group" id="SECURITY_DATA_1">
+                        <legend>
+                            <h3 class="field-title">
+                                Охранявани обекти
+                            </h3>
+                        </legend>
+
+                        <template id="TEMPLATE-F1">
+                            <!-- data-id атрибутите се използват само за да работи прототипа -->
+                            <li class="list-filed__item" role="group" aria-label="Oбект за охрана 1" data-id="OBJECT">
+                                <div class="interactive-container interactive-container--form">
+                                    <div class="interactive-container__content record-container">
+                    
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label class="form-control-label" for="D_TYPE">Вид частна охранителна дейност от ЗЧОД по чл.5, ал.1, точка:</label>
+                                                <select id="D_TYPE" class="form-control" data-id="OBJ_TYPE" disabled>
+                                                    <option value="0" selected>Избери</option>
+                                                    <option value="1">1 : лична охрана на физически лица</option>
+                                                    <option value="2">2 : охрана на имуществото на физически или юридически лица</option>
+                                                    <option value="3">3 : сигнално-охранителна дейност</option>
+                                                    <option value="4">4 : самоохрана на имущество на лица по чл. 2, ал. 3</option>
+                                                    <option value="5">5 : охрана на обекти - недвижими имоти</option>
+                                                    <option value="7">7 : охрана на мероприятия</option>
+                                                    <option value="8">8 : охрана при транспортиране на ценни пратки или товари</option>
+                                                    <option value="9">9 : охрана на селскостопанско имущество</option>
+                                                </select>
+                                            </div>
+                                            
+                                        </div>
+    
+                                        <div data-id="OPTION_1" hidden> <!-- този <div> с id e само за да работи прототипа -->
+                                            <!-- 1.) за прекратяване на договор или заповед за охрана по т.1 от чл. 5, ал. 1 от ЗЧОД -->
+    
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="DATE_P-1">Дата на поемане на обекта</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" type="text" value="22.12.2022" id="DATE_P-1" aria-describedby="HELP_P-1" readonly>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1" disabled>
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-1">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <fieldset>
+                                                        <legend class="form-control-label">Възложител по договора за охрана</legend>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioB" id="radioB1" value="1" type="radio" data-id="SEC_RADIO_1" disabled>
+                                                            <label class="custom-control-label" for="radioB1">охраняваното лице</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioB" id="radioB2" value="2" type="radio" checked="" data-id="SEC_RADIO_2" disabled>
+                                                            <label class="custom-control-label" for="radioB2">представител</label>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row">
+                                                <div class="form-group col-lg-7 col-xl-6"> 
+                                                    <label class="form-control-label" for="IDSN-1">Имена на охраняваното лице</label>
+                                                    <input type="text" class="form-control" id="IDSN-1" aria-describedby="HELP-IDSN-1" value="Иван Иванов Иванов" readonly data-id="IDSN">
+                                                    <div class="help-text-inline" id="HELP-IDSN-1">(Три имена за български граждани и две имена за лица, които не са български граждани)</div>
+                                                </div>
+                                                <div class="form-group col-sm-8 col-md-6 col-lg-5 col-xl-3">
+                                                    <label class="form-control-label" for="O_NAME-1">ЕГН/ЛН/ЛНЧ/ДДММГГГГ</label>
+                                                    <input type="text" class="form-control" id="O_NAME-1" value="1010101010" readonly data-id="O_NAME">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="form-control-label" for="AREA_7">Област в която се намира обекта</label>
+                                                    <select id="AREA_7" class="form-control" required="" disabled>
+                                                        <option value="0">Избери</option>
+                                                        <option value="1" selected>София град</option>
+                                                        <option value="2">София област</option>
+                                                        <option value="3">Благоевград</option>
+                                                        <option value="4">Бургас</option>
+                                                        <option value="5">Варна</option>
+                                                        <option value="6">Велико Търново</option>
+                                                        <option value="7">Видин</option>
+                                                        <option value="8">Враца</option>
+                                                        <option value="9">Габрово</option>
+                                                        <option value="10">Добрич</option>
+                                                        <option value="11">Кърджали</option>
+                                                        <option value="12">Кюстендил</option>
+                                                        <option value="13">Ловеч</option>
+                                                        <option value="14">Монтана</option>
+                                                        <option value="15">Пазарджик</option>
+                                                        <option value="16">Перник</option>
+                                                        <option value="17">Плевен</option>
+                                                        <option value="18">Пловдив</option>
+                                                        <option value="19">Разград</option>
+                                                        <option value="20">Русе</option>
+                                                        <option value="21">Силистра</option>
+                                                        <option value="22">Сливен</option>
+                                                        <option value="23">Смолян</option>
+                                                        <option value="24">Стара Загора</option>
+                                                        <option value="25">Хасково</option>
+                                                        <option value="26">Шумен</option>
+                                                        <option value="27">Ямбол</option>
+                                                        <option value="28">Търговище</option>
+                                                    </select>
+                                                </div>
+                                                <!-- <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="ADDRESS-1"> Адрес на охраняваното лице</label>
+                                                    <input type="text" class="form-control" id="ADDRESS-1" required="">
+                                                </div> -->
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="NUMBER_1">Вид, номер и дата на документа за прекратяване</label>
+                                                    <input type="text" class="form-control" required="" id="NUMBER_1" value="">
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="DATE_P-2">Дата на фактическото прекратяване на охраната</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" required="" type="text" value="" id="DATE_P-2" aria-describedby="HELP_P-2">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-2">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="NOTE_1">Забележка</label>
+                                                    <input type="text" class="form-control" id="NOTE_1">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+    
+                                        <div data-id="OPTION_2" hidden> <!-- този <div> с id e само за да работи прототипа -->
+                                            <!-- 2., 3., 4., 5., 7., 9.) за прекратяване на договор или заповед за охрана по т.2, 3, 4, 5, 7, 9 от чл. 5, ал. 1 от ЗЧОД -->
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="DATE_P-3">Дата на поемане на обекта</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" type="text" value="01.01.2023" id="DATE_P-3" aria-describedby="HELP_P-3" readonly>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1" disabled>
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-3">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md">
+                                                    <label class="form-control-label" for="OBJECT_NAME-1">Наименование на охранявания обект</label>
+                                                    <input type="text" class="form-control" id="OBJECT_NAME-1" value="Къща" readonly>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="form-control-label" for="AREA_1">Област в която се намира обекта</label>
+                                                    <select id="AREA_1" class="form-control" disabled>
+                                                        <option value="0">Избери</option>
+                                                        <option value="1">София град</option>
+                                                        <option value="2">София област</option>
+                                                        <option value="3">Благоевград</option>
+                                                        <option value="4">Бургас</option>
+                                                        <option value="5">Варна</option>
+                                                        <option value="6">Велико Търново</option>
+                                                        <option value="7">Видин</option>
+                                                        <option value="8">Враца</option>
+                                                        <option value="9">Габрово</option>
+                                                        <option value="10">Добрич</option>
+                                                        <option value="11">Кърджали</option>
+                                                        <option value="12">Кюстендил</option>
+                                                        <option value="13">Ловеч</option>
+                                                        <option value="14">Монтана</option>
+                                                        <option value="15">Пазарджик</option>
+                                                        <option value="16">Перник</option>
+                                                        <option value="17">Плевен</option>
+                                                        <option value="18" selected>Пловдив</option>
+                                                        <option value="19">Разград</option>
+                                                        <option value="20">Русе</option>
+                                                        <option value="21">Силистра</option>
+                                                        <option value="22">Сливен</option>
+                                                        <option value="23">Смолян</option>
+                                                        <option value="24">Стара Загора</option>
+                                                        <option value="25">Хасково</option>
+                                                        <option value="26">Шумен</option>
+                                                        <option value="27">Ямбол</option>
+                                                        <option value="28">Търговище</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="ADDRESS-2">Адрес на охранявания обект</label>
+                                                    <input type="text" class="form-control" id="ADDRESS-2" value="гр.Първомай, ул.Стефан Стамболов, №10" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="NUMBER_2">Вид, номер и дата на документа за прекратяване</label>
+                                                    <input type="text" class="form-control" required="" id="NUMBER_2">
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="DATE_P-4">Дата на фактическото прекратяване на охраната</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" required="" type="text" value="" id="DATE_P-4" aria-describedby="HELP_P-4">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-4">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="NOTE_2">Забележка</label>
+                                                    <input type="text" class="form-control" id="NOTE_2">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+    
+                                        <div data-id="OPTION_8" hidden> <!-- този <div> с id e само за да работи прототипа -->
+                                            <!-- 8.) за прекратяване на договор или заповед за охрана по т.8 от чл. 5, ал. 1 от ЗЧОД -->
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="DATE_P-5">Дата на поемане на обекта</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" type="text" value="01.01.2023" id="DATE_P-5" aria-describedby="HELP_P-5" readonly>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1" disabled>
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-5">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="OBJECT_TYPE-1">Вид обекти, от и към които ще се извършва транспортирането</label>
+                                                    <input type="text" class="form-control" id="OBJECT_TYPE-1" value="складове" readonly>
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label class="form-control-label" for="RANGE-1">Териториален обхват на транспортирането от</label>
+                                                    <input type="text" class="form-control" id="RANGE-1" readonly>
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label class="form-control-label" for="RANGE-2">Териториален обхват на транспортирането до</label>
+                                                    <input type="text" class="form-control" id="RANGE-2" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="NUMBER_3">Вид, номер и дата на документа за прекратяване</label>
+                                                    <input type="text" class="form-control" required="" id="NUMBER_3">
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="DATE_P-6">Дата на фактическото прекратяване на охраната</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" required="" type="text" value="" id="DATE_P-6" aria-describedby="HELP_P-6">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-6">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="NOTE_3">Забележка</label>
+                                                    <input type="text" class="form-control" id="NOTE_3">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+    
+                                    </div>
+                                    <div class="interactive-container__controls"><button onclick="$(this).closest('.list-filed').find('a, button, input, textarea').first().focus(); $(this).closest('li').remove();" class="btn btn-light btn-sm" title="Изтрий"><i class="ui-icon ui-icon-times" aria-hidden="true"></i><span class="d-none">Изтрий</span></button></div>
+                                </div>
+                            </li>
+                       </template>
+
+                        <template id="TEMPLATE-F2">
+                            <!-- data-id атрибутите се използват само за да работи прототипа -->
+                            <li class="list-filed__item" role="group" aria-label="Oбект за охрана 1" data-id="OBJECT">
+                                <div class="interactive-container interactive-container--form">
+                                    <div class="interactive-container__content record-container">
+                    
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label class="form-control-label required-field" for="D_TYPE_2">Вид частна охранителна дейност от ЗЧОД по чл.5, ал.1, точка:</label>
+                                                <select id="D_TYPE_2" class="form-control" required data-id="OBJ_TYPE">
+                                                    <option value="0" selected>Избери</option>
+                                                    <option value="1">1 : лична охрана на физически лица</option>
+                                                    <option value="2">2 : охрана на имуществото на физически или юридически лица</option>
+                                                    <option value="3">3 : сигнално-охранителна дейност</option>
+                                                    <option value="4">4 : самоохрана на имущество на лица по чл. 2, ал. 3</option>
+                                                    <option value="5">5 : охрана на обекти - недвижими имоти</option>
+                                                    <option value="7">7 : охрана на мероприятия</option>
+                                                    <option value="8">8 : охрана при транспортиране на ценни пратки или товари</option>
+                                                    <option value="9">9 : охрана на селскостопанско имущество</option>
+                                                </select>
+                                            </div>
+                                            
+                                        </div>
+    
+                                        <div data-id="OPTION_1" hidden> <!-- този <div> с id e само за да работи прототипа -->
+                                            <!-- 1.) за прекратяване на договор или заповед за охрана по т.1 от чл. 5, ал. 1 от ЗЧОД -->
+    
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <fieldset>
+                                                        <legend class="form-control-label">Възложител по договора за охрана</legend>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioB" id="radioB11" value="1" type="radio" checked="" data-id="SEC_RADIO_1">
+                                                            <label class="custom-control-label" for="radioB11">охраняваното лице</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioB" id="radioB21" value="2" type="radio" data-id="SEC_RADIO_2">
+                                                            <label class="custom-control-label" for="radioB21">представител</label>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row">
+                                                <div class="form-group col-lg-7 col-xl-6"> 
+                                                    <label class="form-control-label required-field" for="IDSN-1">Имена на охраняваното лице</label>
+                                                    <input type="text" class="form-control" id="IDSN-11" required="" aria-describedby="HELP-IDSN-1" value="Иван Иванов Иванов" readonly data-id="IDSN">
+                                                    <div class="help-text-inline" id="HELP-IDSN-11">(Три имена за български граждани и две имена за лица, които не са български граждани)</div>
+                                                </div>
+                                                <div class="form-group col-sm-8 col-md-6 col-lg-5 col-xl-3">
+                                                    <label class="form-control-label required-field" for="O_NAME-11">ЕГН/ЛН/ЛНЧ/ДДММГГГГ</label>
+                                                    <input type="text" class="form-control" id="O_NAME-11" required="" value="1010101010" readonly data-id="O_NAME">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="form-control-label required-field" for="AREA_71">Област в която се намира обекта</label>
+                                                    <select id="AREA_71" class="form-control" required="">
+                                                        <option value="0" selected="">Избери</option>
+                                                        <option value="1">София град</option>
+                                                        <option value="2">София област</option>
+                                                        <option value="3">Благоевград</option>
+                                                        <option value="4">Бургас</option>
+                                                        <option value="5">Варна</option>
+                                                        <option value="6">Велико Търново</option>
+                                                        <option value="7">Видин</option>
+                                                        <option value="8">Враца</option>
+                                                        <option value="9">Габрово</option>
+                                                        <option value="10">Добрич</option>
+                                                        <option value="11">Кърджали</option>
+                                                        <option value="12">Кюстендил</option>
+                                                        <option value="13">Ловеч</option>
+                                                        <option value="14">Монтана</option>
+                                                        <option value="15">Пазарджик</option>
+                                                        <option value="16">Перник</option>
+                                                        <option value="17">Плевен</option>
+                                                        <option value="18">Пловдив</option>
+                                                        <option value="19">Разград</option>
+                                                        <option value="20">Русе</option>
+                                                        <option value="21">Силистра</option>
+                                                        <option value="22">Сливен</option>
+                                                        <option value="23">Смолян</option>
+                                                        <option value="24">Стара Загора</option>
+                                                        <option value="25">Хасково</option>
+                                                        <option value="26">Шумен</option>
+                                                        <option value="27">Ямбол</option>
+                                                        <option value="28">Търговище</option>
+                                                    </select>
+                                                </div>
+                                                <!-- <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="ADDRESS-1"> Адрес на охраняваното лице</label>
+                                                    <input type="text" class="form-control" id="ADDRESS-1" required="">
+                                                </div> -->
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="NUMBER_11">Вид, номер и дата на документа за прекратяване</label>
+                                                    <input type="text" class="form-control" required="" id="NUMBER_11">
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="DATE_P-21">Дата на фактическото прекратяване на охраната</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" required="" type="text" value="" id="DATE_P-21" aria-describedby="HELP_P-21">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-21">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="NOTE_11">Забележка</label>
+                                                    <input type="text" class="form-control" id="NOTE_11">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+    
+                                        <div data-id="OPTION_2" hidden> <!-- този <div> с id e само за да работи прототипа -->
+                                            <!-- 2., 3., 4., 5., 7., 9.) за прекратяване на договор или заповед за охрана по т.2, 3, 4, 5, 7, 9 от чл. 5, ал. 1 от ЗЧОД -->
+                                            <div class="row">
+                                                <div class="form-group col-md">
+                                                    <label class="form-control-label required-field" for="OBJECT_NAME-11">Наименование на охранявания обект</label>
+                                                    <input type="text" class="form-control" id="OBJECT_NAME-11" required="">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="form-control-label required-field" for="AREA_11">Област в която се намира обекта</label>
+                                                    <select id="AREA_11" class="form-control" required="">
+                                                        <option value="0" selected="">Избери</option>
+                                                        <option value="1">София град</option>
+                                                        <option value="2">София област</option>
+                                                        <option value="3">Благоевград</option>
+                                                        <option value="4">Бургас</option>
+                                                        <option value="5">Варна</option>
+                                                        <option value="6">Велико Търново</option>
+                                                        <option value="7">Видин</option>
+                                                        <option value="8">Враца</option>
+                                                        <option value="9">Габрово</option>
+                                                        <option value="10">Добрич</option>
+                                                        <option value="11">Кърджали</option>
+                                                        <option value="12">Кюстендил</option>
+                                                        <option value="13">Ловеч</option>
+                                                        <option value="14">Монтана</option>
+                                                        <option value="15">Пазарджик</option>
+                                                        <option value="16">Перник</option>
+                                                        <option value="17">Плевен</option>
+                                                        <option value="18">Пловдив</option>
+                                                        <option value="19">Разград</option>
+                                                        <option value="20">Русе</option>
+                                                        <option value="21">Силистра</option>
+                                                        <option value="22">Сливен</option>
+                                                        <option value="23">Смолян</option>
+                                                        <option value="24">Стара Загора</option>
+                                                        <option value="25">Хасково</option>
+                                                        <option value="26">Шумен</option>
+                                                        <option value="27">Ямбол</option>
+                                                        <option value="28">Търговище</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="NUMBER_21">Вид, номер и дата на документа за прекратяване</label>
+                                                    <input type="text" class="form-control" required="" id="NUMBER_21">
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="DATE_P-41">Дата на фактическото прекратяване на охраната</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" required="" type="text" value="" id="DATE_P-41" aria-describedby="HELP_P-41">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-41">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="NOTE_21">Забележка</label>
+                                                    <input type="text" class="form-control" id="NOTE_21">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+    
+                                        <div data-id="OPTION_8" hidden> <!-- този <div> с id e само за да работи прототипа -->
+                                            <!-- 8.) за прекратяване на договор или заповед за охрана по т.8 от чл. 5, ал. 1 от ЗЧОД -->
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="NUMBER_31">Вид, номер и дата на документа за прекратяване</label>
+                                                    <input type="text" class="form-control" required="" id="NUMBER_31">
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label required-field" for="DATE_P-61">Дата на фактическото прекратяване на охраната</label>
+                                                    <div class="input-group date-control">
+                                                        <input class="form-control" required="" type="text" value="" id="DATE_P-61" aria-describedby="HELP_P-61">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-text-inline">(Дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                    <div class="sr-only" id="HELP_P-61">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="NOTE_31">Забележка</label>
+                                                    <input type="text" class="form-control" id="NOTE_31">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+    
+                                    </div>
+                                    <div class="interactive-container__controls"><button onclick="$(this).closest('.list-filed').find('a, button, input, textarea').first().focus(); $(this).closest('li').remove();" class="btn btn-light btn-sm" title="Изтрий"><i class="ui-icon ui-icon-times" aria-hidden="true"></i><span class="d-none">Изтрий</span></button></div>
+                                </div>
+                            </li>
+                       </template>
+
+
+                        <ul class="list-filed" id="CANCEL_CONTRACT_LIST_FIELD">
+
+                            
+
+                        </ul>
+                        
+                        <div class="row">
+                            <div class="form-group col">
+                                <hr>
+                                <button type="button" class="btn btn-light" id="ADD_BUTTON_1"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави обект за охрана</button>
+                            </div>
+                        </div>
+
+
+                        <div class="font-italic pt-2" style="color: fuchsia; accent-color: fuchsia; border-color: fuchsia; border: 1px dashed fuchsia;">
+                            <!-- тези бутони се ползват само за да работи прототипа -->
+                            <label for="TT_1" class="ml-2">
+                                <input name="TT" id="TT_1" type="radio" value="1" checked="">
+                                Пример - намерен резултат
+                            </label>
+                            <label for="TT_2" class="ml-2">
+                                <input name="TT" id="TT_2" type="radio" value="2">
+                                Пример - няма резултат
+                            </label>
+                            <label for="TT_3" class="ml-2">
+                                <input name="TT" id="TT_3" type="radio" value="3">
+                                Пример - грешка
+                            </label>
+                        </div>
+
+
+                    </fieldset>
+
+                    <div class="button-bar button-bar--form button-bar--responsive">
+                        <div class="right-side">
+                            <button type="button" class="btn btn-primary" onclick="window.location.assign('')">Продължи</button>
+                            <button type="button" class="btn btn-secondary" onclick="window.location.assign('ui_application/ЧОД/ui_application_03_EAU-53 Приемане на уведомление за поемане или снемане от охрана_06_Преглед-Прекратяване.html')">Прегледай</button>
+                        </div>
+                        <div class="left-side">
+                            <button type="button" class="btn btn-secondary">Откажи</button>
+                        </div>
+                    </div>
+
+                </div>
+            
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                        </ul>
+        
+                        <ul>
+                            <li class="footer-link"><button class="btn btn-link" type="button" title="Страницата се отваря в нов таб на браузъра.">Помощ</button></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg" alt="">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg" alt="">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+<!-- Modal ЛК ЧОД резултат -->
+<div id="MODAL_1" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавяне на обект за охрана</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Затвори">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-info" id="INFO_1"><p>Изберете един или повече охраняеми обекти от списъка и натиснете бутон "Продължи". Ако не намирате обекта, който се снема от охрана, натинете бутон "Добави друг обект."</p></div>
+
+                <div class="search-box search-box-sm">
+                    <fieldset class="card card--box">
+                        <legend class="card-header">
+                            <h6 class="card-header__title">Търсене</h6>
+                            <span class="card-header__navbar">
+                                <ul class="nav">
+                                   <li class="nav-item">
+                                       <button type="button" class="nav-link toggle-collapse collapsed" title="Свиване/Разгъване" data-toggle="collapse" data-target="#collapsable-content" aria-expanded="true"><i class="ui-icon ui-icon-chevron-up" aria-hidden="true"></i></button>
+                                   </li>
+                                </ul>
+                            </span>
+                        </legend>
+                        
+                        <div id="collapsable-content" class="card-collapsible-content collapse">
+                            <div class="card-body">
+                                
+                                <div class="row">
+
+                                    <div class="form-group col-12">
+                                        <label class="form-control-label" for="CHOD">Вид частна охранителна дейност</label>
+                                        <select id="CHOD" class="form-control form-control-sm">
+                                            <option value="0" selected="">Избери</option>
+                                            <option value="1">1 : лична охрана на физически лица</option>
+                                            <option value="2">2 : охрана на имуществото на физически или юридически лица</option>
+                                            <option value="3">3 : сигнално-охранителна дейност</option>
+                                            <option value="4">4 : самоохрана на имущество на лица по чл. 2, ал. 3</option>
+                                            <option value="5">5 : охрана на обекти - недвижими имоти</option>
+                                            <option value="7">7 : охрана на мероприятия</option>
+                                            <option value="8">8 : охрана при транспортиране на ценни пратки или товари</option>
+                                            <option value="9">9 : охрана на селскостопанско имущество</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+    
+                            <div class="card-footer">
+                                <div class="button-bar card__button-bar button-bar--responsive">
+                                    <div class="right-side">
+                                        <button type="submit" class="btn btn-primary btn-sm" id="BUTTON-SEARCH-12">Търси</button>
+                                    </div>
+                                    <div class="left-side">
+                                        <button type="button" class="btn btn-secondary btn-sm">Изчисти</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </fieldset>
+                </div>
+
+                <div id="RESULT_1"> <!-- този div се използва само за да работи прототипа -->
+
+                    <div class="table-responsive-block">
+                        <table class="table table-striped table-hover" aria-label="Списък с наети лица">
+                            <thead>
+                                <tr>
+                                    <th>Вид частна охранителна дейност</th>
+                                    <th>Oхраняем обект</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Вид частната охранителна дейност">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" name="exampleRadiosAHA" id="exampleRadiosAHA1" type="checkbox" value="1">
+                                            <label class="custom-control-label" for="exampleRadiosAHA1">1 : лична охрана на физически лица</label>
+                                        </div>
+                                    </td>
+                                    <td data-label="Oхраняем обект">
+                                        Иван Иванов Иванов
+                                        <br>
+                                        гр. София, бул. Цар Борис III, № 5, вх. А, ет. 10, ап. 30
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Вид частната охранителна дейност">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" name="exampleRadiosAHA" id="exampleRadiosAHA2" type="checkbox" value="2">
+                                            <label class="custom-control-label" for="exampleRadiosAHA2">2 : охрана на имуществото на физически или юридически лица</label>
+                                        </div>
+                                    </td>
+                                    <td data-label="Oхраняем обект">
+                                        Къща
+                                        <br>
+                                        гр.Първомай, ул.Стефан Стамболов, №10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Вид частната охранителна дейност">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" name="exampleRadiosAHA" id="exampleRadiosAHA3" type="checkbox" value="8">
+                                            <label class="custom-control-label" for="exampleRadiosAHA3">8 : охрана при транспортиране на ценни пратки или товари</label>
+                                        </div>
+                                    </td>
+                                    <td data-label="Oхраняем обект">
+                                        складове
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav class="pagination-container pagination-container--page-bottom" aria-label="Навигация за избор на страница">
+                        <div class="result-count">
+                            общо: 25
+                        </div>
+                        <ul class="pagination">
+                            <li class="page-item first disabled">
+                                <button type="button" class="page-link" aria-label="Покажи първа страница" disabled="">
+                                <span aria-hidden="true">«</span>
+                                <span class="sr-only">Покажи първа страница</span>
+                                </button>
+                            </li>
+                            <li class="page-item prev disabled">
+                                <button type="button" class="page-link" aria-label="Покажи предишна страница" disabled="">
+                                <span aria-hidden="true">‹</span>
+                                <span class="sr-only">Покажи предишна страница</span>
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" class="page-link">
+                                    <span class="sr-only">Покажи страница</span>
+                                    1
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" class="page-link">
+                                    <span class="sr-only">Покажи страница</span>
+                                    2
+                                </button>
+                            </li>
+                            <li class="page-item active">
+                                <button type="button" class="page-link">
+                                    <span class="sr-only">Текуща страница</span>
+                                    3
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" class="page-link">
+                                    <span class="sr-only">Покажи страница</span>
+                                    4
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" class="page-link">
+                                    <span class="sr-only">Покажи страница</span>
+                                    5
+                                </button>
+                            </li>
+                            <li class="page-item next">
+                                <button type="button" class="page-link" aria-label="Покажи следваща страница">
+                                <span aria-hidden="true">›</span>
+                                <span class="sr-only">Покажи следваща страница</span>
+                                </button>
+                            </li>
+                            <li class="page-item last">
+                                <button type="button" class="page-link" aria-label="Покажи последна страница">
+                                <span aria-hidden="true">»</span>
+                                <span class="sr-only">Покажи последна страница</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="button-bar">
+                    <div class="right-side">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="BUTTON_MODAL_SELECT_1" disabled>Продължи</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="BUTTON_MODAL_SELECT_2">Добави друг обект</button>
+                    </div>
+                    <div class="left-side">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Откажи</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal ЛК ЧОД няма резултат -->
+<div id="MODAL_2" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавяне на обект за охрана</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Затвори">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-warning" id="INFO_2"><p>Не са намерени охраняеми обекти за снемане на посочения възложител <b>"Мега Секюрити ООД"</b> към избраната от Вас структура на МВР <b>"РУ 01 БЛАГОЕВГРАД"</b>, предоставяща услугата.</p><p>Желаете ли да продължите с попълване на данните за прекратяване на действието на договор за охрана?</p></div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="button-bar">
+                    <div class="right-side">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="BUTTON_MODAL_SELECT_1_2">Продължи</button>
+                    </div>
+                    <div class="left-side">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Откажи</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal ЛК ЧОД грешка -->
+<div id="MODAL_3" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавяне на обект за охрана</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Затвори">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-danger" id="INFO_4"><p>Възникна интеграционен проблем. Моля, опитайте по-късно!</p></div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="button-bar">
+                    <div class="right-side">
+                        <!-- <button type="button" class="btn btn-primary" data-dismiss="modal" id="BUTTON_MODAL_SELECT_1_2">Продължи</button> -->
+                    </div>
+                    <div class="left-side">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Назад</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        $(document).ready(function () {
+            // $('#myModal_3').modal('show');
+            // Show Page SubNavigation
+            $('#SHOW-MENU').on('click', function () {
+                if ( $(this).attr('aria-expanded') == 'false' ) {
+                    $(this).attr('aria-expanded','true');
+                } else if ( $(this).attr('aria-expanded') == 'true' ) {
+                    $(this).attr('aria-expanded','false');
+                }
+
+                $(this).toggleClass('collapsed');
+
+                $("#PAGE-NAV").slideToggle(
+                    function() {
+                    $(this).css('display','');
+                    $(this).toggleClass('show');
+                    
+                });
+            });
+
+            // Autocomplete Show
+            $('.auto-complete-container .auto-complete-options').addClass("d-none");
+
+            $('.auto-complete-container .custom-combobox-toggle').on('click', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').toggleClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focus', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').removeClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focusout', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').addClass("d-none");
+            });
+
+
+
+
+            // Modal "Добавяне обект"
+            $('[name="exampleRadiosAHA"').on('change', function () {
+                checks = $('[name="exampleRadiosAHA"');
+                dis = true;
+                checks.each(function( index ) {
+                    if ($(checks[index]).is(":checked")) {
+                        dis = false;
+                    }
+                });
+
+                $('#BUTTON_MODAL_SELECT_1').prop('disabled', dis);
+            });
+
+            // отваряне на модали
+            $('#ADD_BUTTON_1').on('click', function () {
+
+                let modal = $('[name="TT"]:checked').val();
+
+                switch (modal) {
+                    case "1":
+                        $('#MODAL_1').modal('show');
+                        break;
+                    case "2":
+                        $('#MODAL_2').modal('show');
+                        break;
+                    case "3":
+                        $('#MODAL_3').modal('show');
+                        break;
+                }
+                
+            });
+
+            // добавяне на обект
+            $('#BUTTON_MODAL_SELECT_1').on('click', function () {
+                
+                var checks = $('[name="exampleRadiosAHA"');
+                var values = [];
+                checks.each(function( index ) {
+                    if ($(checks[index]).is(":checked")) {
+                        values.push( $(checks[index]).val() );
+                    }
+                });
+
+                values.forEach( function ( value ) {
+                    
+                    var clone = $( $('#TEMPLATE-F1').clone().html() );
+                    $('#CANCEL_CONTRACT_LIST_FIELD').append( clone );
+                    changeIDs(clone);
+                    activateObject( $(clone) );
+                    setObjectType( $(clone), value );
+
+                });
+
+            });
+            
+            $('#BUTTON_MODAL_SELECT_2,#BUTTON_MODAL_SELECT_1_2').on('click', function () {
+                var clone = $( $('#TEMPLATE-F2').clone().html() );
+                $('#CANCEL_CONTRACT_LIST_FIELD').append( clone );
+                changeIDs(clone);
+                activateObject( $(clone) );
+            });
+
+
+        });
+        
+        
+        function changeIDs( obj ) {
+            var newId = Date.now();
+            obj.find('[id]').each( function(index, elem){
+                var input = $(elem);
+                var label = obj.find('[for="'+ input.attr('id') +'"]');
+                input.attr('id', input.attr('id')+'_'+newId);
+                input.attr('name', input.attr('name')+'_'+newId);
+                label.attr('for', label.attr('for')+'_'+newId);
+                // input.val('');
+            })
+        }
+
+
+        function activateObject( object ) {
+
+            // select Вид частна охранителна дейност от ЗЧОД по чл.5, ал.1, точка:
+            object.find('[data-id="OBJ_TYPE"]').on('change', function () {
+
+                switch ( $(this).val() ) {
+                    case '0': 
+                        hideAllOptions(object);
+                    break;
+                    case '1':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_1"]').prop('hidden', false);
+                    break;
+                    case '2':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_2"]').prop('hidden', false);
+                    break;
+                    case '3':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_2"]').prop('hidden', false);
+                    break;
+                    case '4':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_2"]').prop('hidden', false);
+                    break;
+                    case '5':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_2"]').prop('hidden', false);
+                    break;
+                    case '7':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_2"]').prop('hidden', false);
+                    break;
+                    case '8':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_8"]').prop('hidden', false);
+                    break;
+                    case '9':
+                        hideAllOptions(object);
+                        object.find('[data-id="OPTION_2"]').prop('hidden', false);
+                    break;
+                
+                    default:
+                        break;
+                }
+
+
+            });
+
+            // т.1 Възложител по договора за охрана 
+            object.find('[data-id="SEC_RADIO_1"]').on('change', function () {
+                if( $(this).is(":checked")) {
+                    object.find('[data-id="IDSN"]').attr('readonly','true');
+                    object.find('[data-id="O_NAME"]').attr('readonly','true');
+                    object.find('[data-id="IDSN"]').val('Иван Иванов Иванов');
+                    object.find('[data-id="O_NAME"]').val('1010101010');
+                }
+            }); 
+
+            object.find('[data-id="SEC_RADIO_2"]').on('change', function () {
+                if( $(this).is(":checked")) {
+                    object.find('[data-id="IDSN"]').removeAttr('readonly');
+                    object.find('[data-id="O_NAME"]').removeAttr('readonly');
+                    object.find('[data-id="IDSN"]').val('');
+                    object.find('[data-id="O_NAME"]').val('');
+                }
+            });
+
+
+            // activateFieldEditControls
+
+            var field = object.find('.interactive-container').find('.interactive-container__controls').find('.btn');
+
+            field.on('mouseover focus', function () {
+                $(this).closest('.interactive-container').addClass("interactive-container--focus");
+            });
+
+            field.on('mouseout focusout', function () {
+                $(this).closest('.interactive-container').removeClass("interactive-container--focus");
+            });
+
+
+        }
+
+        function hideAllOptions( obj ) {
+            obj.find('[data-id="OPTION_1"],[data-id="OPTION_2"],[data-id="OPTION_8"]').prop('hidden', true);
+        }
+
+        function setObjectType( object, value ) {
+            // set Вид частна охранителна дейност от ЗЧОД по чл.5, ал.1, точка
+            let type = object.find('[data-id="OBJ_TYPE"]').val(value).trigger( "change" );
+        }
+
+
+
+        // Show Navigation
+        function toggleNav() {
+                $(".navbar-top-container--mobile").collapse('toggle');
+            };
+    
+            // Text Version
+        function textOnlyVersion() {
+            $('[rel="stylesheet"]').attr('media','none');
+        };
+ 
+
+    </script>
+    
+
+  </body>
+</html>

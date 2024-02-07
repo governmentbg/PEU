@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-2206" xmlns="http://ereg.egov.bg/segment/R-2206" 
+            xmlns:ctn="http://ereg.egov.bg/nomenclature/R-2205"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-2205" />
+  
+  <xsd:simpleType name="ContractType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Вид на договора</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="ctn:ContractTypeNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

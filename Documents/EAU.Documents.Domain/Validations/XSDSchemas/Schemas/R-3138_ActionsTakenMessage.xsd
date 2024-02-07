@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3138" xmlns="http://ereg.egov.bg/segment/R-3138" xmlns:drsd="http://ereg.egov.bg/value/0008-000004" xmlns:du="http://ereg.egov.bg/segment/0009-000001" xmlns:espbd="http://ereg.egov.bg/segment/0009-000002" xmlns:dtn="http://ereg.egov.bg/value/0008-000007" xmlns:dtu="http://ereg.egov.bg/segment/0009-000003" xmlns:xds="http://ereg.egov.bg/segment/0009-000004" xmlns:esa="http://ereg.egov.bg/segment/0009-000016" xmlns:acu="http://ereg.egov.bg/segment/0009-000073" xmlns:pd="http://ereg.egov.bg/segment/R-3037" xmlns:abn="http://ereg.egov.bg/value/0008-000047" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000001" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000002" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000007" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000003" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000016" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000073" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000047" />
+  <xsd:element name="ActionsTakenMessage" type="ActionsTakenMessage" />
+  <xsd:complexType name="ActionsTakenMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Съобщение за предприети действия</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentTypeURI" type="dtu:DocumentTypeURI" minOccurs="0" />
+      <xsd:element name="DocumentTypeName" type="dtn:DocumentTypeName" minOccurs="0" />
+      <xsd:element name="DocumentURI" type="du:DocumentURI" minOccurs="0" />
+      <xsd:element name="AISCaseURI" type="acu:AISCaseURI" minOccurs="0" />     
+      <xsd:element name="ElectronicServiceProviderBasicData" type="espbd:ElectronicServiceProviderBasicData" minOccurs="0" />
+      <xsd:element name="ElectronicServiceApplicant" type="esa:ElectronicServiceApplicant" minOccurs="0" />
+      <xsd:element name="ActionsTakenMessageHeader" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ActionsTakenMessageMessage" type="xsd:string" minOccurs="0" />      
+      <xsd:element name="PoliceDepartment" type="pd:PoliceDepartment" minOccurs="0" />
+      <xsd:element name="AdministrativeBodyName" type="abn:AdministrativeBodyName" minOccurs="0" />
+      <xsd:element name="DocumentReceiptOrSigningDate" type="drsd:DocumentReceiptOrSigningDate" minOccurs="0" />
+      <xsd:element name="Signature" type="xds:XMLDigitalSignature" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

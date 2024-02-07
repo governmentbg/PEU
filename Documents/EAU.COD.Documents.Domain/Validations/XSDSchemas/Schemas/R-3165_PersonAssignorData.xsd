@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3165" xmlns="http://ereg.egov.bg/segment/R-3165" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:gt="http://ereg.egov.bg/segment/R-2216"
+           xmlns:pact="http://ereg.egov.bg/segment/R-1113"
+            xmlns:pait="http://ereg.egov.bg/segment/R-1109"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2216" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-1113" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-1109" />
+
+  <xsd:complexType name="PersonAssignorData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Физическо лице</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Identifier" type="xsd:string" minOccurs="0" />
+      <xsd:element name="FullName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="GuardedType" type="gt:GuardedType" minOccurs="0" />
+      <xsd:element name="Citizenship" type="pact:PersonAssignorCitizenshipType" minOccurs="0" />
+      <xsd:element name="IdentifierType" type="pait:PersonAssignorIdentifierType" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

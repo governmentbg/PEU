@@ -1,0 +1,32 @@
+/* ----  Buttons  ---- */
+
+@each $color, $value in $theme-colors {
+    .btn-#{$color} {
+      @include button-variant($value, darken($value, 7%));
+    }
+}
+
+
+.btn-secondary, .btn-secondary:hover {
+    color: $link-color;
+}
+
+.btn-light{
+    background-color: $white;
+}
+
+.btn {
+
+    white-space: normal;
+
+    // padding:  0.3rem 0.5rem;
+
+    .ui-icon{
+        width: 1rem; //0.95rem;
+        height: 1rem; //.95rem;
+        vertical-align: -12%;
+    }
+}
+
+
+/* ----  /Buttons  ---- */

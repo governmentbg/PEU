@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Validations\XSDSchemas\Schemas\R-1101_CertificateTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2123_CertificateType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2127_DeclaredScopeOfCertification.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2137_DocumentCertifyingTheAccidentOccurredOrOtherInformation.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2147_CertificateToWorkWithFluorinatedGreenhouseGassesActivities.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2154_CertificateToWorkWithFluorinatedGreenhouseGassesHeader.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2155_CertificateValidity.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2156_CertificateToWorkWithFluorinatedGreenhouseGassesGround.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3106_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3107_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGasses.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3110_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesEntityData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3111_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesPersonData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3112_CertifiedPersonel.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3123_ApplicationForIssuingDocumentsOfIncurredAndOtherAccidentsAndProvideInformationOnTheActivityCarriedOut.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3124_ApplicationForIssuingDocumentsOfIncurredAndOtherAccidentsAndProvideInformationOnTheActivityCarriedOutData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3143_CertificateForAccident.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3144_CertificateForAccidentHeader.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3145_CertificateToWorkWithFluorinatedGreenhouseGasses.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3143_CertificateForAccident.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3145_CertificateToWorkWithFluorinatedGreenhouseGasses.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1101_CertificateTypeNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2123_CertificateType.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2127_DeclaredScopeOfCertification.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2137_DocumentCertifyingTheAccidentOccurredOrOtherInformation.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2147_CertificateToWorkWithFluorinatedGreenhouseGassesActivities.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2154_CertificateToWorkWithFluorinatedGreenhouseGassesHeader.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2155_CertificateValidity.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2156_CertificateToWorkWithFluorinatedGreenhouseGassesGround.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3106_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3107_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGasses.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3110_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesEntityData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3111_ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesPersonData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3112_CertifiedPersonel.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3123_ApplicationForIssuingDocumentsOfIncurredAndOtherAccidentsAndProvideInformationOnTheActivityCarriedOut.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3124_ApplicationForIssuingDocumentsOfIncurredAndOtherAccidentsAndProvideInformationOnTheActivityCarriedOutData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3143_CertificateForAccident.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3144_CertificateForAccidentHeader.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3145_CertificateToWorkWithFluorinatedGreenhouseGasses.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3143_CertificateForAccident.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3145_CertificateToWorkWithFluorinatedGreenhouseGasses.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EAU.Documents.Domain\EAU.Documents.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

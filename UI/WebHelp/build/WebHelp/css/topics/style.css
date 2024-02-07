@@ -1,0 +1,155 @@
+﻿p {
+  margin: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  text-indent: 0;
+  text-align: left;
+  line-height: normal;
+  font-family: 'Times New Roman';
+  font-size: 12pt;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+map > area {
+  outline: none;
+}
+table.align-c {
+  margin: 0 auto;
+}
+table.align-r {
+  margin: 0 0 0 auto;
+}
+img {
+  border: none;
+}
+.float-pos-l {
+  float: left;
+}
+.float-pos-r {
+  float: right;
+}
+.ts0 {
+  font-family: 'Open Sans';
+}
+.ts1 {
+  font-family: 'Open Sans';
+  color: #404040;
+}
+.ts2 {
+  font-family: 'Open Sans';
+  font-size: 14pt;
+  font-weight: bold;
+}
+.ts3 {
+  font-family: 'Open Sans';
+  font-size: 14pt;
+  font-weight: bold;
+  color: #404040;
+}
+.ts4 {
+  font-family: 'Open Sans';
+}
+.ts5 {
+  font-family: 'Open Sans';
+  font-size: 16pt;
+  font-weight: bold;
+}
+.ts6 {
+  font-family: 'Open Sans';
+  font-size: 22pt;
+  font-weight: bold;
+  color: #404040;
+}
+.ts7 {
+  font-family: 'Open Sans';
+  font-weight: bold;
+  color: #404040;
+}
+.ts8 {
+  font-family: 'Open Sans';
+  color: #404040;
+}
+.ts9 {
+  font-family: 'Open Sans';
+  font-style: italic;
+  color: #404040;
+}
+.ps0 {
+  font-size: 10pt;
+}
+.ps1 {
+  text-align: right;
+  line-height: 10.5pt;
+  font-size: 11pt;
+}
+.ps2 {
+  font-size: 8pt;
+}
+.ps3 {
+  text-align: center;
+}
+.ps4 {
+  text-align: center;
+  font-size: 11pt;
+}
+.ps5 {
+  padding-bottom: 7pt;
+  text-align: justify;
+  line-height: 1.15;
+  font-size: 11pt;
+}
+.hline0 {
+  width: 100%;
+  height: 2px;
+  margin: 8px auto;
+  background-color: #b8b8b8;
+  border-style: none;
+}
+.hline1 {
+  width: 86.8307692307692%;
+  height: 0px;
+  margin: 8px auto;
+  border-style: solid;
+  border-width: 1px;
+  border-top-color: DimGray;
+  border-right-color: #e3e3e3;
+  border-bottom-color: #e3e3e3;
+  border-left-color: DimGray;
+}
+.hline2 {
+  width: 100%;
+  height: 1px;
+  margin: 8px auto;
+  background-color: #ddd;
+  border-style: none;
+}
+.tbl0 {
+  width: 100%;
+  border-collapse: collapse;
+  border-style: none;
+}
+.tbl0 > tbody > tr.row0 {
+  height: 100%;
+  border-style: none;
+}
+.tbl0 > tbody > tr > td.cell0 {
+  width: 80%;
+  height: 0.48cm;
+  vertical-align: middle;
+  border-style: none;
+}
+.tbl0 > tbody > tr > td.cell1 {
+  width: 20%;
+  height: 0.48cm;
+  vertical-align: middle;
+  border-style: none;
+}
+.hs-mobile img.hs-fullwidth-m {
+  width: 100%;
+  height: auto;
+  float: none;
+}

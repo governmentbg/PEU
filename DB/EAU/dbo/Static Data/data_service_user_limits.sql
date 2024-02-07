@@ -1,0 +1,2 @@
+﻿INSERT [dbo].[data_service_user_limits] ([user_limit_id], [user_limit_ver_id], [service_limit_id], [service_limit_ver_id], [user_id], [requests_interval], [requests_number], [status], [is_last], [deactivation_ver_id], [created_by], [created_on], [updated_by], [updated_on]) VALUES (1, 583, 1, 580, 101, CAST(N'1900-01-01T00:00:01.000' AS DateTime), 1, 1, 1, NULL, 2, CAST(N'2020-06-05T17:30:07.1270000+03:00' AS DateTimeOffset), 2, CAST(N'2020-06-05T17:30:07.1270000+03:00' AS DateTimeOffset))
+GO

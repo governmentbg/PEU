@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3025" xmlns="http://ereg.egov.bg/segment/R-3025" xmlns:vd="http://ereg.egov.bg/segment/R-3026" xmlns:eicd="http://ereg.egov.bg/value/R-2043" xmlns:bc="http://ereg.egov.bg/value/R-2045" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2043" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2045" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3026" />
+  <xsd:complexType name="EntranceInTheRepublicOfBulgaria">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за упълномощено лице</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="EntranceInCountyrDate" type="eicd:EntranceInCountyrDate" minOccurs="0" />
+      <xsd:element name="BorderCheckpoint" type="bc:BorderCheckpoint" minOccurs="0" />
+      <xsd:element name="VisaDocument" type="vd:VisaDocument" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

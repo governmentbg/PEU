@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" width='10px' height='24px' viewBox='0 0 10 24'><rect id='box' width='3' height='3' fill='#b8b8b8'/><use href='#box' x='7'/><use href='#box' x='7' y='7'/><use href='#box' y='7'/><use href='#box' x='7' y='14'/><use href='#box' y='14'/><use href='#box' x='7' y='21'/><use href='#box' y='21'/></svg>

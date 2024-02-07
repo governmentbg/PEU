@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="R-3262_LicenseInfo"
+    targetNamespace="http://ereg.egov.bg/segment/R-3262"
+	xmlns="http://ereg.egov.bg/segment/R-3262"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:pd="http://ereg.egov.bg/segment/R-3037"
+    elementFormDefault="qualified">
+
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+
+	<xsd:element name="LicenseInfo" type="LicenseInfo" />
+	<xsd:complexType name="LicenseInfo">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">
+				Данни за разрешение за придобиване
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="PermitNumber" type="xsd:string" minOccurs="0" />
+			<xsd:element name="PermitType" type="xsd:string" minOccurs="0" />
+			<xsd:element name="PermitTypeName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Reason" type="xsd:string" minOccurs="0" />
+			<xsd:element name="ReasonName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="ValidityPeriodStart" type="xsd:date" minOccurs="0" />
+			<xsd:element name="ValidityPeriodEnd" type="xsd:date" minOccurs="0" />
+			<xsd:element name="HolderName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="HolderIdentifier" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Content" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IssuingPoliceDepartment" type="pd:PoliceDepartment" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

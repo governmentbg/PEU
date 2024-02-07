@@ -1,0 +1,39 @@
+/* ----  XML Viewer  ---- */
+
+.xml-container {
+
+	font-family: "Courier New", Courier, monospace;
+	font-size: 1.07em;
+	font-weight: bold;
+	
+	background-color: $gray-100;
+	padding: $template-container-padding-vertical * 2 0;
+	margin: $template-container-margin-vertical 0;
+	
+	overflow-x: auto;
+	overflow-y: hidden;
+	
+	.xml {
+		list-style: none;
+		background-color: transparent;
+		text-decoration: none;
+		margin: 0;		
+		padding: 0 0 0 $template-container-padding-horizontal * 3;
+	}
+
+	div.hidden {
+		display: none;
+	}
+
+	span.xml-element {
+		color: $info;
+	}
+
+	span.xml-attribute {
+		color: $warning;
+	}
+	
+}
+
+	
+/* ----  /XML Viewer  ---- */

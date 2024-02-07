@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Удостоверение за събития и факти, свързани с издаването на български лични документи - Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../../">
+
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png" alt="">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <main class="content-wrapper">
+        
+        <div class="page-header-wrapper section-wrapper section-wrapper--margin-top fixed-content-width">
+            <div class="breadcrumbs">
+                
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Моите е-услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Преглед на документ</li>
+                    </ol>
+                </nav>
+            
+            </div>
+
+
+        </div>
+
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+            <div class="page-header" id="PAGE-CONTENT">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Удостоверение за събития и факти, свързани с издаването на български лични документи</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="page-wrapper" id="ARTICLE-CONTENT">
+      
+                <div class="ui-form ui-form--preview">
+
+
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <h2 class="page-subtitle">УРИ 9897-18-26.04.2017</h2>
+                            <p class="page-date">Дата 26.04.2017 г.</p>
+                        </div>
+                    </div>
+                                    
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">Доставчик на електронни административни услуги</h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <h4 class="form-control-label">Вид на доставчик</h4>
+                                <p class="field-text">Административен орган</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <h4 class="form-control-label">
+                                    Наименование на юридическо лице
+                                </h4>
+                                <p class="field-text">Министерство на вътрешните работи</p>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <h4 class="form-control-label">
+                                    ЕИК/БУЛСТАТ
+                                </h4>
+                                <p class="field-text">000695235</p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">Заявител на електронна административна услуга</h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Име</h4>
+                                <p class="field-text">Иван Иванов Иванов</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">ЕГН</h4>
+                                <p class="field-text">1010101015</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Тип документ</h4>
+                                <p class="field-text">Лична карта</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Документ №</h4>
+                                <p class="field-text">800003229</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Издаден на</h4>
+                                <p class="field-text">01.01.2016 г.</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Издател</h4>
+                                <p class="field-text">МВР СОФИЯ</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <h4 class="form-control-label">
+                                    Адрес на електронна поща за получаване на съобщения
+                                </h4>
+                                <p class="field-text">ivan.ivanov@yahoomaildot.com</p>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">Качество на заявителя</h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="col-12 form-group">
+                                <p class="field-text">лично качество ( за собствени нужди )</p>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">Получател на електронната административна услуга</h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Име</h4>
+                                <p class="field-text">Иван Иванов Иванов</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">ЕГН</h4>
+                                <p class="field-text">1010101015</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Тип документ</h4>
+                                <p class="field-text">Лична карта</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Документ №</h4>
+                                <p class="field-text">800003229</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Издаден на</h4>
+                                <p class="field-text">01.01.2016 г.</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Издател</h4>
+                                <p class="field-text">МВР СОФИЯ</p>
+                            </div>
+                        </div>                        
+
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">Данни за преписка</h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <h4 class="form-control-label">УРИ на преписка</h4>
+                                <p class="field-text">9897-17-26.04.2017</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                Удостоверението се издава за изпълнена справка в Национален автоматизиран информационен фонд "Национален регистър на българските лични документи" със следния резултат
+                            </h3>
+                        </legend>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <p class="field-text">Има издадени 4 лични документа.</p> 
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend><h3 class="field-title">Данните в удостоверението са актуални към </h3></legend>
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                <h4 class="form-control-label">Дата</h4>
+                                <p class="field-text">01.12.2019 г.</p>
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <h4 class="form-control-label">Час</h4>
+                                <p class="field-text">12:45</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset class="fields-group">
+                        <legend><h3 class="field-title">Удостоверението да послужи пред</h3></legend>
+                        <div class="row">
+                            <div class="col-12 form-group">
+                                <p class="field-text">пред застрахователни дружества</p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend><h3 class="field-title">Длъжностно лице</h3></legend>
+                        <div class="row">
+                            <div class="col-12 form-group">
+                                <p class="field-text">Янаки Михайлов Колев</p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">Електронен подпис</h3>
+                        </legend>
+
+                        <div class="form-group">                            
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsable-content" aria-expanded="false">
+                                Покажи
+                            </button>
+                        </div>
+
+                        <div id="collapsable-content" class="collapse">
+                            
+                            <fieldset class="fields-group">
+                                <legend>
+                                    <h3 class="field-title">Електронен подпис</h3>
+                                </legend>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Време на подписване</h4>
+                                        <p class="field-text">29.6.2020 г. 15:17:54 GTM 29.6.2020 г. 18:17:54 LMT </p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Валидност на подписа</h4>
+                                        <p class="field-text">Да</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Сериен номер</h4>
+                                        <p class="field-text word-break">2A0000012C4928FEB27BC3641B00070000012C</p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Валиден от</h4>
+                                        <p class="field-text">14.05.2019 г.</p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Валиден до</h4>
+                                        <p class="field-text">13.05.2021 г.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <h3 class="form-control-label">Информация за издателя</h3>
+                                        <p class="field-text">CN=Tangra, DC=dev, DC=local</p>
+                                    </div>
+                    
+                                    <div class="form-group col-sm-4">
+                                        <h3 class="form-control-label">Информация за автора и титуляра</h3>
+                                        <p class="field-text">CN=TestFirm OOD, CN=Nikola Krastev, CN="SERIALNUMBER = PNOBG-1010101010", C=BG </p>
+                                    </div>
+                         
+                                    <div class="form-group col-sm-4">
+                                        <h3 class="form-control-label">Информация за автора (доп.)</h3>
+                                        <p class="field-text"></p>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+
+                            <fieldset class="fields-group">
+                                <legend>
+                                    <h3 class="field-title">TimeStamp</h3>
+                                </legend>
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <h4 class="form-control-label">Време на заверяване</h4>
+                                        <p class="field-text">29.6.2020 г. 15:17:54 GTM     29.6.2020 г. 18:17:54 LMT </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Сериен номер</h4>
+                                        <p class="field-text word-break">00AEC4794676D50ED1</p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Валиден от</h4>
+                                        <p class="field-text">01.06.2018 г.</p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Валиден до</h4>
+                                        <p class="field-text">31.05.2023 г. </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <h3 class="form-control-label">Информация за издателя</h3>
+                                        <p class="field-text">CN=B-Trust Operational Qualified CA, OU=B-Trust, O=BORICA AD, OID.2.5.4.97=NTRBG-201230426, C=BG</p>
+                                    </div>
+                    
+                                    <div class="form-group col-sm-4">
+                                        <h3 class="form-control-label">Информация за автора и титуляра</h3>
+                                        <p class="field-text">CN=B-Trust Qualified Time Stamp Authority, OU=B-Trust, O=BORICA AD, OID.2.5.4.97=NTRBG-201230426, C=BG</p>
+                                    </div>
+                         
+                                    <div class="form-group col-sm-4">
+                                        <h3 class="form-control-label">Информация за автора (доп.)</h3>
+                                        <p class="field-text">URL=http://tsa.b-trust.org </p>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                        </div>
+
+                    </fieldset>
+
+                    <div class="button-bar button-bar--form button-bar--responsive">
+                        <div class="right-side">
+                            <button type="button" class="btn btn-secondary">Отпечатай</button>
+                            <button type="button" class="btn btn-secondary">Свали документа като файл</button>
+                        </div>
+                        <div class="left-side">
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+        
+                        <ul>
+                            <li class="footer-link"><a href="#">Помощ</a></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg" alt="">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg" alt="">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+
+
+        function activateSignButtons () {
+
+            var localSignButton = $('[data-localSign]');
+            var etSignButton = $('[data-etSign]');
+            var btSignButton = $('[data-btSign]');
+
+            $('#loader').on('click', function () {
+                $(this).removeClass('show');
+            });
+
+            localSignButton.on('click', function () {
+                $('#loader').addClass('show');
+                
+                var field = $(this).closest('[data-signer]');
+                // field.find('.alertr').remove();
+
+                $('#LOCAL-SIGN-ERROR').addClass('d-none');
+            });
+
+            $('[data-localSign_1]').on('click', function () {   // first sign button return error
+                $('#LOCAL-SIGN-ERROR').removeClass('d-none');
+            });
+
+            etSignButton.on('click', function () {
+
+                var field = $(this).closest('[data-signer]');
+
+                var signButtons = field.find('[data-signButtons]');
+                var etSignForm = field.find('[data-EvroTrust]');
+                var btSignForm = field.find('[data-BTrust]');
+
+                signButtons.addClass('d-none');
+                etSignForm.removeClass('d-none');
+                btSignForm.addClass('d-none');
+
+                field.find('[data-s2]').addClass('d-none');
+                field.find('[data-s1]').removeClass('d-none');
+
+                createSignCancelButton(field);
+                disableSignButtons();
+
+                // field.find('.alert').remove();
+
+                $('#LOCAL-SIGN-ERROR').addClass('d-none');
+            });
+
+            btSignButton.on('click', function () {
+
+                var field = $(this).closest('[data-signer]');
+
+                var signButtons = field.find('[data-signButtons]');
+                var etSignForm = field.find('[data-EvroTrust]');
+                var btSignForm = field.find('[data-BTrust]');
+
+                signButtons.addClass('d-none');
+                etSignForm.addClass('d-none');
+                btSignForm.removeClass('d-none');
+
+                field.find('[data-s2]').addClass('d-none');
+                field.find('[data-s1]').removeClass('d-none');
+
+                createSignCancelButton(field);
+                disableSignButtons();
+
+                // field.find('.alert').remove();
+
+                $('#LOCAL-SIGN-ERROR').addClass('d-none');
+            });
+        }
+
+        function createSignCancelButton(container){
+            container.append('<div class="interactive-container__controls"><button onClick="onClickCancelButton()" class="btn btn-light btn-sm" title="Прекрати подписването"><i class="ui-icon ui-icon-times" aria-hidden="true"></i></button></div>');
+
+            var btn = container.find('.interactive-container__controls').find('.btn');
+
+            btn.on('mouseover focus', function () {
+                $(this).closest('.interactive-container').addClass("interactive-container--focus");
+            });
+
+            btn.on('mouseout focusout', function () {
+                $(this).closest('.interactive-container').removeClass("interactive-container--focus");
+            });
+
+        }
+
+
+        function onClickCancelButton() {
+
+            var field = $(event.currentTarget).closest('[data-signer]');
+
+            var signButtons = field.find('[data-signButtons]');
+            var etSignForm = field.find('[data-EvroTrust]');
+            var btSignForm = field.find('[data-BTrust]');
+
+            signButtons.removeClass('d-none');
+            etSignForm.addClass('d-none');
+            btSignForm.addClass('d-none');
+
+            field.removeClass("interactive-container--focus");
+
+            field.find('.interactive-container__controls').remove();
+            field.find('.interactive-container__loading').addClass('d-none');
+
+            enableButtons();
+        }
+
+        function disableSignButtons() {
+            var signButtons = $('[data-signButtons]');
+            signButtons.attr('disabled', true);
+            console.log(signButtons);
+        }
+        function enableButtons() {
+            var signButtons = $('[data-signButtons]');
+            signButtons.removeAttr('disabled');
+        }
+
+
+		$(document).ready(function () {
+
+            activateSignButtons();
+
+        });
+        
+        // Show Navigation
+        function toggleNav() {
+                $(".navbar-top-container--mobile").collapse('toggle');
+            };
+    
+            // Text Version
+        function textOnlyVersion() {
+            $('[rel="stylesheet"]').attr('media','none');
+        };
+ 
+        $(document).ready(function () {
+
+        });
+    </script>
+    
+
+  </body>
+</html>

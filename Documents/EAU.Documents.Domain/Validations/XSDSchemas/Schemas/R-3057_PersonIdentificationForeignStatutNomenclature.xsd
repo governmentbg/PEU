@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-3057" xmlns="http://ereg.egov.bg/nomenclature/R-3057" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="PersonIdentificationForeignStatutNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Статут на пребиваване</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Гражданин на ЕС -->
+      <xsd:enumeration value="EUCitizen" />
+      <!-- Чужденец - Постоянно -->
+      <xsd:enumeration value="ForeignerPermanently" />
+      <!-- Чужденец - Продължително -->
+      <xsd:enumeration value="ForeignerTemporarily" />
+      <!-- Чужденец - Постоянно без разрешено пребиваване в РБ -->
+      <xsd:enumeration value="ForeignerPermanentlyWithoutResidencePermit" />
+      <!-- Чужденец - Продължително без разрешено пребиваване в РБ -->
+      <xsd:enumeration value="ForeignerTemporarilyWithoutResidencePermit" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

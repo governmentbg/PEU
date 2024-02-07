@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-2232" xmlns="http://ereg.egov.bg/segment/R-2232"
+            xmlns:voctn="http://ereg.egov.bg/nomenclature/R-2231"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-2231" />
+
+  <xsd:simpleType name="VehicleOwnershipChangeType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Статус на лицето</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="voctn:VehicleOwnershipChangeTypeNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

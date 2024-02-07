@@ -1,0 +1,264 @@
+/* ----  Wizard  ---- */
+
+
+//vars
+
+$circle-size: $template-wizard-circle-size;
+$circle-size-small: $circle-size * .7;
+
+ .wizard {
+ 
+	.wizard-inner  {
+	
+		padding: $template-container-padding-vertical * 10 $template-container-padding-horizontal;		
+		
+	}
+    
+
+	.nav-tabs {
+	
+		// Remove <a> tab styles
+		border-bottom: none;
+
+		> li {
+			
+			> a {
+			  display: inline;
+			  padding: 0;
+			  margin: 0;
+			  border: none;			  
+			  background-color: transparent;
+			  color: red;
+			}
+			
+			&.active > a {
+				&,
+				&:hover,
+				&:focus {						
+				border: none;
+				background-color: transparent;
+				}
+			}
+		}
+		
+		// ----------------------
+		
+		li {
+			
+			
+			position: relative;
+			z-index: 1;
+			
+			text-align: center;
+			
+			
+			// Connection Line
+			&:before {
+				border-top: 2px solid $gray-300;
+				content:"";				
+				position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */			
+				top: $circle-size / 2;
+				left: 0;		
+				right: 0;
+				width: 100%;
+				z-index: -1;
+			}
+			
+			&:first-child {			
+				&:before {
+					left: 50%;
+					width: 50%;
+				}
+			}
+			
+			&:last-child {
+				&:before {
+					right: 50%;
+					width: 50%;
+				}
+			}
+			
+			&:only-child {
+				&:before {				
+					width: 0;
+				}
+			}		
+			
+			
+			.tab-title {
+				margin-top: $template-container-margin-vertical;
+			}			
+			
+			.round-tab {
+				width: $circle-size;
+				height: $circle-size; 
+				line-height: $circle-size;
+				
+				display: inline-block;
+				
+				background-color: $white;
+				border: 2px solid $gray-300;
+				border-radius: 50%;
+						
+				text-align: center;
+				
+				h1 {
+					margin:0;					
+					line-height: 66px;
+				}
+				
+			}			
+			
+			
+			> a:hover {
+			
+				color: $link-hover-color;
+				
+				.round-tab {					
+					border-color: $link-hover-color;
+					color: $white;
+					background-color: $white;
+				}				
+			}
+			
+			&.active { 			
+				> a .round-tab,
+				> a:hover .round-tab,
+				.round-tab {
+					color:  $white; 
+					background-color: $primary;
+					border-color: $primary;
+				}
+				
+				> a, a:hover {
+					color: $link-hover-color;
+				}
+	
+			}
+			
+			
+			&.disabled {
+				
+				> a .round-tab,
+				> a:hover .round-tab,
+				.round-tab {
+					color: $gray-300;
+					background-color: $white;
+					border-color: $gray-300;					
+				}
+				
+				> a, a:hover, & {
+					color: $gray-300;
+				}
+			}
+
+			// &.success {
+
+			// 	.round-tab {
+			// 		color: $btn-success-color; 
+			// 		background-color: $btn-success-bg;
+			// 		border-color: $btn-success-border;
+			// 	}
+				
+			// }				
+			
+			// &.warning {
+
+			// 	.round-tab {
+			// 		color: $btn-warning-color; 
+			// 		background-color: $btn-warning-bg;
+			// 		border-color: $btn-warning-border;
+			// 	}
+				
+			// }
+			
+			// &.danger {
+
+			// 	.round-tab {
+			// 		color: $btn-danger-color; 
+			// 		background-color: $btn-danger-bg;
+			// 		border-color: $btn-danger-border;
+			// 	}
+				
+			// }			
+			
+			
+		}
+		
+
+		
+		
+	}
+	 
+	@media (max-width: map-get($grid-breakpoints, md)) {
+
+		.wizard-inner  {		
+			padding: $template-container-padding-vertical * 5 $template-container-padding-horizontal;
+		}	
+		
+		.nav-tabs {
+		
+	
+		
+			li {
+			  
+				// Connection Line
+				&:before {
+					border-top: none;
+					border-right: 2px solid $gray-100;
+					height: 100%;
+					background-color: pink;
+					top: $circle-size-small / 2;
+					width: 0%;
+					left: 50%;
+				}
+				
+				&:first-child {			
+					&:before {
+						left: 50%;
+						width: 0%;
+					}
+				}
+				
+				&:last-child {
+					&:before {
+						left: 50%;
+						width: 0%;
+						height: 0%;
+					}
+				}
+				
+				&:only-child {
+					&:before {
+						left: 50%;
+						width: 0%;
+						height: 0%;
+					}
+				}		  
+			  
+			  
+			  
+			  
+				.round-tab {
+					width: $circle-size-small;
+					height: $circle-size-small;
+					line-height: $circle-size-small;
+					h1 {
+						font-size: 1.37em;
+						line-height: 46px;
+					}
+				}
+			  
+			}
+		}
+	}
+
+
+}
+
+
+
+
+
+	
+/* ----  /Wizard  ---- */

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3027" xmlns="http://ereg.egov.bg/segment/R-3027" xmlns:en="http://ereg.egov.bg/value/0008-000029" xmlns:fcn="http://ereg.egov.bg/segment/0009-000007" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000029" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000007" />
+  <xsd:complexType name="MaintenanceProvidedBy">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Издръжката се осигурява от.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name" type="en:EntityName" minOccurs="0" />
+      <xsd:element name="ForeignCitizenNames" type="fcn:ForeignCitizenNames" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

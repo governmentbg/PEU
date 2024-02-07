@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2044" xmlns="http://ereg.egov.bg/value/R-2044" xmlns:vtn="http://ereg.egov.bg/nomenclature/R-1005" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1005" />
+  <xsd:simpleType name="VisaTypes">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Виза тип:</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="vtn:VisaTypesNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" />
+    </head>
+
+<body>
+
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="page-header-wrapper section-wrapper fixed-content-width">
+            <div class="breadcrumbs">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <!-- <li class="breadcrumb-item"><a href="#">Начало</a></li> -->
+                        <li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Издаване на дубликат на свидетелство за управление на МПС при загуба, кражба или унищожаване</li>
+                    </ol>
+                </nav>
+
+            </div>
+
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Заявление за издаване на лични документи на чужденци в Република България</h1>
+                    </div>
+                    <div class="col-auto">
+                        <div class="button-menu-container">
+                            <button id="show_menu" class="button-menu d-md-none"><i class="ui-icon ui-icon-sub-menu" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+
+            <div class="nav-wrapper collapse">
+                <nav id="page-nav" class="page-nav">
+                    <ul class="nav-section connected-nav-items">
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-processed"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class="nav-link" href="">
+                                    Заявител
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-error"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class="nav-link active" href="">
+                                    Обстоятелства
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class=" nav-link" href="">
+                                    Начин на получаване
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class=" nav-link" href="">
+                                    Политики и декларации
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class="nav-link" href="">
+                                    Приложени документи
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="page-wrapper">
+
+                <div class="ui-form ui-form--input">
+
+                    <h2 class="section-title">
+                        Обстоятелства&nbsp;<button type="button" class="btn btn-context-help" title="Контекстна помощ"><span class="sr-only">Контекстна помощ</span></button>
+                    </h2>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                <span class="">Вид на искания документ</span>
+                            </h3>
+                        </legend>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <p class="field-text">СВИДЕТЕЛСТВО ЗА УПРАВЛЕНИЕ НА МОТОРНО ПРЕВОЗНО СРЕДСТВО</p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                <span class="">Предишен документ</span>
+                            </h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <h4 class="form-control-label">Тип документ</h4>
+                                <p class="field-text">Свидетелство за управление на моторно превозно средство</p>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <h4 class="form-control-label">Документ №</h4>
+                                <p class="field-text">800003229</p>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <h4 class="form-control-label">Издаден на</h4>
+                                <p class="field-text">01.01.2010 г.</p>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <h4 class="form-control-label">Валиден до</h4>
+                                <p class="field-text">01.01.2010 г.</p>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <h4 class="form-control-label">Издател</h4>
+                                <p class="field-text">МВР СОФИЯ</p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title required-field">Данни за заявител</h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Имена (по паспорт/личнакарта)</h4>
+                                <p class="field-text">Yu Degui</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Имена (на кирилица)</h4>
+                                <p class="field-text">Ю Дъгуи</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">ЛНЧ</h4>
+                                <p class="field-text">1010101010</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">ЕГН</h4>
+                                <p class="field-text">1010101010</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Пол</h4>
+                                <p class="field-text">М</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Дата на раждане</h4>
+                                <p class="field-text">01.01.1949 г.</p>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <h4 class="form-control-label">Гражданство</h4>
+                                <p class="field-text">КИТАЙ</p>
+                            </div>                            
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <label class="form-control-label required-field" for="HEIGHT">Ръст (см)</label>
+                                <input type="text" class="form-control" value="190" required="" id="HEIGHT">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label class="form-control-label required-field" for="EYES">Цвят на очите</label>
+                                <select class="form-control" required id="EYES">
+                                    <option value="1" selected>кафяви</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label class="form-control-label required-field" for="STAT">Семейно положение</label>
+                                <select class="form-control" required id="STAT">
+                                    <option value="1" selected>неженен/неомъжена</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <label class="form-control-label required-field" for="PHONE">Телефон</label>
+                                <input type="text" class="form-control" required="" id="PHONE">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <h4 class="form-control-label">Постоянен адрес</h4>
+                                <p class="field-text">област Благоевград, община Сандански, гр. Сандански</p>
+                                <p class="field-text">бул./ул./ж.к. Достоевски Ф.М., №/бл. 6</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label class="form-control-label required-field" for="FA">Адрес в чужбина</label>
+                                <textarea class="form-control" rows="3" id="FA"></textarea>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                <span class="">Документ за задгранично пътуване</span>
+                            </h3>
+                        </legend>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label class="form-control-label" for="NOM">Документ №</label>
+                                <input type="text" class="form-control" value="G18050319" id="NOM">
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label class="form-control-label" for="DATE-1">Издаден на</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" value="16.04.2010" id="DATE-1" aria-describedby="HELP-1">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light" type="button" tabindex="-1">
+                                            <i class="ui-icon ui-icon-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="help-text-inline">(Въведете дата във формат "ДД.ММ.ГГГГ".)</div>
+                                <div class="sr-only" id="HELP-1">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label class="form-control-label" for="DATE-2">Валиден до</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" value="15.04.2020" id="DATE-2" aria-describedby="HELP-2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light" type="button" tabindex="-1">
+                                            <i class="ui-icon ui-icon-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="help-text-inline">(Въведете дата във формат "ДД.ММ.ГГГГ".)</div>
+                                <div class="sr-only" id="HELP-2">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label class="form-control-label" for="ISS">Издател</label>
+                                <div class="auto-complete-container">
+                                    <input type="text" class="form-control" value="ШВЕЙЦАРИЯ" id="ISS">
+                                    <ul class="auto-complete-options d-none">    <!-- .d-none не е необходим. Ползва се само за да работи мокъпа!     -->
+                                        <li>БЪЛГАРИЯ</li>
+                                        <li>АЛБАНИЯ</li>
+                                        <li>АНТИГУА и БАРБУДА</li>
+                                        <li>АЗЕРБАЙДЖАН</li>
+                                        <li>АВСТРАЛИЯ</li>
+                                        <li>БАХАМСКИ ОСТРОВИ</li> 
+                                        <li>БАХРЕЙН</li>
+                                        <li>БАНГЛАДЕШ</li>
+                                        <li>БАРБЕЙДОС</li>
+                                        <li>БЕЛГИЯ</li>
+                                        <li>БЕРМУДСКИ ОСТРОВИ</li>
+                                        <li>БУТАН</li>
+                                        <li>БОЛИВИЯ</li>
+                                        <li>БОСНА и ХЕРЦЕГОВИНА</li>
+                                        <li class="auto-complete-active-option">ШВЕЙЦАРИЯ</li>                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="button-bar button-bar--form button-bar--responsive">
+                        <div class="right-side">
+                            <a class="btn btn-primary" href="">Продължи</a>
+                            <a class="btn btn-secondary" href="">Прегледай</a>
+                        </div>
+                        <div class="left-side">
+                            <button type="button" class="btn btn-secondary">Откажи</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Помощ</a></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+
+        $(document).ready(function () {
+            // $('#myModal_3').modal('show');
+            // Show Page SubNavigation
+            $('#show_menu').on('click', function () {
+                $(this).toggleClass('collapsed');
+                $(".nav-wrapper").slideToggle(
+                    function() {
+                    $(this).css('display','');
+                    $(this).toggleClass('show');
+                });
+            });
+
+            // Autocomplete Show
+            $('.auto-complete-container .auto-complete-options').addClass("d-none");
+
+            $('.auto-complete-container .custom-combobox-toggle').on('click', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').toggleClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focus', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').removeClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focusout', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').addClass("d-none");
+            });
+        });
+        // Show Navigation
+        function toggleNav() {
+                $(".navbar-top-container--mobile").collapse('toggle');
+            };
+
+            $(document).ready(function () {
+
+        });
+    </script>
+
+
+  </body>
+</html>

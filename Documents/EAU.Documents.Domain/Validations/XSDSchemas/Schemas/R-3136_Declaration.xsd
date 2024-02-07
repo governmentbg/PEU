@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment//R-3136"
+    elementFormDefault="qualified"
+    xmlns="http://ereg.egov.bg/segment//R-3136"
+    xmlns:idf="http://ereg.egov.bg/value/R-2400"
+    xmlns:dn="http://ereg.egov.bg/value/R-2401"
+    xmlns:fdfd="http://ereg.egov.bg/value/R-2402"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2400"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2401"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2402"/>
+
+  <xsd:complexType name="Declaration">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Декларация</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IsDeclarationFilled" type="idf:IsDeclarationFilled" />
+      <xsd:element name="DeclarationName" type="dn:DeclarationName" />
+      <xsd:element name="DeclarationCode" type="xsd:string" minOccurs="0" />
+      <xsd:element name="FurtherDescriptionFromDeclarer" type="fdfd:FurtherDescriptionFromDeclarer" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-2208" xmlns="http://ereg.egov.bg/segment/R-2208"
+            xmlns:noectn="http://ereg.egov.bg/nomenclature/R-2207"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-2207" />
+  
+  <xsd:simpleType name="NotificationOfEmploymentContractType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Тип на уведомлението за трудов договор</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="noectn:NotificationOfEmploymentContractTypeNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

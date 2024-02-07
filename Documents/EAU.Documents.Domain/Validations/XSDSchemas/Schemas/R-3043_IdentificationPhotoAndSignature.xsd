@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3043" xmlns="http://ereg.egov.bg/segment/R-3043" xmlns:is="http://ereg.egov.bg/value/R-2049" xmlns:ip="http://ereg.egov.bg/value/R-2050" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xsd:import namespace="http://ereg.egov.bg/value/R-2049" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2050" />
+    <xsd:complexType name="IdentificationPhotoAndSignature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Биометрични данни за лични документи</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+     <xsd:element name="IdentificationSignature" type="is:IdentificationSignature" minOccurs="0" /> 
+    <xsd:element name="IdentificationPhoto" type="ip:IdentificationPhoto" minOccurs="0" /> 
+
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

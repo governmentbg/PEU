@@ -1,0 +1,493 @@
+/* ----  Navbar-Left  ---- */
+
+
+$icons-path: '../images/icons/nav/';
+
+.navbar-left {	// форматиране общо и за двата варианта
+
+	flex: 1 1 auto;
+	position: relative;	
+
+	background-color: $gray-100;
+	border-right: 1px solid $gray-300;
+
+	ul {
+
+		list-style: none;
+		padding:0;
+		margin:0;
+
+		li {
+			font-weight: bold;
+			line-height: 1.1;
+
+			a {
+				text-decoration: none;
+				display: block;
+
+				border-top: 1px solid transparent;
+				border-bottom: 1px solid transparent;
+
+				i {
+					&.nav-icon {
+						display: inline-block;
+						padding: 0;
+						margin: 0;						
+						background-position: center center;
+						background-repeat: no-repeat;
+						vertical-align: middle;
+					}
+
+					&.nav-icon-home {
+						background-image: url('#{$icons-path}home.svg');
+					}
+
+					&.nav-icon-about {
+						background-image: url('#{$icons-path}about.svg');
+					}
+
+					&.nav-icon-references {
+						background-image: url('#{$icons-path}table.svg');
+					}
+
+					&.nav-icon-services {
+						background-image: url('#{$icons-path}services.svg');
+					}
+
+					&.nav-icon-legislation {
+						background-image: url('#{$icons-path}book.svg');
+					}
+
+					&.nav-icon-documents {
+						background-image: url('#{$icons-path}documents.svg');
+					}
+
+					&.nav-icon-links {
+						background-image: url('#{$icons-path}link.svg');
+					}
+
+					&.nav-icon-comments {
+						background-image: url('#{$icons-path}comments.svg');
+					}
+
+					&.nav-icon-configuration {
+						background-image: url('#{$icons-path}config.svg');
+					}
+
+					&.nav-icon-list {
+						background-image: url('#{$icons-path}list.svg');
+					}
+
+					&.nav-icon-users {
+						background-image: url('#{$icons-path}users.svg');
+					}
+
+					&.nav-icon-language {
+						background-image: url('#{$icons-path}language.svg');
+					}
+
+					&.nav-icon-limits {
+						background-image: url('#{$icons-path}limits.svg');
+					}
+
+					&.nav-icon-messages {
+						background-image: url('#{$icons-path}envelope.svg');
+					}
+
+					&.nav-icon-payment {
+						background-image: url('#{$icons-path}payment.svg');
+					}
+
+					&.nav-icon-payment-check {
+						background-image: url('#{$icons-path}payment-check.svg');
+					}
+
+					&.nav-icon-statistics {
+						background-image: url('#{$icons-path}statistics.svg');
+					}
+
+					&.nav-icon-chart {
+						background-image: url('#{$icons-path}chart-bar.svg');
+					}
+
+					&.nav-icon-chart-danger {
+						background-image: url('#{$icons-path}chart-bar-danger.svg');
+					}
+
+					&.nav-icon-bank {
+						background-image: url('#{$icons-path}university.svg');
+					}
+
+					&.nav-icon-bank-alt {
+						background-image: url('#{$icons-path}piggy-bank.svg');
+					}
+
+					&.nav-icon-payment-back {
+						background-image: url('#{$icons-path}payment-back.svg');
+					}
+
+					&.nav-icon-card {
+						background-image: url('#{$icons-path}card.svg');
+					}
+
+					&.nav-icon-document-link {
+						background-image: url('#{$icons-path}document-link.svg');
+					}
+
+					&.nav-icon-document-check {
+						background-image: url('#{$icons-path}document-check.svg');
+					}
+
+				}
+
+				span {
+					white-space: normal;					
+					vertical-align: middle;
+				}
+			}
+
+			a:hover, a:focus, a.selected {
+				background-color: $body-base-color;
+				border-top: 1px solid lighten($gray-300,15%);
+				border-bottom: 1px solid $gray-300;
+			}
+
+			a.active {
+				background-color: $primary;
+				color: $white;
+				border-top: 1px solid lighten($primary,10%);
+				border-bottom: 1px solid darken($primary,6%);
+
+				i {
+					&.ui-icon-chevron-right {
+						background-image: url("../images/icons/btn/chevron-right-white.svg");
+					}
+
+					&.nav-icon-home {
+						background-image: url('#{$icons-path}home-white.svg');
+					}
+
+					&.nav-icon-about {
+						background-image: url('#{$icons-path}about-white.svg');
+					}
+
+					&.nav-icon-references {
+						background-image: url('#{$icons-path}table-white.svg');
+					}
+
+					&.nav-icon-services {
+						background-image: url('#{$icons-path}services-white.svg');
+					}
+
+					&.nav-icon-legislation {
+						background-image: url('#{$icons-path}book-white.svg');
+					}
+
+					&.nav-icon-documents {
+						background-image: url('#{$icons-path}documents-white.svg');
+					}
+
+					&.nav-icon-links {
+						background-image: url('#{$icons-path}link-white.svg');
+					}
+
+					&.nav-icon-comments {
+						background-image: url('#{$icons-path}comments-white.svg');
+					}
+
+					&.nav-icon-configuration {
+						background-image: url('#{$icons-path}config-white.svg');
+					}
+
+					&.nav-icon-list {
+						background-image: url('#{$icons-path}list-white.svg');
+					}
+
+					&.nav-icon-users {
+						background-image: url('#{$icons-path}users-white.svg');
+					}
+
+					&.nav-icon-language {
+						background-image: url('#{$icons-path}language-white.svg');
+					}
+
+					&.nav-icon-limits {
+						background-image: url('#{$icons-path}limits-white.svg');
+					}
+
+					&.nav-icon-messages {
+						background-image: url('#{$icons-path}envelope-white.svg');
+					}
+
+					&.nav-icon-payment {
+						background-image: url('#{$icons-path}payment-white.svg');
+					}
+
+					&.nav-icon-payment-check {
+						background-image: url('#{$icons-path}payment-check-white.svg');
+					}
+
+					&.nav-icon-statistics {
+						background-image: url('#{$icons-path}statistics-white.svg');
+					}
+					
+					&.nav-icon-chart {
+						background-image: url('#{$icons-path}chart-bar-white.svg');
+					}
+					
+					&.nav-icon-chart-danger {
+						background-image: url('#{$icons-path}chart-bar-danger-white.svg');
+					}
+					
+					&.nav-icon-bank {
+						background-image: url('#{$icons-path}university-white.svg');
+					}
+
+					&.nav-icon-bank-alt {
+						background-image: url('#{$icons-path}piggy-bank-white.svg');
+					}
+
+					&.nav-icon-payment-back {
+						background-image: url('#{$icons-path}payment-back-white.svg');
+					}
+
+					&.nav-icon-card {
+						background-image: url('#{$icons-path}card-white.svg');
+					}
+
+					&.nav-icon-document-link {
+						background-image: url('#{$icons-path}document-link-white.svg');
+					}
+
+					&.nav-icon-document-check {
+						background-image: url('#{$icons-path}document-check-white.svg');
+					}
+
+				}
+			}
+
+
+
+			ul {
+
+				li {
+					font-weight: bold;
+					line-height: 1.1;
+
+				}
+
+			}
+		}
+
+
+		.collapse-arrow {
+			width: 0.6875rem;
+			height: 0.6875rem;
+		}
+
+	}
+
+}
+
+.navbar-left,
+.mini-navbar-left .navbar-left {  //  смален мобилен вариант
+
+	overflow-x: visible;
+
+	ul {
+
+		li {
+			font-size: 0.5625rem; //0.64em;
+			text-align: center;
+			position: relative;
+
+
+			a {
+				white-space: normal;
+				padding: $template-container-padding-vertical * 1 $template-container-padding-horizontal / 2;
+
+				i.nav-icon {
+					width: 1.75rem; //1.9rem;
+					height: 1.75rem; //1.9rem;
+				}
+
+				span {
+					margin: 0 auto;
+					display: block;
+					width: 5rem;
+					word-wrap: break-word;
+					padding-top: $template-container-padding-horizontal;
+					padding-left: 0;
+				}
+			}
+
+			ul {
+
+				position: absolute;
+				left : 100%;
+				top :0;
+				z-index: $zindex-dropdown;
+
+				border: 1px solid $gray-300;
+				background-color: $gray-100;
+
+				li {
+					font-size: 0.6875rem;
+					text-align: left;
+
+
+					a {
+						padding-left: $template-container-padding-horizontal;
+						padding-right: $template-container-padding-horizontal;
+						white-space: nowrap;
+
+						span {
+							padding: 0;
+							white-space: normal;
+							vertical-align: middle;
+							display: inline-block;
+							width: 10rem; // 160px;
+						}
+
+						i.nav-icon {
+							vertical-align: middle;
+							display: inline-block;
+						}
+					}
+
+					li {
+						font-size: 1em;
+					}
+
+					ul {
+						position: static;
+						background-color: fade-out($white, .5);
+						border-top: none;
+						border-bottom: 1px solid fade-out($gray-300 ,.5);
+						border-left: none;
+						border-right: none;
+					}
+
+				}
+
+				.collapse-arrow {
+					display: inline-block;
+				}
+
+			}
+
+		}
+
+
+		.collapse-arrow {
+			display: none;
+		}
+	}
+
+}
+
+.navbar-left {	//  нормален десктоп вариант
+
+	@include media-breakpoint-up(lg) {
+		overflow-x: hidden;
+
+		ul {
+
+			list-style: none;
+			padding:0;
+			margin:0;
+
+			li {
+				font-size: 0.875rem;
+				text-align: left;
+				position: static;
+
+				a {
+					white-space: nowrap;
+					padding: $template-container-padding-vertical * 1.2 $template-container-padding-horizontal * 2;
+
+					i {
+						&.nav-icon {							
+							width: 1.25rem; //1.4rem;
+							height: 1.25rem; //1.4rem;						
+						}						
+					}
+
+					span {
+						display: inline-block;
+						width: 10.375rem; // 166px;
+						margin: 0;
+						padding: 0;
+						padding-left:  $template-container-padding-horizontal * 0.7;
+					}
+				}
+
+
+				ul {
+					position: static;
+					border: none;
+					border-bottom: 1px solid fade-out($gray-300 ,.5);
+					background-color: fade-out($white, .5);
+
+					li {
+						font-size: 0.93em;
+						padding: 0;
+						a {
+							padding-left: $template-container-padding-vertical * 2;
+							padding-right: $template-container-padding-vertical * 2;
+							span {
+								width: 11.75rem //188px;
+							}
+						}
+					}
+
+				}
+			}
+
+
+			.collapse-arrow {
+				width: 0.6875rem;
+				height: 0.6875rem;
+				display: inline-block;
+			}
+
+		}
+	}
+	
+}
+
+.nav-wrapper {	
+	z-index: $zindex-dropdown;    
+    
+	transition: width 0.2s linear, transform 0.2s linear;
+	
+	width: 14.375rem;
+	    
+    @include media-breakpoint-down(md) {
+        width: 0;
+        transform: translate(-5.75rem, 0rem);
+	   
+		ul ul.show {
+			display: none;
+		}
+
+    }
+
+    .mini-navbar-left & {
+        
+		width: 5.75rem;
+        
+        @include media-breakpoint-down(md) {			
+            width: 5.75rem;
+            transform: translate(0rem, 0rem);
+
+			ul ul.show {
+				display: block;
+			}
+        }
+        
+    }
+
+}
+
+/* ----  /Navbar-Left  ---- */

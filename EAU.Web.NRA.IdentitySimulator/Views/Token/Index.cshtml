@@ -1,0 +1,28 @@
+﻿@model TokenViewModel
+<!-- DOCTYPE -->
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Viewport Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="~/css/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="~/images/favicon.ico" />
+    <link rel="icon" type="image/ico" href="~/images/favicon.ico" />
+</head>
+<body>
+    <div class="form-group col-4">
+        <h1 class="page-title">НАП Симулатор</h1>
+        <br />
+        <form asp-controller="Token" method="post">
+            <input class="form-control" name="UserIdentifier" placeholder="Въведи идентификатор (ЕГН)" autofocus>
+            <br />
+            <button name="button" value="login" class="btn btn-primary btn-block">Генерирай</button>
+        </form>
+    </div>
+</body>
+</html>

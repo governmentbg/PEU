@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3056" xmlns="http://ereg.egov.bg/segment/R-3056"
+			xmlns:mp="http://ereg.egov.bg/value/R-2038"
+			xmlns:pd="http://ereg.egov.bg/segment/R-3005"
+			xmlns:pifs="http://ereg.egov.bg/value/R-3058"
+			xmlns:td="http://ereg.egov.bg/segment/R-3023"
+			xmlns:csh="http://ereg.egov.bg/segment/0009-000133"
+			xmlns:pnl="http://ereg.egov.bg/segment/R-3003"
+			xmlns:pf="http://ereg.egov.bg/segment/R-2450"
+			xmlns:on="http://ereg.egov.bg/segment/R-2451"
+			xmlns:id="http://ereg.egov.bg/segment/0009-000099"
+			xmlns:pidt="http://ereg.egov.bg/value/0008-000212"
+			xmlns:pa="http://ereg.egov.bg/segment/0009-000094"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3005" />
+	<xsd:import namespace="http://ereg.egov.bg/value/R-3058" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3023" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000133" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3003" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-2450" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-2451" />
+	<xsd:import namespace="http://ereg.egov.bg/value/0008-000212" />
+	<xsd:import namespace="http://ereg.egov.bg/value/R-2011" />
+	<xsd:import namespace="http://ereg.egov.bg/value/R-2038" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000099" />
+
+	<xsd:complexType name="ApplicationForIssuingDriverLicenseData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Данни за заявление за издаване на свидетелство за управление на МПС</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IdentificationDocuments" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IdentificationDocumentType" type="pidt:IdentityDocumentType" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Person" type="pd:PersonData"  />
+			<xsd:element name="IsBulgarianCitizen" type="xsd:boolean" minOccurs="1" />
+			<xsd:element name="ForeignStatut" type="pifs:PersonIdentificationForeignStatut" minOccurs="0" />
+			<xsd:element name="TravelDocument" type="td:TravelDocument" minOccurs="0" />
+			<xsd:element name="ForeignCitizenship" type="csh:Citizenship" minOccurs="0" />
+			<xsd:element name="Phone" type="mp:MobilePhone" minOccurs="0" />
+			<xsd:element name="PersonFamily" type="pf:PersonFamily" minOccurs="0" />
+			<xsd:element name="OtherNames" type="on:OtherNames" minOccurs="0" />
+			<xsd:element name="Address" type="pa:PersonAddress"  minOccurs="0" />
+			<xsd:element name="HasDocumentForDisabilities" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="ServiceCode" type="xsd:integer" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

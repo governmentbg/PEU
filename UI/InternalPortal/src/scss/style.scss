@@ -1,0 +1,109 @@
+/*  SOURCE SASS  */
+
+/*!
+ * Bootstrap v4.0.0 (https://getbootstrap.com)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+ @import "src/bootstrap-4.0.0/scss/functions";
+ 
+ @import "src/scss/bootstrap_variables"; // Custom variables
+ @import "src/bootstrap-4.0.0/scss/variables";
+
+ @import "src/bootstrap-4.0.0/scss/mixins";
+ @import "src/bootstrap-4.0.0/scss/root";
+ @import "src/bootstrap-4.0.0/scss/reboot";
+ @import "src/bootstrap-4.0.0/scss/type";
+ @import "src/bootstrap-4.0.0/scss/images";
+//  @import "src/bootstrap-4.0.0/scss/code";
+ @import "src/bootstrap-4.0.0/scss/grid";
+ @import "src/bootstrap-4.0.0/scss/tables";
+ @import "src/bootstrap-4.0.0/scss/forms";
+ @import "src/bootstrap-4.0.0/scss/buttons";
+ @import "src/bootstrap-4.0.0/scss/transitions";
+ @import "src/bootstrap-4.0.0/scss/dropdown";
+ @import "src/bootstrap-4.0.0/scss/button-group";
+ @import "src/bootstrap-4.0.0/scss/input-group";
+ @import "src/bootstrap-4.0.0/scss/custom-forms";
+ @import "src/bootstrap-4.0.0/scss/nav";
+//  @import "src/bootstrap-4.0.0/scss/navbar";
+ @import "src/bootstrap-4.0.0/scss/card";
+ @import "src/bootstrap-4.0.0/scss/breadcrumb";
+ @import "src/bootstrap-4.0.0/scss/pagination";
+ @import "src/bootstrap-4.0.0/scss/badge";
+//  @import "src/bootstrap-4.0.0/scss/jumbotron";
+ @import "src/bootstrap-4.0.0/scss/alert";
+ @import "src/bootstrap-4.0.0/scss/progress";
+//  @import "src/bootstrap-4.0.0/scss/media";
+ @import "src/bootstrap-4.0.0/scss/list-group";
+ @import "src/bootstrap-4.0.0/scss/close";
+ @import "src/bootstrap-4.0.0/scss/modal";
+ @import "src/bootstrap-4.0.0/scss/tooltip";
+//  @import "src/bootstrap-4.0.0/scss/popover";
+//  @import "src/bootstrap-4.0.0/scss/carousel";
+ @import "src/bootstrap-4.0.0/scss/utilities";
+//  @import "src/bootstrap-4.0.0/scss/print";
+
+
+
+// Core Font-Awesome variables and mixins
+// @import "src/font-awesome-4.7.0/scss/variables";
+// @import "src/font-awesome-4.7.0/scss/mixins";
+
+
+// Template variables and mixins
+@import "src/scss/style_variables";
+@import "src/scss/style_mixins";
+
+
+// Template CSS
+
+// Main sections
+@import "src/scss/layout";
+@import "src/scss/header";
+@import "src/scss/footer";
+@import "src/scss/navbar-top";
+@import "src/scss/navbar-left";
+@import "src/scss/page-wrapper";
+@import "src/scss/general-message-wrapper";
+
+
+// Elements
+@import "src/scss/loader";
+
+@import "src/scss/rdtPicker";
+@import "tempusdominus-bootstrap-4";
+@import "html-editor";
+@import "react-select";
+
+
+@import "src/scss/ckEditor";
+@import "src/scss/autocomplete-combobox";
+
+
+@import "src/scss/xml-viewer";
+
+@import "src/scss/card";
+@import "src/scss/card-box";
+@import "src/scss/nav";
+@import "src/scss/buttons";
+
+@import "src/scss/table";
+@import "src/scss/_tableHeadFixer";
+
+@import "src/scss/button-bar";
+@import "src/scss/modal";
+// @import "src/scss/wizard";
+
+@import "src/scss/main"; 
+
+@import "src/scss/ui-icons";
+@import "src/scss/plain-text";
+
+@import "src/scss/tree-list";
+@import "src/scss/show-more";
+
+@import "src/scss/public-portal-css";
+

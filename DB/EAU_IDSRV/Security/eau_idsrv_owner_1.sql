@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [eau_idsrv_owner]
+    WITH PASSWORD = N'omBnuwt4fu nqycrmG8xaQ?gmsFT7_&#$!~<o>lzn1g_tcnv', SID = 0x2D13D780F42C994F8B6C8657C1516497, DEFAULT_DATABASE = [EAU_IDSRV_DEV], DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

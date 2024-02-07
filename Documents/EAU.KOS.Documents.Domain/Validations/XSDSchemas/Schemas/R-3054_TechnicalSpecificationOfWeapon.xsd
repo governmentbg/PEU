@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3054"
+            xmlns="http://ereg.egov.bg/segment/R-3054"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xsd:complexType name="TechnicalSpecificationOfWeapon">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Технически характеристики на оръжията</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="WeaponTypeCode" type="xsd:string" minOccurs="0" />
+      <xsd:element name="WeaponTypeName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="WeaponPurposeCode" type="xsd:string" minOccurs="0" />
+      <xsd:element name="WeaponPurposeName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Make" type="xsd:string" />
+      <xsd:element name="Model" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Caliber" type="xsd:string" minOccurs="0" />
+      <xsd:element name="WeaponNumber">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="^[^@?]+$" />
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

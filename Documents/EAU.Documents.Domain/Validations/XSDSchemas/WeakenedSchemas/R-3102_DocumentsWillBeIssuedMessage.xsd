@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3102" xmlns="http://ereg.egov.bg/segment/R-3102" xmlns:drsd="http://ereg.egov.bg/value/0008-000004" xmlns:du="http://ereg.egov.bg/segment/0009-000001" xmlns:espbd="http://ereg.egov.bg/segment/0009-000002" xmlns:dtn="http://ereg.egov.bg/value/0008-000007" xmlns:dtu="http://ereg.egov.bg/segment/0009-000003" xmlns:xds="http://ereg.egov.bg/segment/0009-000004" xmlns:esa="http://ereg.egov.bg/segment/0009-000016" xmlns:acu="http://ereg.egov.bg/segment/0009-000073" xmlns:idwim="http://ereg.egov.bg/value/R-2106" xmlns:abn="http://ereg.egov.bg/value/0008-000047" xmlns:pd="http://ereg.egov.bg/segment/R-3037"  xmlns:pidrp="http://ereg.egov.bg/value/R-2010" xmlns:dd="http://ereg.egov.bg/value/R-2107" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000001" />  
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000002" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000007" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000003" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000016" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000073" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2106" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2010" /> 
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2107" />  
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000047" />
+  <xsd:element name="DocumentsWillBeIssuedMessage" type="DocumentsWillBeIssuedMessage" />
+  <xsd:complexType name="DocumentsWillBeIssuedMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Съобщение, че  документите ще бъдат издадени</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentTypeURI" type="dtu:DocumentTypeURI" minOccurs="0" />
+      <xsd:element name="DocumentTypeName" type="dtn:DocumentTypeName" minOccurs="0" />
+      <xsd:element name="DocumentURI" type="du:DocumentURI" minOccurs="0" />
+      <xsd:element name="DocumentReceiptOrSigningDate" type="drsd:DocumentReceiptOrSigningDate" minOccurs="0" />
+      <xsd:element name="ElectronicServiceProviderBasicData" type="espbd:ElectronicServiceProviderBasicData" minOccurs="0" />
+      <xsd:element name="ElectronicServiceApplicant" type="esa:ElectronicServiceApplicant" minOccurs="0" />
+      <xsd:element name="AISCaseURI" type="acu:AISCaseURI" minOccurs="0" />	 
+	  <xsd:element name="IdentityDocumentsWillBeIssuedMessage" type="idwim:IdentityDocumentsWillBeIssuedMessage" />	
+	  <xsd:element name="PoliceDepartment" type="pd:PoliceDepartment" minOccurs="0" />
+	  <xsd:element name="DeliveryDate" type="dd:DeliveryDate" minOccurs="0" />
+      <xsd:element name="AdministrativeBodyName" type="abn:AdministrativeBodyName" minOccurs="0" />
+	  <xsd:element name="Signature" type="xds:XMLDigitalSignature" minOccurs="0" />      
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,31 @@
+﻿@model LoggedOutViewModel
+@inject Microsoft.Extensions.Localization.IStringLocalizer Localizer
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@using Microsoft.Extensions.Configuration
+
+@{
+    // set this so the layout rendering sees an anonymous user
+    ViewData["signed-out"] = true;
+    string postLogoutRedirectUri = string.IsNullOrEmpty(Model.PostLogoutRedirectUri) ? Configuration.GetEAUSection().GetValue<string>("GL_EAU_PUBLIC_APP") : Model.PostLogoutRedirectUri;
+}
+<div class="page-header-wrapper section-wrapper section-wrapper--margin-top fixed-content-width"></div>
+<div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+    <div class="page-wrapper">
+        <div class="alert alert-success">
+            <p>@Localizer["GL_SUCCESSFUL_EXIT_I"] <a class="PostLogoutRedirectUri alert-link font-weight-bold" href="@postLogoutRedirectUri">@Localizer["GL_BACK_HOME_PAGE_I"]</a></p>@{if (!string.IsNullOrEmpty(Model.NotifyUserForWindowCloseText))
+                { <p>@Model.NotifyUserForWindowCloseText</p> }}
+        </div>
+        @if (Model.SignOutIframeUrl != null)
+        {
+            <iframe width="0" height="0" class="d-none" src="@Model.SignOutIframeUrl"></iframe>
+        }
+    </div>
+</div>
+
+@section scripts {
+
+    @if (Model.PostLogoutAutoRedirect)
+    {
+        <script src="~/js/signout-redirect.js"></script>
+    }
+}

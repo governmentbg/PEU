@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1301" xmlns="http://ereg.egov.bg/nomenclature/R-1301" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="RegistrationCertificateTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Вид на СРМПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- СР на МПС -->
+      <xsd:enumeration value="1000" />
+      <!-- Регистрационен талон -->
+      <xsd:enumeration value="1001" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

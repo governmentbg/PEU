@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>EAU</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CNSys" Version="3.3.0" />
+    <PackageReference Include="Rebus.ServiceProvider" Version="6.4.1" />
+    <PackageReference Include="Rebus.SqlServer" Version="7.1.7" />
+    <PackageReference Include="Rebus.Microsoft.Extensions.Logging" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EAU.Payments\EAU.Payments.csproj" />
+    <ProjectReference Include="..\EAU.Services\EAU.Services.csproj" />
+    <ProjectReference Include="..\EAU.Signing\EAU.Signing.csproj" />
+    <ProjectReference Include="..\EAU\EAU.csproj" />
+  </ItemGroup>
+
+</Project>

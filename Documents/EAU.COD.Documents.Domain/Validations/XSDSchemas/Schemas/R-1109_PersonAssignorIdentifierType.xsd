@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-1109" xmlns="http://ereg.egov.bg/segment/R-1109"
+            xmlns:pain="http://ereg.egov.bg/nomenclature/R-1108"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1108" />
+
+  <xsd:simpleType name="PersonAssignorIdentifierType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Тип на идентификатор</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="pain:PersonAssignorIdentifierNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3328" xmlns="http://ereg.egov.bg/segment/R-3328"
+            xmlns:vcow="http://ereg.egov.bg/segment/R-3329"
+            xmlns:voct="http://ereg.egov.bg/segment/R-2232"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3329" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2232" />
+
+  <xsd:element name="ApplicationForChangeRegistrationOfVehiclesData" type="ApplicationForChangeRegistrationOfVehiclesData" />
+  <xsd:complexType name="ApplicationForChangeRegistrationOfVehiclesData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за промяна в регистрацията на пътно превозно средство (ППС)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="VehicleOwnershipChangeType" type="voct:VehicleOwnershipChangeType" minOccurs="0"  />
+      <xsd:element name="VehicleChangeOwnershipData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="VehicleChangeOwnershipData" type="vcow:VehicleChangeOwnershipData" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

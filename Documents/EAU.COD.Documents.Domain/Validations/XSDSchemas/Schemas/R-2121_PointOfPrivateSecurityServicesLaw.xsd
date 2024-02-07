@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2121" xmlns="http://ereg.egov.bg/value/R-2121" xmlns:ppsln="http://ereg.egov.bg/nomenclature/R-1104" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1104" />
+    <xsd:simpleType name="PointOfPrivateSecurityServicesLaw">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="bg">	Вид на дейност от Закона за частна охранителна дейност</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="ppsln:PointOfPrivateSecurityServicesLawNomenclature" />
+    </xsd:simpleType>
+</xsd:schema>

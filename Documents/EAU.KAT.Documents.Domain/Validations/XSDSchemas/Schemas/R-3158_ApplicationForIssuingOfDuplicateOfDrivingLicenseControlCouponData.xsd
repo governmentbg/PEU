@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3158" xmlns="http://ereg.egov.bg/segment/R-3158"
+         
+  xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+  xmlns:adr="http://ereg.egov.bg/segment/0009-000094"
+  xmlns:atrr="http://ereg.egov.bg/value/R-2061"
+  xmlns:cdir="http://ereg.egov.bg/segment/R-2212"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2061"/>
+  <xsd:import namespace ="http://ereg.egov.bg/segment/R-2212"/>
+
+  <xsd:element name="ApplicationForIssuingOfDuplicateOfDrivingLicenseControlCouponData" type="ApplicationForIssuingOfDuplicateOfDrivingLicenseControlCouponData" />
+  <xsd:complexType name="ApplicationForIssuingOfDuplicateOfDrivingLicenseControlCouponData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за издаване на дубликат на контролен талон към свидетелство за управление</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" minOccurs="0" />
+      <xsd:element name="PermanentAddress" type="adr:PersonAddress"  minOccurs="0" />
+      <xsd:element name="CurrentAddress" type="adr:PersonAddress" minOccurs="0"/>
+      <xsd:element name="AgreementToReceiveERefusal" type="atrr:AgreementToReceiveERefusal" minOccurs="0" />
+      <xsd:element name="CouponDuplicateIssuensReason" type="cdir:CouponDuplicateIssuensReason" minOccurs="0"  />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

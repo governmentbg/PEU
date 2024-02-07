@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1106" xmlns="http://ereg.egov.bg/nomenclature/R-1106" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:simpleType name="EmployeeCitizenshipNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Гражданство на служител</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- 1 – Български гражданин -->
+      <xsd:enumeration value="1" />
+      <!-- 2 - Чужд гражданин -->
+      <xsd:enumeration value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

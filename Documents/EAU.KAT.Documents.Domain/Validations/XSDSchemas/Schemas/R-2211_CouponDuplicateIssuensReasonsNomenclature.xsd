@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2211" xmlns="http://ereg.egov.bg/nomenclature/R-2211" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:simpleType name="CouponDuplicateIssuensReasonsNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Причина за издаване на дубликат на контролен талон</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- изгубен -->
+      <xsd:enumeration value="1" />
+      <!-- откраднат -->
+      <xsd:enumeration value="2" />
+      <!-- повреден -->
+      <xsd:enumeration value="3" />
+      <!-- унищожен -->
+      <xsd:enumeration value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3143"
+            xmlns="http://ereg.egov.bg/segment/R-3143"
+			      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			      xmlns:dtu="http://ereg.egov.bg/segment/0009-000003"
+			      xmlns:dtn="http://ereg.egov.bg/value/0008-000007"
+			      xmlns:du="http://ereg.egov.bg/segment/0009-000001"
+			      xmlns:acu="http://ereg.egov.bg/segment/0009-000073"
+            xmlns:espbd="http://ereg.egov.bg/segment/0009-000002"
+            xmlns:esa="http://ereg.egov.bg/segment/0009-000016"
+            xmlns:cah="http://ereg.egov.bg/value/R-3144"
+            xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+            xmlns:dmst="http://ereg.egov.bg/segment/R-3040"
+            xmlns:drsd="http://ereg.egov.bg/value/0008-000004"
+            xmlns:abn="http://ereg.egov.bg/value/0008-000047"
+            xmlns:pn="http://ereg.egov.bg/segment/0009-000005"
+			      xmlns:fcn="http://ereg.egov.bg/segment/0009-000007"
+            xmlns:xds="http://ereg.egov.bg/segment/0009-000004"
+            elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000003"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000007"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000001"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000073"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000002"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000016" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-3144" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3040" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000004"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000047"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000005"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000007"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000004"/>
+
+  <xsd:element name="CertificateForAccident" type="CertificateForAccident"/>
+  <xsd:complexType name="CertificateForAccident">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Удостоверение за произшествие</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentTypeURI" type="dtu:DocumentTypeURI" minOccurs="0"  />
+      <xsd:element name="DocumentTypeName" type="dtn:DocumentTypeName" minOccurs="0"  />
+      <xsd:element name="DocumentURI" type="du:DocumentURI" minOccurs="0"  />
+      <xsd:element name="AISCaseURI" type="acu:AISCaseURI" minOccurs="0"  />
+      <xsd:element name="ElectronicServiceProviderBasicData" type="espbd:ElectronicServiceProviderBasicData"  minOccurs="0" />
+      <xsd:element name="ElectronicServiceApplicant" type="esa:ElectronicServiceApplicant" minOccurs="0"   />
+      <xsd:element name="CertificateForAccidentHeader" type="cah:CertificateForAccidentHeader" minOccurs="0"  />
+      <xsd:element name="CertificateForAccidentData" type="xsd:string" />
+      <xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" minOccurs ="0"  />
+      <xsd:element name="DocumentMustServeTo" type="dmst:DocumentMustServeTo" minOccurs ="0" />
+      <xsd:element name="DocumentReceiptOrSigningDate" type="drsd:DocumentReceiptOrSigningDate" minOccurs="0"  />
+      <xsd:element name="AdministrativeBodyName" type="abn:AdministrativeBodyName" minOccurs="0"  />
+      <xsd:element name="Official" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element name="PersonNames" type="pn:PersonNames"/>
+            <xsd:element name="ForeignCitizenNames" type="fcn:ForeignCitizenNames"/>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="XMLDigitalSignature" type="xds:XMLDigitalSignature" minOccurs="0"  />
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,222 @@
+/* ----  Tree List  ---- */
+
+.tree-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 0;
+
+    ul {
+        list-style: none;
+        padding-left: $template-container-padding-horizontal * 2;
+    }
+
+    li {
+        margin: $template-container-margin-vertical 0;
+        // padding: 0.05rem 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .drag-handle {
+        width: 1.5rem;
+        min-height: 2.375rem;
+        flex: 0 0 auto;
+    }
+
+    .toggle-collapse {
+
+        margin-left: $template-container-margin-horizontal;
+        width: $template-container-padding-horizontal * 1.5;
+        line-height: 1.1;
+
+        .ui-icon-chevron-up {
+            transform: rotate(180deg);
+            transition: ease-in-out 0.3s;
+        }
+
+        &.collapsed {
+            .ui-icon-chevron-up {
+                transform: rotate(90deg);
+                transition: ease-in-out 0.3s;
+            }
+        }
+
+    }
+
+    .drag-handle + .toggle-collapse {
+        margin-left: 0;
+    }
+
+    .tree-list-group {
+        margin: $template-container-margin-horizontal *3 0;
+        // padding: 0.05rem 0;
+    }
+
+
+    .tree-list-tiem {
+        border: $border-width solid $border-color;
+        @include border-radius($border-radius);
+        background-color: $gray-100;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            background-color: $gray-200;
+        }
+    }
+
+    .tree-list-tiem-content {
+        flex: 1 1 0px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin: $template-container-margin-vertical /4 $template-container-margin-horizontal /4 $template-container-margin-vertical /4 $template-container-margin-horizontal * 1.5;
+    }
+
+    .tree-list-tiem-text {
+        flex: 1 1 0px;
+        margin: $template-container-margin-vertical /4 $template-container-margin-horizontal $template-container-margin-vertical /4 0;
+        align-self: center;
+    }
+
+    // .tree-list-tiem-edit-box {
+    //     margin: 0 0 $template-container-margin-vertical /2 0;
+    //     padding: $template-container-padding-vertical /2 $template-container-padding-vertical;
+    //     background-color: $white;
+    //     border-radius: $border-radius;
+    // }
+
+
+    .toggle-collapse + .tree-list-tiem-content {
+        margin-left : $template-container-margin-horizontal;
+    }
+    .drag-handle + .tree-list-tiem-content {
+        margin-left: $template-container-margin-horizontal /2;
+    }
+
+    .tree-list-tiem-actions {
+        flex:0 c1 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+
+
+        .btn, .btn-group {
+            margin: $template-container-margin-vertical /4 $template-container-margin-horizontal /4;
+        }
+
+        .btn-group .btn {
+            margin: 0;
+            margin-left: -1px;
+        }
+
+
+        @include media-breakpoint-down(xs) {
+            flex-basis: 100%;
+            justify-content: flex-start;
+        }
+    }
+
+    .tree-list-collapsible {
+
+    }
+
+
+    .ui-sortable-helper {
+        .tree-list-tiem {
+            @include box-shadow($dropdown-box-shadow);
+            // background-color: lighten(mix($success, $gray-200),35%);
+            // background-color: $gray-200;
+        }
+    }
+
+    .ui-sortable-placeholder {
+        background-color: $gray-100;
+        border-radius: $border-radius;
+        opacity: .7;
+    }
+}
+
+.drag-handle {
+    cursor: move;
+    width: 1.875rem;
+    background-image: url("../images/icons/drag-handle.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+// .tree-list-graph 
+
+$tree-color: $gray-400;
+
+.tree-list-graph {
+
+    &, ul {
+        margin:0 0 0 .5em; /* indentation */
+        padding:0;
+        list-style:none;
+        position:relative;
+        
+    }
+
+    ul {
+        margin-left: .5em;
+        // margin-bottom: 1em;
+
+    }
+
+    &:before,
+    ul:before {
+        content:"";
+        display:block;
+        width:0;
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        border-left:1px solid $tree-color;
+        
+    }
+
+    li {
+        margin:0;
+        padding:0 1.5em; /* indentation + .5em */
+        // line-height:2em; /* default list item's `line-height` */
+        margin-top: .5em;
+        position:relative;    
+    }
+
+    li:before {
+        content:"";
+        display:block;
+        width:1em; /* same with indentation */
+        height:0;
+        border-top:1px solid $tree-color;
+        margin-top:-.25em;    
+        position:absolute;
+        top:1em; /* (line-height/2) */
+        left:0;
+    }
+
+    li:last-child:before {
+        // background: #aa555544; /* same with body background */
+        // background: $white;
+        border-left: 1px solid $white;
+        height:auto;
+        top:1em; /* (line-height/2) */
+        bottom:0;
+    }
+
+    .badge {		
+		padding: 0.285rem 0.35rem 0.285rem 0.35rem;		
+		font-size: 0.875rem;
+		font-weight: normal;
+		text-align: left;
+		white-space: normal;
+    }
+}
+
+/* ----  /Tree List  ---- */

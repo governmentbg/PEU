@@ -1,0 +1,847 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Заявление за издаване на удостоверение за собственост на превозно средство - Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../">
+
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <div class="skip-link">
+            <a href="#PAGE-CONTENT" class="skip-to-content">Пропусни основната навигация</a> 
+        </div>
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png" alt="">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <main class="content-wrapper">
+        
+        <div class="page-header-wrapper section-wrapper section-wrapper--margin-top fixed-content-width">
+            <div class="breadcrumbs">                
+                <nav aria-label="Път до текуща страница">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Издаване на удостоверение с данни за регистрирани и с прекратена регистрация превозни средства</li>
+                    </ol>
+                </nav>            
+            </div>
+
+        </div>
+        
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+            <div class="page-header" id="PAGE-CONTENT">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Заявление за издаване на удостоверение за собственост на превозно средство</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-wrapper" id="ARTICLE-CONTENT">
+      
+                <div class="ui-form ui-form--preview">
+ 
+                    
+                    <section class="interactive-container" aria-labelledby="SECTION-TITLE-1">
+                        <div class="interactive-container__content">
+                            <h2 class="section-title" id="SECTION-TITLE-1">Заявител</h2>
+
+                            <fieldset class="fields-group">
+                                <legend>
+                                    <h3 class="field-title">Заявител на електронна административна услуга</h3>
+                                </legend>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Име</h4>
+                                        <p class="field-text">Иван Иванов Иванов</p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">ЕГН</h4>
+                                        <p class="field-text">1010101015</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <h4 class="form-control-label">Тип документ</h4>
+                                        <p class="field-text">Лична карта</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Документ №</h4>
+                                        <p class="field-text">800003229</p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Издаден на</h4>
+                                        <p class="field-text">01.01.2016 г.</p>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <h4 class="form-control-label">Издател</h4>
+                                        <p class="field-text">МВР СОФИЯ</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <h4 class="form-control-label">
+                                            Адрес на електронна поща за получаване на съобщения
+                                        </h4>
+                                        <p class="field-text">ivan.ivanov@yahoomaildot.com</p>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                            <fieldset class="fields-group">
+                                <legend>
+                                    <h3 class="field-title">Качество на заявителя</h3>
+                                </legend>
+
+                                <div class="row">
+                                    <div class="col-12 form-group">
+                                        <p class="field-text">пълномощник на друго физическо или юридическо лице</p>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                            <fieldset class="fields-group">
+                                <legend>
+                                    <h3 class="field-title">Получател на електронната административна услуга</h3>
+                                </legend>
+
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <h4 class="form-control-label">
+                                            Фирма/Наименование на юридическо лице
+                                        </h4>
+                                        <p class="field-text">"Трансфарма Интернешънъл Глобъл Юнивърсъл Пръдъкшън" ЕТ</p>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <h4 class="form-control-label">
+                                            ЕИК/БУЛСТАТ
+                                        </h4>
+                                        <p class="field-text">1234567890</p>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                        </div>
+                    </section>
+
+                    <section class="interactive-container" aria-labelledby="SECTION-TITLE-2">
+                        <div class="interactive-container__content">
+                            <h2 class="section-title" id="SECTION-TITLE-2">Обстоятелства</h2>
+
+                            <fieldset class="fields-group">
+                                <legend>
+                                    <h3 class="field-title">Данни за заявител/представител/пълномощник</h3>
+                                </legend>
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <h4 class="form-control-label">Настоящ адрес</h4>
+                                        <p class="field-text">област София (столица), община Столична, гр. София</p>
+                                        <p class="field-text">бул./ул./ж.к. Цар Борис III, №/бл. 5, вх. А, ет. 10, ап. 30</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <h4 class="form-control-label">Постоянен адрес</h4>
+                                        <p class="field-text">област София (столица), община Столична, гр. София</p>
+                                        <p class="field-text">бул./ул./ж.к. Цар Борис III, №/бл. 5, вх. А, ет. 10, ап. 30</p>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                            <fieldset class="fields-group">
+                                <legend><h3 class="field-title">Удостоверение за</h3></legend>
+
+                                <div class="row">
+                                    <div class="col-12 form-group">
+                                        <p class="field-text">Настояща собственост за ПС</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <h4 class="form-control-label">Регистрационен номер</h4>
+                                        <p class="field-text">CB2222OO</p>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <h4 class="form-control-label">Марка/модел</h4>
+                                        <p class="field-text">Рено 19</p>
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+
+                            <fieldset class="fields-group">
+                                <legend><h3 class="field-title">Удостоверението да послужи</h3></legend>
+                                <div class="row">
+                                    <div class="col-12 form-group">
+                                        <p class="field-text">пред застрахователни дружества</p>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </section>
+
+                    <section class="interactive-container" aria-labelledby="SECTION-TITLE-3">
+                        <div class="interactive-container__content">
+                            <h2 class="section-title" id="SECTION-TITLE-3">Начин на получаване</h2>
+
+                            <fieldset class="fields-group">
+    
+                                <div class="row mt-2">
+                                    <div class="col-12 form-group">
+                                        <p class="field-text">Чрез електронна поща/уеб базирано приложение</p>
+                                    </div>
+                                </div>  
+                            </fieldset>
+                        </div>
+                    </section>
+
+                    <section class="interactive-container" aria-labelledby="SECTION-TITLE-4">
+                        <div class="interactive-container__content">
+                            <h2 class="section-title" id="SECTION-TITLE-4">Приложени документи</h2>
+
+                            <fieldset class="fields-group pt-2">
+        
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <p class="field-text">
+                                            <i class="ui-icon ui-icon-download-color mr-1"></i><a href="">Нотариално заверено изрично пълномощно Петър Петров 3</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <p class="field-text">
+                                            <i class="ui-icon ui-icon-download-color mr-1"></i><a href="">Пълномощно Пешо 2</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <p class="field-text">
+                                            <i class="ui-icon ui-icon-download-color mr-1"></i><a href="">Декларация от Иван Иванов</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </section>
+
+                    <section id="SIGN_FORM" class="card card--box mt-3" aria-labelledby="SECTION-SIGN-TITLE" aria-live="polite">
+                        <div class="card-header">
+                            <h3 class="card-header__title" id="SECTION-SIGN-TITLE">Подписване</h3>
+                        </div>
+                        <div class="card-body">
+                            
+                            <div class="alert alert-info" id="SIGN-INFO"><p>За подписване чрез удостоверение за електронен подпис (УЕП) на смарт-карта, свързана към компютъра Ви, използвайте бутон "Подпиши чрез смарт-карта".
+                                За да подпишете чрез УЕП върху отдалечен сървър, използвайте един от другите два бутона в зависимост от Вашия доставчик на услугата.</p></div>
+                                
+                            <div class="interactive-container" data-signer="" id="SIGN-METHOD"> <!-- data- атрибута се използва само за да работи прототипа!!!! -->
+                                <div class="interactive-container__loading d-none"></div>
+                                <div class="interactive-container__content">
+
+                                    <div id="LOCAL-SIGN-ERROR" class="alert alert-warning mt-0 d-none"><p>Неуспешно свързване с локалната услуга за подписване на B-Trust BISS. Възможни причини:
+                                            1. B-Trust BISS не е стартирана или не е инсталирана и конфигурирана правилно за Вашия браузър. Можете да изтеглите инсталатор от <a href="#" class="alert-link"> тук </a>. Моля, следвайте <a href="#" class="alert-link"> инструкциите </a> за инсталация и настройка от "Борика" АД.
+                                            2. В момента има още един процес на подписване чрез смарт карта, който все още не е приключил. Моля, завършете го и опитайте да подпишете отново.</p></div>
+
+                                    <fieldset data-signbuttons="" class=""> <!-- fieldset-a с data- атрибута се използва само за да работи прототипа!!!! -->
+                                        <div class="row align-items-center">
+                                            <div class="col-md-4 form-group">
+                                                <button class="btn btn-light btn-block" data-localsign_1=""><i class="ui-icon ui-icon-sign mr-1" aria-hidden="true"></i>Подпиши чрез смарт-карта</button>
+                                            </div>
+                                            <div class="col-md-4 form-group">                                            
+                                                <button class="btn btn-light btn-block" data-btsign=""><i class="ui-icon ui-icon-remote-sign mr-1" aria-hidden="true"></i>Подпиши с облачен подпис от B-Тrust</button>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <button class="btn btn-light btn-block" data-etsign=""><i class="ui-icon ui-icon-remote-sign mr-1" aria-hidden="true"></i>Подпиши с мобилен подпис от EvroTrust</button>
+                                            </div>
+                                        </div>
+                                    
+                                    </fieldset>
+
+                                    <fieldset data-btrust="" class="d-none"> <!-- fieldset-a с data- атрибута се използва само за да работи прототипа!!!! -->
+                                        <fieldset data-s1="">
+                                            <div class="alert alert-info mt-0"><p>Заявихте полагане на облачен подпис B-Trust. За идентифицирането Ви като клиент на тази услуга, моля, въведете ЕГН/ЛНЧ или идентификатор (Profile ID) и авторизационен код.</p></div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <fieldset>
+                                                        <legend class="form-control-label">Вид идентификация</legend>
+                                                        
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioIDT" id="radioIDT1" value="option2" type="radio" checked="">
+                                                            <label class="custom-control-label" for="radioIDT1">ЕГН/ЛНЧ/ЛН</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioIDT" id="radioIDT2" value="option2" type="radio">
+                                                            <label class="custom-control-label" for="radioIDT2">Идентификатор и авторизационен код</label>
+                                                        </div>
+                                                        
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div id="IDT-1"> <!-- Този div е само за да работи прототипа -->
+                                                <div class="row">
+                                                    <div class="col-md-6 col-lg-4">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-control-label" for="BT-EGN">ЕГН/ЛНЧ/ЛН</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col">
+                                                                <input type="text" class="form-control" id="BT-EGN">
+                                                            </div>
+                                                            <div class="form-group col-auto">
+                                                                    <button type="button" class="btn btn-primary" onclick="
+                                                                    $(event.currentTarget).closest('[data-signer]').find('[data-s2]').removeClass('d-none');
+                                                                    $(event.currentTarget).closest('[data-signer]').find('[data-s1]').addClass('d-none');
+                                                                    $(event.currentTarget).closest('[data-signer]').find('.interactive-container__loading').removeClass('d-none');
+                                                                ">Изпрати</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="IDT-2" class="d-none"> <!-- Този div е само за да работи прототипа -->
+                                                <div class="row">
+                                                    <div class="col-sm-5 col-lg-3">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-control-label" for="BT-ID">Идентификатор</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col">
+                                                                <input type="text" class="form-control" id="BT-ID">
+                                                            </div>                              
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-7 col-lg-4">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-control-label" for="BT-CODE">Авторизационен код</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col">
+                                                                <input type="text" class="form-control" id="BT-CODE">
+                                                            </div>
+                                                            <div class="form-group col-sm-auto">
+                                                                    <button type="button" class="btn btn-primary" onclick="
+                                                                    $(event.currentTarget).closest('[data-signer]').find('[data-s2]').removeClass('d-none');
+                                                                    $(event.currentTarget).closest('[data-signer]').find('[data-s1]').addClass('d-none');
+                                                                    $(event.currentTarget).closest('[data-signer]').find('.interactive-container__loading').removeClass('d-none');
+                                                                ">Изпрати</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset data-s2="" class="d-none">
+                                            <div class="alert alert-info mt-0">Очаква се подписване на документа чрез мобилното приложение на B-Trust.</div>
+                                        </fieldset>
+                                    </fieldset>
+
+                                    <fieldset data-evrotrust="" class="d-none"> <!-- fieldset-a с data- атрибута се използва само за да работи прототипа!!!! -->
+                                        <fieldset data-s1="">
+                                            <div class="alert alert-info mt-0"><p>Заявихте полагане на мобилен подпис Evrotrust. За  идентифицирането Ви като клиент на тази услуга, моля, въведете ЕГН, ЛНЧ, адрес на електронна поща или мобилен телефонен номер. Телефонният № трябва да започва със знака '+' и кода на страната, например +359xxxxxxxxx.</p></div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label class="form-control-label" for="ET-EGN">ЕГН/ЛНЧ/адрес на е-поща/телефон</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col">
+                                                            <input type="text" class="form-control" id="ET-EGN">
+                                                        </div>
+                                                        <div class="form-group col-auto">
+                                                            <button type="button" class="btn btn-primary" onclick="
+                                                                $(event.currentTarget).closest('[data-signer]').find('[data-s2]').removeClass('d-none');
+                                                                $(event.currentTarget).closest('[data-signer]').find('[data-s1]').addClass('d-none');
+                                                                $(event.currentTarget).closest('[data-signer]').find('.interactive-container__loading').removeClass('d-none');
+                                                            ">Изпрати</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset data-s2="" class="d-none">
+                                            <div class="alert alert-info mt-0">Очаква се подписване на документа чрез мобилното приложение на EvroTrust.</div>
+                                        </fieldset>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="button-bar card__button-bar">
+                                <div class="right-side">
+                                </div>
+                                <div class="left-side">
+                                    <button type="button" class="btn btn-secondary" onclick="window.location.assign('ui_application_06_04_Издаване на удостоверения за собственост на превозно средство/ui_application_05_Преглед.html#ARTICLE-CONTENT')">Откажи подписването</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+        
+                        <ul>
+                            <li class="footer-link"><button class="btn btn-link" type="button" title="Страницата се отваря в нов таб на браузъра.">Помощ</button></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg" alt="">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+
+
+        function activateSignButtons () {
+
+            var localSignButton = $('[data-localSign]');
+            var etSignButton = $('[data-etSign]');
+            var btSignButton = $('[data-btSign]');
+
+            $('#loader').on('click', function () {
+                $(this).removeClass('show');
+            });
+
+            localSignButton.on('click', function () {
+                $('#SIGN-METHOD').focus();
+                $('#loader').addClass('show');
+                
+                var field = $(this).closest('[data-signer]');
+                // field.find('.alertr').remove();
+
+                $('#LOCAL-SIGN-ERROR').addClass('d-none');
+
+                
+            });
+
+            $('[data-localSign_1]').on('click', function () {   // first sign button return error
+                $('#LOCAL-SIGN-ERROR').removeClass('d-none');                
+            });
+
+            etSignButton.on('click', function () {
+                $('#SIGN-METHOD').focus();
+                var field = $(this).closest('[data-signer]');
+
+                var signButtons = field.find('[data-signButtons]');
+                var etSignForm = field.find('[data-EvroTrust]');
+                var btSignForm = field.find('[data-BTrust]');
+
+                signButtons.addClass('d-none');
+                etSignForm.removeClass('d-none');
+                btSignForm.addClass('d-none');
+
+                field.find('[data-s2]').addClass('d-none');
+                field.find('[data-s1]').removeClass('d-none');
+
+                createSignCancelButton(field);
+                disableSignButtons();
+
+                // field.find('.alert').remove();
+
+                $('#LOCAL-SIGN-ERROR').addClass('d-none');
+                $('#SIGN-INFO').addClass('d-none');
+            });
+
+            btSignButton.on('click', function () {
+                $('#SIGN-METHOD').focus();
+                var field = $(this).closest('[data-signer]');
+
+                var signButtons = field.find('[data-signButtons]');
+                var etSignForm = field.find('[data-EvroTrust]');
+                var btSignForm = field.find('[data-BTrust]');
+
+                signButtons.addClass('d-none');
+                etSignForm.addClass('d-none');
+                btSignForm.removeClass('d-none');
+
+                field.find('[data-s2]').addClass('d-none');
+                field.find('[data-s1]').removeClass('d-none');
+
+                createSignCancelButton(field);
+                disableSignButtons();
+
+                // field.find('.alert').remove();
+
+                $('#LOCAL-SIGN-ERROR').addClass('d-none');
+                $('#SIGN-INFO').addClass('d-none');
+                
+            });
+        }
+
+        function createSignCancelButton(container){
+            container.append('<div class="interactive-container__controls"><button onClick="onClickCancelButton()" class="btn btn-light btn-sm" title="Прекрати подписването"><i class="ui-icon ui-icon-times" aria-hidden="true"></i></button></div>');
+
+            var btn = container.find('.interactive-container__controls').find('.btn');
+
+            btn.on('mouseover focus', function () {
+                $(this).closest('.interactive-container').addClass("interactive-container--focus");
+            });
+
+            btn.on('mouseout focusout', function () {
+                $(this).closest('.interactive-container').removeClass("interactive-container--focus");
+            });
+
+        }
+
+
+        function onClickCancelButton() {
+
+            var field = $(event.currentTarget).closest('[data-signer]');
+
+            var signButtons = field.find('[data-signButtons]');
+            var etSignForm = field.find('[data-EvroTrust]');
+            var btSignForm = field.find('[data-BTrust]');
+
+            signButtons.removeClass('d-none');
+            etSignForm.addClass('d-none');
+            btSignForm.addClass('d-none');
+
+            field.removeClass("interactive-container--focus");
+
+            field.find('.interactive-container__controls').remove();
+            field.find('.interactive-container__loading').addClass('d-none');
+
+            enableButtons();
+
+            $('#SIGN-INFO').removeClass('d-none');
+        }
+
+        function disableSignButtons() {
+            var signButtons = $('[data-signButtons]');
+            signButtons.attr('disabled', true);
+            console.log(signButtons);
+        }
+        function enableButtons() {
+            var signButtons = $('[data-signButtons]');
+            signButtons.removeAttr('disabled');
+        }
+
+
+		$(document).ready(function () {
+
+            activateSignButtons();
+
+            $('#radioIDT1').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#IDT-1').removeClass('d-none');
+                    $('#IDT-2').addClass('d-none');
+                }
+            });
+            $('#radioIDT2').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#IDT-1').addClass('d-none');
+                    $('#IDT-2').removeClass('d-none');
+                }
+            });
+
+        });
+        
+        // Show Navigation
+        function toggleNav() {
+                $(".navbar-top-container--mobile").collapse('toggle');
+            };
+    
+            // Text Version
+        function textOnlyVersion() {
+            $('[rel="stylesheet"]').attr('media','none');
+        };
+ 
+        // change font size
+        function setFontSize(arg) {               
+            var doc = document.getElementsByTagName("html")[0];
+            // var fontSize = getCookie('fontSize');
+            var fontSize = parseInt(doc.style.fontSize);
+            console.log(fontSize);
+            if (!fontSize) fontSize = 100;
+
+            switch (arg) {
+                case -1: if (fontSize > 70) fontSize-=6;
+                    break;
+                case 1: if (fontSize < 130) fontSize+=6
+                    break;
+                default: fontSize = 100;
+            }
+            // setCookie('fontSize', fontSize, 365 * 5);
+            doc.style.fontSize = fontSize + '%';         
+        }
+    </script>
+    
+    <script type="text/javascript">
+        //scroll to top
+        var scrolltotop = {
+            setting: {
+                startline: 100,
+                scrollto: 0,
+                scrollduration: 1e3,
+                fadeduration: [500, 100]
+            },
+            controlHTML: '<i class="ui-icon ui-icon-scroll-to-top"></i>',
+            controlattrs: {
+                offsetx: 15,
+                offsety: 15
+            },
+            anchorkeyword: "#top",
+            state: {
+                isvisible: !1,
+                shouldvisible: !1
+            },
+            scrollup: function() {
+                this.cssfixedsupport || this.$control.css({
+                    opacity: 0
+                });
+                var t = isNaN(this.setting.scrollto) ? this.setting.scrollto : parseInt(this.setting.scrollto);
+                t = "string" == typeof t && 1 == jQuery("#" + t).length ? jQuery("#" + t).offset().top : 0, this.$body.animate({
+                    scrollTop: t
+                }, this.setting.scrollduration)
+            },
+            keepfixed: function() {
+                var t = jQuery(window),
+                    o = t.scrollLeft() + t.width() - this.$control.width() - this.controlattrs.offsetx,
+                    s = t.scrollTop() + t.height() - this.$control.height() - this.controlattrs.offsety;
+                this.$control.css({
+                    left: o + "px",
+                    top: s + "px"        
+                })
+            },
+            togglecontrol: function() {
+                var t = jQuery(window).scrollTop();
+                this.cssfixedsupport || this.keepfixed(), this.state.shouldvisible = t >= this.setting.startline ? !0 : !1, this.state.shouldvisible && !this.state.isvisible ? (this.$control.stop().animate({
+                    opacity: 1
+                }, this.setting.fadeduration[0]), this.state.isvisible = !0) : 0 == this.state.shouldvisible && this.state.isvisible && (this.$control.stop().animate({
+                    opacity: 0
+                }, this.setting.fadeduration[1]), this.state.isvisible = !1)
+            },
+            init: function() {
+                jQuery(document).ready(function(t) {
+                    var o = scrolltotop,
+                        s = document.all;
+                    o.cssfixedsupport = !s || s && "CSS1Compat" == document.compatMode && window.XMLHttpRequest, o.$body = t(window.opera ? "CSS1Compat" == document.compatMode ? "html" : "body" : "html,body"), o.$control = t('<div id="topcontrol" class="scroll-to-top">' + o.controlHTML + "</div>").css({
+                        position: o.cssfixedsupport ? "fixed" : "absolute",
+                        bottom: o.controlattrs.offsety,
+                        right: o.controlattrs.offsetx,
+                        opacity: 0
+                    }).attr({
+                        title: "Към началото на страницата"
+                    }).click(function() {
+                        return o.scrollup(), !1
+                    }).appendTo("body"), document.all && !window.XMLHttpRequest && "" != o.$control.text() && o.$control.css({
+                        width: o.$control.width()
+                    }), o.togglecontrol(), t('a[href="' + o.anchorkeyword + '"]').click(function() {
+                        return o.scrollup(), !1
+                    }), t(window).bind("scroll resize", function(t) {
+                        o.togglecontrol()
+                    })
+                })
+            }
+        };
+        scrolltotop.init();
+    </script>
+  </body>
+</html>

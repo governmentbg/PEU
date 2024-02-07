@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-2230" xmlns="http://ereg.egov.bg/segment/R-2230"
+            xmlns:apetn="http://ereg.egov.bg/nomenclature/R-2229"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-2229" />
+
+  <xsd:simpleType name="AssignorPersonEntityType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Тип възложител</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="apetn:AssignorPersonEntityTypeNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

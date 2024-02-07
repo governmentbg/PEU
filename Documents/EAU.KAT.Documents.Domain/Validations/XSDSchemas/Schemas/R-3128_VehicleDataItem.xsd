@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3128"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://ereg.egov.bg/segment/R-3128"
+	xmlns:rn="http://ereg.egov.bg/value/R-2118"
+  xmlns:prn="http://ereg.egov.bg/value/R-2170"
+	xmlns:mm="http://ereg.egov.bg/value/R-2119"
+	xmlns:in="http://ereg.egov.bg/value/R-2139"
+	xmlns:en="http://ereg.egov.bg/value/R-2140"
+  xmlns:vt="http://ereg.egov.bg/value/R-2144"
+	xmlns:vfrd="http://ereg.egov.bg/value/R-2141"
+	xmlns:vseod="http://ereg.egov.bg/value/R-2142"
+	elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2118" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2119" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2139" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2140" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2144" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2141" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2142" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2170" />
+
+  <xsd:element name="VehicleDataItem" type="VehicleDataItem" />
+  <xsd:complexType name="VehicleDataItem">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за ПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="RegistrationNumber" type="rn:RegistrationNumber" minOccurs="0" />
+      <xsd:element name="MakeModel" type="mm:MakeModel" minOccurs="0" />
+      <xsd:element name="PreviousRegistrationNumber" type="prn:PreviousRegistrationNumber" minOccurs="0" />
+      <xsd:element name="IdentificationNumber" type="in:IdentificationNumber" minOccurs="0" />
+      <xsd:element name="EngineNumber" type="en:EngineNumber" minOccurs="0" />
+      <xsd:element name="Type" type="vt:VehicleType" minOccurs="0" />
+      <xsd:element name="VehicleFirstRegistrationDate" type="vfrd:VehicleFirstRegistrationDate" minOccurs="0" />
+      <xsd:element name="VehicleSuspension" maxOccurs="unbounded" minOccurs="0">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="bg">Колекция от данни за спиране на МПС</xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="VehSuspensionDate" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="VehSuspensionReason" type="xsd:string" nillable="false"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="VehicleOwnerStartDate" type="vseod:VehicleStartEndOwnerDate" minOccurs="0" />
+      <xsd:element name="VehicleOwnerEndDate" type="vseod:VehicleStartEndOwnerDate" minOccurs="0" />
+      
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

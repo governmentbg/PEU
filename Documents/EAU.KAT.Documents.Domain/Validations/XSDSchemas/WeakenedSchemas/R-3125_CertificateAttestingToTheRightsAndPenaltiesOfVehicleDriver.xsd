@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3125"
+            xmlns="http://ereg.egov.bg/segment/R-3125"
+			xmlns:espbd="http://ereg.egov.bg/segment/0009-000002"
+            xmlns:cattrapovdh="http://ereg.egov.bg/value/R-3127"
+			xmlns:cattrapovdd="http://ereg.egov.bg/value/R-3126"
+      xmlns:cn="http://ereg.egov.bg/value/R-2122"
+			xmlns:andcr="http://ereg.egov.bg/value/R-2158"
+			xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+            xmlns:du="http://ereg.egov.bg/segment/0009-000001"
+            xmlns:dtu="http://ereg.egov.bg/segment/0009-000003"
+            xmlns:dtn="http://ereg.egov.bg/value/0008-000007"
+			xmlns:acu="http://ereg.egov.bg/segment/0009-000073"			
+			xmlns:abn="http://ereg.egov.bg/value/0008-000047"
+            xmlns:pn="http://ereg.egov.bg/segment/0009-000005"
+			xmlns:fcn="http://ereg.egov.bg/segment/0009-000007"
+            		xmlns:rd="http://ereg.egov.bg/value/R-2054"
+			xmlns:drsd="http://ereg.egov.bg/value/0008-000004"
+            xmlns:xds="http://ereg.egov.bg/segment/0009-000004"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:esa="http://ereg.egov.bg/segment/0009-000016"
+            elementFormDefault="qualified">
+
+
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000002"/>
+    <xsd:import namespace="http://ereg.egov.bg/segment/0009-000003"/>
+    <xsd:import namespace="http://ereg.egov.bg/value/0008-000007"/>
+	<xsd:import namespace="http://ereg.egov.bg/value/R-2122"/>
+	<xsd:import namespace="http://ereg.egov.bg/value/R-3127"/>
+	<xsd:import namespace="http://ereg.egov.bg/value/R-3126"/>
+	<xsd:import namespace="http://ereg.egov.bg/value/R-2158"/>
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000001"/>
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000073"/>
+	<xsd:import namespace="http://ereg.egov.bg/value/0008-000047"/>
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000005"/>
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000007"/>
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2054" />
+	<xsd:import namespace="http://ereg.egov.bg/value/0008-000004"/>
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000004"/>
+	<xsd:import namespace="http://ereg.egov.bg/segment/0009-000016" />
+
+	<xsd:element name="CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriver" type="CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriver"/>
+	<xsd:complexType name="CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriver">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Удостоверение за правата и наложените наказания на водач на МПС</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="DocumentTypeURI" type="dtu:DocumentTypeURI" minOccurs ="0" />
+			<xsd:element name="DocumentTypeName" type="dtn:DocumentTypeName" minOccurs ="0" />
+			<xsd:element name="DocumentURI" type="du:DocumentURI" minOccurs ="0" />
+			<xsd:element name="AISCaseURI" type="acu:AISCaseURI" minOccurs ="0" />
+			<xsd:element name="DocumentReceiptOrSigningDate" type="drsd:DocumentReceiptOrSigningDate" minOccurs ="0" />
+			<xsd:element name="ElectronicServiceProviderBasicData" type="espbd:ElectronicServiceProviderBasicData" minOccurs ="0" />
+			<xsd:element name="ElectronicServiceApplicant" type="esa:ElectronicServiceApplicant" minOccurs ="0" />			
+			<xsd:element name="CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverHeader" type="cattrapovdh:CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverHeader" minOccurs ="0" />
+			<xsd:element name="CertificateData" type="cattrapovdd:CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverData" minOccurs ="0" />
+      <xsd:element name="CertificateData1" type="cattrapovdd:CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverData"  minOccurs ="0" />
+      <xsd:element name="CertificateNumber" type="cn:CertificateNumber" minOccurs ="0" />
+			<xsd:element name="ANDCertificateReason" type="andcr:ANDCertificateReason" minOccurs="0" />
+			<xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" minOccurs ="0"  />
+			<xsd:element name="AdministrativeBodyName" type="abn:AdministrativeBodyName" minOccurs ="0" />
+			<xsd:element name="Official"  minOccurs ="0" >
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="PersonNames" type="pn:PersonNames" minOccurs ="0" />
+						<xsd:element name="ForeignCitizenNames" type="fcn:ForeignCitizenNames" minOccurs ="0" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+      <xsd:element name="ReportDate" type="rd:ReportDate" minOccurs="0" />
+			<xsd:element name="XMLDigitalSignature" type="xds:XMLDigitalSignature" minOccurs ="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,34 @@
+/* ----  Plain Text  ---- */
+
+.plain-text {
+	
+    p {
+        line-height: 1.2;
+        margin-bottom: .6em;
+        text-indent: .5em;
+     }
+
+
+     
+    ol, ul, dl {
+        margin-top: $padding-base-vertical;
+        margin-bottom: $padding-base-vertical;
+        padding-left: 2em;
+        margin-bottom: .8em;
+        margin-top: .8em;
+
+        ol, ul, dl {
+        	margin: 0;
+        }
+
+    }
+
+    li {
+    	margin-top: $padding-base-vertical;
+    	margin-bottom: $padding-base-vertical;
+    }
+    
+}
+
+	
+/* ----  /Plain Text  ---- */

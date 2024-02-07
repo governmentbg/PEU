@@ -1,0 +1,65 @@
+/* ----  Modal  ---- */
+
+.modal-backdrop {    
+    background-color: $gray-300;
+	
+	&.in {
+		opacity: .9;
+	}
+}
+
+.modal {
+	
+	.modal-header {		
+		padding: $template-padding-vertical * 1.7 $template-padding-horizontal $template-padding-vertical * 1.5 $template-padding-horizontal;
+		
+		margin: 0 $template-margin-horizontal;
+		border-bottom: 1px solid $gray-300;
+
+		.modal-title {
+			margin: 0;
+			color: $gray-800;
+			color: $primary-dark;
+			font-size: 1.125rem;
+			line-height: 1.25;
+		}
+
+		.close {
+			font-size: $close-font-size * 1.3;
+			padding: $template-padding-vertical /2 $template-padding-horizontal;
+		}
+	}
+
+	.modal-footer {
+		text-align: left;
+		
+		border-top: 1px solid $gray-300;
+		
+		padding: $template-padding-vertical * 2 $template-padding-horizontal;
+		margin: 0 $template-margin-horizontal;
+	}
+	
+	.modal-body {		
+		padding: $template-padding-vertical $template-padding-horizontal * 2;
+	}
+	
+}
+
+.close {
+	opacity: .55;
+}
+
+// .modal-dialog {
+// 	width: auto;
+// 	max-width: none;
+// 	margin: $modal-dialog-margin;			
+// }
+
+@include media-breakpoint-up(md) {
+	.modal-lg {
+		max-width:  $template-page-max-width;
+	}
+}
+
+
+/* ----  /Modal  ---- */

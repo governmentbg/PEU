@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3005" xmlns="http://ereg.egov.bg/segment/R-3005" xmlns:pid="http://ereg.egov.bg/segment/R-3004" xmlns:bpod="http://ereg.egov.bg/value/R-2004" xmlns:bp="http://ereg.egov.bg/segment/0009-000095" xmlns:bpa="http://ereg.egov.bg/segment/0009-000096" xmlns:ec="http://ereg.egov.bg/value/R-2005" xmlns:ms="http://ereg.egov.bg/value/R-2006" xmlns:ph="http://ereg.egov.bg/value/R-2034" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3004" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000095" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000096" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2005" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2006" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2034" />
+  <xsd:complexType name="PersonData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за физическо лице</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PersonIdentification" type="pid:PersonIdentificationData"  />
+      <xsd:choice minOccurs="1" maxOccurs="1">
+        <xsd:element name="PlaceOfBirth" type="bp:PlaceOfBirth" minOccurs="0" />
+        <xsd:element name="PlaceOfBirthAbroad" type="bpa:PlaceOfBirthAbroad" minOccurs="0" />
+        <xsd:element name="PlaceOfBirthOtherData" type="bpod:PlaceOfBirthOtherData" minOccurs="0" />
+      </xsd:choice>
+      <xsd:element name="EyesColor" type="ec:BIDEyesColor" minOccurs="0" />
+      <xsd:element name="MaritalStatus" type="ms:BIDMaritalStatus" minOccurs="0" />
+      <xsd:element name="Height" type="ph:PersonHeight" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

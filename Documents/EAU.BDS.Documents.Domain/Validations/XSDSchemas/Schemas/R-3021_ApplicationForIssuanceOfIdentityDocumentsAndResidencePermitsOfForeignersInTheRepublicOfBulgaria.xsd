@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3021" xmlns="http://ereg.egov.bg/segment/R-3021" 
+            xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+            xmlns:pidt="http://ereg.egov.bg/value/0008-000212" 
+            xmlns:eash="http://ereg.egov.bg/segment/0009-000152" 
+			xmlns:sard="http://ereg.egov.bg/segment/0009-000141" 
+			xmlns:stbt="http://ereg.egov.bg/value/0008-000143" 
+            xmlns:afidarpofthobd="http://ereg.egov.bg/segment/R-3035" 
+            xmlns:easf="http://ereg.egov.bg/segment/0009-000153" 
+            xmlns:ipas="http://ereg.egov.bg/segment/R-3043" 
+            xmlns:ad="http://ereg.egov.bg/segment/0009-000139" 
+            xmlns:dm="http://ereg.egov.bg/segment//R-3136"
+            elementFormDefault="qualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000212" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000152" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000153" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3035" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3043" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000139" />
+  <xsd:import namespace="http://ereg.egov.bg/segment//R-3136" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000143"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000141" />
+  <xsd:element name="ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgaria" type="ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgaria" />
+  <xsd:complexType name="ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgaria">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Заявление за издаване на документи за самоличност и пребиваване на чужденци в Р България</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ElectronicAdministrativeServiceHeader" type="eash:ElectronicAdministrativeServiceHeader" minOccurs="0" />
+      <xsd:element name="ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgariaData" type="afidarpofthobd:ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgariaData" minOccurs="0" />
+      <xsd:element name="IdentificationDocuments" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="IdentificationDocumentType" type="pidt:IdentityDocumentType" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	    <xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" minOccurs="0" />  
+      <xsd:element name="IdentificationPhotoAndSignature" type="ipas:IdentificationPhotoAndSignature" minOccurs="0" />
+      <xsd:element name="ElectronicAdministrativeServiceFooter" type="easf:ElectronicAdministrativeServiceFooter" minOccurs="0" />
+      <xsd:element name="HasDocumentForDisabilities" type="xsd:boolean" minOccurs="0" /> 
+      <xsd:element name="Declarations" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Declaration" type="dm:Declaration" maxOccurs="unbounded" />
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AttachedDocuments" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="AttachedDocument" type="ad:AttachedDocument" maxOccurs="unbounded" />
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+	        <xsd:element name="ServiceTermType" type="stbt:ServiceTermType" minOccurs="0" />
+      <xsd:element name="ServiceApplicantReceiptData" type="sard:ServiceApplicantReceiptData" minOccurs="0" /> 
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

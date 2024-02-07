@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2010" xmlns="http://ereg.egov.bg/value/R-2010" xmlns:pidrpn="http://ereg.egov.bg/nomenclature/R-1004" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1004" />
+  <xsd:simpleType name="BIDPersonalIdentificationDocumentReceivePlace">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Място за получаване на документ за самоличност</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="pidrpn:BIDPersonalIdentificationDocumentReceivePlaceNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

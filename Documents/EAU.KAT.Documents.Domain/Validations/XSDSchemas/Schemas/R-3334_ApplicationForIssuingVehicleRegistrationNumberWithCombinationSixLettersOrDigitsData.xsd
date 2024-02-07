@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3334" xmlns="http://ereg.egov.bg/segment/R-3334"
+             xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+             xmlns:pct="http://ereg.egov.bg/segment/R-2236"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2236" />
+
+  <xsd:element name="ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsData" type="ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsData" />
+  <xsd:complexType name="ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за получаване на регистрационен номер за ППС с комбинация от шест букви и/или цифри по избор на клиента</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" minOccurs="0" />
+      <xsd:element name="PlatesTypeCode" type="xsd:string"/>
+      <xsd:element name="PlatesTypeName" type="xsd:string"/>
+      <xsd:element name="PlatesContentType" type="pct:PlatesContentTypes" minOccurs="0" />
+      <xsd:element name="AISKATVehicleTypeCode" type="xsd:string"/>
+      <xsd:element name="AISKATVehicleTypeName" type="xsd:string"/>
+      <xsd:element name="RectangularPlatesCount" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="SquarePlatesCount" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="ProvinceCode" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="WishedRegistrationNumber " type="xsd:string"/>
+      <xsd:element name="AgreementToReceiveERefusal" type="xsd:boolean" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

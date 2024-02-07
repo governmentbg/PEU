@@ -1,0 +1,81 @@
+/* ----  Pagination  ---- */
+
+.pagination-container {
+	display: flex;
+	flex: 1 1 100%;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.pagination-container--page-top {
+	border-bottom: 1px solid $border-color;
+	padding-bottom: 0;
+	margin-bottom: $template-margin-vertical * 2;
+}
+.pagination-container--page-bottom {
+	border-top: 1px solid $border-color;
+	padding-top: $template-padding-vertical;
+	margin-top: $template-margin-vertical * 2;
+
+	.result-count {
+		margin-top: $template-margin-vertical;
+	}
+}
+
+.result-count {
+	font-size: 0.875rem;
+	color: $gray-700;
+	margin-left: $template-margin-horizontal;
+	margin-right: $template-margin-horizontal;
+	margin-top: $template-margin-vertical;
+	margin-bottom: $template-margin-vertical *2;
+}
+
+.pagination {
+
+	flex-wrap: wrap;
+
+	font-size: 0.875rem;
+
+	margin-top: $template-margin-vertical;
+	margin-bottom: $template-margin-vertical;
+
+	.page-link {
+		margin-left: 0.0625rem; //$input-btn-focus-width;
+		border-radius: $btn-border-radius;
+		border: none;
+		text-decoration: none;
+	}
+
+	.page-item {
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			font-weight: bold;
+		}
+	}
+
+	.page-item.first,
+	.page-item.prev,
+	.page-item.next,
+	.page-item.last
+	{
+		.page-link {
+			font-size: 1.25rem;
+			font-weight: bold;
+			line-height: .7;
+			padding-bottom: $pagination-padding-y * 2;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+/* ----  /Pagination  ---- */

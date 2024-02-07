@@ -1,0 +1,12 @@
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer Localizer
+@model NotConfirmedUserMessageModel
+
+<div class="fixed-content-width">
+    <div class="panel-body">
+        <form method="post" asp-controller="Account">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <input type="hidden" asp-for="Username" />
+            <div class="alert alert-warning" role="alert">@Model.Error<button asp-action="ResendRegMail" class="btn btn-link alert-link"><b>@Localizer["GL_USR_SEND_REG_L"]</b></button></div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1001" xmlns="http://ereg.egov.bg/nomenclature/R-1001" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:simpleType name="BIDEyesColorNomenclature">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Номенклатура на цветовете на очите</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<!--КАФЯВИ-->
+			<xsd:enumeration value="1288"/>
+			<!--ПЪСТРИ-->
+			<xsd:enumeration value="2472"/>
+			<!--СИНИ-->
+			<xsd:enumeration value="2698"/>
+			<!--СИВИ-->
+			<xsd:enumeration value="2704"/>
+			<!--ЗЕЛЕНИ-->
+			<xsd:enumeration value="3227"/>
+			<!--ЧЕРНИ-->
+			<xsd:enumeration value="3292"/>
+			<!--НЯМА-->
+			<xsd:enumeration value="0000"/>
+			<!--ЧЕРВЕНИ-->
+			<xsd:enumeration value="21773"/>
+			<!--РАЗЛИЧНИ-->
+			<xsd:enumeration value="22073"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,156 @@
+/* ----  Nav-Services  ---- */
+
+.nav-services {
+    padding: 0;
+    margin: 0;
+    
+    font-size: 0.9375rem;
+    list-style: none;
+
+    .service {
+        display: flex;
+        align-items: center;
+        background-color: $secondary;
+        border-radius: $border-radius *1.5;
+        border: none;
+
+        width: 100%;
+        min-height: $template-padding-vertical *8;
+        padding: $template-padding-vertical $template-padding-horizontal * 2;
+        transition: border-radius .6s ease-in;
+        cursor: pointer;
+
+        text-align: left;
+
+        &.collapsed {
+    
+            &.service-toggle {
+                &::after {
+                    @include caret-down(); 
+                }
+            }
+
+        }
+        &:not(.collapsed) {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            transition: border-radius 0s ease-in;
+        }
+
+        @include media-breakpoint-down(sm) {
+            padding: $template-padding-vertical /2 $template-padding-horizontal;
+        }
+
+    }
+
+    .service-title {
+        flex: 1 1 auto;
+        font-size: 1.1875rem;
+        color: $gray-900;
+        margin: 0 0 0 $template-margin-horizontal;
+        @include media-breakpoint-down(sm) {
+            margin-left: $template-margin-horizontal /2;
+        }
+    }
+    .service-subtitle {
+        margin-top: $template-margin-horizontal *.25;
+        font-size: 0.875rem;
+        font-weight: normal;
+    }
+
+    .service-image {
+        flex: 0 0 auto;
+        max-height: $template-padding-vertical *6;
+        margin-right: $template-margin-horizontal;
+        @include media-breakpoint-down(sm) {
+            margin-right: $template-margin-horizontal /2;
+        }
+    }
+
+    .service-toggle {
+        color: $primary-dark;
+        font-size: 1.5rem;
+        &::after {
+            display: inline-block;
+            margin: 0 $template-margin-horizontal /2;
+            vertical-align: $caret-vertical-align;
+            content: "";
+            @include caret-up();
+        }
+    }
+
+
+    .service-subnav {
+        line-height: 1.35;
+        border-bottom-left-radius: $border-radius *1.5;
+        border-bottom-right-radius: $border-radius *1.5;
+        border: 0.3125rem solid $secondary;
+        border-top: 0;
+        margin: 0;
+        padding: $template-padding-vertical *1.5 $template-padding-horizontal;
+
+        a {
+            text-decoration: none;
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+                color: $link-hover-color;
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: inside; 
+            list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='8' width='8'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23202020' /%3E%3C/svg%3E");
+
+            padding: $template-margin-vertical *.5 $template-margin-vertical;
+            margin-bottom: 0;
+            border-radius: $border-radius;
+
+            &:nth-child(odd) {
+                background-color: rgba($gray-100, .7);
+            }
+            // хоризонтална разделителна линия между всеки 6 елемента
+            // &:nth-child(6n+6):not(:last-child) {
+            //     padding-bottom: $template-padding-vertical *2;
+            //     border-bottom: 1px solid $border-color;
+            //     margin-bottom: $template-margin-vertical*2;
+            // }
+        }
+
+        @include media-breakpoint-down(sm) {
+            padding: $template-padding-vertical *1.5 $template-padding-horizontal *1.5;
+        }
+   
+    }
+    
+    .service-subnav-search {
+        .btn-sm,
+        .form-control-sm {
+            font-size: 13px;            
+        }
+        
+        .form-control-sm,
+        .input-group-text {
+            padding-left: $template-padding-horizontal *0.75;
+            padding-right: $template-padding-horizontal *0.75;
+        }
+
+        // .search-button {
+        //     min-width: 6rem;
+        //     @include media-breakpoint-up(sm) {
+        //         min-width: 10rem;
+        //     }
+        // }
+        .clear-button {
+            background-color: $white;
+        }
+    }
+
+}
+
+/* ----  /Nav-Services  ---- */

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3020" xmlns="http://ereg.egov.bg/segment/R-3020" xmlns:pn="http://ereg.egov.bg/segment/0009-000005" xmlns:pnl="http://ereg.egov.bg/segment/R-3003"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000005" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3003" />
+  <xsd:complexType name="ChangedNames">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Променени имена</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Names" type="pn:PersonNames" minOccurs="0" />
+      <xsd:element name="NamesLatin" type="pnl:PersonNamesLatin" minOccurs="0" />
+
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

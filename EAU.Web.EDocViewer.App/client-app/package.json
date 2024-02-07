@@ -1,0 +1,113 @@
+{
+  "name": "client-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": ".",
+  "devDependencies": {
+    "@babel/plugin-transform-typescript": "7.9.6",
+    "@rescripts/cli": "0.0.14",
+    "@rescripts/rescript-env": "0.0.12",
+    "@types/bluebird": "2.0.33",
+    "@types/dropzone": "5.5.2",
+    "@types/history": "4.7.5",
+    "@types/jest": "24.9.1",
+    "@types/jquery": "3.3.34",
+    "@types/js-cookie": "2.2.6",
+    "@types/lz-string": "1.3.34",
+    "@types/node": "12.12.38",
+    "@types/numeral": "0.0.26",
+    "@types/query-string": "5.1.0",
+    "@types/react": "16.9.34",
+    "@types/react-dom": "16.9.7",
+    "@types/react-router": "5.1.5",
+    "@types/react-router-dom": "5.1.5",
+    "@types/react-select": "^3.0.14",
+    "@types/reactstrap": "8.7.2",
+    "bluebird": "2.11.0",
+    "bootstrap": "4.4.1",
+    "cnsys-cache": "1.0.0",
+    "dropzone": "5.7.0",
+    "http-proxy-middleware": "1.0.3",
+    "jquery": "3.5.0",
+    "js-cookie": "2.2.1",
+    "lz-string": "1.4.4",
+    "mobx": "4.9.2",
+    "mobx-react": "5.2.3",
+    "mobx-react-lite": "2.0.6",
+    "moment": "2.24.0",
+    "numeral": "2.0.6",
+    "query-string": "5.1.0",
+    "react": "16.13.1",
+    "react-datetime": "2.16.3",
+    "react-dom": "16.13.1",
+    "react-idle-timer": "4.2.5",
+    "react-router": "5.1.2",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "3.4.1",
+    "react-select": "3.1.0",
+    "reactstrap": "8.9.0",
+    "tinymce": "5.6.1",
+    "tinymce-i18n": "20.4.4",
+    "typescript": "3.8.3",
+    "typescript-collections": "1.1.9"
+  },
+  "dependencies": {
+    "react-app-polyfill": "1.0.6"
+  },
+  "scripts": {
+    "start": "npm run copy && rescripts start",
+    "build": "npm run copy && rescripts build",
+    "copy": "(if exist src\\assets del /s src\\assets\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\assets src\\assets && (if exist src\\cnsys-core del /s src\\cnsys-core\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\cnsys-core src\\cnsys-core && (if exist src\\cnsys-ui-react del /s src\\cnsys-ui-react\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\cnsys-ui-react src\\cnsys-ui-react && (if exist src\\eau-core del /s src\\eau-core\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-core src\\eau-core && (if exist src\\eau-documents del /s src\\eau-documents\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-documents src\\eau-documents && (if exist src\\eau-documents-bds del /s src\\eau-documents-bds\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-documents-bds src\\eau-documents-bds && (if exist src\\eau-documents-cod del /s src\\eau-documents-cod\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-documents-cod src\\eau-documents-cod && (if exist src\\eau-documents-kat del /s src\\eau-documents-kat\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-documents-kat src\\eau-documents-kat && (if exist src\\eau-documents-kos del /s src\\eau-documents-kos\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-documents-kos src\\eau-documents-kos && (if exist src\\eau-documents-migr del /s src\\eau-documents-migr\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-documents-migr src\\eau-documents-migr && (if exist src\\eau-services-document-processes del /s src\\eau-services-document-processes\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-services-document-processes src\\eau-services-document-processes && (if exist src\\eau-documents-pbzn del /s src\\eau-documents-pbzn\\**) && xcopy /e /i /y ..\\..\\EAU.Web.Portal.App\\client-app\\src\\eau-documents-pbzn src\\eau-documents-pbzn"
+  },
+  "rescripts": [
+    [
+      "use-babel-config",
+      {
+        "presets": [
+          "react-app",
+          [
+            "@babel/preset-typescript",
+            {
+              "allowNamespaces": true,
+              "allowDeclareFields": true
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "use-eslint-config",
+      {
+        "extends": [
+          "react-app"
+        ],
+        "rules": {
+          "eqeqeq": "off",
+          "no-mixed-operators": "off",
+          "@typescript-eslint/consistent-type-assertions": "off",
+          "jsx-a11y/alt-text": "off",
+          "jsx-a11y/anchor-is-valid": "off"
+        }
+      }
+    ]
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "last 1 ie version"
+    ],
+    "development": [
+      ">0.2%",
+      "not dead",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 ie version"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3132" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://ereg.egov.bg/segment/R-3132"
+	xmlns:voii="http://ereg.egov.bg/segment/R-3131"	
+	elementFormDefault="qualified">
+	
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3131" />
+  
+  <xsd:element name="VehicleOwnerInformationCollection" type="VehicleOwnerInformationCollection" />
+  <xsd:complexType name="VehicleOwnerInformationCollection">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Колекция от данни за собственост на ПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Items" type="voii:VehicleOwnerInformationItem" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

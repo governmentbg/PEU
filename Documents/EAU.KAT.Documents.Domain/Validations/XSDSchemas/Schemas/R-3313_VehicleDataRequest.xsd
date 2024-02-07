@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3313" xmlns="http://ereg.egov.bg/segment/R-3313" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 xmlns:vr="http://ereg.egov.bg/segment/R-3303"
+   xmlns:pi="http://ereg.egov.bg/segment/0009-000006"
+   xmlns:aiskatr="http://ereg.egov.bg/segment/R-3315"
+	elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3303" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000006" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3315" />
+
+  <xsd:element name="VehicleDataRequest" type="VehicleDataRequest" />
+  <xsd:complexType name="VehicleDataRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Идентификационни данни за ППС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="RegistrationData" type="vr:VehicleRegistrationData"/>
+      <xsd:element name="OwnersCollection">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="unbounded">
+            <xsd:element name="Owners">
+              <xsd:complexType>
+                <xsd:choice minOccurs="1" maxOccurs="1">
+                  <xsd:element name="PersonIdentifier" type="pi:PersonIdentifier" minOccurs="0" />
+                  <xsd:element name="Item" type="xsd:string" minOccurs="0" />
+                </xsd:choice>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ServiceCode" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ServiceName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Reasons" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Reason" type="aiskatr:AISKATReason" minOccurs="1" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Phone" type="xsd:string" minOccurs="0" />
+      <xsd:element name="AgreementToReceiveERefusal" type="xsd:boolean" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

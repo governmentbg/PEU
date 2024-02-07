@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2221" xmlns="http://ereg.egov.bg/nomenclature/R-2221" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:simpleType name="ClothintTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Вид на облеклото на охранителния състав</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Ежедневно -->
+      <xsd:enumeration value="1" />
+      <!-- Униформено -->
+      <xsd:enumeration value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

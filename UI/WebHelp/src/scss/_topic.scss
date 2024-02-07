@@ -1,0 +1,39 @@
+/* ----  Topic  ---- */
+
+html {
+    font-family: $font-family-base;
+}
+
+body {
+    color: $body-color;
+  }
+
+#content {
+
+    p {
+        color: $body-color;
+        font-family: $font-family-base;
+        // font-size: $font-size-base;
+        line-height: $line-height-base;
+    }
+
+    p:first-child {  // patch за да няма излишно разстояние над заглавието на топик
+        line-height: 1;
+    }
+    
+    span {
+        color: $body-color;
+        font-family: $font-family-base
+    }
+
+
+    a {
+        color: $link-color;
+    }
+
+    // .topic-heading {
+    //     margin: 1rem 0;
+    // }
+}
+
+/* ----  /Topic  ---- */

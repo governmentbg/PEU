@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3036" xmlns="http://ereg.egov.bg/segment/R-3036" xmlns:fibd="http://ereg.egov.bg/segment/R-3022" xmlns:td="http://ereg.egov.bg/segment/R-3023" xmlns:c="http://ereg.egov.bg/segment/0009-000133"   xmlns:pa="http://ereg.egov.bg/segment/0009-000094"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3022" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3023" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000133" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:complexType name="ApplicationForIssuingResidencePermitAndDrivingLicenseForEuropeanCitizensData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление за издаване на удостоверение за пребиваване и свидетелство за управление на МПС на граждани на ЕС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ForeignIdentityBasicData" type="fibd:ForeignIdentityBasicData"  />
+      <xsd:element name="StayInBulgaria" type="xsd:string" minOccurs="0" />
+      <xsd:element name="TravelDocument" type="td:TravelDocument" minOccurs="0" />
+      <xsd:element name="OtherCitizenship" type="c:Citizenship" minOccurs="0" />
+      <xsd:element name="Address" type="pa:PersonAddress" minOccurs="0" />      
+      <xsd:element name="ServiceInformation" type="xsd:string" minOccurs="0" />   
+	  <xsd:element name="ServiceCode" type="xsd:integer" minOccurs="0" />   	  
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

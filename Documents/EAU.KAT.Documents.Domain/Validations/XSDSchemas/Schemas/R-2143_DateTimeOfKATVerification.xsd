@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2143" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/value/R-2143" elementFormDefault="qualified">
+  <xsd:simpleType name="KATVerificationDateTimeOfVehiclOwnerShip">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Дата на проверка за бивша/настояща собственост на ПС в КАТ</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:dateTime" />
+  </xsd:simpleType>
+</xsd:schema>

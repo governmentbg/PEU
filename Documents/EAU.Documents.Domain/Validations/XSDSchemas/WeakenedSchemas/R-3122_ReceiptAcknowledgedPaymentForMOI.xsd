@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3122" xmlns="http://ereg.egov.bg/segment/R-3122" xmlns:drsd="http://ereg.egov.bg/value/0008-000004" xmlns:du="http://ereg.egov.bg/segment/0009-000001" xmlns:espbd="http://ereg.egov.bg/segment/0009-000002" xmlns:dtn="http://ereg.egov.bg/value/0008-000007" xmlns:dtu="http://ereg.egov.bg/segment/0009-000003" xmlns:xds="http://ereg.egov.bg/segment/0009-000004" xmlns:esa="http://ereg.egov.bg/segment/0009-000016" xmlns:acu="http://ereg.egov.bg/segment/0009-000073" xmlns:rapm="http://ereg.egov.bg/value/R-2136" xmlns:abn="http://ereg.egov.bg/value/0008-000047" xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:bn="http://ereg.egov.bg/value/R-2108" xmlns:bic="http://ereg.egov.bg/value/R-2109" xmlns:iban="http://ereg.egov.bg/value/R-2110" xmlns:pr="http://ereg.egov.bg/value/R-2112" xmlns:a="http://ereg.egov.bg/value/R-2114" xmlns:ac="http://ereg.egov.bg/value/R-2115" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000001" />  
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000002" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000007" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000003" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000016" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000073" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2136" /> 
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2108" /> 
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2109" /> 
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2110" /> 
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2112" />   
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2114" /> 
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2115" />   
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000047" />
+  <xsd:element name="ReceiptAcknowledgedPaymentForMOI" type="ReceiptAcknowledgedPaymentForMOI" />
+  <xsd:complexType name="ReceiptAcknowledgedPaymentForMOI">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Потвърждаване за получаване на заплащане в МВР</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentTypeURI" type="dtu:DocumentTypeURI" minOccurs="0" />
+      <xsd:element name="DocumentTypeName" type="dtn:DocumentTypeName" minOccurs="0" />
+      <xsd:element name="DocumentURI" type="du:DocumentURI" minOccurs="0" />
+      <xsd:element name="DocumentReceiptOrSigningDate" type="drsd:DocumentReceiptOrSigningDate" minOccurs="0" />
+      <xsd:element name="ElectronicServiceProviderBasicData" type="espbd:ElectronicServiceProviderBasicData" minOccurs="0" />
+      <xsd:element name="ElectronicServiceApplicant" type="esa:ElectronicServiceApplicant" minOccurs="0" />
+      <xsd:element name="AISCaseURI" type="acu:AISCaseURI" minOccurs="0" />	
+	  <xsd:element name="BankName" type="bn:BankName" minOccurs="0" />
+      <xsd:element name="BIC" type="bic:BIC" minOccurs="0" />
+      <xsd:element name="IBAN" type="iban:IBAN" minOccurs="0" />
+      <xsd:element name="PaymentReason" type="pr:PaymentReason" minOccurs="0" />
+      <xsd:element name="Amount" type="a:Amount" minOccurs="0" />
+      <xsd:element name="AmountCurrency" type="ac:AmountCurrency" minOccurs="0" />
+	  <xsd:element name="ReceiptAcknowledgedPaymentMessage" type="rapm:ReceiptAcknowledgedPaymentForMOIMessage" minOccurs="0" />		    
+      <xsd:element name="AdministrativeBodyName" type="abn:AdministrativeBodyName" minOccurs="0" />
+	  <xsd:element name="Signature" type="xds:XMLDigitalSignature" minOccurs="0" />      
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

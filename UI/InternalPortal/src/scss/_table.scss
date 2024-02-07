@@ -1,0 +1,171 @@
+/* ----  Table  ---- */
+
+.table-responsive {
+	margin-top: $template-container-margin-vertical;
+	margin-bottom: $template-container-margin-vertical;
+	-ms-overflow-style: scrollbar;
+
+	@media screen and (max-width: map-get($grid-breakpoints, xs)) {
+
+		-ms-overflow-style: scrollbar;
+		border: none;
+		//border: 1px solid $table-border-color;
+
+
+		.table-bordered {
+			border: 1px solid $table-border-color;
+		}
+
+	}
+
+}
+
+.table {
+
+	margin-top: 0;
+	margin-bottom: 0;
+
+	//font-size: 0.93em;
+
+	th {
+		font-size: 0.93em;
+	}
+
+	&.table-sortable {
+
+		.ui-sortable-helper {
+			@include box-shadow($dropdown-box-shadow);
+			background-color: $gray-200;
+	}
+
+		.ui-sortable-placeholder {
+			// background-color: $gray-100;
+		}
+
+		.drag-handle {
+			cursor: move;
+			width: 1.875rem;
+			background-image: url("../images/icons/drag-handle.svg");
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+		}
+
+	}
+
+	.buttons-td {
+		padding: 3px 3px;
+		white-space: nowrap;
+
+		.btn, .btn-group {
+			margin-left: 3px;
+		}
+		.btn:first-child,
+		.btn-group:first-child
+		 {
+			margin-left: 0px;
+		}
+
+		.btn-group {
+			.btn + .btn,
+			.btn + .btn-group,
+			.btn-group + .btn,
+			.btn-group + .btn-group
+			{
+				margin-left: -1px;
+			}
+		}
+
+	}
+
+	.icons-td {
+		white-space: nowrap;
+
+		.ui-icon {
+			margin-right: $template-container-margin-horizontal / 2;
+		}
+
+	}
+
+
+	.single-icon-td {
+		width: 2.5rem; //35px;
+		text-align: center;
+		// vertical-align: middle;
+		input[type="checkbox"] {
+			vertical-align: top;
+		}
+	}
+
+	td {
+
+		// padding-top:0;
+		// padding-bottom:0;
+
+		&.nowrap {
+			white-space: nowrap;
+		}
+
+		& .fold {
+			white-space: pre-wrap;
+			word-break: break-all;
+			&.collapsed {
+				max-width: 460px;
+				//height: 1.2em;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+		}
+
+		& > .ui-icon {
+			width: 1rem;
+			height: 1rem;
+			vertical-align: -11%;
+		}
+
+		& > .custom-control {
+			min-height: 0;
+		}
+	}
+
+
+	.progress {
+		vertical-align: text-top;
+		height: 1rem;
+		display: inline-block;
+		width: 3rem;
+		margin: .06rem .25rem;
+
+		-webkit-box-shadow: none;
+		box-shadow: none;
+
+		background-color: $gray-500;
+	}
+
+	.progress-bar {
+		line-height: 1rem;
+		padding-left: .25rem;
+		padding-right: .25rem;
+
+		background-color: $gray-800;
+	}
+
+
+	.badge {
+		padding: 0.3em 0.4em;
+		font-size: 90%;
+		font-weight: normal;
+		text-align: left;
+		white-space: normal;
+	}
+
+	thead {
+		.label-description {
+			display: inline;
+			margin: 0;
+		}
+	}
+
+}
+
+/* ----  /Table  ---- */

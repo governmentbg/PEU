@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3175" xmlns="http://ereg.egov.bg/segment/R-3175" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:stn="http://ereg.egov.bg/segment/R-2220"
+           xmlns:st="http://ereg.egov.bg/segment/R-3168"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2220" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3168" />
+  <xsd:complexType name="ProtectionOfAgriculturalProperty">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Охрана на селскостопанско имущество</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ActualDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="SecurityObjectName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="DistrictCode" type="xsd:string" minOccurs="0" />
+      <xsd:element name="DistrictName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Address" type="xsd:string" minOccurs="0" />
+      <xsd:element name="SecurityType" type="stn:SecurityType" minOccurs="0" />
+      <xsd:element name="SecurityTransports" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SecurityTransport" type="st:SecurityTransport" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TerminationDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="AISCHODDistrictId" type="xsd:string" minOccurs="0" />
+      <xsd:element name="AISCHODDistrictName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ContractTypeNumberDate" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ContractTerminationNote" type="xsd:string" minOccurs="0" />
+      <xsd:element name="AISCHODObjectID" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

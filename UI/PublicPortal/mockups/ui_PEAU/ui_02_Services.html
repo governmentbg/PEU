@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">   
+                        <div class="col-auto">                      
+                                <img class="mvr-logo" src="images/logo.png"> 
+                        </div>                                                       
+                        <div class="col header-title">
+                            <p>Република България<br />
+                            <strong>Министерство на вътрешните работи</strong></p>
+                            <p class="site-name">Портал за електронни административни услуги на МВР</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu"><span title="Потребител"><i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="d-none d-sm-inline-block">Потребител</span></span></button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <a class="dropdown-item" href="" role="menuitem">Вход</a>
+                                <a class="dropdown-item" href="" role="menuitem">Забравена парола</a>
+                                <a class="dropdown-item" href="" role="menuitem">Регистрация</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="page-header-wrapper section-wrapper fixed-content-width">
+            
+            <div class="breadcrumbs">
+                
+                <!-- <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Начало</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Услуги</li>
+                    </ol>
+                </nav> -->
+            
+            </div>
+            
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Услуги</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+
+
+            <div class="page-wrapper">
+
+                <ul class="nav-services">
+                    <li>
+                        <button type="button" class="service service-toggle collapsed" data-toggle="collapse" data-target="#service-subnav-0" aria-expanded="false">
+                            <img class="service-image" src="images/services/icon-service-pay.svg" alt="">
+                            <h2 class="service-title">Проверка на задължения по фиш, НП или споразумение по направления „Пътна полиция“ и „Български документи за самоличност“</h2>
+                        </button>
+                        <div id="service-subnav-0" class="collapse">
+                            <div class="service-subnav">
+                                
+                                <div class="service-subnav-search">
+                                    <div class="input-group form-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="ui-icon ui-icon-search-color" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" title="Критерии за търсене на услуга" placeholder="Търсене">
+                                        <!-- <div class="input-group-append">
+                                            <button type="button" class="btn btn-light btn-sm clear-button" title="Изчисти"><i class="ui-icon ui-icon-clear"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>   
+                                <ul>
+                                    <li>
+                                        <a href="#">Обобщена проверка на задължения по фиш, НП или споразумение и заплащане</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Проверка на задължения по фиш, НП или споразумение, издадени от "Пътна полиция" и заплащане</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="service service-toggle collapsed" data-toggle="collapse" data-target="#service-subnav-5" aria-expanded="false">
+                            <img class="service-image" src="images/services/icon-service-pp.svg" alt="">
+                            <h2 class="service-title">По направление на дейност "Пътна полиция"</h2>
+                        </button>
+                        <div id="service-subnav-5" class="collapse">
+                            <div class="service-subnav">
+                                <div class="service-subnav-search">
+                                    <div class="input-group form-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="ui-icon ui-icon-search-color" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" title="Критерии за търсене на услуга" placeholder="Търсене">
+                                        <!-- <div class="input-group-append">
+                                            <button type="button" class="btn btn-light btn-sm clear-button" title="Изчисти"><i class="ui-icon ui-icon-clear"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                 
+                                <ul>
+                                    <li><a href="#">Проверка на задължения по ФИШ и НП с възможност за извършване на плащане</a></li>
+                                    <li><a href="#">Промяна в регистрацията на пътно превозно средство (услугата се заявява само от нотариус)</a></li>
+                                    <li><a href="#">Предоставяне на право за ползване на табели с регистрационен номер по избор</a></li>
+                                    <li><a href="#">Издаване на удостоверение с данни за регистрирани и с прекратена регистрация превозни средства</a></li>
+                                    <li><a href="#">Издаване на удостоверения за правата и наложените наказания на водач на МПС</a></li>
+                                    <li><a href="#">Първоначално издаване на свидетелство за управление на моторно превозно средство</a></li>
+                                    <li><a href="#">Подмяна на свидетелство за управление на моторно превозно средство</a></li>
+                                    <li><a href="#">Издаване дубликат на свидетелство за управление на моторно превозно средство</a></li>
+                                    <li><a href="#">Издаване на дубликат на контролен талон към свидетелство за управление на моторно превозно средство</a></li>
+                                    <li><a href="#">Издаване на контролен талон "Водач на моторно превозно средство без наказания"</a></li>
+                                    <li><a href="#">Извършване на първоначална регистрация на пътно превозно средство</a></li>
+                                    <li><a href="#">Прекратяване на регистрацията на пътно превозно средство с писмено заявление от собственика</a></li>
+                                    <li><a href="#">Временно спиране от движение на пътно превозно средство по желание на собственика</a></li>
+                                    <li><a href="#">Пускане в движение на временно спряно пътно превозно средство</a></li>
+                                    <li><a href="#">Издаване на разрешение за временно движение на пътно превозно средство</a></li>
+                                    <li><a href="#">Издаване на дубликат на свидетелство за регистрация на пътно превозно средство</a></li>
+                                    <li><a href="#">Предоставяне на временни табели с регистрационен номер на лица – търговци, по смисъла на Търговския закон</a></li>
+                                    <li><a href="#">Монтаж на регистрационни табели и/или идентификация на превозни средства на територията на областна дирекция на МВР, различна от областната дирекция по местоотчет на превозното средство</a></li>                                
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="service service-toggle collapsed" data-toggle="collapse" data-target="#service-subnav-1" aria-expanded="false">
+                            <img class="service-image" src="images/services/icon-service-bds.svg" alt="">
+                            <h2 class="service-title">По направление на дейност "Български документи за самоличност"</h2>
+                        </button>
+                        <div id="service-subnav-1" class="collapse">
+                            <div class="service-subnav">
+                                <div class="service-subnav-search">
+                                    <div class="input-group form-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="ui-icon ui-icon-search-color" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" title="Критерии за търсене на услуга" value="издаване">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-light btn-sm clear-button" title="Изчисти"><i class="ui-icon ui-icon-clear"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <ul>
+                                    <li><a href="#">Издаване на лични карти на български граждани</a></li>
+                                    <li><a href="#">Издаване на паспорти на български граждани</a></li>
+                                    <li><a href="#">Издаване на документи, удостоверяващи събития и факти, свързани с издаването на български лични документи за посочен период</a></li>
+                                    <li><a href="#">Издаване на документи, удостоверяващи събития и факти, свързани с издаването на български лични документи</a></li>                                
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="service service-toggle collapsed" data-toggle="collapse" data-target="#service-subnav-2" aria-expanded="false">
+                            <img class="service-image" src="images/services/icon-service-kos.svg" alt="">
+                            <h2 class="service-title">По направление на дейност "Контрол на общоопасните средства"</h2>                            
+                        </button>
+                        <div id="service-subnav-2" class="collapse">
+                            <div class="service-subnav">
+                                <div class="service-subnav-search">
+                                    <div class="input-group form-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="ui-icon ui-icon-search-color" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" title="Критерии за търсене на услуга" placeholder="Търсене">
+                                        <!-- <div class="input-group-append">
+                                            <button type="button" class="btn btn-light btn-sm clear-button" title="Изчисти"><i class="ui-icon ui-icon-clear"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div> 
+                               
+                                <ul>
+                                    <li><a href="#">Издаване на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически лица</a></li>
+                                    <li><a href="#">Промяна на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически лица</a></li>
+                                    <li><a href="#">Издаване на разрешения за носене и употреба на огнестрелни оръжия и боеприпаси за тях</a></li>
+                                    <li><a href="#">Промяна на разрешения за носене и употреба на огнестрелни оръжия и боеприпаси за тях</a></li>
+                                    <li><a href="#">Издаване на Европейски паспорт за огнестрелни оръжия</a></li>
+                                    <li><a href="#">Издаване на разрешения за транспортиране при внос/износ на огнестрелни оръжия, боеприпаси, взривни вещества и пиротехнически изделия от физически и юридически лица, регистрирани като търговци</a></li>
+                                    <li><a href="#">Издаване на разрешения за внос и износ на огнестрелни оръжия и боеприпаси за тях от физически лица</a></li>
+                                    <li><a href="#">Издаване на разрешения за транзитен превоз на огнестрелни оръжия, боеприпаси, взривни вещества и пиротехнически изделия от физически и юридически лица, регистрирани като търговци</a></li>
+                                    <li><a href="#">Издаване на документи за транспортиране на взривни вещества за граждански цели в рамките на Европейския съюз от територията на друга държава членка до територията на Република България от физически лица</a></li>
+                                    <li><a href="#">Издаване на писмено съгласие за транспортиране на огнестрелни оръжия и боеприпаси за тях на територията на Република България с издадено от друга държава членка разрешение за транспортиране</a></li>
+                                    <li><a href="#">Издаване на разрешения за търговия с оръжия, боеприпаси, взривни вещества и пиротехнически изделия</a></li>
+                                    <li><a href="#">Промяна на разрешения за търговия с оръжия, боеприпаси, взривни вещества и пиротехнически изделия</a></li>
+                                    <li><a href="#">Допълване на разрешения за търговия с оръжия, боеприпаси, взривни вещества и пиротехнически изделия</a></li>
+                                    <li><a href="#">Издаване на разрешения за придобиване на огнестрелни оръжия и боеприпаси за тях от физически и юридически лица, регистрирани като търговци, от културни организации по Закона за закрила и развитие на културата и юридически лица с нестопанска цел</a></li>
+                                    <li><a href="#">Издаване на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически и юридически лица, регистрирани като търговци, от културни организации по Закона за закрила и развитие на културата и от юридически лица с нестопанска цел</a></li>
+                                    <li><a href="#">Промяна на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически и юридически лица, регистрирани като търговци, от културни организации по Закона за закрила и развитие на културата и от юридически лица с нестопанска цел</a></li>
+                                    <li><a href="#">Издаване на разрешения за транспортиране на пиротехнически изделия и взривни вещества, с изключение на взривни вещества за граждански цели, от територията на Република България до друга държава членка от физически и юридически лица, регистрирани като търговци, и от юридически лица с нестопанска цел</a></li>
+                                    <li><a href="#">Издаване на документи, удостоверяващи съгласието на Република България за транзитно преминаване или за изпращане на взривни вещества за граждански цели за целите на осъществяване на транспортиране в рамките на Европейския съюз</a></li>
+                                    <li><a href="#">Издаване на разрешения за еднократно транспортиране на огнестрелни оръжия и боеприпаси от територията на Република България до територията на друга държава членка от физически и юридически лица, регистрирани като търговци</a></li>
+                                    <li><a href="#">Издаване на разрешения за транспортиране на взривни вещества и пиротехнически изделия на територията на Република България от физически лица</a></li>
+                                    <li><a href="#">Издаване на документи за транспортиране на взривни вещества за граждански цели в рамките на Европейския съюз от територията на друга държава членка до територията на Република България от физически и юридически лица, регистрирани като търговци, и от юридически лица с нестопанска цел</a></li>
+                                    <li><a href="#">Издаване на разрешения за ремонтни дейности на оръжия и боеприпаси за тях от физически и юридически лица, регистрирани като търговци</a></li>
+                                    <li><a href="#">Издаване на разрешения за придобиване на взривни вещества и пиротехнически изделия от физически и юридически лица, регистрирани като търговци, и от културни организации по Закона за закрила и развитие на културата</a></li>
+                                    <li><a href="#">Издаване на разрешения за придобиване на огнестрелни оръжия и боеприпаси за тях от физически лица</a></li>
+                                    <li><a href="#">Приемане на уведомление за придобиване, продажба, дарение или замяна на неогнестрелно оръжие и издаване на удостоверение</a></li>
+                                    <li><a href="#">Приемане на уведомление за продажба, дарение или замяна на огнестрелно оръжие и промяна на разрешение</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="service service-toggle collapsed" data-toggle="collapse" data-target="#service-subnav-6" aria-expanded="false">
+                            <img class="service-image" src="images/services/icon-service-m.svg" alt="">
+                            <h2 class="service-title">По направление на дейност "Миграция"</h2>                            
+                        </button>
+                        <div id="service-subnav-6" class="collapse">
+                            <div class="service-subnav">
+                                
+                                <div class="service-subnav-search">
+                                    <div class="input-group form-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="ui-icon ui-icon-search-color" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" title="Критерии за търсене на услуга" placeholder="Търсене">
+                                        <!-- <div class="input-group-append">
+                                            <button type="button" class="btn btn-light btn-sm clear-button" title="Изчисти"><i class="ui-icon ui-icon-clear"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>   
+                                <ul>
+                                    <li>
+                                        <a href="#">Издаване на документ, удостоверяващ наличието на чуждо гражданство, обявен адрес, разрешен срок на пребиваване, за влизане, напускане или преминаване през Република България, както и за други събития и факти, свързани с пребиваването на чужденци в Република България</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="service service-toggle collapsed" data-toggle="collapse" data-target="#service-subnav-4" aria-expanded="false">
+                            <img class="service-image" src="images/services/icon-service-pb.svg" alt="">
+                            <h2 class="service-title">По направление на дейност "Пожарна безопасност и защита на населението"</h2>                            
+                        </button>
+                        <div id="service-subnav-4" class="collapse">
+                            <div class="service-subnav">
+                                <div class="service-subnav-search">
+                                    <div class="input-group form-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="ui-icon ui-icon-search-color" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" title="Критерии за търсене на услуга" placeholder="Търсене">
+                                        <!-- <div class="input-group-append">
+                                            <button type="button" class="btn btn-light btn-sm clear-button" title="Изчисти"><i class="ui-icon ui-icon-clear"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                
+                                <ul>
+                                    <li><a href="#">Издаване или подновяване на документ за правоспособност за работа с флуорсъдържащи парникови газове</a></li>
+                                    <li><a href="#">Издаване на удостоверителни документи за възникнали произшествия и други и за предоставяне на информация за извършваната дейност</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="service service-toggle collapsed" data-toggle="collapse" data-target="#service-subnav-3" aria-expanded="false">
+                            <img class="service-image" src="images/services/icon-service-chod.svg" alt="">
+                            <h2 class="service-title">По направление на дейност "Частна охранителна дейност"</h2>                            
+                        </button>
+                        <div id="service-subnav-3" class="collapse">
+                            <div class="service-subnav">
+                                <div class="service-subnav-search">
+                                    <div class="input-group form-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="ui-icon ui-icon-search-color" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm" title="Критерии за търсене на услуга" placeholder="Търсене">
+                                        <!-- <div class="input-group-append">
+                                            <button type="button" class="btn btn-light btn-sm clear-button" title="Изчисти"><i class="ui-icon ui-icon-clear"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li><a href="#">Издаване на лиценз за извършване на частна охранителна дейност</a></li>
+                                    <li><a href="#">Приемане на уведомление за сключване или прекратяване на трудов договор между лице, получило лиценз за извършване на частна охранителна дейност, и служител от неговия специализиран персонал</a></li>
+                                    <li><a href="#">Приемане на уведомление за поемане или снемане от охрана на обект при извършване на частна охранителна дейност</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-wrapper">
+
+        <footer class="footer">
+            <div class="footer-containter-bg">
+            <div class="footer-links-container fixed-content-width">  
+                    <ul>
+                        <li class="footer-link"><a href="#">Новини</a></li>
+                        <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                        <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                    </ul>
+
+                    <ul>
+                        <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                        <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                        <li class="footer-link"><a href="#">Средства за автентикация</a></li>
+                    </ul>
+
+                   <ul>
+                        <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                        <li class="footer-link"><a href="#">Бисквитки</a></li>
+                        <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                   </ul>
+    
+                    <ul>
+                        <li class="footer-link"><a href="#">Помощ</a></li>
+                        <li class="footer-link"><a href="#">Видео уроци</a></li>
+                        <li class="footer-link"><a href="#">Контакти</a></li>
+                    </ul>
+           
+                <div class="fixed-content-width">
+                    <div class="software-version">Версия: 0.5.0.1</div>
+                    
+                </div>
+        </div>
+    </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        // Show Navigation
+        function toggleNav() {
+            $(".navbar-top-container--mobile").collapse('toggle');
+        };
+ 
+        $(document).ready(function () {
+
+        });
+
+
+    </script>
+    
+
+  </body>
+</html>

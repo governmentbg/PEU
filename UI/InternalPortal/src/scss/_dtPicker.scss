@@ -1,0 +1,72 @@
+/* ----  rdtPicker  ---- */
+
+// .rdtPicker {
+    
+// 	@include box-shadow(0 6px 12px rgba(0,0,0,.175));
+// 	background-color: $dropdown-bg;
+// 	border: 1px solid $dropdown-fallback-border; // IE8 fallback
+// 	border: 1px solid $dropdown-border;
+// 	border-radius: $border-radius-base;
+// }
+
+
+// .rdtPicker td.rdtActive, .rdtPicker td.rdtActive:hover {
+//     background-color: $dropdown-link-active-bg;
+//     color: white;
+//     text-shadow: none;
+// }
+
+// .rdtPicker td.rdtToday::before {
+// 	border-bottom-color: $dropdown-link-active-bg;
+// }
+
+// .rdtPicker td.rdtDay:hover, .rdtPicker td.rdtHour:hover, .rdtPicker td.rdtMinute:hover, .rdtPicker td.rdtSecond:hover, .rdtPicker .rdtTimeToggle:hover {
+//     color: $dropdown-link-active-bg;
+//     background-color: $dropdown-link-hover-bg;
+// }
+	
+
+// .rdtPicker thead tr:first-child th:hover {
+//     color: $dropdown-link-active-bg;
+// 	background-color: $dropdown-link-hover-bg;
+// }	
+
+// .rdtPicker th {
+//     border-bottom: none;
+// }
+	
+/* ----  /rdtPicker  ---- */	
+
+
+/* ----  Tempus Dominus Bootstrap 4 DT Picker  ---- */
+
+
+// .bootstrap-datetimepicker-widget {
+//     table { 
+//         thead tr:first-child th:hover {
+//             background: #e9ecef;
+//         }
+
+//         td.today::before {
+//             content: '';
+//             display: inline-block;
+//             border: solid transparent;
+//             border-width: 0 0 7px 7px;
+//             border-bottom-color: red;
+//             border-top-color: rgba(0, 0, 0, 0.2);
+//             position: absolute;
+//             bottom: 4px;
+//             right: 4px;
+//         }
+
+//         td.active, td.active:hover {
+//             background-color: #007bff;
+//             color: #fff;
+//             text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+//         }
+//     }
+// }
+
+
+
+/* ----  /Tempus Dominus Bootstrap 4 DT Picker  ---- */

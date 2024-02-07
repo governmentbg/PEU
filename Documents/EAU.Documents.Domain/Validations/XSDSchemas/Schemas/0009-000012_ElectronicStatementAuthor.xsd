@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/0009-000012" xmlns="http://ereg.egov.bg/segment/0009-000012" xmlns:esaq="http://ereg.egov.bg/value/0008-000035" xmlns:esaqt="http://ereg.egov.bg/value/R-2060" xmlns:pbd="http://ereg.egov.bg/segment/0009-000008" xmlns:fcbd="http://ereg.egov.bg/segment/0009-000011" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000008" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000011" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000035" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2060" />
+  <xsd:complexType name="ElectronicStatementAuthor">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Автор на електронно изявление</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice minOccurs="0">
+        <xsd:element name="AuthorQuality" type="esaq:ElectronicServiceAuthorQuality" minOccurs="0" />
+        <xsd:element name="AuthorQualityType" type="esaqt:ElectronicServiceAuthorQualityType" minOccurs="0" />
+      </xsd:choice>
+      <xsd:choice>
+        <xsd:element name="Person" type="pbd:PersonBasicData" />
+        <xsd:element name="ForeignCitizen" type="fcbd:ForeignCitizenBasicData" />
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

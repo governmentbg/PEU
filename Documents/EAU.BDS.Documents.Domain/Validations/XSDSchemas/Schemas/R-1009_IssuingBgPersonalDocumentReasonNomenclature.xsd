@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1009" xmlns="http://ereg.egov.bg/nomenclature/R-1009" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:simpleType name="IssuingBgPersonalDocumentReasonNomenclature">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Номенклатура на възможни причини за издаване на български лични документи.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<!-- Изгубване. -->
+			<xsd:enumeration value="0"/>
+			<!-- Кражба. -->
+			<xsd:enumeration value="1"/>
+			<!-- Повреждане. -->
+			<xsd:enumeration value="2"/>
+			<!-- Унищожаване. -->
+			<xsd:enumeration value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

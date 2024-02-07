@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1102" xmlns="http://ereg.egov.bg/nomenclature/R-1102" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="EntityOrPersonNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номенклатура на типовете заявления според лицето</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- за юридически лица -->
+      <xsd:enumeration value="2001" />
+      <!-- за физически лица -->
+      <xsd:enumeration value="2002" /> 
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

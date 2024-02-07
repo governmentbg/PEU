@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3006" xmlns="http://ereg.egov.bg/segment/R-3006" xmlns:mp="http://ereg.egov.bg/value/R-2038" xmlns:c="http://ereg.egov.bg/segment/0009-000133" xmlns:cn="http://ereg.egov.bg/segment/R-3020" xmlns:pd="http://ereg.egov.bg/segment/R-3005" xmlns:id="http://ereg.egov.bg/segment/0009-000099" xmlns:apd="http://ereg.egov.bg/segment/R-3018" xmlns:ptgd="http://ereg.egov.bg/segment/R-3019" xmlns:pidt="http://ereg.egov.bg/value/0008-000212" xmlns:pa="http://ereg.egov.bg/segment/0009-000094" xmlns:prd="http://ereg.egov.bg/segment/0009-000110" xmlns:paa="http://ereg.egov.bg/value/R-2011" xmlns:crbd="http://ereg.egov.bg/segment/0009-000135" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3005" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000212" />  
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2011" /> 
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2038" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000099" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000110" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000135" />
+    <xsd:import namespace="http://ereg.egov.bg/segment/0009-000133" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3018" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3019" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3020" />
+  <xsd:complexType name="ApplicationForIssuanceOfPersonalDocumentsOfBulgarianCitizensData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление за издаване на лични документи на български граждани</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IdentificationDocuments" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="IdentificationDocumentType" type="pidt:IdentityDocumentType" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>      
+      <xsd:element name="Person" type="pd:PersonData"  />
+      <xsd:element name="Phone" type="mp:MobilePhone" minOccurs="0" />
+      <xsd:element name="ChangedNames" type="cn:ChangedNames" minOccurs="0" />
+      <xsd:element name="PermanentAddress" type="pa:PersonAddress"  />
+      <xsd:element name="ChangedAddress" type="pa:PersonAddress" minOccurs="0" /> 
+      <xsd:element name="MotherData" type="prd:ParentData" minOccurs="0" />
+      <xsd:element name="FatherData" type="prd:ParentData" minOccurs="0" />
+      <xsd:element name="SpouseData" type="crbd:CitizenshipRegistrationBasicData" minOccurs="0" />
+      <xsd:element name="AuthorizedPersonData" type="apd:AuthorizedPersonData" minOccurs="0" />
+      <xsd:element name="FirstParentTrusteeGuardianData" type="ptgd:ParentTrusteeGuardianData" minOccurs="0" />
+      <xsd:element name="SecondParentTrusteeGuardianData" type="ptgd:ParentTrusteeGuardianData" minOccurs="0" />
+      <xsd:element name="OtherCitizenship" type="c:Citizenship" minOccurs="0" />
+      <xsd:element name="AbroadAddress" type="paa:PersonAbroadAddress" minOccurs="0" />      
+    <xsd:element name="HasDocumentForDisabilities" type="xsd:boolean" minOccurs="0" />
+	<xsd:element name="ServiceCode" type="xsd:integer" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,266 @@
+/* ----  Loader  ---- */
+
+
+.freeze-overlay {
+	position: fixed;
+	z-index: $zindex-freeze;
+	width:100%;
+	height:100%;
+	top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;	
+	background-color: $white;
+	opacity: 0;
+}
+
+.load-overlay, .local-load-overlay {
+	display: none;
+	position: fixed;
+	z-index: $zindex-loader;
+	width:100%;
+	height:100%;
+	top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	background-color: fade-out($gray-100, .1);
+	
+	&.show {
+		display: block;
+	}
+
+	animation: overlay-fade-in .1s ease-in;
+}
+
+.local-load-overlay {
+	position: absolute;
+	z-index: $zindex-local-loader;
+	background-color: fade-out($white, .1);
+
+	animation: local-overlay-fade-in .1s ease-in;
+
+	.loader, .local-loader {
+		.ui-icon-loading {
+			width: 7rem;
+			height: 100%;
+			max-height: 7rem;
+		}
+	}
+}
+
+
+.loader, .local-loader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;	
+	
+	animation: loader-fade-in .3s ease-in;
+	animation-delay: .1s;
+	animation-fill-mode: both;
+
+	.ui-icon-loading {
+		flex: 0 0 auto;
+		width: 10rem;
+		height: 100%;
+		max-height: 10rem;
+	}
+}
+
+
+.loader-wrapper {
+	position: relative;
+	min-height: 3rem;
+
+	transition: all 2s;
+}
+
+
+// loader animations
+@keyframes overlay-fade-in {
+	0% {	
+		background-color: fade-out($gray-100, 1);
+	}
+	100% {	
+		background-color: fade-out($gray-100, .1);
+	}
+}
+  
+@keyframes local-overlay-fade-in {
+	0% {	
+		background-color: fade-out($white, 1);
+	}
+	100% {	
+		background-color: fade-out($white, .1);
+	}
+}
+
+@keyframes loader-fade-in {
+	0% {	
+		opacity: 0;
+	}
+	100% {	
+		opacity: 1;
+	}
+}
+
+@keyframes loader-fade-out {
+	0% {	
+		opacity: 1;
+	}
+	100% {	
+		opacity: 0;
+	}
+}
+
+/* ----  /Loader  ---- */
+
+
+
+
+
+
+
+/* ----  React Loader  ---- */
+
+
+$loader-min-size: 2rem;
+$loader-local-max-size: 7rem;
+$loader-max-size: 10rem;
+
+.loader-overlay,
+.loader-overlay-local {
+
+	position: relative;
+
+	&:before {
+		content: '';
+		display: none;
+		position: fixed;		
+		z-index: $zindex-freeze;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: transparent;
+		// background-color: #ff60007f;
+		// color: transparent;
+		// font-size: 0;
+	}
+
+	&.load {
+		&::after {
+			content: '';
+			display: block;
+			position: fixed;			
+			z-index: $zindex-loader + 1;
+			width: 100%;
+			height: 100%;
+			min-width: $loader-min-size;
+			max-width: $loader-max-size;
+			min-height: $loader-min-size;
+			max-height: $loader-max-size;
+			top: 50%;
+			left: 50%;			
+	
+			background-image: url("../images/icons/stat/spinner.svg");
+			background-position: 30% center;
+			background-repeat: no-repeat;			
+			background-size: 100% 100%;
+
+			animation-name: loader-spin, loader-fade-in;
+			animation-duration: 1s, .3s ;
+			animation-iteration-count: infinite, 1;
+			animation-timing-function: cubic-bezier(0, 0.05, 1, 0.95);
+			animation-delay: .1s;
+			animation-fill-mode: both;
+
+			transform-origin: 0 0;
+		}
+	}
+
+	&.load.fadeout::after {
+		animation-name: loader-spin, loader-fade-out;
+		animation-duration: 1s, .3s ;
+	}
+	&.load.fadeout::before {
+		animation-name: loader-fade-out;
+		animation-duration: .6s ;
+		animation-fill-mode: forwards;
+	}
+
+	&.freeze {
+		&::before {			
+			display: block;
+		}
+	}
+	
+}
+
+.loader-overlay {
+	&::before {
+		position: fixed;
+		z-index: $zindex-loader;
+	}
+
+	&.load {
+		&::before {	
+			display: block;		
+			background-color: fade-out($gray-100, .1);
+			// background-color: #a0ffaf8f;
+
+			animation: overlay-fade-in .1s ease-in;
+		}
+
+		&::after {
+			display: block;
+			position: fixed;			
+			z-index: $zindex-loader + 1;			
+		}
+	}
+}
+
+.loader-overlay-local {
+	&::before {
+		position: absolute;
+		z-index: $zindex-local-loader;
+
+		animation: local-overlay-fade-in .1s ease-in;
+	}
+	
+	&.load {		
+		min-height: $loader-local-max-size + $template-margin-vertical;
+
+		&::before {
+			display: block;
+			background-color: fade-out($white, .1);
+			// background-color: #aa44ff3f;
+		}
+
+		&::after {
+			display: block;
+			position: absolute;			
+			z-index: $zindex-local-loader + 1;
+
+			min-width: $loader-min-size;
+			max-width: $loader-local-max-size;
+			min-height: $loader-min-size;
+			max-height: $loader-local-max-size;
+		}
+	}
+}
+
+@keyframes loader-spin {
+	0% {
+		transform: rotate(0deg) translate(-50%, -50%);
+	}
+	100% {	
+		transform: rotate(360deg) translate(-50%, -50%);
+	}
+  }
+  
+ 
+ /* ----  /React Loader  ---- */

@@ -1,0 +1,13 @@
+[data-editable] {
+    padding: 0.25rem 0;
+    border-bottom: 2px dotted #b8b8b8;
+    min-width: 6.25rem;
+    min-height: 1rem;
+    border-color: rgb(255, 98, 124);
+    background-color: rgb(255, 224, 229);
+}
+
+span[data-editable] {
+    text-indent: 0;
+    display: inline-block;
+}

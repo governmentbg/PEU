@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2233" xmlns="http://ereg.egov.bg/nomenclature/R-2233"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:simpleType name="VehicleOwnerAdditionalCircumstancesNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Статус на лицето</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Лицето е починало -->
+      <xsd:enumeration value="1" />
+      <!-- Лицето е лишено от свобода -->
+      <xsd:enumeration value="2" />
+      <!-- Лицето се представлява от родител, законен представител -->
+      <xsd:enumeration value="3" />
+      <!--Лицето се представлява от настойник-->
+      <xsd:enumeration value="4" />
+      <!--Лицето се представлява от попечител-->
+      <xsd:enumeration value="5" />
+      <!--Лицето е с изтекъл срок на пребиваване/ отнет статут на пребиваване-->
+      <xsd:enumeration value="6" />
+      <!--Продажбата се извършва чрез синдик-->
+      <xsd:enumeration value="7" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,97 @@
+/* ----  Tree List  ---- */
+
+.tree-list {
+    list-style: none;
+    // background: wheat;
+
+    // padding: $template-padding-vertical $template-padding-horizontal;
+        
+    margin: 0; 
+    padding: 0;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-left: $template-padding-horizontal * 2.5;
+    }
+
+    li {
+        padding: $template-padding-vertical /2 0;
+        overflow-wrap: break-word;
+    }
+
+
+    .tree-list-tile {
+        // font-weight: bold;
+        vertical-align: middle;
+    }
+
+    .tree-list-toggle {
+        display: flex;
+
+        a {
+            flex: 0 0 auto;
+        }
+    }
+
+    .tree-list-collapsible {
+        padding-left: $template-padding-horizontal * 2.5;
+
+        ul {
+            margin-top: $template-margin-vertical /2;            
+            padding-left: 0;
+        }
+        
+        li:not(:last-child) ul {
+            margin-bottom: $template-margin-vertical /2;
+        }
+    }
+
+    .toggle-collapse {
+        margin-right: $template-padding-horizontal;
+        line-height: 1.1;
+        width: $template-padding-horizontal * 1.5;
+
+        .ui-icon {
+            transition: ease-in-out 0.3s;
+            transform: rotate(90deg);
+
+			width: .8125rem;
+			height: .8125rem;
+        }
+        &.collapsed {
+            .ui-icon {
+                transform: rotate(0deg);
+                transition: ease-in-out 0.3s;
+            }
+        }
+    }
+
+    h4 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: inherit;
+    }
+
+}
+
+.tree-list--selectable {
+
+}
+
+.tree-list-tile {
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.tree-list--striped {
+    li {
+        padding: $table-cell-padding;
+            
+        &:nth-child(odd) {
+            background-color: $table-accent-bg;
+        }
+    }
+}
+
+/* ----  /Tree List  ---- */

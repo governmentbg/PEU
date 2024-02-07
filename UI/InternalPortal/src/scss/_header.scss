@@ -1,0 +1,89 @@
+
+/* ----  Header  ---- */
+
+.header {
+	background-color: $gray-100;
+	border-bottom: 1px solid $gray-300;
+}
+
+.registryagency-text {
+	display: inline-block;
+	padding-right: 1.375rem;//22px;
+
+}
+
+.logo {
+	display: inline-block;
+}
+
+.header-container {
+	padding: $template-container-padding-vertical * 2 $template-container-padding-horizontal;
+	margin: 0;
+	align-items: center;
+
+
+	.divider {
+		display: inline-block;
+		vertical-align: middle;
+		border-left: 1px solid $gray-300;
+		min-height: 4.375rem; //70px;
+		margin: 0 .625rem 0 1.875rem; // margin: 0 10px 0 30px;
+		width: 1px;
+	}
+	
+}
+
+
+.header-title {
+	display: inline-block;
+	vertical-align: middle;
+	
+	h1, p {
+		margin:0;	
+	}
+
+	h1 {
+		margin-bottom: .1875rem;//3px;
+		font-size: 1.375rem;
+		// font-style: italic;
+		font-weight: bold;
+		line-height: 0.9;
+		color: $blue-dark;				
+	} 
+
+	p {	
+		padding-top: 0.16rem;
+		font-size: 1rem;		
+		line-height: 1.15;		
+	}
+}
+
+.brand-line {
+	height:6px;
+	@include brand-gradient();
+	border-bottom: 1px solid $white;
+}
+
+@include media-breakpoint-down(xs) {
+
+	.header-container {						
+		padding:  $template-container-padding-vertical * 1.5 $template-container-padding-horizontal * 2;		
+		text-align: center;
+	}
+		
+	.header-title
+	{
+		h1 {
+			font-size: 1.25rem;
+		}
+
+		p {	
+			font-size: 0.875rem;		
+		}
+
+	}
+	
+
+}
+	
+/* ----  /Header  ---- */

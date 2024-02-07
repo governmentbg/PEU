@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1104" xmlns="http://ereg.egov.bg/nomenclature/R-1104" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="PointOfPrivateSecurityServicesLawNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номеклатура за	вид на дейност от Закона за частна охранителна дейност</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!--	лична охрана на физически лица -->
+      <xsd:enumeration value="R-301" />
+      <!--	охрана на имуществото на физически или юридически лица -->
+      <xsd:enumeration value="R-302" />
+      <!-- охрана на мероприятия -->
+      <xsd:enumeration value="R-303" />
+      <!-- охрана на ценни пратки и товари -->
+      <xsd:enumeration value="R-304" />
+      <!-- самоохрана на имущество на търговци или юридически лица -->
+      <xsd:enumeration value="R-305" />
+       <!-- сигнално-охранителна дейност -->
+      <xsd:enumeration value="R-307" />
+      <!-- охрана на обекти - недвижими имоти -->
+      <xsd:enumeration value="R-308" />
+      <!-- охрана на селскостопанско имущество -->
+      <xsd:enumeration value="R-309" />     
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

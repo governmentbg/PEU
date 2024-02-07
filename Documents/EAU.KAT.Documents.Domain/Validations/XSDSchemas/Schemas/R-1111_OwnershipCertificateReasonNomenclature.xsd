@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1111" xmlns="http://ereg.egov.bg/nomenclature/R-1111" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="OwnershipCertificateReasonNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номенклатура на причините, за които се иска издаване на удостоверение</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- други -->
+      <xsd:enumeration value="2001" />
+      <!--пред	застрахователни дружества -->
+      <xsd:enumeration value="2002" />
+      <!--пред	консулски служби -->
+      <xsd:enumeration value="2003" />
+      <!--за	министерство на транспорта -->
+      <xsd:enumeration value="2004" />
+      <!--пред	митнически органи -->
+      <xsd:enumeration value="2005" />
+      <!--пред  нотариус -->
+      <xsd:enumeration value="2006" />
+      <!--пред	съдебни власти -->
+      <xsd:enumeration value="2007" />
+      <!--пред финансови органи -->
+      <xsd:enumeration value="2008" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

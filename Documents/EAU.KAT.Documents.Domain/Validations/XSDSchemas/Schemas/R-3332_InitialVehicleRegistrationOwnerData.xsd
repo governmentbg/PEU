@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3332" xmlns="http://ereg.egov.bg/segment/R-3332"
+            xmlns:pi="http://ereg.egov.bg/segment/0009-000006"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000006" />
+
+  <xsd:element name="InitialVehicleRegistrationOwnerData" type="InitialVehicleRegistrationOwnerData" />
+  <xsd:complexType name="InitialVehicleRegistrationOwnerData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за собствник/притежател/ползвател на ППС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice minOccurs="1" maxOccurs="1">
+        <xsd:element name="PersonIdentifier" type="pi:PersonIdentifier" minOccurs="0" />
+        <xsd:element name="Item" type="xsd:string" minOccurs="0" />
+      </xsd:choice>
+      <xsd:element name="IsVehicleRepresentative" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="IsOwnerOfVehicleRegistrationCoupon" type="xsd:boolean" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2060" xmlns="http://ereg.egov.bg/value/R-2060" xmlns:esaqn="http://ereg.egov.bg/nomenclature/R-1050" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1050" />
+  <xsd:simpleType name="ElectronicServiceAuthorQualityType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Качество, в което авторът действа от името на титуляра и обем на представителната власт</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="esaqn:ElectronicServiceAuthorQualityTypeNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="web.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="web.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MVR.WAIS.Integration.Notary.Core" Version="1.0.6" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00887" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Documents\EAU.BDS.Documents\EAU.BDS.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.COD.Documents\EAU.COD.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.Documents\EAU.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.KAT.Documents\EAU.KAT.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.KOS.Documents\EAU.KOS.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.Migr.Documents\EAU.Migr.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.PBZN.Documents\EAU.PBZN.Documents.csproj" />
+    <ProjectReference Include="..\EAU.Core\EAU.Core.csproj" />
+    <ProjectReference Include="..\EAU.Rebus\EAU.Rebus.csproj" />
+    <ProjectReference Include="..\EAU.Services\EAU.Services.csproj" />
+    <ProjectReference Include="..\EAU.Users\EAU.Users.csproj" />
+    <ProjectReference Include="..\EAU.Web.Core\EAU.Web.Core.csproj" />
+    <ProjectReference Include="..\EAU\EAU.csproj" />
+  </ItemGroup>
+
+
+</Project>

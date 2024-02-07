@@ -1,0 +1,168 @@
+﻿@model LoginViewModel
+@inject Microsoft.Extensions.Localization.IStringLocalizer Localizer
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@using Microsoft.Extensions.Configuration
+
+<div class="page-header-wrapper section-wrapper fixed-content-width">
+    <div class="breadcrumbs"></div>
+    <div class="page-header">
+        <div class="row">
+            <div class="col">
+                <h1 class="page-title">@Localizer["GL_PORTAL_ENTRANCE_L"]</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+
+    @if (ViewData["showNotFoundKepInformation"] != null && (bool)ViewData["showNotFoundKepInformation"] == true)
+    {
+        @await Html.PartialAsync("Information")
+    }
+
+    @{
+        var mtlsHostAddress = new Uri(Configuration.GetEAUSection().GetValue<string>("GL_MTLS_IDSRV_URL"));
+        string publicApi = Configuration.GetEAUSection().GetValue<string>("GL_EAU_PUBLIC_APP");
+        publicApi = publicApi.EndsWith('/') ? publicApi : publicApi + '/';
+
+        Func<string, string> uriBuilder = (string s) => $"{publicApi}{s}";
+    }
+    <div class="page-wrapper">
+        <div class="ui-form ui-form--input">
+            @await Html.PartialAsync("_ValidationSummary")
+
+            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+            {
+                <div class="alert alert-success" role="alert"><p>@Model.SuccessMessage</p></div>
+            }
+
+            @if (Model.AllowResendProfileRegistrationMail)
+            {
+                <form method="post" asp-controller="Account">
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <input type="hidden" asp-for="Username" />
+                    <div class="alert alert-warning" role="alert">@Localizer["GL_USR_00007_I"]<button asp-action="ResendRegMail" class="btn btn-link alert-link"><b>@Localizer["GL_USR_SEND_REG_L"]</b></button></div>
+                </form>
+            }
+            <div class="row">
+                <div class="col-md">
+                    @if (Model.EnableUsrNamePwdAuth)
+                    {
+                        <form method="post" asp-controller="Account">
+                            <input type="hidden" asp-for="ReturnUrl" />
+
+                            <fieldset class="fields-group">
+                                <legend class="sr-only">@Localizer["GL_PORTAL_ENTRANCE_L"]</legend>
+                                <div class="row">
+                                    <div class="form-group col">
+                                        <label class="form-control-label" asp-for="Username">@Localizer["GL_EMAIL_L"]</label>
+                                        <input type="text" class="form-control" asp-for="Username" autofocus>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col">
+                                        <label class="form-control-label" asp-for="Password">@Localizer["GL_PASSWORD_L"]</label>
+                                        <input type="password" class="form-control" asp-for="Password" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="form-group col-sm order-0 order-sm-2">
+                                        <button type="submit" class="btn btn-primary btn-block" asp-action="Login" aria-label=@Localizer["GL_PORTAL_ENTRANCE_L"]>@Localizer["GL_LOGIN_L"]</button>
+                                    </div>
+                                    <div class="col-1 d-none d-sm-block order-1"></div>
+                                    <div class="form-group col-sm order-2 order-sm-0">
+                                        <button class="btn btn-secondary btn-block" asp-action="CancelLogin">@Localizer["GL_REFUSE_L"]</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="row mt-2 mb-4">
+                                <div class="col-auto">
+                                    <a href=@uriBuilder("users/registration")>@Localizer["GL_REGISTRATION_L"]</a>
+                                </div>
+                                <div class="col"></div>
+                                <div class="col-auto">
+                                    <a href=@uriBuilder("users/resetPassword")>@Localizer["GL_FORGOTTEN_PASSWORD_L"]</a>
+                                </div>
+                            </div>
+
+                        </form>
+                    }
+
+                </div>
+                <div class="col d-none d-md-block page-vertical-divider"></div>
+                <div class="col-md">
+
+                    @if (Model.EnableKEPAuth)
+                    {
+                        string loginKEPUrl = $"{mtlsHostAddress.ToString().TrimEnd('/')}/Account/GetCert?returnUrl={Uri.EscapeDataString(Model.LoginKEPReturnUrl)}";
+
+                        <section class="card card--box login-type">
+                            <a class="remove-underline" href=@loginKEPUrl>
+                                <div class="card-header card-header--rounded">
+                                    <div class="form-row">
+                                        <div class="col align-self-center">
+                                            <h3 class="card-header__title">
+                                                @Localizer["GL_ENTRANCE_KEP_L"]
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </section>
+                    }
+
+                    @if (Model.EnableNRAAuth && Model.NRAProvider != null)
+                    {
+                        <section class="card card--box login-type">
+                            <a class="remove-underline" asp-controller="External" asp-action="Challenge"
+                               asp-route-provider="@Model.NRAProvider.AuthenticationScheme" asp-route-returnUrl="@Model.ReturnUrl">
+                                <div class="card-header card-header--rounded">
+                                    <div class="form-row">
+                                        <div class="col align-self-center">
+                                            <h3 class="card-header__title">
+                                                @Localizer["GL_ENTRANCE_PIK_L"]
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </section>
+                    }
+
+                    @if (Model.EnableEAuth)
+                    {
+                        <section class="card card--box login-type">
+                            <a class="remove-underline" asp-controller="Saml" asp-action="InitiateSso" asp-route-returnUrl="@Model.ReturnUrl">
+                                <div class="card-header card-header--rounded">
+                                    <div class="form-row">
+                                        <div class="col align-self-center">
+                                            <h3 class="card-header__title">@Localizer["GL_ENTRANCE_EAUTH_L"]</h3>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </section>
+                    }
+
+                    @if (Model.EnableWindowsAuth && Model.WindowsProvider != null)
+                    {
+                        <section class="card card--box login-type">
+                            <a class="remove-underline" asp-controller="External"
+                               asp-action="Challenge" asp-route-provider="@Model.WindowsProvider.AuthenticationScheme" asp-route-returnUrl="@Model.ReturnUrl">
+                                <div class="card-header card-header--rounded">
+                                    <div class="form-row">
+                                        <div class="col align-self-center">
+                                            <h3 class="card-header__title">
+                                                @Localizer["GL_ENTRANCE_STAFF_L"]
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </section>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

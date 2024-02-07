@@ -1,0 +1,64 @@
+/* ----  Autocomplete Combobox  ---- */
+
+
+
+// jQuery UI styles
+.custom-combobox {
+    .btn .ui-icon {
+        width: .75rem;
+        height: .75rem;
+    }
+}
+
+.ui-autocomplete {
+
+    padding: 0;
+    // width: auto;
+    // max-width: 30rem;
+    max-height: 15.625rem;
+    overflow-y: auto;
+
+    .ui-menu-item {
+
+        .ui-menu-item-wrapper {
+            padding: .3rem .6rem;
+            border: none;
+        }
+    }
+
+    .ui-state-active {
+       color: $dropdown-link-active-color;
+       @include gradient-bg($dropdown-link-active-bg);
+    }
+
+}
+
+// React component styles
+.auto-complete-container {
+    display: block;
+    position: relative;
+}
+
+.auto-complete-options {
+    @extend .dropdown-menu;
+    display: block;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+    overflow-x: auto;
+    max-height: 10rem;
+
+    & > li {
+        padding: .3rem .6rem;
+    }
+
+}
+
+.auto-complete-active-option {
+    color: $dropdown-link-active-color;
+    @include gradient-bg($dropdown-link-active-bg);
+}
+
+/* ----  /Autocomplete Combobox  ---- */
+
+

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2231" xmlns="http://ereg.egov.bg/nomenclature/R-2231"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:simpleType name="VehicleOwnershipChangeTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Вид на извършваната промяна на собственост</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Промяна на собственост на регистрирани ППС, собственост на едно ЮЛ или ФЛ -->
+      <xsd:enumeration value="1" />
+      <!-- Замяна на ППС между двама собственици -->
+      <xsd:enumeration value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

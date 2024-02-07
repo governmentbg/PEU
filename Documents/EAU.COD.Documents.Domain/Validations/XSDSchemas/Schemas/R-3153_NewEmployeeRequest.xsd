@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3153" xmlns="http://ereg.egov.bg/segment/R-3153" xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:e="http://ereg.egov.bg/segment/R-3152"
+            xmlns:ct="http://ereg.egov.bg/segment/R-2206"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3152" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2206" />
+
+  <xsd:complexType name="NewEmployeeRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Нов служител</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Employee" type="e:Employee"  />
+      <xsd:element name="ContractNumber" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ContractDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="ContractType" type="ct:ContractType" minOccurs="0" />
+      <xsd:element name="ContractPeriodInMonths" type="xsd:integer" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

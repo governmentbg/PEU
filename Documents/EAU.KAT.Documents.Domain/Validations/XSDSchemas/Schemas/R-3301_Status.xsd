@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3301"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/segment/R-3301"
+	elementFormDefault="qualified">
+  <xsd:element name="Status" type="Status" />
+  <xsd:complexType name="Status">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Статус от проверки.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Blocking" type="xsd:boolean" minOccurs="0" />
+      <xsd:element name="Description" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

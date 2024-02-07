@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3101" xmlns="http://ereg.egov.bg/segment/R-3101" xmlns:drsd="http://ereg.egov.bg/value/0008-000004" 
+xmlns:du="http://ereg.egov.bg/segment/0009-000001" xmlns:espbd="http://ereg.egov.bg/segment/0009-000002" 
+xmlns:dtn="http://ereg.egov.bg/value/0008-000007" xmlns:dtu="http://ereg.egov.bg/segment/0009-000003" 
+xmlns:xds="http://ereg.egov.bg/segment/0009-000004" xmlns:esa="http://ereg.egov.bg/segment/0009-000016" 
+xmlns:acu="http://ereg.egov.bg/segment/0009-000073" xmlns:tsmh="http://ereg.egov.bg/value/R-2102" 
+xmlns:tsmg="http://ereg.egov.bg/value/R-2103" xmlns:tdrn="http://ereg.egov.bg/value/R-2105" xmlns:td="http://ereg.egov.bg/value/R-2104" 
+  xmlns:pd="http://ereg.egov.bg/segment/R-3037" xmlns:abn="http://ereg.egov.bg/value/0008-000047" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000001" />  
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000002" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000007" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000003" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000016" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000073" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2102" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2103" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2104" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2105" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000047" />
+  <xsd:element name="TerminationOfServiceMessage" type="TerminationOfServiceMessage" />
+  <xsd:complexType name="TerminationOfServiceMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Уведомление за прекратяване на услугата</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentTypeURI" type="dtu:DocumentTypeURI"   />
+      <xsd:element name="DocumentTypeName" type="dtn:DocumentTypeName"   />
+      <xsd:element name="DocumentURI" type="du:DocumentURI"   />
+      <xsd:element name="DocumentReceiptOrSigningDate" type="drsd:DocumentReceiptOrSigningDate"   />
+      <xsd:element name="ElectronicServiceProviderBasicData" type="espbd:ElectronicServiceProviderBasicData"   />
+      <xsd:element name="ElectronicServiceApplicant" type="esa:ElectronicServiceApplicant"   />
+      <xsd:element name="TerminationOfServiceMessageHeader" type="tsmh:TerminationOfServiceMessageHeader"   />
+      <xsd:element name="AISCaseURI" type="acu:AISCaseURI"   />
+	  <xsd:element name="Grounds"  maxOccurs="unbounded">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="TerminationOfServiceMessageGround" type="tsmg:TerminationOfServiceMessageGround" />
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+	  <xsd:element name="TerminationDocumentRegistrationNumber" type="tdrn:TerminationDocumentRegistrationNumber"   />
+	  <xsd:element name="TerminationDate" type="td:TerminationDate"   />
+	  <xsd:element name="PoliceDepartment" type="pd:PoliceDepartment"   />
+      <xsd:element name="AdministrativeBodyName" type="abn:AdministrativeBodyName"   />
+	  <xsd:element name="Signature" type="xds:XMLDigitalSignature"   />      
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

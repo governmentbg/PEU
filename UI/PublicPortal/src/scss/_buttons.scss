@@ -1,0 +1,132 @@
+/* ----  Buttons  ---- */
+
+a.btn {
+    text-decoration: none;
+}
+
+.btn {
+    cursor: default;
+}
+
+.btn:not(:disabled) {
+    cursor: pointer;
+}
+
+.btn-primary {
+    @include button-variant($primary, $primary, $blue-dark, $blue-dark, $blue-dark, $blue-dark);
+}
+
+.btn-secondary {
+    @include button-variant(transparent, $primary, $blue-dark, $blue-dark, $blue-dark, $blue-dark);
+    @include button-outline-variant($primary, color-yiq($primary), $blue-dark, $blue-dark);
+
+}
+
+.btn-link {    
+    display: inline;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: left;
+    vertical-align: inherit;
+    text-decoration: $link-decoration;
+    &:focus {              
+        text-decoration: $link-decoration;
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+        
+        &:hover {              
+            text-decoration: $link-hover-decoration;
+        }
+    }
+
+}
+
+// пач за btn-link
+.btn {
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      &.btn-link {
+        box-shadow: none;
+      }
+      &:focus {
+        &.btn-link {
+            box-shadow: none;
+        }      
+      }
+    }
+}
+
+
+.btn {
+
+    white-space: normal;
+
+    .ui-icon {
+        width: 1rem;
+        height: 1rem;
+        vertical-align: middle;
+
+        &.mr-1 {
+            margin-right: 0.3125rem !important
+        }
+    }
+}
+
+.btn-lg {
+    .ui-icon {
+        width: 1.15rem;
+        height: 1.15rem;
+        vertical-align: -18%;
+    }
+}
+
+.btn-sm {
+    .ui-icon {
+        vertical-align: -25%;
+        // width: .875rem;
+        // height: .875rem;
+    }
+}
+
+
+.btn-light {
+    border-width: 0;
+
+    .input-group & {
+        border-width: $border-width;
+        border-color: $gray-400;
+        &:not(:disabled):not(.disabled) {
+            &:hover,
+            &:focus,
+            &:active
+            {
+                border-color: $gray-400;
+                background-color: $gray-300;
+            }
+        }
+    }
+}
+
+
+.btn-context-help {
+    padding: 0;
+    // margin-left: $template-margin-horizontal / 2;
+    border-radius: 50%;
+    white-space: nowrap;
+    vertical-align: -20%;
+    &::before{
+        content: '';
+        display: block;
+        width: 1.25rem;
+        height: 1.25rem;
+        padding: 0;        
+        margin: 0.0625rem;        
+        background-image: url("../images/icons/btn/question-circle.svg");
+        background-position: center center;
+        background-repeat: no-repeat;        
+    }
+}
+
+/* ----  /Buttons  ---- */

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3116" xmlns="http://ereg.egov.bg/segment/R-3116"  xmlns:bd="http://ereg.egov.bg/value/0008-000022" xmlns:c="http://ereg.egov.bg/segment/0009-000133"  xmlns:adr="http://ereg.egov.bg/segment/0009-000094"  xmlns:cf="http://ereg.egov.bg/value/R-2129" xmlns:dmst="http://ereg.egov.bg/segment/R-3040" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000022" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000133" />
+  <xsd:import namespace ="http://ereg.egov.bg/segment/R-3040"/>
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2129"/>
+  <xsd:element name="ApplicationForIssuingDocumentForForeignersData" type="ApplicationForIssuingDocumentForForeignersData" />
+  <xsd:complexType name="ApplicationForIssuingDocumentForForeignersData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление за издаване на документ, удостоверяващ наличието на чуждо гражданство, постоянен адрес, настоящ адрес, адрес на пребиваване, предоставено право на пребиваване/ разрешен срок, основание/за влизане и напускане на Република България, както и за други събития и факти, свързани с пребиваването на чужденци в Република България и гражданите на ЕС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="BirthDate" type="xsd:string"  />
+      <xsd:element name="Address" type="adr:PersonAddress" />
+      <xsd:element name="CertificateFor" type="cf:CertificateFor"  />
+      <xsd:element name="Citizenship" type="c:Citizenship"  />
+      <xsd:element name="DocumentMustServeTo" type="dmst:DocumentMustServeTo"  />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

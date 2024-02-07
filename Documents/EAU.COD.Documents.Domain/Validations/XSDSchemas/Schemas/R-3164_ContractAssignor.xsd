@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3164" xmlns="http://ereg.egov.bg/segment/R-3164" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            
+                     xmlns:apet="http://ereg.egov.bg/segment/R-2230"
+                     xmlns:pad="http://ereg.egov.bg/segment/R-3165"
+                     xmlns:ead="http://ereg.egov.bg/segment/R-3166"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2230" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3165" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3166" />
+
+  <xsd:complexType name="ContractAssignor">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за възложителя по договора за охрана</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="AssignorPersonEntityType" type="apet:AssignorPersonEntityType" minOccurs="0" />
+      <xsd:element name="PersonAssignorData" type="pad:PersonAssignorData" minOccurs="0" />
+      <xsd:element name="EntityAssignorData" type="ead:EntityAssignorData" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

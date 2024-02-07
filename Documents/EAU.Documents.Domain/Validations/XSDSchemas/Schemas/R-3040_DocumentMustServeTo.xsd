@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3040" xmlns="http://ereg.egov.bg/segment/R-3040" xmlns:dmstrob="http://ereg.egov.bg/value/R-2052" xmlns:dmsta="http://ereg.egov.bg/value/R-2053" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2052" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2053" />
+  <xsd:complexType name="DocumentMustServeTo">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Документът трябва да послужи пред.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice minOccurs="1" maxOccurs="1">
+        <xsd:element name="InRepublicOfBulgariaDocumentMustServeTo" type="dmstrob:DocumentMustServeToRepublicOfBulgaria" />
+        <xsd:element name="AbroadDocumentMustServeTo" type="dmsta:DocumentMustServeToAbroad" />
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

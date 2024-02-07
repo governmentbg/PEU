@@ -1,0 +1,219 @@
+/* ----  stage-View  ---- */
+
+.stage-view {
+
+    // Connection Line Background
+    $line-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='24'%3E%3Crect x='1' y='0' width='2' height='24' fill='%238c8c8c'/%3E%3C/svg%3E");
+    $dashed-line-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='24' %3E%3Ccircle cy='5' cx='2' r='2' fill='%238c8c8c' /%3E%3Ccircle cy='12' cx='2' r='2' fill='%238c8c8c' /%3E%3Ccircle cy='19' cx='2' r='2' fill='%238c8c8c' /%3E%3C/svg%3E");    
+    $circle-size: 1.875rem;
+
+    margin-top: $template-margin-vertical *2;
+    margin-bottom: $template-margin-vertical;
+
+
+    &.collapsed {
+        .item-status-button {
+            .ui-icon {
+                transform: rotate(180deg);
+            }
+        }
+
+        .stage-list-item:only-child .stage-status:not(.first) {
+            &::after {
+                background-position: top;
+                background-repeat: no-repeat;
+                background-image: $dashed-line-background;
+                min-height: 1.5rem;
+            }
+            &::before {
+                min-height: 1.5rem;
+            }
+        }
+    }
+
+    .stage-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .stage-list-item {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        margin: 0;
+
+        .stage-status {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 3.75rem;
+
+            &::before,
+            &::after
+            {
+                content:"";
+                display: block;
+                flex: 1 1 auto;
+                width: 0.25rem;
+                background-position: center center;
+                background-repeat: repeat-y;
+                background-image: $line-background;                
+            }
+
+            &.first {
+                &::after {
+                    background: none;
+                }
+            }
+
+            &.last {
+                &::before {
+                    background: none;
+                }
+            }
+
+        }
+
+        &:first-child .stage-status:not(.last) {
+            &::before {
+                background-position: bottom;
+                background-repeat: no-repeat;
+                background-image: $dashed-line-background;
+                min-height: 1.5rem;
+            }
+            &::after {
+                min-height: 1.5rem;
+            }
+        }
+
+        .item-status {
+            flex: 0 0 auto;
+            margin: 0;
+            padding: 0;
+
+            .item-status-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+                text-align: center;
+                line-height: 1.1;
+
+                padding: 0.3125rem;
+                margin: 0;
+
+                min-width: $circle-size;
+                max-width: 12rem;
+                min-height: $circle-size;
+
+                border-radius: $circle-size *.8;
+                border: 0.125rem solid $gray-600;
+                background-color: $white;
+
+                .ui-icon {
+                    align-self: center;
+                }
+            }
+
+            //color variants
+            @each $color, $value in $theme-colors {
+                &.#{$color} {
+                    &.active,
+                    .item-status-content {
+                        background-color: theme-color-level($color, $alert-bg-level);
+                        border-color: theme-color-level($color, 0);
+                        color: theme-color-level($color, $alert-color-level);
+                    }
+                    &.active {
+                        background-color: $white;
+                    }
+                }
+            }
+
+            &.active {
+                padding: 0.625rem;
+                border-radius: $circle-size;
+                border: 0.125rem solid $gray-600;
+                background-color: $white;
+            }
+
+        }
+
+    }
+
+
+    .stage-info {
+        position: relative;
+        align-self: center;
+
+        background-color: $gray-100;
+        border-radius: $border-radius;
+        padding: $template-padding-vertical *1.5 $template-padding-horizontal *1.5;
+        margin-top: $template-margin-vertical /2;
+        margin-bottom: $template-margin-vertical /2;
+        margin-left: $template-margin-horizontal;        
+
+        .stage-info-date {
+            font-style: italic;
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+
+        .stage-info-title {
+            font-weight: bold;
+            font-size: 0.9375rem;
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .stage-info-body {
+            p {
+                margin-bottom: 0;
+            }
+        }
+
+        .button-bar {
+            margin-top: 0;
+            .left-side {
+                margin-right: 0;
+            }
+            .right-side  {
+                margin-left: 0;
+            }
+        }
+
+        &.arrow {
+
+            &::before {
+                position: absolute;
+                display: block;
+                content: "";
+                border-color: transparent;
+                border-style: solid;
+
+                left: -0.5rem;
+                top: 50%;
+                transform: translate(0, -.5rem);
+    
+                border-width: 0.5rem 0.5rem 0.5rem 0;
+                border-right-color:  $gray-100;
+            }
+
+        }
+
+    }
+
+    .item-status-button {
+        margin-left: 4.375rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 0 0.125rem 0.125rem 0;
+    }
+    
+}
+
+/* ----  /stage-View  ---- */

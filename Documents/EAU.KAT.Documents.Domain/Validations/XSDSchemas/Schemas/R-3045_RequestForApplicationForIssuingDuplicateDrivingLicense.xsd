@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3045" xmlns="http://ereg.egov.bg/segment/R-3045" xmlns:eash="http://ereg.egov.bg/segment/0009-000152" xmlns:stbt="http://ereg.egov.bg/value/0008-000143" xmlns:sard="http://ereg.egov.bg/segment/0009-000141" xmlns:easf="http://ereg.egov.bg/segment/0009-000153" xmlns:pidt="http://ereg.egov.bg/value/0008-000212" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000152" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000143"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000141" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000153" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000212" />
+  <xsd:element name="RequestForApplicationForIssuingDuplicateDrivingLicense" type="RequestForApplicationForIssuingDuplicateDrivingLicense" />
+  <xsd:complexType name="RequestForApplicationForIssuingDuplicateDrivingLicense">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Искане за заявяване на услуга за издаване на дубликат на СУМПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ElectronicAdministrativeServiceHeader" type="eash:ElectronicAdministrativeServiceHeader" minOccurs="0" />      
+      <xsd:element name="ServiceTermType" type="stbt:ServiceTermType"  minOccurs="0" />
+      <xsd:element name="ServiceApplicantReceiptData" type="sard:ServiceApplicantReceiptData" minOccurs="0" />
+      <xsd:element name="ElectronicAdministrativeServiceFooter" type="easf:ElectronicAdministrativeServiceFooter" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

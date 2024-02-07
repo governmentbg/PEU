@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3037" xmlns="http://ereg.egov.bg/segment/R-3037" xmlns:pdc="http://ereg.egov.bg/value/R-2008" xmlns:pdn="http://ereg.egov.bg/value/R-2009" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2008" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2009" />  
+  <xsd:complexType name="PoliceDepartment">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Полицейско управление</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PoliceDepartmentCode" type="pdc:PoliceDepartmentCode" minOccurs="0" />
+      <xsd:element name="PoliceDepartmentName" type="pdn:PoliceDepartmentName"  />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

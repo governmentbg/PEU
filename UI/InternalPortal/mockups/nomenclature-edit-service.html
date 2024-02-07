@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Портал за електронни административни услуги на МВР - Администриране</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- jquery-ui css -->
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+
+        <!-- For tempusdominus-bootstrap-4 datetimepicker -->
+        <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
+
+        <!-- Fonts -->
+        <link href="css/fonts.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" />
+    </head>
+
+<body>
+
+
+
+<div id="loader" class="load-overlay">
+    <div class="loader">
+        <i class="ui-icon ui-icon-loading ui-icon-spin"></i>
+        <span class="sr-only">Зареждане...</span>
+    </div>
+</div>
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+
+        <header class="header">
+            <div class="row header-container">
+                <div class="col-sm-auto">
+                    <img class="logo" src="images/logo.png">
+                </div> 
+                <div class="col-sm header-title header-title--register">
+                    <h1>Портал за електронни административни услуги на МВР</h1>
+                    <p>Административен модул - Дизайн компоненти</p>
+                </div>
+            </div>
+
+            <div class="brand-line"></div>
+        </header>
+
+        <nav class="navbar-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2">
+                        <a class="navbar-minimalize"><i class="ui-icon ui-icon-menu" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-10"><button class="system-button float-right" title="Помощ"><i class="ui-icon ui-icon-help navbar-top-icon" aria-hidden="true"></i></button><div class="horizontal-divider float-right"></div><div class="navbar-top-font-size float-right"><a href="javascript:setFontSize(-1);" title="Намали шрифта"><i class="ui-icon ui-icon-font-size-minus navbar-top-icon" aria-hidden="true"></i></a><a href="javascript:setFontSize();" title="Нормален шрифт"><i class="ui-icon ui-icon-font-size navbar-top-icon" aria-hidden="true"></i></a><a href="javascript:setFontSize(1);" title="Увеличи шрифта"><i class="ui-icon ui-icon-font-size-plus navbar-top-icon" aria-hidden="true"></i></a></div><div class="horizontal-divider float-right"></div><div class="dropdown float-right"><button class="system-button user-profile dropdown-toggle" href="#" data-toggle="dropdown"><i class="ui-icon ui-icon-user navbar-top-icon" aria-hidden="true"></i>Драгомир Петканов</button><div class="dropdown-menu" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#">Профил</a><a class="dropdown-item" href="#">Конфигурация</a><div class="dropdown-divider"></div><a class="dropdown-item" href="#">Изход</a></div></div></div>
+                </div>
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div id="content-wrapper" class="content-wrapper">
+        <div class="main-wrapper">
+            <div class="nav-wrapper">
+                <nav id="navbar-left" class="navbar-left">
+
+                    <ul>
+                        <li><a href="home.html" ><i class="nav-icon nav-icon-home"></i><span>Начало</span></a></li>
+                        <li><a href="#" class=""><i class="nav-icon nav-icon-users"></i><span>Потребители</span></a>
+                            <ul>
+                                <li><a href="register.html"><span>Регистрация</span></a></li>
+                                <li><a href="user-search.html"><span>Потребителски профили</span></a></li>
+                                <li><a href="audit-list.html"><span>Одитен журнал</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" ><i class="nav-icon nav-icon-documents"></i><span>Съдържание</span>  
+                        </a>
+                            <ul>
+                                <li><a href="declaration-template-list.html"><span>Шаблони за декларации</span></a></li>
+                                <li><a href="redefined-page-list.html"><span>Предефинирани страници с html съдържание</span></a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="#" ><i class="nav-icon nav-icon-language"></i><span>Преводи</span></a>
+                            <ul>
+                                <li><a href="service-list-translate.html"><span>Услуги</span></a></li>
+                                <li><a href="label-list-translate.html"><span>Етикети и съобщения</span></a></li>
+                                <li><a href="service-groups-list-translate .html"><span>Списък с групи услуги</span></a></li>
+                                <li><a href="redefined-page-list-translate.html"><span>Предефинирани страници с html съдържание</span></a></li>
+                            </ul>
+                        </li>
+                         <li><a href="#" class="active"><i class="nav-icon nav-icon-list"></i><span>Номенклатури</span></a>
+                            <ul>
+                                <li><a href="nomenclature-service-list.html"><span>Услуги</span></a></li>
+                                <li><a href="nomenclature-declaration-list.html"><span>Политики и декларации</span></a></li>
+                                <li><a href="nomenclature-label-list.html"><span>Етикети и съобщения</span></a></li>
+                                <li><a href="language-list.html"><span>Езици</span></a></li>
+                                <li><a href="service-groups-list.html"><span>Списък с групи услуги</span></a></li>
+                            </ul>
+                        
+                        </li>
+                        <li><a href="limit-list.html" class=""><i class="nav-icon nav-icon-limits"></i><span>Лимити</span></a></li>
+                        <li><a href="param-list.html" class=""><i class="nav-icon nav-icon-configuration"></i><span>Параметри</span></a></li>
+                        <li><a href="#" class=""><i class="nav-icon nav-icon-payment"></i><span>Плащания</span></a>
+                            <ul>
+                                <li><a href="epay.html"><span>Администриране на регистрационни данни на МВР за ePay</span></a></li>
+                                <li><a href="pep.html"><span>Администриране на регистрационни данни на МВР за ПЕП на ДАЕУ</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="nav-icon nav-icon-references"></i><span>Справки</span></a>
+                            <ul>
+                                <li><a href="reports-payment.html"><span>Справка за извършено плащане</span></a></li>
+                                <li><a href="reports-notary.html"><span>Справка за проявен интерес от нотариална кантора</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="page-wrapper">
+
+                <div class="container-fluid" >
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Начало</a></li>
+                            <li class="breadcrumb-item active"> Номенклатури</li>
+                            <li class="breadcrumb-item"><a href="nomenclature-service-list.html">Услуги</a></li>
+                             <li class="breadcrumb-item active" aria-current="page">Редактиране на услуга</li> 
+                        </ol>
+                    </nav>
+
+                    <div class="page-title">
+                        <h2>Редактиране на услуга</h2>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label  for="exampleInputPassword1">Статус</label>
+                                    <div class="form-inline">
+                                        <div class="custom-control-inline custom-control custom-radio">
+                                            <input disabled="" class="custom-control-input" type="radio" name="exampleRadiosA" id="exampleRadiosA1" value="option2">
+                                            <label class="custom-control-label" for="exampleRadiosA1">Aктивна</label>
+                                        </div>
+                                        <div class="custom-control-inline custom-control custom-radio">
+                                            <input disabled="" class="custom-control-input" type="radio" name="exampleRadiosA" id="exampleRadiosA2" value="option1" checked>
+                                            <label class="custom-control-label" for="exampleRadiosA2">Неактивна</label>
+                                        </div>
+  
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label> Дата на създаване/последна промяна</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-xl-8 col-xxl-6">
+                                            <input class="form-control" readonly="" value="22.06.2020 г. 10:30:05 ч.">
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label   class="required-field">Наименование</label>
+                                    <input type="email" class="form-control input-error">
+                                    <ul class="invalid-feedback">
+                                        <li>Полето "Наименование" трябва да бъде попълнено.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label class="required-field">Група</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Избери група</option>
+                                        <option>Български документи за самоличност</option>
+                                        <option>Контрол на общоопасните средства</option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group col-12 col-md-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label  class="required-field">Пореден номер</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12 col-md-8 col-xl-6">
+                                            <input type="email" class="form-control" aria-describedby="emailHelp">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-md-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label  class="required-field">УРИ на административна услуга</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12 col-md-8 col-xl-6">
+                                            <input type="email" class="form-control" aria-describedby="emailHelp">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            
+
+                            <br><br><b>---------------------(При избрана опция "Чрез заявление" за услугата се попълва информация за:)</b> <br/><br/>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label class="required-field">Начин на иницииране на услугата</label>
+                                    <select class="form-control" id="exampleFormControlSelect0">
+                                        <option>Избери</option>
+                                        <option>Чрез заявление</option>
+                                        <option>Чрез пренасочване на Web страница</option>
+                                        
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-12 col-md-4">
+                                    <label class="required-field">Заявление инициращо услугата</label>
+                                    <select class="form-control" id="">
+                                        <option>Избери</option>
+                                        <option>(0010-003117)-Заявление за издаване на удостоверения за правата и наложените наказания на водач на МПС</option>
+                                        <option>(0010-003001)-Искане за издаване на лична карта и/или паспорт на български гражданин</option>
+                                        <option>(0010-003120)-Искане за издаване на становище за допускане/ недопускане на земеделска техника до участие в жътвена кампания</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="exampleFormControlSelect1">Видове услуги според срока за изпълнение</label>
+                                    <div class="form-inline">
+                                        <div class="custom-control-inline custom-control custom-checkbox">
+                                            <input class="custom-control-input" id="inlineCheckboxA1" value="option1" type="checkbox" checked="">
+                                            <label class="custom-control-label" for="inlineCheckboxA1">Обикновена</label>
+                                        </div>
+                                        <div class="custom-control-inline custom-control custom-checkbox">
+                                            <input class="custom-control-input" id="inlineCheckboxA2" value="option2" type="checkbox">
+                                            <label class="custom-control-label" for="inlineCheckboxA2">Бърза</label>
+                                        </div>
+                                        <div class="custom-control-inline custom-control custom-checkbox">
+                                            <input class="custom-control-input" id="inlineCheckboxA3" value="option2" type="checkbox">
+                                            <label class="custom-control-label" for="inlineCheckboxA3">Експресна</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-12 col-md-4">
+                                    <label class="required-field">Начин на получаване</label>
+                                    <div class="form-control multiple-select multiple-select--scrollable" data-toggle="dropdown" tabindex="0">
+                                        <div class="result-list">
+                                            <div id="result_specialAccessUserType">
+                                                <div class="badge badge-secondary result-selected-item" >
+                                                    Чрез електронна поща/уеб базирано приложение <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br/>
+                                                <div class="badge badge-secondary result-selected-item" >
+                                                    На гише
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div id="content_specialAccessUserType" class="dropdown-menu multiple-select-option-box">
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" value="1" type="checkbox">
+                                                <label class="custom-control-label">Чрез електронна поща/уеб базирано приложение </label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" value="2" type="checkbox">
+                                                <label class="custom-control-label">На гише</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" value="3" type="checkbox">
+                                                <label class="custom-control-label">Чрез пощенски куриерски служби, на посочения адрес за кореспонденция </label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" value="4" type="checkbox">
+                                                <label class="custom-control-label">Чрез пощенски куриерски служби, на друг адрес </label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" value="5" type="checkbox">
+                                                <label class="custom-control-label">На гише в поисканата от заявителя администрация</label>
+                                            </div>
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="form-group col-12 col-md-4">
+                                    <label class="required-field">Наименование на структурна единица</label>
+                                    <input type="email" class="form-control" aria-describedby="emailHelp"> 
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-md-8">
+                                    <label>Наименование на документ резултат от услугата</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                               
+
+                            </div>
+                           
+                            
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label>Описание:</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10">Това поле трябва да бъде HTML редактор ! ! ! ! ! </textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label>Пояснителен текст към услуга </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea2" rows="7">Това поле трябва да бъде HTML редактор ! ! ! ! ! </textarea>
+                                </div>
+
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label> Пояснителен текст при отказана/прекратена услуга </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea3" rows="7">Това поле трябва да бъде HTML редактор ! ! ! ! ! </textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label>Пояснителен текст при изпълнена услуга</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea4" rows="7">Това поле трябва да бъде HTML редактор ! ! ! ! ! </textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 ">
+                                    <label>Описание на прилаганите документи</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea5" rows="10">Това поле трябва да бъде HTML редактор ! ! ! ! ! </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row"> 
+                                <div class="form-group col-md-12">
+                                    <label for="">Добавяне на вид документ</label>
+                                    <div class="form-control multiple-select multiple-select--scrollable"  data-toggle="dropdown" tabindex="0">
+                                        <div class="result-list">
+                                            <div id="content_specialAccessUserType1" class="dropdown-menu multiple-select-option-box">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_1" value="1" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_1" for="specialAccessUserType_1">Декларирам, че издадените ми свидетелство за управление на МПС (СУМПС) и контролен талон са откраднати (изгубени, унищожени), не съм злоупотребил(а) с посочените документи и че същите не са отнети от органите на МВР. Известно ми е, че при наличието на български личен документ съм длъжен/на незабавно да го предам на органите на МВР. С подаването на декларацията съм уведомен/а, че СУМПС ще бъде обявено за невалидно. Известно ми е, че за декларирани от мен неверни данни нося отговорност по чл.313 от Наказателния кодекс.</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_2" value="2" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_2" for="specialAccessUserType_2">Декларирам, че предоставената информация, включително приложените документи, е вярна. Известно ми е, че за неверни данни нося отговорност по чл. 313 от Наказателния кодекс.</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_3" value="3" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_3" for="specialAccessUserType_3">Запознат съм с прилаганата в МВР политика за поверителност, съгласно изискванията на Общия регламент относно защитата на данните (Регламент (ЕС) 2016/679 - GDPR).</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_4" value="4" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_4" for="specialAccessUserType_4">Избран елемент</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_5" value="5" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_5" for="specialAccessUserType_5">Избран</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_6" value="6" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_6" for="specialAccessUserType_6">Избран елемент</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_7" value="7" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_7" for="specialAccessUserType_7">Избран</label>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_11" value="1" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_11" for="specialAccessUserType_11">Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда.</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_12" value="2" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_12" for="specialAccessUserType_12">Избран елемент</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_13" value="3" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_13" for="specialAccessUserType_13">Избран</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_14" value="4" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_14" for="specialAccessUserType_14">Избран елемент</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_15" value="5" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_15" for="specialAccessUserType_15">Избран</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_16" value="6" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_16" for="specialAccessUserType_16">Избран елемент</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_17" value="7" type="checkbox">
+                                                    <label class="custom-control-label" id="label_specialAccessUserType_17" for="specialAccessUserType_17">Избран</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="">Добавяне на политика/декларативно обстоятелство</label>
+                                    <div class="form-control multiple-select multiple-select--scrollable" data-toggle="dropdown" tabindex="0">
+                                        <div class="result-list">
+                                            <div id="result_specialAccessUserType2">
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_1">
+                                                    <span>Декларирам, че издадените ми свидетелство за управление на МПС (СУМПС) и контролен талон са откраднати (изгубени, унищожени), не съм злоупотребил(а) с посочените документи и че същите не са отнети от органите на МВР. Известно ми е, че при наличието на български личен документ съм длъжен/на незабавно да го предам на органите на МВР. С подаването на декларацията съм уведомен/а, че СУМПС ще бъде обявено за невалидно. Известно ми е, че за декларирани от мен неверни данни нося отговорност по чл.313 от Наказателния кодекс.</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_2">
+                                                    <span>Декларирам, че предоставената информация, включително приложените документи, е вярна. Известно ми е, че за неверни данни нося отговорност по чл. 313 от Наказателния кодекс.</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_3">
+                                                    <span>Декларирам, че притежавам удостоверителен документ от ТЕЛК за трайно увреждане 50 и над 50%.</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_4">
+                                                    <span>Запознат съм с прилаганата в МВР политика за поверителност, съгласно изискванията на Общия регламент относно защитата на данните (Регламент (ЕС) 2016/679 - GDPR).</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_5">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_6">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_7">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_8">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_9">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_10">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко редаИзбран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_11">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_12">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_13">
+                                                    <span>Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда</span>
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_14">
+                                                    Избран елемент
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div><br />
+                                                <div class="badge badge-secondary result-selected-item" id="item-selected-name-specialAccessUserType_15">
+                                                    Избран
+                                                    <button type="button" class="close" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="content_specialAccessUserType2" class="dropdown-menu multiple-select-option-box">
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_21" value="1" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_21" for="specialAccessUserType_21">Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда.</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_22" value="2" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_22" for="specialAccessUserType_22">Избран елемент</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_23" value="3" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_23" for="specialAccessUserType_23">Избран</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_24" value="4" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_24" for="specialAccessUserType_24">Избран елемент</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_25" value="5" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_25" for="specialAccessUserType_25">Избран</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_26" value="6" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_26" for="specialAccessUserType_26">Избран елемент</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_27" value="7" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_27" for="specialAccessUserType_27">Избран</label>
+                                            </div>
+    
+                                            <hr>
+    
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_31" value="1" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_31" for="specialAccessUserType_31">Избран елемент с много дълго име. Толкова дълго, че се пренася на няколко реда.</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_32" value="2" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_32" for="specialAccessUserType_32">Избран елемент</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_33" value="3" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_33" for="specialAccessUserType_33">Избран</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_34" value="4" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_34" for="specialAccessUserType_34">Избран елемент</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_35" value="5" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_35" for="specialAccessUserType_35">Избран</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_36" value="6" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_36" for="specialAccessUserType_36">Избран елемент</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" name="specialAccessUserType[]" id="specialAccessUserType_37" value="7" type="checkbox">
+                                                <label class="custom-control-label" id="label_specialAccessUserType_37" for="specialAccessUserType_37">Избран</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label>Конфигурационни данни</label>
+                                    <textarea class="form-control text-monospace" id="exampleFormControlTextarea7" rows="7">
+{
+    "type": "human",
+    "id": "1",
+    "attributes": {
+        "name": "John",
+        "age": 80,
+        "gender": "male"
+    }
+}
+                                    </textarea>
+                                </div>
+                            </div>                     
+                            
+                            
+                            <br><br><b>----------------(При избрана опция "Чрез пренасочване към Web услуга" за услугата се попълва информация за:)</b><br /><br />
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label class="required-field">Начин на иницииране на услугата</label>
+                                    <select class="form-control" id="exampleFormControlSelect2">
+                                        <option>Избери</option>
+                                        <option>Чрез заявление</option>
+                                        <option>Чрез пренасочване на Web страница</option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group col-12 col-md-4">
+                                    <label class="required-field">Адрес на услугата</label>
+                                    <input type="email" class="form-control" aria-describedby="emailHelp"> 
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label>Описание</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea6" rows="17">Това поле трябва да бъде HTML редактор ! ! ! ! ! </textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label>Конфигурационни данни</label>
+                                    <textarea class="form-control text-monospace" id="exampleFormControlTextarea8" rows="7">
+{
+    "type": "human",
+    "id": "1",
+    "attributes": {
+        "name": "John",
+        "age": 80,
+        "gender": "male"
+    }
+}
+                                    </textarea>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="card-footer">
+                            <div class="button-bar">
+                                <div class="right-side">
+                                    <button type="button" class="btn btn-primary">Запиши</button>
+                                </div>
+                                <div class="left-side">
+                                    <button type="button" class="btn btn-secondary">Откажи</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="software-version">версия: 1.4.7.9</div>
+            <div class="brand-line"></div>
+            <div class="container-fluid footer-containter">
+                <div class="row">
+                    <div class="col-md-8 col-xl-10 order-md-2 text-center">
+                        <p>Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-md-2 col-xl-1 order-md-1 text-center" >
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-md-2 col-xl-1 order-md-3 text-center">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- jQuery UI library -->
+    <!-- <script src="js/jquery-ui.js"></script>
+    <script src="js/combobox.js"></script> -->
+
+
+    <!-- For tempusdominus-bootstrap-4 datetimepicker -->
+    <!-- <script type="text/javascript" src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js"></script> -->
+
+	<!-- Page Scripst -->
+	<script>
+
+		$(document).ready(function () {
+
+
+            // //Sortable-Draggable
+			// $(".tree-list").sortable({
+			// 	handle: ".drag-handle",
+			// 	// helper: fixHelperModified,
+			// 	start: function(e, ui){
+			// 		ui.placeholder.css('visibility', 'visible');
+			// 	}
+            // });
+
+
+            // //Sortable-Draggable Table
+
+			// var fixHelperModified = function(e, tr) {
+			// 	var $originals = tr.children();
+			// 	var $helper = tr.clone();
+
+			// 	$helper.children().each(function(index) {
+			// 		$(this).outerWidth($originals.eq(index).outerWidth())
+			// 	});
+
+			// 	return $helper;
+			// };
+
+			// $(".table-sortable tbody").sortable({
+			// 	handle: ".drag-handle",
+			// 	helper: fixHelperModified,
+			// 	start: function(e, ui){
+			// 		ui.placeholder.css('visibility', 'visible');
+			// 	}
+			// });
+
+
+            // Combobox with autocomplete
+            // $("#combobox1").combobox();
+            
+            // $("#combobox1").combobox();
+
+			//$('#myModal_3').modal('show');
+
+			// Minimalize Left Navigation
+			$('.navbar-minimalize').on('click', function () {
+				$("#content-wrapper").toggleClass("mini-navbar-left");
+			});
+
+            
+
+			// Activate Left Navigation
+
+			$("#navbar-left li ul").addClass("collapse");
+			$("#navbar-left ul").closest('li').find('>a').append("<i class='ui-icon ui-icon-chevron-right collapse-arrow' aria-hidden='true'></i>");
+
+
+			$("#navbar-left ul").on('show.bs.collapse', function (e) {
+				$(e.currentTarget).closest('li').find('>a .collapse-arrow').toggleClass('rotate-90');
+				e.stopImmediatePropagation();
+			});
+
+			$("#navbar-left ul").on('hide.bs.collapse', function (e) {
+				$(e.currentTarget).closest('li').find('>a .collapse-arrow').toggleClass('rotate-90');
+				e.stopImmediatePropagation();
+			});
+
+			$("#navbar-left a").click(function(e) {
+				$(this).closest('li').find('>ul').collapse('toggle');
+				$(this).closest('ul').find('li ul.collapse').collapse('hide');
+				$(this).closest('ul').find('li a').removeClass("selected");
+				$(this).addClass("selected");
+
+				//e.preventDefault();
+			});
+
+            // Button shows Loader
+            $('#loader_preview').on('click', function () {
+                $("#loader").toggleClass("show");
+            });
+            $('#loader').on('click', function () {
+                $(this).toggleClass("show");
+            });
+
+            $('#local_loader_preview').on('click', function () {
+                $("#local-loader").toggleClass("show");
+            });
+            $('#local-loader').on('click', function () {
+                $(this).toggleClass("show");
+            });
+
+
+
+
+            // $('#datetimepicker1, #datetimepicker3').datetimepicker(
+            //     {
+            //         widgetPositioning: {
+            //             horizontal: 'left',
+            //             vertical: 'bottom'
+            //         },
+            //         // widgetParent : '#datetimepicker-container',
+            //         icons: {
+            //             time: 'ui-icon dt-icon-time',
+            //             date: 'ui-icon dt-icon-date',
+
+            //             up: 'ui-icon dt-icon-up',
+            //             down: 'ui-icon dt-icon-down',
+
+            //             previous: 'ui-icon dt-icon-previous',
+            //             next: 'ui-icon dt-icon-next',
+
+            //             today: 'ui-icon dt-icon-today',
+            //             clear: 'ui-icon dt-icon-clear',
+            //             close: 'ui-icon dt-icon-close'
+            //         },
+            //         locale: moment.locale('bg'),
+            //         // buttons: {
+            //         //     showToday: true
+            //         // },
+            //         format: 'L'
+            //         // format: 'LT'
+            //     }
+            // );
+
+            // $('#datetimepicker2, #datetimepicker4').datetimepicker(
+            //     {
+            //         widgetPositioning: {
+            //             horizontal: 'left',
+            //             vertical: 'bottom'
+            //         },
+            //         // widgetParent : '#datetimepicker-container',
+            //         icons: {
+            //             time: 'ui-icon dt-icon-time',
+            //             date: 'ui-icon dt-icon-date',
+
+            //             up: 'ui-icon dt-icon-up',
+            //             down: 'ui-icon dt-icon-down',
+
+            //             previous: 'ui-icon dt-icon-previous',
+            //             next: 'ui-icon dt-icon-next',
+
+            //             today: 'ui-icon dt-icon-today',
+            //             clear: 'ui-icon dt-icon-clear',
+            //             close: 'ui-icon dt-icon-close'
+            //         },
+            //         locale: moment.locale('bg'),
+            //         format: 'LT'
+            //     }
+            // );
+
+
+        });
+
+
+        // // Add space for datetimepicker in .table-responsive on show.datetimepicker
+        // $("#datetimepicker1, #datetimepicker2, #datetimepicker3, #datetimepicker4").on("show.datetimepicker", function(event) {
+        //     $responsive_container = $(event.target).closest('.table-responsive');
+        //     $responsive_container_padding_bottom = $responsive_container.css("padding-bottom");
+        //     $responsive_container.css("padding-bottom", "15.625rem");
+        // });
+
+        // // Remove space added for datetimepicker in .table-responsive on hide.datetimepicker
+        // $("#datetimepicker1, #datetimepicker2, #datetimepicker3, #datetimepicker4").on("hide.datetimepicker", function(event) {
+        //     $responsive_container = $(event.target).closest('.table-responsive');
+        //     $responsive_container.css("padding-bottom", $responsive_container_padding_bottom );
+        // });
+
+
+
+
+        $(document).on('change', 'input:file', function () {
+            var inputId = this.id;
+            var filename = $(this).val().split('\\').pop();
+            $("label[for='" + inputId + "'] .fileName").html(filename);
+        });
+
+
+        function setFontSize(arg) {            
+            var doc = document.getElementsByTagName ("HTML")[0];
+            switch(arg) {
+                case -1:
+                doc.style.fontSize = "80%";
+                break;
+                case 1:
+                doc.style.fontSize = "120%";
+                break;
+                default:
+                doc.style.fontSize = "100%";
+            }             
+        }
+
+	</script>
+
+  </body>
+</html>
+

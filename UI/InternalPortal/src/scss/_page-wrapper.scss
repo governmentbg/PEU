@@ -1,0 +1,20 @@
+/* ----  Page-Wrapper  ---- */
+
+.page-wrapper {
+	
+	background-color: $body-base-color;
+	padding: $padding-base-horizontal;
+	
+	.page-title {
+		color: $link-color;		
+		padding-top: $padding-base-vertical;
+		padding-bottom: $padding-base-vertical * 3;
+		
+		h2 {
+			margin:0;
+		}
+	}
+	
+}
+
+/* ----  /Page-Wrapper  ---- */

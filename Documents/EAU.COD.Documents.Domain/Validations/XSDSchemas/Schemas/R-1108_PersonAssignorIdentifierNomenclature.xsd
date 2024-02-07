@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1108" xmlns="http://ereg.egov.bg/nomenclature/R-1108" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:simpleType name="PersonAssignorIdentifierNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Тип на идентификатора</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- ЕГН -->
+      <xsd:enumeration value="1" />
+      <!-- ЛН -->
+      <xsd:enumeration value="2" />
+      <!-- ДДММГГ -->
+      <xsd:enumeration value="3" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

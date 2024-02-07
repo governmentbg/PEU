@@ -1,0 +1,154 @@
+/* ----  tempusdominus-bootstrap-4  ---- */
+
+$dt-icons-path: '../images/icons/btn/dt/';
+
+.bootstrap-datetimepicker-widget {
+
+    .picker-switch {
+        padding: $btn-padding-y $btn-padding-x;
+    }
+
+    table {
+        border: none;
+        background-color: transparent;
+
+        th,
+        td {
+            border: none;
+        }
+
+    }
+
+    table td,
+    table th {
+        border-radius: $border-radius;
+    }
+
+    table td.today::before {
+        border-bottom-color: $dropdown-link-active-bg;
+    }
+
+
+    table td.old,
+    table td.new,
+    table td span.old,
+    table td span.new,
+    table td.cw
+    {
+        color: $gray-500;
+    }
+
+    table td.old.active,
+    table td.new.active {
+        color: $white;
+    }
+
+    .table thead th.dow {        
+        border-bottom: 1px solid $dropdown-border-color;
+    }
+
+    table thead tr:first-child th:hover {
+        background: $dropdown-link-hover-bg;
+    }
+
+    table td span:hover {
+        // background: $dropdown-link-hover-bg;
+        background-color: transparent;
+    }
+
+    table td a.btn {
+        padding: $btn-padding-y $btn-padding-x;        
+    }    
+
+    table td a[data-action]:hover,
+    table td span[data-action]:hover {
+        background: $dropdown-link-hover-bg;        
+    }    
+
+    table td a[data-action='togglePicker'],
+    table td a[data-action='today'],
+    table td a[data-action='close'],
+    table td a[data-action='clear']
+    {
+        padding: $btn-padding-y $btn-padding-x;
+        border-radius: $border-radius;        
+    }
+
+    table span,
+    table span:hover {        
+
+        %ui-icon {  // copy of the properties from .ui-icons - _ui-icons.scss
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            width: 1rem;
+            height: 1rem;
+            background-position: center center;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+        }
+
+        &.dt-icon-up { background-image: url('#{$dt-icons-path}dt-up.svg');}
+        &.dt-icon-down { background-image: url('#{$dt-icons-path}dt-down.svg'); }
+        &.dt-icon-next { background-image: url('#{$dt-icons-path}dt-right.svg'); }
+        &.dt-icon-previous { background-image: url('#{$dt-icons-path}dt-left.svg'); }
+
+        &.dt-icon-time { background-image: url('#{$dt-icons-path}dt-clock.svg'); @extend %ui-icon; }
+        &.dt-icon-date { background-image: url('#{$dt-icons-path}dt-calendar-alt.svg'); @extend %ui-icon; }
+        
+        &.dt-icon-today { background-image: url('#{$dt-icons-path}dt-today.svg'); @extend %ui-icon; }
+        &.dt-icon-clear { background-image: url('#{$dt-icons-path}dt-clear.svg'); @extend %ui-icon; }
+        &.dt-icon-close { background-image: url('#{$dt-icons-path}dt-close.svg'); @extend %ui-icon; }
+                     
+    }
+
+    table td.day:hover, 
+    table td.hour:hover, 
+    table td.minute:hover, 
+    table td.second:hover,
+    table td span.month:hover,
+    table td span.year:hover,
+    table td span.decade:hover
+    {
+        background-color: $dropdown-link-hover-bg;
+        color: $primary;
+    }    
+
+    table td.active,
+    table td.active:hover,
+    table td span.active,
+    table td span.active:hover
+    {
+        background-color: $dropdown-link-active-bg;
+        color: $white;
+        text-shadow: none;
+    }
+
+    table td span {
+        border-radius: $border-radius;
+    }
+
+    tbody tr:nth-of-type(odd),
+    thead tr:nth-of-type(odd) {
+        background-color: transparent;
+    }
+
+    .table-striped & tr:nth-of-type(odd) {
+        background-color: transparent;
+    }
+
+    tbody tr:hover,
+    thead tr:hover {
+        background-color: transparent;
+    }
+
+    .table-hover & tr:hover {
+        background-color: transparent;
+    }
+
+}
+
+
+
+
+/* ----  /tempusdominus-bootstrap-4  ---- */

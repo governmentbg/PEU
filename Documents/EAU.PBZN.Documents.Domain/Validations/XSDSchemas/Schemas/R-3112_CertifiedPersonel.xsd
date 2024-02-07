@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3112" xmlns="http://ereg.egov.bg/segment/R-3112" xmlns:pfn="http://ereg.egov.bg/value/0008-000008" xmlns:pln="http://ereg.egov.bg/value/0008-000010" xmlns:cn="http://ereg.egov.bg/value/R-2122" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000008" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000010" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2122" />
+  <xsd:complexType name="CertifiedPersonel">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Сертифициран персонал</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+	  <xsd:element name="PersonFirstName" type="pfn:PersonFirstName"  />
+      <xsd:element name="PersonLastName" type="pln:PersonLastName"  />
+      <xsd:element name="CertificateNumber" type="cn:CertificateNumber"  />
+
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

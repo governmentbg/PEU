@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3152" xmlns="http://ereg.egov.bg/segment/R-3152" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pi="http://ereg.egov.bg/segment/0009-000006"
+            xmlns:eit="http://ereg.egov.bg/segment/R-2210"
+            xmlns:ect="http://ereg.egov.bg/segment/R-1107"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000006" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2210" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-1107" />
+
+  <xsd:complexType name="Employee">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Служител</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="FullName" type="xsd:string" />
+      <xsd:element name="Identifier" type="xsd:string" />
+      <xsd:element name="EmployeeIdentifierType" type="eit:EmployeeIdentifierType" minOccurs="0"  />
+      <xsd:element name="AISCHODEmployeeID" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Citizenship" type="ect:EmployeeCitizenshipType" minOccurs="0" />
+      <xsd:element name="SecurityObject" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

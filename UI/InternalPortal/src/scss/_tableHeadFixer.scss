@@ -1,0 +1,67 @@
+/* ----  tableHeadFixer.js  ---- */
+
+
+.table-responsive.tableHeadFixer {
+
+	max-height: 38rem;
+
+	border-bottom: $table-border-width solid $table-border-color;		
+	border-left: $table-border-width solid $table-border-color;
+	
+	.table {
+
+		border-collapse: separate;
+		border-spacing: 0;
+
+		td {
+			border-bottom: none;
+		}
+
+		tr:not(:first-of-type) {
+			th {
+				border-top: none;
+			}			
+		}
+		tr:first-of-type {
+			td {
+				border-top: none;
+			}			
+		}
+		
+	}
+
+	.table-bordered {
+		th, td {
+			border-left: none;
+		}
+	}
+
+	
+	.table-striped {
+		tbody tr:nth-of-type(odd) {			
+			td {
+				background-image: linear-gradient( $table-accent-bg,$table-accent-bg );
+				background-color: $white;
+			}
+		}
+	}
+
+	.table-hover {
+		tbody tr {
+			@include hover {			
+				td {
+					background-image: linear-gradient( $table-hover-bg, $table-hover-bg );
+					background-color: $white;
+				}
+			}
+		}
+	}
+
+
+}
+
+
+/* ----  /tableHeadFixer.js  ---- */
+
+
+

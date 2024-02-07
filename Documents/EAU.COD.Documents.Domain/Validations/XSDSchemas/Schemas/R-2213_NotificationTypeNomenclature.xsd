@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2213" xmlns="http://ereg.egov.bg/nomenclature/R-2213" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:simpleType name="NotificationTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Вид уведомление</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- За сключване на нов договор за охрана по т. 1, 2, 3, 5, 7, 8 и 9 от чл. 5, ал. 1 от ЗЧОД -->
+      <xsd:enumeration value="1" />
+      <!-- За издадена нова заповед за самоохрана по т. 4 от чл. 5, ал. 1 от ЗЧОД -->
+      <xsd:enumeration value="2" />
+      <!-- За прекратяване действието на договор за охрана по т. 1, 2, 3, 5, 7, 8 и 9 от чл. 5, ал. 1 от ЗЧОД -->
+      <xsd:enumeration value="3" />
+      <!-- За прекратяване действието на заповед за самоохрана по т. 4 от чл. 5, ал. 1 от ЗЧОД -->
+      <xsd:enumeration value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3135"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://ereg.egov.bg/segment/R-3135"
+  xmlns:dc="http://ereg.egov.bg/value/0008-000185" 
+  xmlns:dn="http://ereg.egov.bg/value/0008-000186" 
+  xmlns:mc="http://ereg.egov.bg/value/0008-000187" 
+  xmlns:mn="http://ereg.egov.bg/value/0008-000188" 
+  xmlns:rc="http://ereg.egov.bg/value/0008-000189" 
+  xmlns:rn="http://ereg.egov.bg/value/0008-000190"
+  xmlns:as="http://ereg.egov.bg/value/R-2145"
+	elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000185" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000186" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000187" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000188" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000189" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000190" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2145" />
+
+  <xsd:element name="VehicleOwnerAddress" type="VehicleOwnerAddress" />
+  <xsd:complexType name="VehicleOwnerAddress">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Адрес на собственик на ПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DistrictCode" type="dc:DistrictGRAOCode" minOccurs="0" />
+      <xsd:element name="DistrictName" type="dn:DistrictGRAOName" minOccurs="0" />
+      <xsd:element name="MunicipalityCode" type="mc:MunicipalityGRAOCode" minOccurs="0" />
+      <xsd:element name="MunicipalityName" type="mn:MunicipalityGRAOName" minOccurs="0" />
+      <xsd:element name="ResidenceCode" type="rc:SettlementGRAOCode" minOccurs="0" />
+      <xsd:element name="ResidenceName" type="rn:SettlementGRAOName" minOccurs="0" />
+      <xsd:element name="AddressSupplement" type="as:VehicleOwnerSupplement" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

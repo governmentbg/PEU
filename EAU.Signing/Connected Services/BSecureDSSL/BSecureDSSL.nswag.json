@@ -1,0 +1,1248 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "title": "REST API documentation for BSecure DSSL",
+    "description": "BSecure DSSL is web service designed to calculate digests of documents to be signed and to create signed documents in CAdES, PAdES and XAdES forms. BSecure DSSL is B2B solution.",
+    "version": "1.0"
+  },
+  "host": "e-services.dev.mvr-eau.dev.local",
+  "basePath": "/bsecuredssl",
+  "paths": {
+    "/v2/digest": {
+      "post": {
+        "tags": [
+          "b-secure-dssl-controller"
+        ],
+        "summary": "Get data to sign of the specified document",
+        "description": "Get data to sign of the specified document taking into account the specified certificate and parameters.",
+        "operationId": "getDigestUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "Езикът, на който да бъдат върнати езиково-зависимите съобщения"
+          },
+          {
+            "type": "file",
+            "name": "certificate",
+            "in": "formData",
+            "required": true,
+            "description": "X509 Certificate used for signature."
+          },
+          {
+            "type": "file",
+            "name": "content",
+            "in": "formData",
+            "description": "Content for second and more detached signatures."
+          },
+          {
+            "type": "file",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "Data over which digest should be calculated."
+          },
+          {
+            "name": "digestAlgorithm",
+            "in": "formData",
+            "required": true,
+            "description": "Signature digest algorithm for calculating data to be signed. Supported algorithm are: SHA256, SHA384, SHA512",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "imageHeight",
+            "in": "formData",
+            "description": "Set image height for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "imageWidth",
+            "in": "formData",
+            "description": "Set image width for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "imageXAxis",
+            "in": "formData",
+            "description": "Set image x axis for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "imageYAxis",
+            "in": "formData",
+            "description": "Set image y axis for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "padesVisualSignature",
+            "in": "formData",
+            "description": "Set visual signature on last page of PAdES signed document. Supported values are TRUE, FALSE. Default value FALSE.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "formData",
+            "description": "Set page number for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "signatureLevel",
+            "in": "formData",
+            "required": true,
+            "description": "Signature level for calculating data to be signed. Supported levels are: CAdES_BASELINE_B, CAdES_BASELINE_T, CAdES_BASELINE_LT, CAdES_BASELINE_LTA, PAdES_BASELINE_B, PAdES_BASELINE_T, PAdES_BASELINE_LT, PAdES_BASELINE_LTA, XAdES_BASELINE_B, XAdES_BASELINE_T, XAdES_BASELINE_LT, XAdES_BASELINE_LTA.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "signaturePackaging",
+            "in": "formData",
+            "required": true,
+            "description": "Signature packaging for calculating data to be signed. Supported packagings are: ENVELOPED, ENVELOPING, DETACHED",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathLocation",
+            "in": "formData",
+            "description": "Area where the signature will be added (XAdES Enveloped).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathNamespaces",
+            "in": "formData",
+            "description": "XPath signature namespaces (XAdES Enveloped) delimited with comma.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathPrefixes",
+            "in": "formData",
+            "description": "XPath signature prefixes (XAdES Enveloped) delimited with comma. ",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data to sign retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/DigestResponseDto"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid criteria parameter.",
+            "schema": {
+              "$ref": "#/definitions/BadRequestErrorResponseDto"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerErrorResponseDto"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/digest/external": {
+      "post": {
+        "tags": [
+          "b-secure-dssl-controller"
+        ],
+        "summary": "Get data to sign of the specified external digest(s) and file name(s)",
+        "description": "Get data to sign of the specified external digest taking into account the specified certificate and parameters.",
+        "operationId": "getDigestExternalUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "Езикът, на който да бъдат върнати езиково-зависимите съобщения"
+          },
+          {
+            "type": "file",
+            "name": "certificate",
+            "in": "formData",
+            "required": true,
+            "description": "X509 Certificate used for signature."
+          },
+          {
+            "name": "digestAlgorithm",
+            "in": "formData",
+            "required": true,
+            "description": "Signature digest algorithm for calculating data to be signed. Supported algorithms are: SHA256, SHA384, SHA512",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "externalDigests",
+            "in": "formData",
+            "required": true,
+            "description": "Signature external digests for calculating data to be signed.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "fileNames",
+            "in": "formData",
+            "required": true,
+            "description": "File names over which external digest is calculated.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "signatureLevel",
+            "in": "formData",
+            "required": true,
+            "description": "Signature level for calculating data to be signed. Supported levels are: XAdES_BASELINE_B, XAdES_BASELINE_T, XAdES_BASELINE_LT, XAdES_BASELINE_LTA.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathLocation",
+            "in": "formData",
+            "description": "Area where the signature will be added (XAdES Enveloped).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathNamespaces",
+            "in": "formData",
+            "description": "XPath signature namespaces (XAdES Enveloped) delimited with comma.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathPrefixes",
+            "in": "formData",
+            "description": "XPath signature prefixes (XAdES Enveloped) delimited with comma. ",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data to sign retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/DigestResponseDto"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid criteria parameter.",
+            "schema": {
+              "$ref": "#/definitions/BadRequestErrorResponseDto"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerErrorResponseDto"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/document": {
+      "post": {
+        "tags": [
+          "b-secure-dssl-controller"
+        ],
+        "summary": "Create signed document",
+        "description": "Creates signed document taking into account the specified document, signature, certificate and parameters.",
+        "operationId": "createSignedDocumentUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "Езикът, на който да бъдат върнати езиково-зависимите съобщения"
+          },
+          {
+            "type": "file",
+            "name": "certificate",
+            "in": "formData",
+            "required": true,
+            "description": "X509 Certificate used for signature."
+          },
+          {
+            "type": "file",
+            "name": "content",
+            "in": "formData",
+            "description": "Content for second and more detached signatures."
+          },
+          {
+            "type": "file",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "Data over which digest should be calculated."
+          },
+          {
+            "name": "digestAlgorithm",
+            "in": "formData",
+            "required": true,
+            "description": "Signature digest algorithm for calculating data to be signed. Supported algorithms are: SHA256, SHA384, SHA512.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "digestTime",
+            "in": "formData",
+            "required": true,
+            "description": "Time of the digest calculation (in response from digest operation).",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "imageHeight",
+            "in": "formData",
+            "description": "Set image height for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "imageWidth",
+            "in": "formData",
+            "description": "Set image width for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "imageXAxis",
+            "in": "formData",
+            "description": "Set image x axis for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "imageYAxis",
+            "in": "formData",
+            "description": "Set image y axis for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "padesVisualSignature",
+            "in": "formData",
+            "description": "Set visual signature on last page of PAdES signed document. Supported values are TRUE, FALSE. Default value FALSE.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "formData",
+            "description": "Set page number for visual signature of PAdES signed document.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "type": "file",
+            "name": "signature",
+            "in": "formData",
+            "required": true,
+            "description": "Digital signature of digest."
+          },
+          {
+            "name": "signatureLevel",
+            "in": "formData",
+            "required": true,
+            "description": "Signature level for calculating data to be signed. Supported levels are: CAdES_BASELINE_B, CAdES_BASELINE_T, CAdES_BASELINE_LT, CAdES_BASELINE_LTA, PAdES_BASELINE_B, PAdES_BASELINE_T, PAdES_BASELINE_LT, PAdES_BASELINE_LTA, XAdES_BASELINE_B, XAdES_BASELINE_T, XAdES_BASELINE_LT, XAdES_BASELINE_LTA.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "signaturePackaging",
+            "in": "formData",
+            "required": true,
+            "description": "Signature packaging for calculating data to be signed. Supported packagings are: ENVELOPED, ENVELOPING, DETACHED.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tsDigestAlgorithm",
+            "in": "formData",
+            "description": "Signature timestamp digest algorithm for calculating timestamp of data to be signed. Supported algorithms are: SHA256, SHA512.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathLocation",
+            "in": "formData",
+            "description": "Area where the signature will be added (XAdES Enveloped).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathNamespaces",
+            "in": "formData",
+            "description": "XPath signature namespaces (XAdES Enveloped) delimited with comma.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathPrefixes",
+            "in": "formData",
+            "description": "XPath signature prefixes (XAdES Enveloped) delimited with comma. ",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signed document data was retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/DocumentResponseDto"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid criteria parameter.",
+            "schema": {
+              "$ref": "#/definitions/BadRequestErrorResponseDto"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerErrorResponseDto"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/document/extend": {
+      "post": {
+        "tags": [
+          "b-secure-dssl-controller"
+        ],
+        "summary": "Extends signed document to upper level",
+        "description": "Extends signed document to upper level (BASELINE_LTA) or makes new Timestamp over the signed data.",
+        "operationId": "extendSignedDocumentUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "Езикът, на който да бъдат върнати езиково-зависимите съобщения"
+          },
+          {
+            "type": "file",
+            "name": "content",
+            "in": "formData",
+            "description": "Content file if document signature is detached."
+          },
+          {
+            "type": "file",
+            "name": "signedContent",
+            "in": "formData",
+            "required": true,
+            "description": "Signed content (Signature file)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Extended signed document data was retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/DocumentExtendResponseDto"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid criteria parameter.",
+            "schema": {
+              "$ref": "#/definitions/BadRequestErrorResponseDto"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerErrorResponseDto"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/document/external": {
+      "post": {
+        "tags": [
+          "b-secure-dssl-controller"
+        ],
+        "summary": "Create signed document with externally entered digests",
+        "description": "Creates signed document taking into account the external digests, signature, certificate and parameters. Available only for XAdES files.",
+        "operationId": "createSignedDocumentExternalDigestUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "Езикът, на който да бъдат върнати езиково-зависимите съобщения"
+          },
+          {
+            "type": "file",
+            "name": "certificate",
+            "in": "formData",
+            "required": true,
+            "description": "X509 Certificate used for signature."
+          },
+          {
+            "name": "digestAlgorithm",
+            "in": "formData",
+            "required": true,
+            "description": "Signature digest algorithm for calculating data to be signed. Supported algorithms are: SHA256, SHA384, SHA512.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "digestTime",
+            "in": "formData",
+            "required": true,
+            "description": "Time of the digest calculation (in response from digest operation).",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "externalDigests",
+            "in": "formData",
+            "required": true,
+            "description": "Signature external digests for calculating data to be signed.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "fileNames",
+            "in": "formData",
+            "required": true,
+            "description": "File names over which external digest is calculated.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "file",
+            "name": "signature",
+            "in": "formData",
+            "required": true,
+            "description": "Digital signature of digest."
+          },
+          {
+            "name": "signatureLevel",
+            "in": "formData",
+            "required": true,
+            "description": "Signature level for calculating data to be signed. Supported levels are: XAdES_BASELINE_B, XAdES_BASELINE_T, XAdES_BASELINE_LT, XAdES_BASELINE_LTA.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tsDigestAlgorithm",
+            "in": "formData",
+            "description": "Signature timestamp digest method for calculating timestamp of data to be signed. Supported algorithms are SHA256, SHA512.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathLocation",
+            "in": "formData",
+            "description": "Area where the signature will be added (XAdES Enveloped).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathNamespaces",
+            "in": "formData",
+            "description": "XPath signature namespaces (XAdES Enveloped) delimited with comma.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xpathPrefixes",
+            "in": "formData",
+            "description": "XPath signature prefixes (XAdES Enveloped) delimited with comma. ",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signed document data was retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/DocumentResponseDto"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid criteria parameter.",
+            "schema": {
+              "$ref": "#/definitions/BadRequestErrorResponseDto"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerErrorResponseDto"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/document/validate": {
+      "post": {
+        "tags": [
+          "b-secure-dssl-controller"
+        ],
+        "summary": "Validate signed document",
+        "description": "Validate signed document producing simple and detailed report.",
+        "operationId": "validateSignedDocumentUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "Езикът, на който да бъдат върнати езиково-зависимите съобщения"
+          },
+          {
+            "name": "attachValidationCertificatesToResult",
+            "in": "formData",
+            "description": "Add base64 encoded certificates to result. Supported values are: TRUE, FALSE. Default value FALSE.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "attachValidationReportsToResult",
+            "in": "formData",
+            "description": "Add base64 encoded reports to result. Supported values are: TRUE, FALSE. Default value FALSE.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "type": "file",
+            "name": "content",
+            "in": "formData",
+            "description": "Content file if document signature is detached."
+          },
+          {
+            "type": "file",
+            "name": "signedContent",
+            "in": "formData",
+            "required": true,
+            "description": "Signed content (Signature file)"
+          },
+          {
+            "name": "validationLevel",
+            "in": "formData",
+            "description": "Validation level to be used for validation. If none is specified - it is determined by the document structure. Supported validation levels are: BASIC_SIGNATURES, TIMESTAMPS, LONG_TERM_DATA, ARCHIVAL_DATA.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validated signed document reports produced successfully",
+            "schema": {
+              "$ref": "#/definitions/ValidateDocumentResponseDto"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid criteria parameter.",
+            "schema": {
+              "$ref": "#/definitions/BadRequestErrorResponseDto"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerErrorResponseDto"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "BadRequestErrorResponseDto": {
+      "title": "BadRequestErrorResponseDto",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal code",
+          "example": "BAD_REQUEST_SIGNATURE_FORM_MISSING"
+        },
+        "message": {
+          "type": "string",
+          "description": "Error response message",
+          "example": "No signature form to calculate digest."
+        }
+      }
+    },
+    "DigestResponseDto": {
+      "title": "DigestResponseDto",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal code",
+          "example": "DOCUMENT_CREATE_DIGEST_SUCCESS"
+        },
+        "digestTime": {
+          "type": "integer",
+          "description": "Digest value time",
+          "format": "int64"
+        },
+        "digestValue": {
+          "type": "string",
+          "description": "Digest value",
+          "format": "byte"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message",
+          "example": "Successfully created digest."
+        }
+      }
+    },
+    "DocumentExtendResponseDto": {
+      "title": "DocumentExtendResponseDto",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal code",
+          "example": "EXTEND_DOCUMENT_SUCCESS"
+        },
+        "extendedData": {
+          "type": "string",
+          "description": "Extended signed document value",
+          "format": "byte"
+        },
+        "extendedDataContentType": {
+          "type": "string",
+          "description": "Signed document content type"
+        },
+        "extendedDataFileName": {
+          "type": "string",
+          "description": "Signed document file name"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message",
+          "example": "Successfully created signed document."
+        },
+        "signatureForm": {
+          "type": "string",
+          "description": "Signature form value",
+          "enum": [
+            "XAdES",
+            "CAdES",
+            "PAdES",
+            "PKCS7"
+          ]
+        },
+        "signatureLevel": {
+          "type": "string",
+          "description": "Signature level value",
+          "enum": [
+            "XML-NOT-ETSI",
+            "XAdES-C",
+            "XAdES-X",
+            "XAdES-XL",
+            "XAdES-A",
+            "XAdES-BASELINE-LTA",
+            "XAdES-BASELINE-LT",
+            "XAdES-BASELINE-T",
+            "XAdES-BASELINE-B",
+            "CMS-NOT-ETSI",
+            "CAdES-BASELINE-LTA",
+            "CAdES-BASELINE-LT",
+            "CAdES-BASELINE-T",
+            "CAdES-BASELINE-B",
+            "CAdES-101733-C",
+            "CAdES-101733-X",
+            "CAdES-101733-A",
+            "PDF-NOT-ETSI",
+            "PAdES-BASELINE-LTA",
+            "PAdES-BASELINE-LT",
+            "PAdES-BASELINE-T",
+            "PAdES-BASELINE-B",
+            "PKCS7-B",
+            "PKCS7-T",
+            "PKCS7-LT",
+            "PKCS7-LTA",
+            "UNKNOWN"
+          ]
+        },
+        "timestampNotAfter": {
+          "type": "integer",
+          "description": "Timestamp not after value",
+          "format": "int64"
+        }
+      }
+    },
+    "DocumentResponseDto": {
+      "title": "DocumentResponseDto",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal code",
+          "example": "DOCUMENT_CREATE_SIGNATURE_SUCCESS"
+        },
+        "contentType": {
+          "type": "string",
+          "description": "Signed document content type"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "Signed document file name"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message",
+          "example": "Successfully created signed document."
+        },
+        "signedData": {
+          "type": "string",
+          "description": "Signed document value",
+          "format": "byte"
+        }
+      }
+    },
+    "InternalServerErrorResponseDto": {
+      "title": "InternalServerErrorResponseDto",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal code",
+          "example": "DIGEST_NOT_PRODUCED"
+        },
+        "message": {
+          "type": "string",
+          "description": "Error response message",
+          "example": "Unexpected error occurred. Please try again later."
+        }
+      }
+    },
+    "RevocationTokenDto": {
+      "title": "RevocationTokenDto",
+      "type": "object",
+      "properties": {
+        "revocationReason": {
+          "type": "string",
+          "description": "Signer certificate revocation reason",
+          "example": "null"
+        },
+        "revocationTime": {
+          "type": "integer",
+          "description": "Revocation time in miliseconds from 1970",
+          "format": "int64",
+          "example": 0
+        },
+        "revocationTokenProductionTime": {
+          "type": "integer",
+          "description": "Revocation token production time in miliseconds from 1970",
+          "format": "int64",
+          "example": 0
+        }
+      }
+    },
+    "SignatureDto": {
+      "title": "SignatureDto",
+      "type": "object",
+      "properties": {
+        "signatureId": {
+          "type": "string",
+          "description": "Signature Id",
+          "example": "id-96bf82b529819af1216f504c66cf0825"
+        },
+        "signatureValid": {
+          "type": "string",
+          "description": "Signature valid",
+          "example": "TRUE/FALSE"
+        },
+        "digestAlgorithm": {
+          "type": "string",
+          "description": "Digest algorithm",
+          "example": "SHA256"
+        },
+        "signatureAlgorithm": {
+          "type": "string",
+          "description": "Signature algorithm",
+          "example": "RSA_SHA256"
+        },
+        "signatureFileContentType": {
+          "type": "string",
+          "description": "Signature file content type",
+          "example": "text/xml"
+        },
+        "signatureForm": {
+          "type": "string",
+          "description": "Signature form",
+          "example": "XAdES"
+        },
+        "signatureLevel": {
+          "type": "string",
+          "description": "Signature level",
+          "example": "XAdES-BASELINE-LTA"
+        },
+        "signatureTime": {
+          "type": "integer",
+          "description": "Signature time in miliseconds from 1970",
+          "format": "int64",
+          "example": 1562928569725
+        },
+        "signedBy": {
+          "type": "string",
+          "description": "Signed by",
+          "example": "Ivan Ivanov"
+        },
+        "signerCertificateID": {
+          "type": "string",
+          "description": "Signer certificate ID",
+          "example": "id-96bf82b529819af1216f504c66cf0837"
+        },
+        "signerCertificateDN": {
+          "type": "string",
+          "description": "Signer Certificate DN",
+          "example": "Signed DN"
+        },
+        "signerBase64EncodedCertificate": {
+          "type": "string",
+          "description": "Signer certificate",
+          "example": "MIIHMzCCBRugAwIBAgIIaQ5Pt5rtE5QwDQYJKo..."
+        },
+        "signerPersonalIdentifier": {
+          "type": "string",
+          "description": "Signer personal identifier",
+          "example": 1111111111
+        },
+        "signerOrganizationIdentifier": {
+          "type": "string",
+          "description": "Signer organization identifier",
+          "example": 1111111111
+        },
+        "signerCertificateSerialNumber": {
+          "type": "integer",
+          "description": "Signer certificate serial number identifier",
+          "example": 600035678
+        },
+        "signerCertificateSignatureIsValid": {
+          "type": "string",
+          "description": "Signer certificate signature is valid",
+          "example": "TRUE/FALSE"
+        },
+        "signerCertificateIsTrusted": {
+          "type": "string",
+          "description": "Signer certificate is trusted",
+          "example": "TRUE/FALSE"
+        },
+        "signerCertificateSignatureAlgorithm": {
+          "type": "string",
+          "description": "Signer certificate signature algorithm",
+          "example": "RSA_SHA256"
+        },
+        "issuerCertificateDN": {
+          "type": "string",
+          "description": "Issuer certificate DN",
+          "example": "CN=B-Trust Operational Qualified CA, OU=B-Trust, O=BORICA AD, OID.2.5.4.97=NTRBG-201230426, C=BG"
+        },
+        "issuerBase64EncodedCertificate": {
+          "type": "string",
+          "description": "Issuer certificate",
+          "example": "MIIHMzCCBRugAwIBAgIIaQ5Pt5rtE5QwDQYJKo..."
+        },
+        "timestampsDtos": {
+          "type": "array",
+          "description": "Timestamp detailed data",
+          "items": {
+            "$ref": "#/definitions/TimestampTokenDto"
+          }
+        },
+        "revocationTokenDtos": {
+          "type": "array",
+          "description": "Revocation detailed data",
+          "items": {
+            "$ref": "#/definitions/RevocationTokenDto"
+          }
+        },
+        "signatureInfosList": {
+          "type": "array",
+          "description": "Signature info list",
+          "items": {
+            "type": "string"
+          }
+        },
+        "signatureWarningsList": {
+          "type": "array",
+          "description": "Signature warning list",
+          "items": {
+            "type": "string"
+          }
+        },
+        "signatureErrorsList": {
+          "type": "array",
+          "description": "Signature error list",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TimestampTokenDto": {
+      "title": "TimestampTokenDto",
+      "type": "object",
+      "properties": {
+        "timestampTokenID": {
+          "type": "string",
+          "description": "Timestamp token id",
+          "example": "id-96bf82b529819af1216f504c66cf0828"
+        },
+        "timestampGenerationTime": {
+          "type": "integer",
+          "description": "Timestamp token time in miliseconds from 1970",
+          "format": "int64",
+          "example": 1562928569725
+        },
+        "timestampType": {
+          "type": "string",
+          "description": "Timestamp type",
+          "example": "SIGNATURE_TIMESTAMP"
+        },
+        "timestampCertificateTokensIDs": {
+          "type": "array",
+          "description": "Timestamp certificate tokens ids",
+          "example": "id-96bf82b529819af1216f504c66cf0828",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timestampCertificateTokensTrusted": {
+          "type": "array",
+          "description": "Timestamp certificate token trusted list",
+          "example": "TRUE/FALSE",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timestampCertificateDNs": {
+          "type": "array",
+          "description": "Timestamp issuers list",
+          "example": "CN=B-Trust Qualified Time Stamp Authority, OU=B-Trust, O=BORICA AD, OID.2.5.4.97=NTRBG-201230426, C=BG",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timestampBase64EncodedCertificates": {
+          "type": "array",
+          "description": "Timestamp certificates",
+          "example": "MIIHMzCCBRugAwIBAgIIaQ5Pt5rtE5QwDQYJKo...",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timestampDigestAlgorithms": {
+          "type": "array",
+          "description": "Timestamp digest algorithms",
+          "example": "SHA256",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timestampSignatureAlgorithms": {
+          "type": "array",
+          "description": "Timestamp signature algorithms",
+          "example": "RSA_SHA256",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ValidateDocumentResponseDto": {
+      "title": "ValidateDocumentResponseDto",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal code",
+          "example": "VALIDATE_DOCUMENT_SUCCESS"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message",
+          "example": "Successfully validated signed document."
+        },
+        "documentStatusValid": {
+          "type": "string",
+          "description": "Validated signed document status",
+          "example": "TRUE/FALSE"
+        },
+        "signatureFileName": {
+          "type": "string",
+          "description": "Signature file name"
+        },
+        "signaturesCount": {
+          "type": "integer",
+          "description": "Number of signatures over the validating document",
+          "format": "int32",
+          "example": 1
+        },
+        "validSignaturesCount": {
+          "type": "integer",
+          "description": "Number of valid signatures over the validating document",
+          "format": "int32",
+          "example": 1
+        },
+        "validationDateTime": {
+          "type": "integer",
+          "description": "Validation time in miliseconds from 1970",
+          "format": "int64",
+          "example": 1562928569725
+        },
+        "base64EncodedSimpleReportXML": {
+          "type": "string",
+          "description": "Base 64 encoded simple report XML",
+          "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz..."
+        },
+        "base64EncodedDetailedReportXML": {
+          "type": "string",
+          "description": "Base 64 encoded detailed report XML",
+          "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz..."
+        },
+        "base64EncodedETSIValidationReportXML": {
+          "type": "string",
+          "description": "Base 64 encoded ETSI validation report XML",
+          "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz..."
+        },
+        "signatures": {
+          "type": "array",
+          "description": "Single signature data",
+          "items": {
+            "$ref": "#/definitions/SignatureDto"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "b-secure-dssl-controller",
+      "description": "REST APIs related to BSecure DSSL !!!"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Validations\XSDSchemas\Schemas\R-1005_VisaTypesNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1006_AddressForIssuingNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1007_DataContainsInCertificateNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1008_BulgarianIdentityDocumentTypes.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1009_IssuingBgPersonalDocumentReasonNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2011_PersonAbroadAddress.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2043_EntranceInCountyrDate.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2044_VisaTypes.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2045_BorderCheckpoint.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2046_IdentityDocumentPeriod.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2047_PurposeOfComing.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2048_Education.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2051_AddressForIssuing.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2057_DocumentType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2058_IdentityDocumentNumber.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2059_DocumentIssuingYear.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3001_RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassport.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3002_ApplicationForIssuanceOfPersonalDocumentsOfBulgarianCitizens.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3006_ApplicationForIssuanceOfPersonalDocumentsOfBulgarianCitizensData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3007_IdentityDocumentData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3018_AuthorizedPersonData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3019_ParentTrusteeGuardianData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3020_ChangedNames.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3021_ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgaria.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3022_ForeignIdentityBasicData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3024_WasForeignerBulgarianCitizen.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3025_EntranceInTheRepublicOfBulgaria.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3026_VisaDocument.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3027_MaintenanceProvidedBy.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3028_ChildrenListedInForeignerPassport.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3029_FormerResidenceOfTheForeigner.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3030_ApplicationForIssuingResidencePermitAndDrivingLicenseForEuropeanCitizens.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3031_ApplicationForIssuingDocument.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3033_IssuedBulgarianIdentityDocumentsInPeriod.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3034_OtherIndormationConnectedWithIssuedBulgarianIdentityDocuments.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3035_ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgariaData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3036_АpplicationForIssuingResidencePermitAndDrivingLicenseForEuropeanCitizensData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3038_ApplicationForIssuingDocumentData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3041_DocumentToBeIssuedFor.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3046_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLD.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3047_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLDHeader.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3048_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLDData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3250_IssuedBulgarianIdentityDocumentInfo.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3251_DeclarationUndurArticle17.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3252_DeclarationUndurArticle17Data.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3253_IssuingBgPersonalDocumentReasonData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3254_InvitationToDrawUpAUAN.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3046_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLD.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3254_InvitationToDrawUpAUAN.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1007_DataContainsInCertificateNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1009_IssuingBgPersonalDocumentReasonNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1008_BulgarianIdentityDocumentTypes.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1005_VisaTypesNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1006_AddressForIssuingNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2058_IdentityDocumentNumber.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2059_DocumentIssuingYear.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2057_DocumentType.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2011_PersonAbroadAddress.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2043_EntranceInCountyrDate.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2044_VisaTypes.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2045_BorderCheckpoint.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2046_IdentityDocumentPeriod.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2047_PurposeOfComing.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2048_Education.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2051_AddressForIssuing.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3001_RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassport.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3002_ApplicationForIssuanceOfPersonalDocumentsOfBulgarianCitizens.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3251_DeclarationUndurArticle17.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3252_DeclarationUndurArticle17Data.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3253_IssuingBgPersonalDocumentReasonData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3250_IssuedBulgarianIdentityDocumentInfo.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3007_IdentityDocumentData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3006_ApplicationForIssuanceOfPersonalDocumentsOfBulgarianCitizensData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3018_AuthorizedPersonData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3019_ParentTrusteeGuardianData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3020_ChangedNames.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3021_ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgaria.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3022_ForeignIdentityBasicData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3024_WasForeignerBulgarianCitizen.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3025_EntranceInTheRepublicOfBulgaria.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3026_VisaDocument.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3027_MaintenanceProvidedBy.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3028_ChildrenListedInForeignerPassport.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3029_FormerResidenceOfTheForeigner.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3030_ApplicationForIssuingResidencePermitAndDrivingLicenseForEuropeanCitizens.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3031_ApplicationForIssuingDocument.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3033_IssuedBulgarianIdentityDocumentsInPeriod.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3034_OtherIndormationConnectedWithIssuedBulgarianIdentityDocuments.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3035_ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgariaData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3036_АpplicationForIssuingResidencePermitAndDrivingLicenseForEuropeanCitizensData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3038_ApplicationForIssuingDocumentData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3041_DocumentToBeIssuedFor.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3046_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLD.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3047_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLDHeader.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3048_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLDData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3254_InvitationToDrawUpAUAN.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3046_CertificateAttestingToEventsAndFactsRelatedToTheIssuanceOfIdentityDocumentsInZBLD.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3254_InvitationToDrawUpAUAN.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EAU.Documents.Domain\EAU.Documents.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

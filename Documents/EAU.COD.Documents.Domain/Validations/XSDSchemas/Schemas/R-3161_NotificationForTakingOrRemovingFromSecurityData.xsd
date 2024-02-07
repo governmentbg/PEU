@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3161" xmlns="http://ereg.egov.bg/segment/R-3161" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+            xmlns:nt="http://ereg.egov.bg/segment/R-2214"
+            xmlns:scd="http://ereg.egov.bg/segment/R-3163"
+            xmlns:ca="http://ereg.egov.bg/segment/R-3164"
+            elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2214" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3163" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3164" />
+
+  <xsd:complexType name="NotificationForTakingOrRemovingFromSecurityData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление по уведомление за сключване или прекратяване на трудов договор между лице, получило лиценз за извършване на частна охранителна дейност, и служител от неговия специализиран персонал</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" />
+      <xsd:element name="NotificationType" type="nt:NotificationType" minOccurs="0" />
+      <xsd:element name="SecurityContractData" type="scd:SecurityContractData" minOccurs="0" />
+      <xsd:element name="ContractAssignor" type="ca:ContractAssignor" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- multi-select, draft CSS -->
+        <link href="css/vendors.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" />
+    </head>
+
+<body>
+
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="page-header-wrapper section-wrapper fixed-content-width">
+            <div class="breadcrumbs">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <!-- <li class="breadcrumb-item"><a href="#">Начало</a></li> -->
+                        <li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Издаване на лиценз за извършване на частна охранителна дейност</li>
+                    </ol>
+                </nav>
+
+            </div>
+
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Искане за издаване на лиценз за извършване на частна охранителна дейност</h1>
+                    </div>
+                    <div class="col-auto">
+                        <div class="button-menu-container">
+                            <button id="show_menu" class="button-menu d-md-none"><i class="ui-icon ui-icon-sub-menu" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+
+            <div class="nav-wrapper collapse">
+                <nav id="page-nav" class="page-nav">
+                    <ul class="nav-section connected-nav-items">
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-processed"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class="nav-link" href="">
+                                    Заявител
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-error"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class="nav-link active" href="">
+                                    Обстоятелства
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class=" nav-link" href="">
+                                    Политики и декларации
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <a class="nav-link" href="">
+                                    Приложени документи
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="page-wrapper">
+
+                <div class="ui-form ui-form--input">
+
+                    <h2 class="section-title">
+                        Обстоятелства&nbsp;<button type="button" class="btn btn-context-help" title="Контекстна помощ"></button>
+                    </h2>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                <span class="">Структура на МВР, предоставяща услугата</span>
+                            </h3>
+                        </legend>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <p class="field-text">ГДНП-ГЛАВНА ДИРЕКЦИЯ НАЦИОНАЛНА ПОЛИЦИЯ</p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                Данни за получател на услугата
+                            </h3>
+                        </legend>
+
+                        <fieldset id="ADDRESS1" class="fields-group">
+                            <legend>
+                                <h4 class="field-title required-field">Седалище и адрес на управление</h4>
+                            </legend>
+
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label">Населено място</label>
+                                    <div class="auto-complete-container">                                        
+                                        <input type="text" class="form-control" value="гр. София">
+                                        <ul class="auto-complete-options d-none">
+                                            <li>обл. София (столица), общ. Столична гр. София </li>
+                                            <li class="auto-complete-active-option">обл. Кърджали, общ. Джебел с. Софийци </li>
+                                            <li>обл. Враца, общ. Мизия с. Софрониево </li>
+                                        </ul>
+                                    </div>
+                                    <div class="form-text">община Столична, област София (столица)</div>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="form-control-label">Район</label>
+                                    <div class="auto-complete-container">                                        
+                                        <input type="text" class="form-control" value="р-н Красно село">
+                                        <ul class="auto-complete-options d-none">
+                                            <li class="auto-complete-active-option">р-н Красно село</li>
+                                            <li>р-н Възраждане</li>
+                                            <li>р-н Сердика</li>
+                                            <li>р-н Слатина</li>
+                                            <li>р-н Триадица</li>
+                                            <li>р-н Красна поляна</li>
+                                            <li>р-н Надежда</li>
+                                            <li>р-н Младост</li>
+                                            <li>р-н Витоша</li>
+                                            <li>р-н Овча купел</li>
+                                            <li>р-н Връбница</li>
+                                            <li>р-н Панчарево</li>
+                                            <li>р-н Банкя</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 col-sm-2">
+                                    <label class="form-control-label">п.к.</label>
+                                    <input type="text" class="form-control" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label">ж.к.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label">бул. / ул.</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">№</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">бл.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">вх.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">ет.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">ап.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset id="ADDRESS2" class="fields-group">
+                            <legend>
+                                <h4 class="field-title required-field">Адрес за кореспонденция</h4>
+                            </legend>
+
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label">Населено място</label>
+                                    <div class="auto-complete-container">                                        
+                                        <input type="text" class="form-control" value="гр. София">
+                                        <ul class="auto-complete-options d-none">
+                                            <li>обл. София (столица), общ. Столична гр. София </li>
+                                            <li class="auto-complete-active-option">обл. Кърджали, общ. Джебел с. Софийци </li>
+                                            <li>обл. Враца, общ. Мизия с. Софрониево </li>
+                                        </ul>
+                                    </div>
+                                    <div class="form-text">община Столична, област София (столица)</div>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="form-control-label">Район</label>
+                                    <div class="auto-complete-container">                                        
+                                        <input type="text" class="form-control" value="р-н Красно село">
+                                        <ul class="auto-complete-options d-none">
+                                            <li class="auto-complete-active-option">р-н Красно село</li>
+                                            <li>р-н Възраждане</li>
+                                            <li>р-н Сердика</li>
+                                            <li>р-н Слатина</li>
+                                            <li>р-н Триадица</li>
+                                            <li>р-н Красна поляна</li>
+                                            <li>р-н Надежда</li>
+                                            <li>р-н Младост</li>
+                                            <li>р-н Витоша</li>
+                                            <li>р-н Овча купел</li>
+                                            <li>р-н Връбница</li>
+                                            <li>р-н Панчарево</li>
+                                            <li>р-н Банкя</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 col-sm-2">
+                                    <label class="form-control-label">п.к.</label>
+                                    <input type="text" class="form-control" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label">ж.к.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label">бул. / ул.</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">№</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">бл.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">вх.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">ет.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                                <div class="form-group col-6 col-sm-2 col-xxl-1">
+                                    <label class="form-control-label">ап.</label>
+                                    <input type="text" class="form-control" aria-describedby="">
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="row">
+                            <div class="form-group col-sm-10 col-lg-6">
+                                <label class="form-control-label">Телефон</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                <span class="">Лиценз за извършване на частна охранителна дейност от ЗЧОД по чл.5, ал.1, точка:</span>
+                            </h3>
+                        </legend>
+
+
+                        <fieldset class="fields-group">
+
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT1" value="chk1" type="checkbox"  checked="">
+                                        <label class="custom-control-label" for="CheckboxAT1">1. Лична охрана на физически лица</label>
+                                    </div>
+                                </h4>
+                            </legend>
+    
+                            <div class="ml-4">
+                                <fieldset class="fields-group">
+                                    <legend>
+                                        <h5 class="field-title">Териториален обхват, на който ще се осъществява дейността</h5>
+                                    </legend>
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" name="radioF" id="radioF1" value="option2" type="radio" checked="">
+                                                <label class="custom-control-label" for="radioF1">На територията на цялата страна</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" name="radioF" id="radioF2" value="option2" type="radio">
+                                                <label class="custom-control-label" for="radioF2">На територията на избраните области</label>
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                </fieldset>                                 
+                            </div>
+                        </fieldset>
+                                        
+                        
+                        <fieldset class="fields-group">
+
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT2" value="chk2" type="checkbox" checked="">
+                                        <label class="custom-control-label" for="CheckboxAT2">2. Охрана на имуществото на физически или юридически лица</label>
+                                    </div>
+                                </h4>
+                            </legend>
+    
+                            <div class="ml-4">
+                                <fieldset class="fields-group">
+                                    <legend>
+                                        <h5 class="field-title">Териториален обхват, на който ще се осъществява дейността</h5>
+                                    </legend>
+
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" name="radioFF" id="radioF3" value="option2" type="radio">
+                                                <label class="custom-control-label" for="radioF3">На територията на цялата страна</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" name="radioFF" id="radioF4" value="option2" type="radio" checked="">
+                                                <label class="custom-control-label" for="radioF4">На територията на избраните области</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <label class="form-control-label" for="declarations">Област</label>
+                                            <div class="custom-multi-select css-2b097c-container"><span aria-live="polite" class="css-1laao21-a11yText">
+                                                    <p id="aria-selection-event">&nbsp;БЛАГОЕВГРАД</p>
+                                                    <p id="aria-context">&nbsp;БУРГАС</p>
+                                                    <p id="aria-context1">&nbsp;ВАРНА</p>
+                                                </span>
+                                                <div class="select__control css-1pahdxg-control">
+                                                    <div
+                                                        class="select__value-container select__value-container--is-multi select__value-container--has-value css-g1d714-ValueContainer">
+                                                        <div class="css-1rhbuit-multiValue select__multi-value">
+                                                            <div class="css-12jo7m5 select__multi-value__label">БЛАГОЕВГРАД</div>
+                                                            <div class="css-xb97g8 select__multi-value__remove"><svg height="14" width="14"
+                                                                    viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="css-6q0nyr-Svg">
+                                                                    <path
+                                                                        d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z">
+                                                                    </path>
+                                                                </svg></div>
+                                                        </div>
+                                                        <div class="css-1rhbuit-multiValue select__multi-value">
+                                                            <div class="css-12jo7m5 select__multi-value__label">БУРГАС</div>
+                                                            <div class="css-xb97g8 select__multi-value__remove"><svg height="14" width="14"
+                                                                    viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="css-6q0nyr-Svg">
+                                                                    <path
+                                                                        d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z">
+                                                                    </path>
+                                                                </svg></div>
+                                                        </div>
+                                                        <div class="css-1rhbuit-multiValue select__multi-value">
+                                                            <div class="css-12jo7m5 select__multi-value__label">ВАРНА</div>
+                                                            <div class="css-xb97g8 select__multi-value__remove"><svg height="14" width="14"
+                                                                    viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="css-6q0nyr-Svg">
+                                                                    <path
+                                                                        d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z">
+                                                                    </path>
+                                                                </svg></div>
+                                                        </div>
+                                                        <div class="css-b8ldur-Input">
+                                                            <div class="select__input" style="display: inline-block;"><input autocapitalize="none"
+                                                                    autocomplete="off" autocorrect="off" id="react-select-4-input" spellcheck="false"
+                                                                    tabindex="0" type="text" aria-autocomplete="list"
+                                                                    style="box-sizing: content-box; width: 2px; background: rgba(0, 0, 0, 0) none repeat scroll 0px center; border: 0px none; font-size: inherit; opacity: 1; outline: currentcolor none 0px; padding: 0px; color: inherit;"
+                                                                    value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="select__indicators css-1hb7zxy-IndicatorsContainer">
+                                                        <div aria-hidden="true"
+                                                            class="select__indicator select__clear-indicator css-1gtu0rj-indicatorContainer"><svg
+                                                                height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"
+                                                                class="css-6q0nyr-Svg">
+                                                                <path
+                                                                    d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z">
+                                                                </path>
+                                                            </svg></div><span class="select__indicator-separator css-1okebmr-indicatorSeparator"></span>
+                                                        <div aria-hidden="true"
+                                                            class="select__indicator select__dropdown-indicator css-1gtu0rj-indicatorContainer"><svg
+                                                                height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"
+                                                                class="css-6q0nyr-Svg">
+                                                                <path
+                                                                    d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z">
+                                                                </path>
+                                                            </svg></div>
+                                                    </div>
+                                                </div>
+                                                <div class="select__menu css-26l3qy-menu">
+                                                    <div class="select__menu-list select__menu-list--is-multi css-4ljt47-MenuList">
+                                                        <div class="select__option select__option--is-focused css-1n7v3ny-option"
+                                                            id="react-select-4-option-0" tabindex="-1">ВЕЛИКО ТЪРНОВО</div>
+                                                        <div class="select__option css-yt9ioa-option" id="react-select-4-option-2" tabindex="-1">ВИДИН</div>
+                                                        <div class="select__option css-yt9ioa-option" id="react-select-4-option-6" tabindex="-1">ВРАЦА</div>
+                                                        <div class="select__option css-yt9ioa-option" id="react-select-4-option-7" tabindex="-1">ГАБРОВО</div>
+                                                        <div class="select__option css-yt9ioa-option" id="react-select-4-option-8" tabindex="-1">ДОБРИЧ</div>
+                                                        <div class="select__option css-yt9ioa-option" id="react-select-4-option-9" tabindex="-1">КЪРДЖАЛИ</div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                         
+                            </div>
+                        </fieldset>
+
+                                            
+                        <fieldset class="fields-group">
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT3" value="chk3" type="checkbox">
+                                        <label class="custom-control-label" for="CheckboxAT3">3. Сигнално-охранителна дейност</label>
+                                    </div>
+                                </h4>
+                            </legend>
+                        </fieldset>                                
+                        
+                        
+                        <fieldset class="fields-group">
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT4" value="chk4" type="checkbox">
+                                        <label class="custom-control-label" for="CheckboxAT4">4. Самоохрана на имущество на лица по чл. 2, ал. 3</label>
+                                    </div>
+                                </h4>
+                            </legend>
+                        </fieldset>                                
+                    
+                        
+                        <fieldset class="fields-group">
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT5" value="chk5" type="checkbox">
+                                        <label class="custom-control-label" for="CheckboxAT5">5. Охрана на обекти - недвижими имоти</label>
+                                    </div>
+                                </h4>
+                            </legend>
+                        </fieldset>                                
+                    
+                        
+                        <fieldset class="fields-group">
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT6" value="chk6" type="checkbox">
+                                        <label class="custom-control-label" for="CheckboxAT6">7. Охрана на мероприятия</label>
+                                    </div>
+                                </h4>
+                            </legend>
+                        </fieldset>                                
+                    
+                        
+                        <fieldset class="fields-group">
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT7" value="chk7" type="checkbox">
+                                        <label class="custom-control-label" for="CheckboxAT7">8. Охрана при транспортиране на ценни пратки или товари</label>
+                                    </div>
+                                </h4>
+                            </legend>
+                        </fieldset>                                
+                    
+                        
+                        <fieldset class="fields-group">
+                            <legend>                                    
+                                <h4 class="field-title">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="CheckboxAT8" value="chk8" type="checkbox">
+                                        <label class="custom-control-label" for="CheckboxAT8">9. Охрана на селскостопанско имущество</label>
+                                    </div>
+                                </h4>
+                            </legend>
+                        </fieldset>
+                        
+
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                <span>Предоставяне на документ за отказ на услугата</span>
+                            </h3>
+                        </legend>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" id="CheckboxAT12" value="option1" type="checkbox">
+                                    <label class="custom-control-label" for="CheckboxAT12">Отбележете, че при отказ от предоставяне на услугата, документът ще бъде получен като електронен, чрез Системата за сигурно електронно връчване (ССЕВ) на Държавна агенция „Електронно управление“, на адреса на получателя на услугата (ЕГН/ЛНЧ/ЛН/ЕИК/БУЛСТАТ). 
+                                    В противен случай документът ще бъде предоставен на гише.
+                                    </label>
+                                </div>
+                            </div>                        
+                        </div>
+                    </fieldset>
+
+                    <div class="button-bar button-bar--form button-bar--responsive">
+                        <div class="right-side">
+                            <a class="btn btn-primary" href="">Продължи</a>
+                            <a class="btn btn-secondary" href="">Прегледай</a>
+                        </div>
+                        <div class="left-side">
+                            <button type="button" class="btn btn-secondary">Откажи</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Помощ</a></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+
+        $(document).ready(function () {
+            // $('#myModal_3').modal('show');
+            // Show Page SubNavigation
+            $('#show_menu').on('click', function () {
+                $(this).toggleClass('collapsed');
+                $(".nav-wrapper").slideToggle(
+                    function() {
+                    $(this).css('display','');
+                    $(this).toggleClass('show');
+                });
+            });
+
+            // Autocomplete Show
+            $('.auto-complete-container .auto-complete-options').addClass("d-none");
+
+            $('.auto-complete-container .custom-combobox-toggle').on('click', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').toggleClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focus', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').removeClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focusout', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').addClass("d-none");
+            });
+
+
+            // Multiselect Show
+            $('.custom-multi-select .select__menu').addClass("d-none");
+
+            $('.custom-multi-select').on('click', function () {
+                $(this).find('.select__input input').focus();
+            });
+
+            $('.custom-multi-select .select__input input').on('focus', function () {
+                $(this).closest('.select__control').addClass("select__control--is-focused select__control--menu-is-open");
+                $(this).closest('.custom-multi-select').find('.select__menu').removeClass("d-none");
+            });
+            $('.custom-multi-select .select__input input').on('focusout', function () {
+                $(this).closest('.select__control').removeClass("select__control--is-focused select__control--menu-is-open");
+                $(this).closest('.custom-multi-select').find('.select__menu').addClass("d-none");
+            });
+
+
+            // Field Edit - Actions
+            activateFieldEditControls();
+
+            // Add Field - F1
+
+            $('#add-f1').on('click', function () {
+
+                var cloneField = $('#field-f1').clone();
+                cloneField.find('.interactive-container__controls').empty();
+                cloneField.find('.interactive-container__controls').append('<button onClick="$(this).closest(\'.interactive-container\').prev(\'.hr--doted-line\').remove();$(this).closest(\'.interactive-container\').remove();" class="btn btn-light btn-sm" title="Изтрий"><i class="ui-icon ui-icon-times" aria-hidden="true"></i></button>');
+
+                $('#field-f1').after(cloneField);
+
+                $('#field-f1').after('<hr class="hr--doted-line"></hr>');
+
+                activateFieldEditControls();
+
+
+            });
+
+        });
+
+        function activateFieldEditControls () {
+
+        var field = $('.interactive-container').find('.interactive-container__controls').find('.btn');
+
+            field.on('mouseover focus', function () {
+                $(this).closest('.interactive-container').addClass("interactive-container--focus");
+            });
+
+            field.on('mouseout focusout', function () {
+                $(this).closest('.interactive-container').removeClass("interactive-container--focus");
+            });
+        }
+
+        // Show Navigation
+        function toggleNav() {
+                $(".navbar-top-container--mobile").collapse('toggle');
+            };
+
+            $(document).ready(function () {
+
+        });
+    </script>
+
+
+  </body>
+</html>

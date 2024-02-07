@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-1107" xmlns="http://ereg.egov.bg/segment/R-1107"
+            xmlns:ecn="http://ereg.egov.bg/nomenclature/R-1106"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1106" />
+
+  <xsd:simpleType name="EmployeeCitizenshipType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Гражданство на служител</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="ecn:EmployeeCitizenshipNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

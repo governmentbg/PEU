@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="63.468px" height="70px" viewBox="0 0 63.468 70">
+<defs>
+<linearGradient id="SVGID1" gradientUnits="objectBoundingBox" x1="0" y1="100%" x2="0" y2="0">
+<stop offset="0" stop-color="#F05A28"/>
+<stop offset="1" stop-color="#F6921E"/>
+</linearGradient>
+</defs>
+<polygon fill="url(#SVGID1)" points="26.536,51.792 13.813,57.066 13.813,21.444 26.536,26.413"/>
+<polygon fill="url(#SVGID1)" points="13.086,55.125 6.906,57.066 6.906,21.444 13.086,24.079"/>
+<polygon fill="url(#SVGID1)" points="6.181,55.125 0,57.066 0,21.444 6.181,24.079"/>
+<polygon fill="url(#SVGID1)" points="36.931,51.792 49.655,57.066 49.655,21.444 36.931,26.413"/>
+<polygon fill="url(#SVGID1)" points="50.384,55.125 56.562,57.066 56.562,21.444 50.384,24.079"/>
+<polygon fill="url(#SVGID1)" points="57.29,55.125 63.468,57.066 63.468,21.444 57.29,24.079"/>
+<ellipse fill="url(#SVGID1)" cx="31.735" cy="13.838" rx="8.76" ry="7.606"/>
+</svg>

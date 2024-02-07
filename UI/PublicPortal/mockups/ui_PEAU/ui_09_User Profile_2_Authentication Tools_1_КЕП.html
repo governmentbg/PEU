@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+
+
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">   
+                        <div class="col-auto">                      
+                                <img class="mvr-logo" src="images/logo.png"> 
+                        </div>                                                       
+                        <div class="col header-title">
+                            <p>Република България<br />
+                            <strong>Министерство на вътрешните работи</strong></p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="page-header-wrapper section-wrapper fixed-content-width">
+            
+            <div class="breadcrumbs"></div>
+            
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Управление на средства за автентикация</h1>
+                    </div> 
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+
+
+            <div class="page-wrapper">               
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item active">
+                        <button class="nav-link active" type="button" onclick="window.location.assign('ui_PEAU/ui_09_User Profile_2_Authentication Tools_1_КЕП.html')">КЕП</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" type="button" onclick="window.location.assign('ui_PEAU/ui_09_User Profile_2_Authentication Tools_2_е-Автентикация.html')">е-Автентикация</button>
+                    </li>
+                </ul>
+
+                <section>
+                    <div class="alert alert-info"><p>За да можете да добавите цифров сертификат като допълнително средство за автентикация е необходимо:
+                        1. Сертификатът да бъде предварително инсталиран на Вашия компютър;
+                        2. Да поставите Вашия сертификат (в случай че същият е на външен носител);
+                        3. След като го поставите, да рестартирате браузъра. Можете да добавяте повече от един сертификат към профила си, като е необходимо да повторите посочените по-горе стъпки за всеки отделен сертификат.</p></div>
+
+
+                    <div class="button-bar button-bar--responsive button-bar--table-actionbar-top">
+                        <div class="right-side">
+                        </div>
+                        <div class="left-side">
+                            <button class="btn btn-light" onclick="window.location.assign('ui_PEAU/ui_09_User Profile_2_Authentication Tools_1_КЕП_Добавяне.html')"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави КЕП</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive-block">
+                        <table class="table table-hover" aria-label="Списък на добавени сертификати за автентикация">
+                           
+                            <thead>
+                                <tr>
+                                    <th>Издател</th>                                    
+                                    <th>Сериен номер</th>
+                                    <th>Валиден до</th>
+                                    <th>Данни за титуляра</th>
+                                    <th class="text-right">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>                                            
+                                    <th>
+                                        <p class="th-title d-sm-none">Издател</p>
+                                        <p class="td-text">DC=qualified-natural-ca, CN=InfoNotary Qualified Personal Sign CA, C=BG, L=Sofia, O=InfoNotary PLC, OU=Qualified TSP, OID.2.5.4.97=NTRBG-131276827</p>
+                                    </th>
+                                    <td>
+                                        <p class="th-title d-sm-none">Сериен номер</p>
+                                        <p class="td-text">00-82-76-20-39-34-20-da-ad</p>
+                                    </td>
+                                    <td>            
+                                        <p class="th-title d-sm-none">Валиден до</p>
+                                        <p class="td-text">05.09.2019 00:00:00.00</p>
+                                    </td>
+                                    <td>
+                                        <p class="th-title d-sm-none">Данни за титуляра</p>
+                                        <p class="td-text">DC=qualified-natural-ca, CN=Boris Vasilev Jogov, G=Boris, SN=Jogov, E=b.jogov@hoster.bg, C=BG, L=Sofia, SERIALNUMBER=PNOBG-6902236684, O=CNSYS PLC, OID.2.5.4.97=NTRBG-121708078</p>
+                                    </td>
+                                    <td class="actions-td">
+                                        <p class="th-title d-sm-none">Действия</p>
+                                        <button class="btn btn-link">Изтрий</button>
+                                    </td>
+                                </tr>
+                                <tr>                                            
+                                    <th>
+                                        <p class="th-title d-sm-none">Издател</p>
+                                        <p class="td-text">C=BG, OID.2.5.4.97=NTRBG-201230426, O=BORICA AD, OU=B-Trust, CN=B-Trust Operational Qualified CA</p>
+                                    </th>
+                                    <td>
+                                        <p class="th-title d-sm-none">Сериен номер</p>
+                                        <p class="td-text">23-c4-b6-e1</p>
+                                    </td>
+                                    <td>            
+                                        <p class="th-title d-sm-none">Валиден до</p>
+                                        <p class="td-text">04.09.2020 00:00:00.00</p>
+                                    </td>
+                                    <td>
+                                        <p class="th-title d-sm-none">Данни за титуляра</p>
+                                        <p class="td-text">E=b.jogov@cnsys.bg, O=CNSYS AD, OID.2.5.4.97=NTRBG-121708078, SN=JOGOV, G=BORIS, SERIALNUMBER=PNOBG-6902236684, CN=BORIS VASILEV JOGOV, C=BG</p>
+                                    </td>
+                                    <td class="actions-td">
+                                        <p class="th-title d-sm-none">Действия</p>
+                                        <button class="btn btn-link">Изтрий</button>
+                                    </td>
+                                </tr>
+                                <tr>                                            
+                                    <th>
+                                        <p class="th-title d-sm-none">Издател</p>
+                                        <p class="td-text">C=BG, OID.2.5.4.97=NTRBG-201230426, O=BORICA AD, OU=B-Trust, CN=B-Trust Operational Qualified CA</p>
+                                    </th>
+                                    <td>
+                                        <p class="th-title d-sm-none">Сериен номер</p>
+                                        <p class="td-text">2b-00-00-05-56-69-79-a1-26-da-50-07-c4-00-00-00-00-05-56</p>
+                                    </td>
+                                    <td>            
+                                        <p class="th-title d-sm-none">Валиден до</p>
+                                        <p class="td-text">04.09.2020 00:00:00.00</p>
+                                    </td>
+                                    <td>
+                                        <p class="th-title d-sm-none">Данни за титуляра</p>
+                                        <p class="td-text">E=b.jogov@cnsys.bg, O=CNSYS AD, OID.2.5.4.97=NTRBG-121708078, SN=JOGOV, G=BORIS, SERIALNUMBER=PNOBG-6902236684, CN=BORIS VASILEV JOGOV, C=BG</p>
+                                    </td>
+                                    <td class="actions-td">
+                                        <p class="th-title d-sm-none">Действия</p>
+                                        <button class="btn btn-link">Изтрий</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+        
+                        <ul>
+                            <li class="footer-link"><a href="#">Помощ</a></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        // Show Navigation
+        function toggleNav() {
+            $(".navbar-top-container--mobile").collapse('toggle');
+        };
+
+
+
+        function activateFieldEditControls () {
+
+            var field = $('.interactive-container').find('.interactive-container__controls').find('.system-button, .btn');
+
+            field.on('mouseover focus', function () {
+                $(this).closest('.interactive-container').addClass("interactive-container--focus");
+            });
+
+            field.on('mouseout focusout', function () {
+                $(this).closest('.interactive-container').removeClass("interactive-container--focus");
+        });
+}
+
+
+        $(document).ready(function () {
+
+            // Field Edit - Actions
+            activateFieldEditControls();
+
+        });
+
+
+    </script>
+    
+
+  </body>
+</html>

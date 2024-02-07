@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1007" xmlns="http://ereg.egov.bg/nomenclature/R-1007" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:simpleType name="DataContainsInCertificateNomenclature">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Номенклатура на възможни данни за включване към удостоверение</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<!--Постоянен адрес (за лична карта)-->
+			<xsd:enumeration value="0"/>
+			<!--Имена на кирилица-->
+			<xsd:enumeration value="1"/>
+			<!--Имена на латиница-->
+			<xsd:enumeration value="2"/>
+			<!--Дата на издаване-->
+			<xsd:enumeration value="3"/>
+			<!--Дата на валидност-->
+			<xsd:enumeration value="4"/>
+			<!--Актуален статус на документ и дата на обявяване-->
+			<xsd:enumeration value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

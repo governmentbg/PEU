@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1101" xmlns="http://ereg.egov.bg/nomenclature/R-1101" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="CertificateTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номеклатура за искан документ за правопособност</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Издаване на документ за правопособност -->
+      <xsd:enumeration value="2001" />
+      <!-- Подновяване на документ за правопособност -->
+      <xsd:enumeration value="2002" />  
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

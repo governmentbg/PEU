@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="R-3264_Pyrotechnics"
+    targetNamespace="http://ereg.egov.bg/segment/R-3264"
+	xmlns="http://ereg.egov.bg/segment/R-3264"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+	
+	<xsd:element name="Pyrotechnics" type="Pyrotechnics" />
+	<xsd:complexType name="Pyrotechnics">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">
+				Пиротехника
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TradeName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Kind" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Quantity" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Measure" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

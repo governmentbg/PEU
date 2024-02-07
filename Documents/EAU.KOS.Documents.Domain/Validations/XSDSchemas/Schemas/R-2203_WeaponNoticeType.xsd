@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-2203"
+            xmlns="http://ereg.egov.bg/segment/R-2203"
+            
+            xmlns:wntn="http://ereg.egov.bg/nomenclature/R-2202"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-2202" />
+  
+  <xsd:simpleType name="WeaponNoticeType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Тип на уведомлението на оръжието</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="wntn:WeaponNoticeTypeNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

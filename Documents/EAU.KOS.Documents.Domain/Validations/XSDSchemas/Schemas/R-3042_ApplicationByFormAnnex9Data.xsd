@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3042"
+            xmlns="http://ereg.egov.bg/segment/R-3042"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pi="http://ereg.egov.bg/segment/R-3015"
+            xmlns:idfk="http://ereg.egov.bg/value/R-2201"
+            xmlns:sdfidfkos="http://ereg.egov.bg/value/R-2040"
+			      xmlns:atrr="http://ereg.egov.bg/value/R-2061"
+            xmlns:pgfid="http://ereg.egov.bg/segment/0009-000008"
+            elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3015" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2201" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2040" />
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2061"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000008" />
+
+  <xsd:complexType name="ApplicationByFormAnnex9Data">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление по Образец Приложение №  9</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PersonalInformation" type="pi:PersonalInformation" />
+      <xsd:element name="IssuingDocument" type="idfk:IssuingDocumentForKOS" />
+      <xsd:element name="PersonGrantedFromIssuingDocument" type="pgfid:PersonBasicData" minOccurs="0" />
+      <xsd:element name="SpecificDataForIssuingDocumentsForKOS" type="sdfidfkos:SpecificDataForIssuingDocumentsForKOS" minOccurs="0"/>
+      <xsd:element name="AgreementToReceiveERefusal" type="atrr:AgreementToReceiveERefusal" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

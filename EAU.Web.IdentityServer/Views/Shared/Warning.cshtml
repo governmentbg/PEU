@@ -1,0 +1,12 @@
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer Localizer
+
+@{
+    string message = (string)ViewData["message"];
+    string returnUrl = (string)ViewData["returnUrl"];
+}
+
+<div class="page-header-wrapper section-wrapper section-wrapper--margin-top fixed-content-width"></div>
+<div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+    <div class="page-wrapper">
+        <div class="alert alert-warning"><p>@message@if (!string.IsNullOrEmpty(returnUrl)){@Html.Raw(" ")<a href="@returnUrl" class="PostLogoutRedirectUri">@Localizer["GL_BACK_HOME_PAGE_I"]</a>}</p></div></div>
+</div>

@@ -1,0 +1,43 @@
+/* ----  Checkboxes and radios  ---- */
+
+// .custom-control-label {
+
+//     &::before {        
+//         border: $input-border-width solid darken($input-border-color, 4%);
+//     }
+
+// }
+
+// .custom-control-input {
+
+//     &:checked ~ .custom-control-label::before {
+//         border-color: transparent;
+//     }
+  
+//     &:focus:not(:checked) ~ .custom-control-label::before {
+//         border-color: $input-focus-border-color;
+//     }
+  
+//     &:not(:disabled):active ~ .custom-control-label::before {
+//         border-color: transparent;
+//     }
+
+//   }
+
+
+// .custom-checkbox {
+//     .custom-control-input:indeterminate ~ .custom-control-label,
+//     .custom-control-input[data-state-indeterminate="true"] ~ .custom-control-label {
+//         &::before {
+//             border-color: transparent; 
+//         }
+//     }
+// }
+
+
+.align-to-check-box {
+    margin-top: 0.625rem;
+    margin-left: 1.5rem;
+}
+
+/* ----  /Checkboxes and radios  ---- */

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3060" 
+			xmlns="http://ereg.egov.bg/segment/R-3060"
+			xmlns:cfu="http://ereg.egov.bg/value/R-3061"
+			xmlns:pdc="http://ereg.egov.bg/segment/R-3037"  
+			xmlns:id="http://ereg.egov.bg/value/R-3062"
+			xmlns:rrs="http://ereg.egov.bg/value/R-3063"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			elementFormDefault="qualified">
+	<xsd:import namespace="http://ereg.egov.bg/value/R-3061" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+	<xsd:import namespace="http://ereg.egov.bg/value/R-3062" />
+	<xsd:import namespace="http://ereg.egov.bg/value/R-3063" />
+	<xsd:complexType name="ApplicationForWithdrawServiceData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Данни за заявление  за отказ от заявена услуга</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CaseFileURI" type="cfu:CaseFileURI" minOccurs="0" />
+			<xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" minOccurs="0"  />
+			<xsd:element name="IssuingDocument" type="id:IssuingDocument" minOccurs="0" />
+			<xsd:element name="RefusalReasons" type="rrs:RefusalReasons"  minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

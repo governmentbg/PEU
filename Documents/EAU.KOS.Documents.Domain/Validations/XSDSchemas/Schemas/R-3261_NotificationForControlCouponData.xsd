@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="R-3261_NotificationForControlCouponData" 
+		  targetNamespace="http://ereg.egov.bg/segment/R-3261" 
+		  xmlns="http://ereg.egov.bg/segment/R-3261"
+		  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		  xmlns:li="http://ereg.egov.bg/segment/R-3262"
+		  xmlns:ccdi="http://ereg.egov.bg/segment/R-3267"
+		  elementFormDefault="qualified">
+
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3262" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3267" />
+	
+	<xsd:element name="NotificationForControlCouponData" type="NotificationForControlCouponData" />
+	<xsd:complexType name="NotificationForControlCouponData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">
+				Обстоятелства към "Уведомление за попълване на контролен талон"
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="LicenseInfo" type="li:LicenseInfo"  minOccurs="0" />
+			<xsd:element name="ControlCouponData" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ControlCouponDataItem" type="ccdi:ControlCouponDataItem" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

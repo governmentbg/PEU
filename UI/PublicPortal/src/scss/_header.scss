@@ -1,0 +1,169 @@
+/* ----  Header  ---- */
+.header-bg {
+	background-color: $gray-100;
+}
+.header-gerb-bg {	
+    background-image: url("../images/header-bg.png");
+    background-position: right top;
+	background-repeat: no-repeat;
+	
+}
+
+.mvr-logo {	
+	min-width: 2.8125rem;
+}
+
+.header-container {	
+	align-items: center;
+	padding-bottom: $template-padding-vertical * 1.5;
+	padding-top: $template-padding-vertical * 1.5;
+	
+
+	.divider {
+		display: inline-block;
+		vertical-align: middle;
+		border-left: 1px solid $gray-300;
+		min-height: 4.375rem; //70px;
+		margin: 0 $template-margin-horizontal 0 $template-margin-horizontal *3; // margin: 0 10px 0 30px;
+		width: 1px;
+	}
+	
+}
+
+.header-title {
+	vertical-align: middle;
+	
+	h1, 
+	p,
+	.site-name
+	{
+		margin: 0;
+
+		@include media-breakpoint-down(xs) {
+			padding-left: 0rem;
+		}
+
+	}
+
+	h1,
+	.site-name
+	{
+		margin-bottom: 0.1875rem;//3px;
+		font-size: 1.6875rem;
+		font-weight: bold;
+		line-height: 0.9;
+		color: $blue-dark;
+		padding-top: 0.3125rem;						
+	} 
+
+	p {	
+		padding-top: .16rem;
+		font-size: 1rem;
+		line-height: 1.1875rem;		
+	}
+}
+
+
+
+
+.brand-line {
+	box-sizing: content-box;
+	height: 5px;
+	// @include brand-gradient();
+}
+
+.brand-line--header {	
+	border-bottom: 1px solid $white;
+}
+
+
+@include media-breakpoint-down(sm) {
+	.header-gerb-bg {
+		background-size:  auto 100%;
+	}
+
+	.header-container {		
+		//padding-top:  $template-padding-vertical *1.5;
+		//padding-bottom:  $template-padding-vertical *1.5;
+		.divider {			
+			margin: 0 0 0 1.25rem;			
+		}
+	}
+		
+	.header-title
+	{
+		h1,
+		.site-name
+		{
+			font-size: 1.3125rem;
+			padding-top:0.3125rem;
+		}
+
+		p {	
+			font-size: 0.9375rem;		
+		}
+
+	}
+
+}
+
+@include media-breakpoint-down(xs) {
+		
+	.registryagency-logo {
+		width: 3.4rem;
+		
+	}
+
+	.header-title
+	{
+		h1,
+		.stite-name
+		{
+			font-size: 1.3125rem;
+			line-height: 1.375rem;
+			padding-top:0.3125rem;
+		}
+
+		p {	
+			font-size: 0.875rem;		
+		}
+
+	}
+	
+
+}
+
+
+.header--popup {
+
+	border-bottom: $template-padding-vertical /2 solid $primary-dark;
+
+	.header-container {
+		padding-bottom: $template-padding-vertical /2;
+		padding-top: $template-padding-vertical /2;
+	}
+
+	.header-title {
+		p {
+			padding-top: 0;
+			font-size: 0.875rem;
+		}
+		
+		h1,
+		.site-name
+		{
+			font-size: 1.125rem;		
+		}
+	}
+
+	.mvr-logo {	
+		min-width: auto;
+		height: 3rem;
+	}
+
+	.header-gerb-bg {
+		background-size: auto 7.1875rem;
+	}
+}
+	
+/* ----  /Header  ---- */

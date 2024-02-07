@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="R-3265_Explosives"
+    targetNamespace="http://ereg.egov.bg/segment/R-3265"
+	xmlns="http://ereg.egov.bg/segment/R-3265"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+	<xsd:element name="Explosives" type="Explosives" />
+	<xsd:complexType name="Explosives">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">
+				Взривно вещество
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TradeName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="NumberOON" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Quantity" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Measure" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

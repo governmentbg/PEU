@@ -1,0 +1,2476 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "title": "CQES Signing API",
+    "description": "The Relying parties should integrate with Signing API WS in their signing applications (CAS) in order to send document(file) signing requests and receive signed documents(files) as a result. For this integration CAS SSL certificate for mutual SSL should be issued and a relying party ID should be given to CAS by B-Trust. The relying party is given access to the requested WS operations during the intregration request. All the requests from CAS to Signing API WS should be over the built mutual SSL chanel and should contain the relying party ID.<br/>The Relying party's signing application (CAS) specifies the recipient (sends information how to identify the client(and client certificate) of the signing request through the HEADER parameter `rpToClientAuthorization`.<br/>The following options are available: <ul><li>personalId: customer's national personal identifier(bulgarian EGN or personal identifier of foreigner(LNC)).</li><li>certId: customer certificate's identifier. This identifier can be found in B-Trust MOBILE application - the second part of the number next to the name of the customer in CQES menu. For example if the information on the screen is IVAN IVANOV(11111-22222) then certId is 22222. CAS should request this information from the customer with B-Trust MOBILE.</li><li>profileId - customer profile's identifier concatenated with OTP password(Authorization code). This information can be found in B-Trust MOBILE application - from menu CQES - button CODE for the corresponding certificate.</li><li>clientToken - customer's client token. In that case the customer is already registered in CAS enetering his profileId and OTP(Authorization code). This is done through /auth function (clientAuthUsingPOST) of this API which returns the client token as a result.</li></ul><b>`rpToClientAuthorization` examples:</b><ul><li>personalId:7705256443</li><li>profileId:032-552574</li><li>clientToken:TPC7416DC60EEEC8252E2531413010AD170</li><li>certId:7742</li></ul><b>BASIC SCENARIOS:</b><br/><b>1. Sign document using client identifier(asynchronous)</b><ul><li>CAS sends document(file) for signing by Cloud QES customer using /sign function(sendSignRequestUsingPOST). CAS can specify its own relyingPartyCallbackId. As a result of this function CAS receives callbackId with which to check the status of the requested document(asynchronous). CAS can request that the signed documents should be archived in QLTPS(Qualified Long Term Preservation Service) archive.</li><li>The Cloud QES customer receives the signing request in B-Trust MOBILE and confirms the signing.</li><li>If CAS did not specify relyingPartyCallbackId - CAS uses /sign/{callbackId} function (getSignedResultUsingGET) to check the status of the requested document.If CAS specified relyingPartyCallbackId - CAS uses /rpcallbackid/{rpCallbackId} function (getSignedResultByRpCallbackIdUsingGET) to check the status of the requested document.</li><li>After the status of the requested document becomes with status SIGNED the CAS uses /sign/content/{id} function (getSignedContentUsingGET) to download the signed file. This number (id) is received in field SIGNATURE after execute /sign/{callbackId} function. If CAS requested that the signed document should be archived this document can be downloaded in the next 10 years. Otherwise the document can be downloaded in the next 7 days.</li></ul><b>2. Sign document using QR(asynchronous)</b><ul><li>CAS sends document(file) for signing by Cloud QES customer using /signviaqr function(sendSignRequestViaQRUsingPOST). CAS can specify its own relyingPartyCallbackId. As a result of this function CAS receives callbackId and QR code image. The CAS should show this QR to the Cloud QES customer. CAS can request that the signed documents should be archived in QLTPS(Qualified Long Term Preservation Service) archive.</li><li>The Cloud QES customer scans the QR code with B-Trust MOBILE, chooses the signing certificate, receives the document for signing and confirms the signing.</li><li>If CAS did not specify relyingPartyCallbackId - CAS uses /sign/{callbackId} function (getSignedResultUsingGET) to check the status of the requested document.If CAS specified relyingPartyCallbackId - CAS uses /rpcallbackid/{rpCallbackId} function (getSignedResultByRpCallbackIdUsingGET) to check the status of the requested document.</li><li>After the status of the requested document becomes with status SIGNED the CAS uses /sign/content/{id} function (getSignedContentUsingGET) to download the signed file. This number (id) is received in field SIGNATURE after execute /sign/{callbackId} function. If CAS requested that the signed document should be archived this document can be downloaded in the next 10 years. Otherwise the document can be downloaded in the next 7 days.</li></ul><b>OPTIONAL SCENARIOS:</b><br/><b>1. CAS receives customer's client token</b><ul><li>CAS sends customer's profileId and OTP(Authorization code) code, This information is available in B-Trust MOBILE application. CAS uses /auth function(clientAuth) to receive the customer's client token.</li></ul><b>2. CAS checks if a customer owns Cloud QES and downloads its content</b><ul><li>CAS uses /cert/identity/{personalId} function(getCertByPersonalIdUsingGET) to receive the last valid customer's X509 certificate. If a valid certificate is not found an error code is returned.</li></ul><b>3. CAS downloads customers Cloud QES using profileID</b><ul><li>The customer gets his profileId customer's profileId. </li><li>CAS gets information for customer's profileID.</li><li>CAS use /cert/{profileId} function(getCertByPersonalIdUsingGET) to receive the customer's X509 certificate.</li></ul><b>4. CAS downloads archived documents from QLTPS</b><ul><li>If CAS requested that the signed document should be archived this document can be downloaded in the next 10 years with /sign/content/{id} function (getSignedContentUsingGET). This number (id) is received in field SIGNATURE after execute /sign/{callbackId} function.</li></ul><b>5. CAS downloads reports(evidences) for archived documents from QLTPS</b><ul><li>CAS uses /sign/report/{id}/{reportType} function(getSignedContentReportUsingGET) in order to download reports(evidences) for archived documents from QLTPS. The id parameter is the callback id received in the corresponding sign operation.</li></ul>",
+    "version": "2.0"
+  },
+  "host": "cqes-rptest.b-trust.bg",
+  "basePath": "/signing-api",
+  "paths": {
+    "/v2/auth": {
+      "post": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Relying party gets authentication token for the customer",
+        "description": "Returns client token based on profileID and OTP. In that case the relying party can send signing requests without the need the customer to enter every time profileId and OTP (one time password)",
+        "operationId": "clientAuthUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "name": "authInfo",
+            "in": "body",
+            "required": true,
+            "description": "Authentication parameters",
+            "schema": {
+              "$ref": "#/definitions/AuthInfo"
+            }
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authentication token is generated successfully",
+            "schema": {
+              "$ref": "#/definitions/ClientAuthResponse"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The request is unauthorized"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/cert/identity/{identificatorType}/{identityValue}": {
+      "get": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Get client certificate",
+        "description": "Returns client's X509 certificate in base64 format",
+        "operationId": "getCertByPersonalIdUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "type": "string",
+            "name": "identificatorType",
+            "in": "path",
+            "required": true,
+            "description": "Type of identifier(EGN, LNC, EMAIL or PHONE)\n* EGN: EGN identifier\n* LNC: LNC identifier\n* PHONE: PHONE identifier\n* EMAIL: EMAIL identifier",
+            "enum": [
+              "EGN",
+              "LNC",
+              "PHONE",
+              "EMAIL"
+            ],
+            "x-example": "EGN"
+          },
+          {
+            "type": "string",
+            "name": "identityValue",
+            "in": "path",
+            "required": true,
+            "description": "Value of identifier"
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested certificate found successfully",
+            "schema": {
+              "$ref": "#/definitions/CertificateByPersonalIdResponse"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The request is unauthorized"
+          },
+          "404": {
+            "description": "Requested certificate could not be found"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/cert/{profileId}": {
+      "get": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Get client certificate",
+        "description": "Returns client's X509 certificate in base64 format",
+        "operationId": "getCertUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "type": "string",
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "description": "ProfileId of CQES"
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client certificate is found",
+            "schema": {
+              "$ref": "#/definitions/ClientCertResponse"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The request is unauthorized"
+          },
+          "404": {
+            "description": "Client certificate is not found"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/rpcallbackid/{rpCallbackId}": {
+      "get": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Get signed content by relying party callback ID",
+        "description": "Receives a result with the status of signed document(file) by relying party ID (rpCallbackId) of the signing request",
+        "operationId": "getSignedResultByRpCallbackIdUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          },
+          {
+            "type": "string",
+            "name": "rpCallbackId",
+            "in": "path",
+            "required": true,
+            "description": "Relying party callback ID (request id in relying party system)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All the requested files are successfully signed",
+            "schema": {
+              "$ref": "#/definitions/SignedContentsResponse"
+            }
+          },
+          "206": {
+            "description": "The server has fulfilled part of the request. There are files which wait to be signed",
+            "schema": {
+              "$ref": "#/definitions/SignedContentsResponse"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The request is unauthorized"
+          },
+          "404": {
+            "description": "Signed content could not be found"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/sign": {
+      "post": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Send sign request",
+        "description": "Sends content signing request to CQES customer. The customer will be notified for the request and the documents will be available in section \"WAITING\" in B-Trust MOBILE application",
+        "operationId": "sendSignRequestUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Parameters for signing the document",
+            "schema": {
+              "$ref": "#/definitions/SignRequest"
+            }
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          },
+          {
+            "type": "string",
+            "name": "rpToClientAuthorization",
+            "in": "header",
+            "required": true,
+            "description": "Client identifier to determine client certificate to sign the signing request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SendSignResponse"
+            }
+          },
+          "202": {
+            "description": "The signing request has been successfully accepted for processing",
+            "schema": {
+              "$ref": "#/definitions/SendSignResponse"
+            }
+          },
+          "400": {
+            "description": "The signing request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The signing request is unauthorized"
+          },
+          "404": {
+            "description": "The server has not found the client certificate for signing the request"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/sign/by/cmrid": {
+      "post": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Send sign request",
+        "description": "Sends content signing request to CQES customer. The customer will be notified for the request and the documents will be available in section \"WAITING\" in B-Trust MOBILE application",
+        "operationId": "sendSignRequestByCmrIdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Parameters for signing the document",
+            "schema": {
+              "$ref": "#/definitions/SignRequestByCmrId"
+            }
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The signing request has been successfully accepted for processing",
+            "schema": {
+              "$ref": "#/definitions/SendSignResponse"
+            }
+          },
+          "202": {
+            "description": "The signing request has been successfully accepted for processing",
+            "schema": {
+              "$ref": "#/definitions/SendSignResponse"
+            }
+          },
+          "400": {
+            "description": "The signing request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The signing request is unauthorized"
+          },
+          "404": {
+            "description": "The server has not found the client certificate for signing the request"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/sign/content/{id}": {
+      "get": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Get signed content by document identification number. This id is received in field SIGNATURE after execute /sign/{callbackId} operation",
+        "description": "Get signed content by document identification number. This id is received in field SIGNATURE after execute /sign/{callbackId} operation",
+        "operationId": "getSignedContentUsingGET",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id that is received in field SIGNATURE after execute /sign/{callbackId} operation",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signed content downloaded successfully",
+            "schema": {
+              "$ref": "#/definitions/SignFileResponse"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The request is unauthorized"
+          },
+          "404": {
+            "description": "Signed content could not be found"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/sign/report/{id}/{reportType}": {
+      "get": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Get report of archived signed content by callback ID",
+        "description": "Get signed content by document identification number. This id is received in field SIGNATURE after execute /sign/{callbackId} operation",
+        "operationId": "getSignedContentReportUsingGET",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id that is received in field SIGNATURE after execute /sign/{callbackId} operation",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          },
+          {
+            "type": "string",
+            "name": "reportType",
+            "in": "path",
+            "required": true,
+            "description": "QLTPS report type\n* SIMPLE: Report corresponding to simple_report part of the QSVS verify response\n* DETAILED: Report corresponding to detailed_report part of the QSVS verify response",
+            "enum": [
+              "SIMPLE",
+              "DETAILED"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signed contents QSVS reports downloaded successfully",
+            "schema": {
+              "$ref": "#/definitions/ReportFileResponse"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The request is unauthorized"
+          },
+          "404": {
+            "description": "Signed content could not be found"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/sign/{callbackId}": {
+      "get": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Get signed content by callback ID",
+        "description": "Receives a result with the status of signed document(file) by ID (callbackID) of the signing request",
+        "operationId": "getSignedResultUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "type": "string",
+            "name": "callbackId",
+            "in": "path",
+            "required": true,
+            "description": "Callback ID(request id) - result of the synchronous operation /sign request (sendSignRequest)"
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All requested files are successfully signed",
+            "schema": {
+              "$ref": "#/definitions/SignedContentsResponse"
+            }
+          },
+          "206": {
+            "description": "The server has fulfilled part of the request. There are files which wait to be signed",
+            "schema": {
+              "$ref": "#/definitions/SignedContentsResponse"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The request is unauthorized"
+          },
+          "404": {
+            "description": "The server has not found the signed content"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    },
+    "/v2/signviaqr": {
+      "post": {
+        "tags": [
+          "signing-controller"
+        ],
+        "summary": "Send sign request using QR",
+        "description": "Sends content signing request. The customer should scan QR code of the request with B-Trust MOBILE in order to confirm the signature. After the scanning the request will be connected with the profile of the chosen certificate and the document will be available in section \"WAITING\" in B-Trust MOBILE application. If the parameters qrHeight and qrWidth are not specified in the request a QR link will be returned. In the other case a BASE64 encoded QR image will be returned with the specified dimensions.",
+        "operationId": "sendSignRequestViaQRUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Accept-language",
+            "in": "header",
+            "description": "The language in which to return language-dependent messages"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Parameters for signing the document using QR",
+            "schema": {
+              "$ref": "#/definitions/SignRequestViaQr"
+            }
+          },
+          {
+            "type": "string",
+            "name": "relyingPartyID",
+            "in": "header",
+            "required": true,
+            "description": "Relying party ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SendSignResponseViaQr"
+            }
+          },
+          "202": {
+            "description": "The signing request has been successfully accepted for processing",
+            "schema": {
+              "$ref": "#/definitions/SendSignResponseViaQr"
+            }
+          },
+          "400": {
+            "description": "The signing request could not be understood by the server due to malformed syntax (invalid request parameters)"
+          },
+          "401": {
+            "description": "The signing request is unauthorized"
+          },
+          "500": {
+            "description": "Internal server error. The server encountered an unexpected condition which prevented it from fulfilling the request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AuthInfo": {
+      "title": "AuthInfo",
+      "type": "object",
+      "description": "Authentication parameters",
+      "required": [
+        "otp",
+        "profileId"
+      ],
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "description": "Customer's profile ID. Can be found in B-Trust MOBILE by the customer",
+          "example": "123-458"
+        },
+        "otp": {
+          "type": "string",
+          "description": "Authorization code (One time password) which can be found in B-Trust MOBILE by customer",
+          "example": 11223344
+        }
+      }
+    },
+    "CertificateByPersonalIdResponse": {
+      "title": "CertificateByPersonalIdResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        },
+        "data": {
+          "$ref": "#/definitions/CertificateDataInfo"
+        }
+      }
+    },
+    "CertificateDataInfo": {
+      "title": "CertificateDataInfo",
+      "type": "object",
+      "properties": {
+        "certReqId": {
+          "type": "integer",
+          "description": "Customer's certificate ID(certId)",
+          "format": "int64",
+          "example": 9654
+        },
+        "devices": {
+          "type": "array",
+          "description": "Devices that belong to the user",
+          "items": {
+            "type": "string"
+          }
+        },
+        "encodedCert": {
+          "type": "string",
+          "description": "Customer's X509 certificate(BASE64 encoded)",
+          "example": "MTIzNDU2Nzg5MCBjZXJ0aWZpY2F0ZQ=="
+        }
+      }
+    },
+    "ClientAuthResponse": {
+      "title": "ClientAuthResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        },
+        "data": {
+          "$ref": "#/definitions/ClientAuthResponseData"
+        }
+      }
+    },
+    "ClientAuthResponseData": {
+      "title": "ClientAuthResponseData",
+      "type": "object",
+      "properties": {
+        "clientToken": {
+          "type": "string",
+          "description": "Client token that is used by the Relying party to send signing requests to concrete customer",
+          "example": "560dfaa3sd5asfd6lwhjasf7234adf3"
+        }
+      }
+    },
+    "ClientCertResponse": {
+      "title": "ClientCertResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        },
+        "data": {
+          "$ref": "#/definitions/ClientCertResponseData"
+        }
+      }
+    },
+    "ClientCertResponseData": {
+      "title": "ClientCertResponseData",
+      "type": "object",
+      "properties": {
+        "encodedCert": {
+          "type": "string",
+          "description": "Customer's X509 certificate(BASE64 encoded)",
+          "example": "MTIzNDU2Nzg5MCBjZXJ0aWZpY2F0ZQ=="
+        }
+      }
+    },
+    "Content": {
+      "title": "Content",
+      "type": "object",
+      "description": "Content which will be signed by the customer",
+      "required": [
+        "confirmText",
+        "contentFormat",
+        "data"
+      ],
+      "properties": {
+        "confirmText": {
+          "type": "string",
+          "description": "This parameter is used in order to determine the dialog box(and the text in it) to confirm signing in B-Trust MOBILE",
+          "example": "Document for signing: test.xml"
+        },
+        "contentFormat": {
+          "type": "string",
+          "description": "Type of the content(in the 'data' parameter) that will be signed",
+          "example": "BINARY_BASE64",
+          "enum": [
+            "DIGEST",
+            "BINARY_BASE64",
+            "TEXT"
+          ]
+        },
+        "data": {
+          "type": "string",
+          "description": "The content that will be signed. If the contentFormat parameter is BINARY_BASE64 or DIGEST, then this content(in data parameter) should be BASE64 encoded",
+          "example": "PHRlc3Q+CiAgIDx0aXRsZT7QotC10YHRgtC+0LIg0LTQvtC60YPQvNC10L3Rgjx0aXRsZT4KICA8Y29udGVudD7QotC10YHRgtC+0LLQviDRgdGK0LTRitGA0LbQsNC90LjQtTwvY29udGVudD4KPHRlc3Q+"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "Name of the document(file) that will be signed",
+          "example": "test.xml"
+        },
+        "hashAlgorithm": {
+          "type": "string",
+          "description": "Signature digest algorithm",
+          "example": "SHA256",
+          "enum": [
+            "SHA256",
+            "SHA512"
+          ]
+        },
+        "padesVisualSignature": {
+          "type": "boolean",
+          "description": "This parameter is used in order to specify if the signature in PDF signed file should be visualized in the signed file",
+          "example": false
+        },
+        "signaturePosition": {
+          "description": "This parameter is used in order to specify the signature position in PDF signed file",
+          "$ref": "#/definitions/SignaturePositionDTO"
+        },
+        "signatureType": {
+          "type": "string",
+          "description": "Signature type algorithm",
+          "example": "XADES_BASELINE_LTA_ENVELOPING",
+          "enum": [
+            "SIGNATURE",
+            "CADES_BASELINE_B_ATACHED",
+            "CADES_BASELINE_T_ATACHED",
+            "CADES_BASELINE_LT_ATACHED",
+            "CADES_BASELINE_LTA_ATACHED",
+            "CADES_BASELINE_LTA_ENVELOPED",
+            "CADES_BASELINE_B_DETACHED",
+            "CADES_BASELINE_T_DETACHED",
+            "CADES_BASELINE_LT_DETACHED",
+            "CADES_BASELINE_LTA_DETACHED",
+            "PADES_BASELINE_B",
+            "PADES_BASELINE_T",
+            "PADES_BASELINE_LT",
+            "PADES_BASELINE_LTA",
+            "XADES_BASELINE_B_ENVELOPED",
+            "XADES_BASELINE_T_ENVELOPED",
+            "XADES_BASELINE_LT_ENVELOPED",
+            "XADES_BASELINE_LTA_ENVELOPED",
+            "XADES_BASELINE_B_ENVELOPING",
+            "XADES_BASELINE_T_ENVELOPING",
+            "XADES_BASELINE_LT_ENVELOPING",
+            "XADES_BASELINE_LTA_ENVELOPING",
+            "XADES_BASELINE_B_DETACHED",
+            "XADES_BASELINE_T_DETACHED",
+            "XADES_BASELINE_LT_DETACHED",
+            "XADES_BASELINE_LTA_DETACHED"
+          ]
+        },
+        "toBeArchived": {
+          "type": "boolean",
+          "description": "This parameter is used in order to specify that the signed documents should be archived in QLTPS(Qualified Long Term Preservation Service) archive. Documents that are signed with at least one unqualified signature (signature not issued by Qualified CA) can't be archived.",
+          "example": false
+        }
+      }
+    },
+    "Data": {
+      "title": "Data",
+      "type": "object",
+      "properties": {
+        "callbackId": {
+          "type": "string",
+          "description": "Callback ID of the signature request. This ID is used to check the status of the signature request with /sign/{callbackId} function",
+          "example": "351f00e7-c0c2-4ffb-967d-2b8220e0806e"
+        },
+        "validity": {
+          "type": "string",
+          "description": "End date of the validity of the signing request. Till this date the relying party can check the status of the signing request with /sign/{callbackId} function.",
+          "format": "date-time",
+          "example": "2019-01-23T23.59.57.000+0000"
+        }
+      }
+    },
+    "GeneralResponse": {
+      "title": "GeneralResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "OTCArchiveContent": {
+      "title": "OTCArchiveContent",
+      "type": "object",
+      "description": "Content for archive",
+      "properties": {
+        "certReqId": {
+          "type": "string",
+          "description": "Certificate request ID(certId) of the customer"
+        },
+        "digestTime": {
+          "type": "integer",
+          "description": "Content that will be signed with OTC and archived",
+          "format": "int64"
+        },
+        "digestValue": {
+          "type": "string",
+          "description": "Date of the digest of the document to be signed with OTC and archived"
+        },
+        "payer": {
+          "type": "string",
+          "description": "Who will be charged in order to pay for the archive operation (CLIENT or RP(Relying party))",
+          "enum": [
+            "CLIENT",
+            "RELYING_PARTY"
+          ]
+        },
+        "signature": {
+          "type": "string",
+          "description": "Signature value of the document to be signed with OTC and archived"
+        },
+        "signedDocument": {
+          "type": "string",
+          "description": "OTC signed document"
+        },
+        "unsignedDocument": {
+          "description": "Content that will be signed with OTC and archived",
+          "$ref": "#/definitions/Content"
+        }
+      }
+    },
+    "OTCArchiveRequest": {
+      "title": "OTCArchiveRequest",
+      "type": "object",
+      "description": "Request for archiving otc signed documents",
+      "properties": {
+        "contentForArchive": {
+          "type": "array",
+          "description": "A list with OTC signed documents to be archived",
+          "items": {
+            "$ref": "#/definitions/OTCArchiveContent"
+          }
+        }
+      }
+    },
+    "OTCArchiveResponse": {
+      "title": "OTCArchiveResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "A list with OTC archive response data",
+          "items": {
+            "$ref": "#/definitions/Data"
+          }
+        },
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "OTCFileResponse": {
+      "title": "OTCFileResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "data": {
+          "description": "OTC response data",
+          "$ref": "#/definitions/Data"
+        },
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "OTCPACSignRequest": {
+      "title": "OTCPACSignRequest",
+      "type": "object",
+      "properties": {
+        "documents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "OTCSignRequest": {
+      "title": "OTCSignRequest",
+      "type": "object",
+      "description": "OTC sign request (internal usage)",
+      "required": [
+        "incomingNumber",
+        "signRequest"
+      ],
+      "properties": {
+        "agentName": {
+          "type": "string",
+          "description": "OTC Agent's name"
+        },
+        "agentNumber": {
+          "type": "string",
+          "description": "OTC Agent's number"
+        },
+        "agentPosition": {
+          "type": "string",
+          "description": "OTC Agent's position"
+        },
+        "contentForArchive": {
+          "$ref": "#/definitions/OTCArchiveContent"
+        },
+        "incomingCity": {
+          "type": "string",
+          "description": "OTC Incoming city"
+        },
+        "incomingDate": {
+          "type": "string",
+          "description": "OTC Incoming date"
+        },
+        "incomingNumberNull": {
+          "type": "boolean"
+        },
+        "mediatorName": {
+          "type": "string",
+          "description": "OTC Mediator's name"
+        },
+        "mediatorNumber": {
+          "type": "string",
+          "description": "OTC Mediator's number"
+        },
+        "mediatorPosition": {
+          "type": "string",
+          "description": "OTC Mediator's position"
+        },
+        "signRequest": {
+          "description": "OTC list with contents(DOCUMENT, DIGEST or TEXT) that should be signed",
+          "$ref": "#/definitions/SignRequest"
+        },
+        "incomingNumber": {
+          "type": "string",
+          "description": "OTC Incoming number with prefix 1eXXX or 2eXXX or 3eXXX"
+        }
+      }
+    },
+    "OTCSignResponse": {
+      "title": "OTCSignResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "A list with signed documents",
+          "items": {
+            "$ref": "#/definitions/Data"
+          }
+        },
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "ReportFileResponse": {
+      "title": "ReportFileResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "SendSignResponse": {
+      "title": "SendSignResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "data": {
+          "description": "Sign response data",
+          "$ref": "#/definitions/Data"
+        },
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "SendSignResponseViaQr": {
+      "title": "SendSignResponseViaQr",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "data": {
+          "description": "Sign response data value",
+          "$ref": "#/definitions/SendSignResponseViaQrData"
+        },
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "SendSignResponseViaQrData": {
+      "title": "SendSignResponseViaQrData",
+      "type": "object",
+      "properties": {
+        "callbackId": {
+          "type": "string",
+          "description": "Callback ID of the signature request. This ID is used to check the status of the signature request with /sign/{callbackId} function",
+          "example": "351f00e7-c0c2-4ffb-967d-2b8220e0806e"
+        },
+        "qrImage": {
+          "type": "string",
+          "description": "QR image in BASE64 encoded format with requested dimensions"
+        },
+        "qrPlain": {
+          "type": "string",
+          "description": "The link that is encoded in the QR"
+        },
+        "validity": {
+          "type": "string",
+          "description": "Request validity",
+          "format": "date-time"
+        }
+      }
+    },
+    "SignFileResponse": {
+      "title": "SignFileResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "SignHistoryResponse": {
+      "title": "SignHistoryResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/SignHistoryResponseData"
+        },
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "SignHistoryResponseData": {
+      "title": "SignHistoryResponseData",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "description": "Signed documents list",
+          "items": {
+            "$ref": "#/definitions/SignedContent"
+          }
+        },
+        "size": {
+          "type": "integer",
+          "description": "Number of signed documents(list size)",
+          "format": "int32"
+        }
+      }
+    },
+    "SignRequest": {
+      "title": "SignRequest",
+      "type": "object",
+      "description": "Content signing request",
+      "required": [
+        "contents"
+      ],
+      "properties": {
+        "contents": {
+          "type": "array",
+          "description": "A list with contents(DOCUMENT, DIGEST or TEXT) that should be signed",
+          "items": {
+            "$ref": "#/definitions/Content"
+          }
+        },
+        "relyingPartyCallbackId": {
+          "type": "string",
+          "description": "ID of the request in relying party system",
+          "example": 12264785
+        },
+        "callbackURL": {
+          "type": "string",
+          "description": "URL address of WS where the relying party will be notified when the request is signed",
+          "example": "https://borica.bg/callbackURL"
+        },
+        "payer": {
+          "type": "string",
+          "description": "Who will be charged in order to pay for the sign operation (Client(CLIENT) or Relying party(RELYING_PARTY))\n* CLIENT: Client pays for the operation\n* RELYING_PARTY: Relying party pays for the operation",
+          "example": "CLIENT",
+          "enum": [
+            "CLIENT",
+            "RELYING_PARTY"
+          ]
+        },
+        "isLogin": {
+          "type": "boolean",
+          "description": "Flag that specifies if the request is for login in relying party system",
+          "example": false
+        }
+      }
+    },
+    "SignRequestByCmrId": {
+      "title": "SignRequestByCmrId",
+      "type": "object",
+      "description": "Content signing request by CmrId",
+      "required": [
+        "contents"
+      ],
+      "properties": {
+        "contents": {
+          "type": "array",
+          "description": "A list with contents(DOCUMENT, DIGEST or TEXT) that should be signed",
+          "items": {
+            "$ref": "#/definitions/Content"
+          }
+        },
+        "relyingPartyCallbackId": {
+          "type": "string",
+          "description": "ID of the request in relying party system",
+          "example": 12264785
+        },
+        "callbackURL": {
+          "type": "string",
+          "description": "URL address of WS where the relying party will be notified when the request is signed",
+          "example": "https://borica.bg/callbackURL"
+        },
+        "payer": {
+          "type": "string",
+          "description": "Who will be charged in order to pay for the sign operation (Client(CLIENT) or Relying party(RELYING_PARTY))\n* CLIENT: Client pays for the operation\n* RELYING_PARTY: Relying party pays for the operation",
+          "example": "CLIENT",
+          "enum": [
+            "CLIENT",
+            "RELYING_PARTY"
+          ]
+        },
+        "isLogin": {
+          "type": "boolean",
+          "description": "Flag that specifies if the request is for login in relying party system",
+          "example": false
+        }
+      }
+    },
+    "SignRequestViaQr": {
+      "title": "SignRequestViaQr",
+      "type": "object",
+      "required": [
+        "request"
+      ],
+      "properties": {
+        "qrHeight": {
+          "type": "integer",
+          "description": "Returned QR code height",
+          "format": "int32",
+          "example": 200
+        },
+        "qrWidth": {
+          "type": "integer",
+          "description": "Returned QR code width",
+          "format": "int32",
+          "example": 200
+        },
+        "request": {
+          "description": "Content signing parameters",
+          "$ref": "#/definitions/SignRequestWithSingleContent"
+        }
+      }
+    },
+    "SignRequestWithSingleContent": {
+      "title": "SignRequestWithSingleContent",
+      "type": "object",
+      "description": "Content signing request",
+      "required": [
+        "content"
+      ],
+      "properties": {
+        "content": {
+          "description": "Content for signing (BINARY_BASE64, DIGEST or TEXT)",
+          "$ref": "#/definitions/Content"
+        },
+        "relyingPartyCallbackId": {
+          "type": "string",
+          "description": "ID of the request in relying party system",
+          "example": 12264785
+        },
+        "callbackURL": {
+          "type": "string",
+          "description": "URL address of WS where the relying party will be notified when the request is signed",
+          "example": "https://borica.bg/callbackURL"
+        },
+        "payer": {
+          "type": "string",
+          "description": "Who will be charged in order to pay for the sign operation (Client(CLIENT) or Relying party(RELYING_PARTY))\n* CLIENT: Client pays for the operation\n* RELYING_PARTY: Relying party pays for the operation",
+          "example": "CLIENT",
+          "enum": [
+            "CLIENT",
+            "RELYING_PARTY"
+          ]
+        },
+        "isLogin": {
+          "type": "boolean",
+          "description": "Flag that specifies if the request is for login in relying party system",
+          "example": false
+        }
+      }
+    },
+    "SignaturePositionDTO": {
+      "title": "SignaturePositionDTO",
+      "type": "object",
+      "description": "Specifies the signature position in PDF signed file",
+      "properties": {
+        "imageHeight": {
+          "type": "integer",
+          "description": "Sets a height of the signature field in PDF signed document",
+          "format": "int32",
+          "example": 100
+        },
+        "imageWidth": {
+          "type": "integer",
+          "description": "Sets a width of the signature field in PDF signed document",
+          "format": "int32",
+          "example": 100
+        },
+        "imageXAxis": {
+          "type": "number",
+          "description": "Sets a upper left X coordinate of the signature field",
+          "format": "float",
+          "example": 100.0
+        },
+        "imageYAxis": {
+          "type": "number",
+          "description": "Sets a upper left Y coordinate of the signature field",
+          "format": "float",
+          "example": 100.0
+        },
+        "pageNumber": {
+          "type": "integer",
+          "description": "Sets a page number where the signature field should be placed NOTE - the counting starts from 1 (one) for the first page of the PDF document",
+          "format": "int32",
+          "example": 1
+        }
+      }
+    },
+    "SignatureResponse": {
+      "title": "SignatureResponse",
+      "type": "object",
+      "properties": {
+        "signature": {
+          "type": "string",
+          "description": "Contains the signature or reference the signed document. If the content signature type is SIGNATURE then the digital signature is returned in this field. In all other content signature types an ID of the signed document is returned. This document can be downloaded with getSignedContent operation.",
+          "example": "451f06e7-c2c1-7ffb-337e-2b4550e8707b"
+        },
+        "signatureType": {
+          "type": "string",
+          "description": "Signature type of the result\n* SIGNATURE: Specifies that the result will be digital signature(encrypted digest with the private key)\n* CADES_BASELINE_B_ATACHED: Specifies that the result will be signature with CAdES format BASELINE_B level and ENVELOPING/ATTACHED type\n* CADES_BASELINE_T_ATACHED: Specifies that the result will be signature with CAdES format BASELINE_T level and ENVELOPING/ATTACHED type\n* CADES_BASELINE_LT_ATACHED: Specifies that the result will be signature with CAdES format BASELINE_LT level and ENVELOPING/ATTACHED type\n* CADES_BASELINE_LTA_ATACHED: Specifies that the result will be signature with CAdES format BASELINE_LTA level and ENVELOPING/ATTACHED type\n* CADES_BASELINE_LTA_ENVELOPED: Specifies that the result will be signature with CAdES format BASELINE_LTA level and ENVELOPED/ATTACHED type\n* CADES_BASELINE_B_DETACHED: Specifies that the result will be signature with CAdES format BASELINE_B level and DETACHED type\n* CADES_BASELINE_T_DETACHED: Specifies that the result will be signature with CAdES format BASELINE_T level and DETACHED type\n* CADES_BASELINE_LT_DETACHED: Specifies that the result will be signature with CAdES format BASELINE_LT level and DETACHED type\n* CADES_BASELINE_LTA_DETACHED: Specifies that the result will be signature with CAdES format BASELINE_LTA level and DETACHED type\n* PADES_BASELINE_B: Specifies that the result will be signature with PAdES format BASELINE_B level and ENVELOPED type\n* PADES_BASELINE_T: Specifies that the result will be signature with PAdES format BASELINE_T level and ENVELOPED type\n* PADES_BASELINE_LT: Specifies that the result will be signature with PAdES format BASELINE_LT level and ENVELOPED type\n* PADES_BASELINE_LTA: Specifies that the result will be signature with PAdES format BASELINE_LTA level and ENVELOPED type\n* XADES_BASELINE_B_ENVELOPED: Specifies that the result will be signature with XAdES format BASELINE_B level and ENVELOPED type\n* XADES_BASELINE_T_ENVELOPED: Specifies that the result will be signature with XAdES format BASELINE_T level and ENVELOPED type\n* XADES_BASELINE_LT_ENVELOPED: Specifies that the result will be signature with XAdES format BASELINE_LT level and ENVELOPED type\n* XADES_BASELINE_LTA_ENVELOPED: Specifies that the result will be signature with XAdES format BASELINE_LTA level and ENVELOPED type\n* XADES_BASELINE_B_ENVELOPING: Specifies that the result will be signature with XAdES format BASELINE_B level and ENVELOPING type\n* XADES_BASELINE_T_ENVELOPING: Specifies that the result will be signature with XAdES format BASELINE_T level and ENVELOPING type\n* XADES_BASELINE_LT_ENVELOPING: Specifies that the result will be signature with XAdES format BASELINE_LT level and ENVELOPING type\n* XADES_BASELINE_LTA_ENVELOPING: Specifies that the result will be signature with XAdES format BASELINE_LTA level and ENVELOPING type\n* XADES_BASELINE_B_DETACHED: Specifies that the result will be signature with XAdES format BASELINE_B level and DETACHED type\n* XADES_BASELINE_T_DETACHED: Specifies that the result will be signature with XAdES format BASELINE_T level and DETACHED type\n* XADES_BASELINE_LT_DETACHED: Specifies that the result will be signature with XAdES format BASELINE_LT level and DETACHED type\n* XADES_BASELINE_LTA_DETACHED: Specifies that the result will be signature with XAdES format BASELINE_LTA level and DETACHED type",
+          "example": "XADES_BASELINE_LTA_ENVELOPED",
+          "enum": [
+            "SIGNATURE",
+            "CADES_BASELINE_B_ATACHED",
+            "CADES_BASELINE_T_ATACHED",
+            "CADES_BASELINE_LT_ATACHED",
+            "CADES_BASELINE_LTA_ATACHED",
+            "CADES_BASELINE_LTA_ENVELOPED",
+            "CADES_BASELINE_B_DETACHED",
+            "CADES_BASELINE_T_DETACHED",
+            "CADES_BASELINE_LT_DETACHED",
+            "CADES_BASELINE_LTA_DETACHED",
+            "PADES_BASELINE_B",
+            "PADES_BASELINE_T",
+            "PADES_BASELINE_LT",
+            "PADES_BASELINE_LTA",
+            "XADES_BASELINE_B_ENVELOPED",
+            "XADES_BASELINE_T_ENVELOPED",
+            "XADES_BASELINE_LT_ENVELOPED",
+            "XADES_BASELINE_LTA_ENVELOPED",
+            "XADES_BASELINE_B_ENVELOPING",
+            "XADES_BASELINE_T_ENVELOPING",
+            "XADES_BASELINE_LT_ENVELOPING",
+            "XADES_BASELINE_LTA_ENVELOPING",
+            "XADES_BASELINE_B_DETACHED",
+            "XADES_BASELINE_T_DETACHED",
+            "XADES_BASELINE_LT_DETACHED",
+            "XADES_BASELINE_LTA_DETACHED"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "description": "Signature response status that will be returned as result\n* ERROR: Specifies that there has been error with the signed content\n* IN_PROGRESS: Specifies that the content is in progress of singing (waiting the user to approve the request or the signature is generating at that moment)\n* SIGNED: Specifies that there has been error with the signed content\n* RECEIVED: Specifies that the signed content is already downloaded\n* REJECTED: Specifies that the signature request is rejected by the user\n* ARCHIVED: Specifies that the signed content is archived in QLTPS. In that case the content is available for download and it is taken from LTPS module\n* REMOVED: Specifies that the signed content removed from database. The content can not be downloaded, but the history record about the signature request stays\n* EXPIRED: Specifies that the signature request is not signed and the request validity has been expired",
+          "example": "IN_PROGRESS",
+          "enum": [
+            "ERROR",
+            "IN_PROGRESS",
+            "SIGNED",
+            "RECEIVED",
+            "REJECTED",
+            "ARCHIVED",
+            "REMOVED",
+            "EXPIRED"
+          ]
+        }
+      }
+    },
+    "SignedContent": {
+      "title": "SignedContent",
+      "type": "object",
+      "properties": {
+        "archiveStatusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "callbackId": {
+          "type": "string"
+        },
+        "certId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "certSerialNumber": {
+          "type": "string"
+        },
+        "contentTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdDate": {
+          "$ref": "#/definitions/Timestamp"
+        },
+        "displayedText": {
+          "type": "string"
+        },
+        "fileId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "receivedDate": {
+          "$ref": "#/definitions/Timestamp"
+        },
+        "relyingPartyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "relyingPartyName": {
+          "type": "string"
+        },
+        "rpCallbackId": {
+          "type": "string"
+        },
+        "signType": {
+          "type": "string",
+          "enum": [
+            "SIGNATURE",
+            "CADES_BASELINE_B_ATACHED",
+            "CADES_BASELINE_T_ATACHED",
+            "CADES_BASELINE_LT_ATACHED",
+            "CADES_BASELINE_LTA_ATACHED",
+            "CADES_BASELINE_LTA_ENVELOPED",
+            "CADES_BASELINE_B_DETACHED",
+            "CADES_BASELINE_T_DETACHED",
+            "CADES_BASELINE_LT_DETACHED",
+            "CADES_BASELINE_LTA_DETACHED",
+            "PADES_BASELINE_B",
+            "PADES_BASELINE_T",
+            "PADES_BASELINE_LT",
+            "PADES_BASELINE_LTA",
+            "XADES_BASELINE_B_ENVELOPED",
+            "XADES_BASELINE_T_ENVELOPED",
+            "XADES_BASELINE_LT_ENVELOPED",
+            "XADES_BASELINE_LTA_ENVELOPED",
+            "XADES_BASELINE_B_ENVELOPING",
+            "XADES_BASELINE_T_ENVELOPING",
+            "XADES_BASELINE_LT_ENVELOPING",
+            "XADES_BASELINE_LTA_ENVELOPING",
+            "XADES_BASELINE_B_DETACHED",
+            "XADES_BASELINE_T_DETACHED",
+            "XADES_BASELINE_LT_DETACHED",
+            "XADES_BASELINE_LTA_DETACHED"
+          ]
+        },
+        "signedDate": {
+          "$ref": "#/definitions/Timestamp"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ERROR",
+            "IN_PROGRESS",
+            "SIGNED",
+            "RECEIVED",
+            "REJECTED",
+            "ARCHIVED",
+            "REMOVED",
+            "EXPIRED"
+          ]
+        },
+        "toBeArchived": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "usageIdDownloadRequested": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "SignedContentsResponse": {
+      "title": "SignedContentsResponse",
+      "type": "object",
+      "description": "Standard CQES API response",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/SignedContentsResponseData"
+        },
+        "responseCode": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ACCEPTED",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "ERROR",
+            "NOT_IMPLEMENTED",
+            "UNAUTHORIZED",
+            "REJECTED",
+            "COMPLETED",
+            "IN_PROGRESS",
+            "ARCHIVE_SIGNATURE",
+            "CONTENT_DATA_MISSING",
+            "EXPIRED",
+            "DETACHED_DEVICE",
+            "CHANGED_PIN",
+            "CONSENT_REVOKE",
+            "AR_SIGN_TOKEN_VALIDATION_FAILED",
+            "AR_SIGN_TOKEN_NOT_FOUND",
+            "REQUEST_TIMEOUT",
+            "REQUEST EXCEED LIMIT",
+            "BTOKEN_SIGN_FAILED",
+            "VALIDATION_FAILED",
+            "ACTIVE_CERTIFICATE_NOT_FOUND",
+            "INVALID_DATE",
+            "EAUTH_UNAUTHORIZED_REQUEST",
+            "EAUTH_BAD_REQUEST",
+            "EAUTH_INTERNAL_SERVER_ERROR",
+            "EAUTH_INQUIRY_NOT_FOUND",
+            "EAUTH_NOT_IMPLEMENTED",
+            "EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY",
+            "EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST",
+            "EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY",
+            "CMR_CERTIFICATE_DATA_NOT_FOUND",
+            "CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND",
+            "CLIENT_ID_VALUE_INVALID",
+            "CLIENT_ID_VALUE_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_REQUIRED",
+            "CLIENT_DATE_OF_BIRTH_INVALID",
+            "AX_TRANSACTION_ID_MISSING",
+            "AX_AGENT_EMAIL_MISSING",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID",
+            "IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE",
+            "IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE",
+            "CMR_CLIENT_NOT_FOUND",
+            "NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID",
+            "IDENTIFICATION_REQUEST_ERROR_STATUS",
+            "OTC_CRYPTO_MANAGER_FAILED",
+            "NOT_FOUND_WEB_IDENTIFICATION_RESULT",
+            "BIRTH_DATE_REQUIRED",
+            "BIRTH_DATE_PATTERN_ERROR",
+            "FUTURE_BIRTH_DATE_ERROR",
+            "NOT_VALID_EMAIL"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "description": "Response code (status of the response)\n* OK: The request has been executed successfully (enum type GENERAL_OK)\n* ACCEPTED: The request has been accepted (enum type GENERAL_ACCEPTED)\n* BAD_REQUEST: Invalid request (enum type BAD_REQUEST)\n* NOT_FOUND: Not found (enum type NOT_FOUND)\n* ERROR: Unexpected error has occurred (enum type GENERAL_ERROR)\n* NOT_IMPLEMENTED: Not implemented (enum type NOT_IMPLEMENTED)\n* UNAUTHORIZED: The request was not authorized (enum type UNAUTHORIZED)\n* REJECTED: The request is rejected (enum type REJECTED)\n* COMPLETED: Sign request is completed (enum type GET_SIGNEDCONTENT_COMPLETED)\n* IN_PROGRESS: Sign request is in progress (enum type GET_SIGNEDCONTENT_IN_PROGRESS)\n* ARCHIVE_SIGNATURE: Archive is not allowed since signature format is SIGNATURE (enum type GET_SIGNEDCONTENT_ARCHIVE_SIGNATURE)\n* CONTENT_DATA_MISSING: In signing request the content is missing (enum type GET_SIGNEDCONTENT_CONTENT_DATA_MISSING)\n* IN_PROGRESS: Sign request is in progress (enum type GET_EAUTH_IN_PROGRESS)\n* COMPLETED: Consent request is completed (enum type GET_RS_CONSENT_COMPLETED)\n* IN_PROGRESS: Consent request is in progress (enum type GET_RS_CONSENT_PROGRESS)\n* REJECTED: Consent request is rejected (enum type GET_RS_CONSENT_REJECTED)\n* EXPIRED: Consent request has expired (enum type GET_RS_CONSENT_EXPIRED)\n* IN_PROGRESS: Consent request failed (enum type GET_RS_CONSENT_ERROR)\n* DETACHED_DEVICE: The mobile device, with which the request for automated remote signing had been accepted, was removed from the current certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_DETACHED_DEVICE)\n* CHANGED_PIN: The user has changed their PIN for the certificate. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CHANGED_PIN)\n* CONSENT_REVOKE: The agreement for signing was terminated by the user with reason. A new signing agreement is necessary for automated remote signing (enum type AR_SIGN_CONSENT_REVOKE)\n* CONSENT_REVOKE: Automatic remote signing consent revoked  (enum type AR_SIGN_CONSENT_AUTO_REVOKE)\n* AR_SIGN_TOKEN_VALIDATION_FAILED: Invalid access token  (enum type AR_SIGN_TOKEN_VALIDATION_FAILED)\n* OK: Valid access token  (enum type AR_SIGN_TOKEN_VALIDATION_OK)\n* AR_SIGN_TOKEN_NOT_FOUND: Content not found  (enum type AR_SIGN_TOKEN_NOT_FOUND)\n* REQUEST_TIMEOUT: The request is taking too long. It is possible for the document to be signed successfully, check its status with callbackId  (enum type AR_SIGN_REQUEST_TIMEOUT)\n* REQUEST EXCEED LIMIT: The maximum number of requests for automated remote signing has been reached  (enum type AR_SIGN_REQUEST_EXCEED_LIMIT)\n* BTOKEN_SIGN_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGN_ERROR)\n* VALIDATION_FAILED: Unexpected error has occurred  (enum type BTOKEN_SIGNATURE_VALIDATION_ERROR)\n* ACTIVE_CERTIFICATE_NOT_FOUND: Active certificate is not found  (enum type ACTIVE_CERTIFICATE_NOT_FOUND)\n* INVALID_DATE: Invalid date  (enum type INVALID_DATE)\n* EAUTH_UNAUTHORIZED_REQUEST: Unauthorized access. Security API key is missing in request header or is not provided by State e-Government Agency  (enum type EAUTH_UNAUTHORIZED_REQUEST)\n* EAUTH_BAD_REQUEST: Bad request, change it and resubmit new correct request (enum type EAUTH_BAD_REQUEST)\n* EAUTH_INTERNAL_SERVER_ERROR: The server encountered an unexpected error. Please, try again later after given time in the request's response  (enum type EAUTH_INTERNAL_SERVER_ERROR)\n* EAUTH_INQUIRY_NOT_FOUND: There are no subject with this identifier (enum type EAUTH_INQUIRY_NOT_FOUND)\n* EAUTH_NOT_IMPLEMENTED: This functionality is not implemented yet (enum type EAUTH_NOT_IMPLEMENTED)\n* EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST: Invalid data in Authentication Request (enum type EAUTH_INQUIRY_INVALID_AUTHENTICATION_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST: Invalid request! Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY: The authentication inquiry request is still processing. Please, try again later after given time in the request's response (enum type EAUTH_AUTHENTICATION_RESULT_PROCESSING_INQUIRY)\n* EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST: Invalid request data (enum type EAUTH_ADDITIONAL_ATTRIBUTES_INVALID_REQUEST)\n* EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY: Given relying request party ID is not found (enum type EAUTH_AUTHENTICATION_RESULT_EXPIRED_VALIDITY)\n* CMR_CERTIFICATE_DATA_NOT_FOUND: Certificate data can not be found from CMR (enum type CMR_CERTIFICATE_DATA_NOT_FOUND)\n* CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND: B-Trust client is missing correspondence email (enum type CMR_CLIENT_CORRESPONDENCE_EMAIL_NOT_FOUND)\n* CLIENT_ID_VALUE_INVALID: Client's ID is invalid (enum type CLIENT_ID_VALUE_INVALID)\n* CLIENT_ID_VALUE_REQUIRED: Client's ID value is required (enum type CLIENT_ID_VALUE_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_REQUIRED: The date of birth is required (enum type CLIENT_DATE_OF_BIRTH_REQUIRED)\n* CLIENT_DATE_OF_BIRTH_INVALID: The date of birth is invalid (enum type CLIENT_DATE_OF_BIRTH_INVALID)\n* AX_TRANSACTION_ID_MISSING: Ax transaction id is missing (enum type AX_TRANSACTION_ID_MISSING)\n* AX_AGENT_EMAIL_MISSING: Ax agent email is missing (enum type AX_AGENT_EMAIL_MISSING)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID: Identification request could not be found by session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SESSION_ID)\n* NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID: Identification request could not be found by sign session id (enum type NOT_FOUND_IDENTIFICATION_REQUEST_BY_SIGN_SESSION_ID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID: Web identification request web session is not valid (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID: Web identification request sign session is not valid (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_IS_NOT_VALID)\n* IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE: Web identification request web session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_WEB_SESSION_ID_NOT_VALID_STATE)\n* IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE: Web identification request sign session is not in valid state (enum type IDENTIFICATION_REQUEST_FOR_SIGN_SESSION_ID_NOT_VALID_STATE)\n* CMR_CLIENT_NOT_FOUND: CMR client not found (enum type CMR_CLIENT_NOT_FOUND)\n* NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID: (enum type NOT_FOUND_IDENTIFICATION_REQUEST_DOCUMENT_BY_CLIENT_HASH_IDENTIFIER_ID)\n* IDENTIFICATION_REQUEST_ERROR_STATUS: Web identification request in error status (enum type IDENTIFICATION_REQUEST_ERROR_STATUS)\n* OTC_CRYPTO_MANAGER_FAILED: OTC crypto manager failed (enum type OTC_CRYPTO_MANAGER_FAILED)\n* NOT_FOUND_WEB_IDENTIFICATION_RESULT: Web identification result not found (enum type NOT_FOUND_WEB_IDENTIFICATION_RESULT)\n* NOT_FOUND: Not found (enum type NOT_FOUND_VALIDITY_EXPIRED)\n* BIRTH_DATE_REQUIRED: Not found (enum type BIRTH_DATE_REQUIRED)\n* BIRTH_DATE_PATTERN_ERROR: Not found (enum type BIRTH_DATE_PATTERN_ERROR)\n* FUTURE_BIRTH_DATE_ERROR: Not found (enum type FUTURE_BIRTH_DATE_ERROR)\n* NOT_VALID_EMAIL: Not found (enum type NOT_VALID_EMAIL)",
+          "example": "OK"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message. The message can be localized with 'Accept-language' header",
+          "example": "Successful operation"
+        }
+      }
+    },
+    "SignedContentsResponseData": {
+      "title": "SignedContentsResponseData",
+      "type": "object",
+      "properties": {
+        "signatures": {
+          "type": "array",
+          "description": "A list with signatures and and requests' statuses. The list is ordered in order of the requested documents",
+          "items": {
+            "$ref": "#/definitions/SignatureResponse"
+          }
+        },
+        "cert": {
+          "type": "string",
+          "description": "The X509 certificate(BASE64 encoded) that is used to sign the request. It is returned only when contentFormat parameter is SIGNATURE",
+          "example": "MIIG5zCCBM+gAwIBAgIICFKrP9zVz2EwDQYJKoZIhvcNAQELBQAweDELMAkGA1UE..."
+        }
+      }
+    },
+    "Timestamp": {
+      "title": "Timestamp",
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hours": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minutes": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nanos": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "seconds": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "time": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "timezoneOffset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "otc-controller",
+      "description": "OTC Controller"
+    },
+    {
+      "name": "otcpac-signing-controller",
+      "description": "OTCPAC Signing Controller"
+    },
+    {
+      "name": "signing-controller",
+      "description": "Signing Controller"
+    }
+  ]
+}

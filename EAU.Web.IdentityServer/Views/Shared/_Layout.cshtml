@@ -1,0 +1,247 @@
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer Localizer
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@using Microsoft.Extensions.Configuration
+@using Microsoft.AspNetCore.Http
+@{
+    string version = Configuration.GetEAUSection().GetValue<string>("GL_VERSION");
+    string publicApi = Configuration.GetEAUSection().GetValue<string>("GL_EAU_PUBLIC_APP");
+    publicApi = publicApi.EndsWith('/') ? publicApi : publicApi + '/';
+    string webHelpUrl = Configuration.GetEAUSection().GetValue<string>("GL_WEB_HELP_URL");
+
+    Func<string, string> uriBuilder = (string s) => $"{publicApi}{s}";
+
+    string reqLang = Context.GetLanguage();
+    string langPostfix = !string.IsNullOrEmpty(reqLang) && reqLang != "bg" ? $"-{reqLang}" : string.Empty;
+
+    var f1 = Url.Content($"~/images/footer-logo-eu{langPostfix}.svg");
+    var f2 = Url.Content($"~/images/footer-logo-opdu{langPostfix}.svg");
+}
+<!-- DOCTYPE -->
+<!DOCTYPE html>
+<html lang="@reqLang">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Viewport Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="~/css/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="~/images/favicon.ico" />
+    <link rel="icon" type="image/ico" href="~/images/favicon.ico" />
+</head>
+<body>
+    <div class="layout-wrapper">
+        <div class="header-wrapper">
+            <header class="header">
+                <div class="header-bg">
+                    <div class="section-wrapper fixed-content-width header-gerb-bg">
+                        <div class="row header-container ">
+                            <div class="col-auto">
+                                <img class="mvr-logo" src="~/images/logo.png" alt="">
+                            </div>
+                            <div class="col header-title">
+                                <p>
+                                    @Localizer["GL_REPUBLIC_OF_BULGARIA_L"]<br />
+                                    <strong>@Localizer["GL_MVR_L"]</strong>
+                                </p>
+                                <p class="site-name">@Localizer["GL_PEAU_L"]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <nav class="navbar-top">
+                <div class="navbar-top-container fixed-content-width">
+                    <div class="navbar-top-menu d-lg-none">
+                        <a class="navbar-top-item" href="javascript:toggleNav();" title="@Localizer["GL_NAVIGATION_L"]">
+                            <i class="ui-icon nav-icon-menu" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-top-container--mobile collapse">
+                        <ul class="navbar-top-container-left">
+                            <li>
+                                <a class="navbar-top-item" href=@uriBuilder("services")>
+                                    @Localizer["GL_SERVICES_L"]
+                                </a>
+                            </li>
+                            <li>
+                                <a class="navbar-top-item" href=@webHelpUrl target="_blank">
+                                    @Localizer["GL_HELP_L"]
+                                </a>
+                            </li>
+                            <li>
+                                <a class="navbar-top-item" href=@uriBuilder("contacts")>
+                                    @Localizer["GL_CONTACTS_L"]
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="navbar-top-container-right">
+                        <li>
+                            <a class="navbar-top-item" href=@uriBuilder("search")>
+                                <span title=@Localizer["GL_SEARCH_TITLE_L"]><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">@Localizer["GL_SEARCH_TITLE_L"]</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu">
+                                    <span title="@Localizer["GL_ACCESSIBILITY_L"]"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">@Localizer["GL_ACCESSIBILITY_L"]</span></span>
+                                </button>
+                                <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                    <div class="dropdown-menu--scrollable">
+                                        <a href=@uriBuilder("access_function") class="dropdown-item" role="menuitem">@Localizer["GL_FUNCTIONS_ACCESSIBILITY_L"]</a>
+                                        <button type="button" class="dropdown-item" role="menuitem" onclick="hideCss()">@Localizer["GL_TEXT_VERSION_L"]</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="navbar-top-font-size d-none d-md-inline">
+                            <div class="navbar-top-item">
+                                <button type="button" onclick="setFontSize(-1);"><span title="@Localizer["GL_FONT_SIZE_DECREASE_L"]"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">@Localizer["GL_FONT_SIZE_DECREASE_L"]</span></span></button>
+                                <button type="button" onclick="setFontSize();"><span title="@Localizer["GL_FONT_SIZE_NORMAL_L"]"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">@Localizer["GL_FONT_SIZE_NORMAL_L"]</span></span></button>
+                                <button type="button" onclick="setFontSize(1);"><span title="@Localizer["GL_FONT_SIZE_INCREASE_L"]"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">@Localizer["GL_FONT_SIZE_INCREASE_L"]</span></span></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <main class="content-wrapper">
+            @RenderBody()
+        </main>
+        <div class="footer-wrapper">
+            <footer class="footer">
+                <div class="footer-containter-bg">
+                    <div class="footer-links-container fixed-content-width">
+                        <ul>
+                            <li class="footer-link"><a href=@uriBuilder("news")>@Localizer["GL_NEWS_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("test_sign")>@Localizer["GL_TEST_SIGN_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("services/PreviewDocument")>@Localizer["GL_EDOC_PREVIEW_L"]</a></li>
+                        </ul>
+                        <ul>
+                            <li class="footer-link"><a href=@uriBuilder("privacy_policy")>@Localizer["GL_PRIVACY_POLICY_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("accessibility_policy")>@Localizer["GL_ACCESSIBILITY_POLICY_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("security_policy")>@Localizer["GL_SECURITY_POLICY_L"]</a></li>
+                        </ul>
+                        <ul>
+                            <li class="footer-link"><a href=@uriBuilder("terms_of_use")>@Localizer["GL_TERM_OF_USE_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("cookies")>@Localizer["GL_COOKIES_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("site-map")>@Localizer["GL_SITEMAP_L"]</a></li>
+                        </ul>
+                        <ul>
+                            <li class="footer-link"><a href=@webHelpUrl target="_blank">@Localizer["GL_HELP_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("video_lessons")>@Localizer["GL_VIDEO_LESSONS_L"]</a></li>
+                            <li class="footer-link"><a href=@uriBuilder("contacts")>@Localizer["GL_CONTACTS_L"]</a></li>
+                        </ul>
+
+                        <button accessKey="0" tabIndex=-1 type="button" class="btn btn-link skip-to-content" onclick="window.location.assign('@uriBuilder("access_function")')" title="@Localizer["GL_FAST_ACCESS_I"]">0 - @Localizer["GL_ACCESS_FUNCTION_L"]</button>
+                        <button accessKey="1" tabIndex=-1 type="button" class="btn btn-link skip-to-content" onclick="window.open('@webHelpUrl')" title="@Localizer["GL_FAST_ACCESS_I"]">1 - @Localizer["GL_HELP_L"]</button>
+                        <button accessKey="3" tabIndex=-1 type="button" class="btn btn-link skip-to-content" onclick="window.location.assign('@uriBuilder("services")')" title="@Localizer["GL_FAST_ACCESS_I"]">3 - @Localizer["GL_SERVICES_L"]</button>
+                        <button accessKey="4" tabIndex=-1 type="button" class="btn btn-link skip-to-content" onclick="window.location.assign('@uriBuilder("my-eservices")')" title="@Localizer["GL_FAST_ACCESS_I"]">4 - @Localizer["GL_MY_E_SERVICES_L"]</button>
+                        <button accessKey="5" tabIndex=-1 type="button" class="btn btn-link skip-to-content" onclick="window.location.assign('@uriBuilder("contacts")')" title="@Localizer["GL_FAST_ACCESS_I"]">5 - @Localizer["GL_CONTACTS_L"]</button>
+                        <button accessKey="6" tabIndex=-1 type="button" class="btn btn-link skip-to-content" onclick="window.location.assign('@uriBuilder("privacy_policy")')" title="@Localizer["GL_FAST_ACCESS_I"]">6 - @Localizer["GL_PRIVACY_POLICY_L"]</button>
+                        <button accessKey="7" tabIndex=-1 type="button" class="btn btn-link skip-to-content" onclick="window.location.assign('@uriBuilder("site-map")')" title="@Localizer["GL_FAST_ACCESS_I"]">7 - @Localizer["GL_SITEMAP_L"]</button>
+
+                        <div class="fixed-content-width">
+                            <div class="software-version">@Localizer["GL_VERSION_L"]: @version</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">@Localizer["GL_OPERATION_PROGRAM_GOOD_MANAGEMENT_EU_L"]</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src=@f1 alt="">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src=@f2 alt="">
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+
+
+
+        // Show Navigation
+        function toggleNav() {
+            $(".navbar-top-container--mobile").collapse('toggle');
+        };
+
+        function setFontSize(arg) {
+
+            var doc = document.getElementsByTagName("html")[0];
+            var fontSize = getCookie('fontSize');
+
+            if (!fontSize)
+                fontSize = 16;
+
+            switch (arg) {
+                case -1: if (fontSize >= 12) fontSize--;
+                    break;
+                case 1: if (fontSize <= 20) fontSize++
+                    break;
+                default: fontSize = 16;
+            }
+
+            setCookie('fontSize', fontSize, 365 * 5);
+            doc.style.fontSize = fontSize + 'px';
+        }
+
+        function getCookie(cname) {
+
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+
+                if (c.indexOf(name) == 0)
+                    return c.substring(name.length, c.length);
+            }
+
+            return "";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = exdays ? "expires=" + d.toUTCString() : exdays;
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";Secure;path=/";
+        }
+
+        function hideCss() {
+            document.querySelectorAll('style,link[rel="stylesheet"]').forEach(item => item.setAttribute("media", "none"));
+            createNormalViewTriggerButton();
+        }
+
+        function createNormalViewTriggerButton() {
+            let button = document.createElement("button");
+            button.id = "normalPageId";
+            button.textContent = "Към нормален изглед";
+
+            button.addEventListener("click", function () {
+                document.querySelectorAll('style,link[rel="stylesheet"]').forEach(item => item.removeAttribute("media"));
+                button.remove();
+            });
+
+            document.body.insertBefore(button, document.body.firstChild);
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

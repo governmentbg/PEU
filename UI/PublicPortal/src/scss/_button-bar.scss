@@ -1,0 +1,134 @@
+/* ----  Button Bar  ---- */
+
+.button-bar {		
+	min-height: 0;
+	margin-bottom: 0;	
+	margin-top: -$template-margin-vertical;
+	margin-left: 0;
+	margin-right: 0;
+	
+	display: flex;
+	flex: 1 1 auto;	
+	flex-wrap: wrap;
+
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row-reverse;
+
+	.btn {
+		margin-top: $template-margin-vertical;
+		margin-left: $template-margin-horizontal;
+		margin-right: $template-margin-horizontal;
+
+		white-space: normal;
+
+		min-width: 10rem;
+	}
+
+	.pagination-container {
+		margin-top: $template-margin-vertical;
+
+		margin-left: $template-margin-horizontal;
+		margin-right: $template-margin-horizontal;		
+	}
+
+
+
+	.left-side,
+	.right-side {
+		display: flex;
+		flex: 0 1 auto;
+		flex-wrap: wrap;
+		flex-direction: row-reverse;		
+
+		margin-left: -$template-margin-horizontal;
+		margin-right: -$template-margin-horizontal;
+	}
+	
+}
+
+.button-bar--form, .button-bar--service {
+
+    border-top: 1px solid $gray-400;        
+    margin-top: $template-margin-vertical * 2;
+    margin-left: 0;
+    margin-right: 0;
+
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: $template-margin-vertical;
+	padding-bottom: $template-margin-vertical;		
+	
+}
+.button-bar--service {
+	border-top: none;
+	margin-top: 0;
+	padding-bottom: $template-margin-vertical * 2;
+
+}
+
+// .button-bar--page {
+//     border-top: 1px solid $gray-300;        
+//     margin-top: 0;
+//     // margin-bottom: $template-margin-vertical;
+//     margin-left: 0;
+//     margin-right: 0;
+ 
+// 	padding: $template-padding-vertical $template-padding-horizontal;
+	
+// 	@include media-breakpoint-down(sm) {
+// 		padding: $template-padding-vertical 0;
+// 	}
+// }
+
+.button-bar--table-actionbar-bottom {
+    border-top: 1px solid $gray-300;
+    margin-top: $template-margin-vertical;
+ 
+    padding: $template-padding-vertical 0;
+}
+
+.button-bar--table-actionbar-top {
+    border-bottom: 1px solid $gray-300;
+    margin-bottom: $template-margin-vertical;
+ 
+    padding: $template-padding-vertical 0 $template-padding-vertical * 2 0;
+}
+
+
+.button-bar--responsive {
+
+	@include media-breakpoint-down(xs) {
+
+		flex-direction: column;
+
+		.left-side,
+		.right-side {
+			width: 100%;			
+			flex-direction: column;
+			
+			margin-left: 0;
+			margin-right: 0;
+		}		
+		
+		.btn {
+			display: block;
+			flex: 1 1 auto;
+			margin-left: 0;
+			margin-right: 0;
+			min-width: auto;
+		}
+	}
+}
+
+.button-bar--sticky {
+    position: sticky;
+    bottom: 0;
+	z-index: $zindex-sticky-nav;
+
+	background-color: $white;
+	padding-top:  $template-padding-vertical *.5;
+	box-shadow: 0 -.5rem 0.5rem $white;	
+}
+
+/* ----  /Button Bar  ---- */

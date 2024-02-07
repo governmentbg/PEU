@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Портал за електронни административни услуги на МВР - Администриране</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- jquery-ui css -->
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+
+        <!-- For tempusdominus-bootstrap-4 datetimepicker -->
+        <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
+
+        <!-- Fonts -->
+        <link href="css/fonts.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" />
+    </head>
+
+<body>
+
+<div id="loader" class="load-overlay">
+    <div class="loader">
+        <i class="ui-icon ui-icon-loading ui-icon-spin"></i>
+        <span class="sr-only">Зареждане...</span>
+    </div>
+</div>
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+
+        <header class="header">
+            <div class="row header-container">
+                <div class="col-sm-auto">
+                    <img class="logo" src="images/logo.png">
+                </div> 
+                <div class="col-sm header-title header-title--register">
+                    <h1>Портал за електронни административни услуги на МВР</h1>
+                    <p>Административен модул - Дизайн компоненти</p>
+                </div>
+            </div>
+
+            <div class="brand-line"></div>
+        </header>
+
+        <nav class="navbar-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2">
+                        <a class="navbar-minimalize"><i class="ui-icon ui-icon-menu" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-10"><button class="system-button float-right" title="Помощ"><i class="ui-icon ui-icon-help navbar-top-icon" aria-hidden="true"></i></button><div class="horizontal-divider float-right"></div><div class="navbar-top-font-size float-right"><a href="javascript:setFontSize(-1);" title="Намали шрифта"><i class="ui-icon ui-icon-font-size-minus navbar-top-icon" aria-hidden="true"></i></a><a href="javascript:setFontSize();" title="Нормален шрифт"><i class="ui-icon ui-icon-font-size navbar-top-icon" aria-hidden="true"></i></a><a href="javascript:setFontSize(1);" title="Увеличи шрифта"><i class="ui-icon ui-icon-font-size-plus navbar-top-icon" aria-hidden="true"></i></a></div><div class="horizontal-divider float-right"></div><div class="dropdown float-right"><button class="system-button user-profile dropdown-toggle" href="#" data-toggle="dropdown"><i class="ui-icon ui-icon-user navbar-top-icon" aria-hidden="true"></i>Драгомир Петканов</button><div class="dropdown-menu" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#">Профил</a><a class="dropdown-item" href="#">Конфигурация</a><div class="dropdown-divider"></div><a class="dropdown-item" href="#">Изход</a></div></div></div>
+                </div>
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div id="content-wrapper" class="content-wrapper">
+
+        <div class="main-wrapper">
+
+            <div class="nav-wrapper">
+
+                <nav id="navbar-left" class="navbar-left">
+                    <ul>
+                        <li><a href="home.html" ><i class="nav-icon nav-icon-home"></i><span>Начало</span></a></li>
+                        <li><a href="#" class=""><i class="nav-icon nav-icon-users"></i><span>Потребители</span></a>
+                            <ul>
+                                <li><a href="register.html"><span>Регистрация</span></a></li>
+                                <li><a href="user-search.html"><span>Потребителски профили</span></a></li>
+                                <li><a href="audit-list.html"><span>Одитен журнал</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" ><i class="nav-icon nav-icon-documents"></i><span>Съдържание</span></a>
+                            <ul>
+                                <li><a href="declaration-template-list.html"><span>Шаблони за декларации</span></a></li>
+                                <li><a href="redefined-page-list.html"><span>Предефинирани страници с html съдържание</span></a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="#" ><i class="nav-icon nav-icon-language"></i><span>Преводи</span></a>
+                            <ul>
+                                <li><a href="service-list-translate.html"><span>Услуги</span></a></li>
+                                <li><a href="label-list-translate.html"><span>Етикети и съобщения</span></a></li>
+                                <li><a href="service-groups-list-translate .html"><span>Списък с групи услуги</span></a></li>
+                                <li><a href="redefined-page-list-translate.html"><span>Предефинирани страници с html съдържание</span></a></li>
+                            </ul>
+                        </li>
+                         <li><a href="#" ><i class="nav-icon nav-icon-list"></i><span>Номенклатури</span></a>
+                            <ul>
+                                <li><a href="nomenclature-service-list.html"><span>Услуги</span></a></li>
+                                <li><a href="nomenclature-declaration-list.html"><span>Политики и декларации</span></a></li>
+                                <li><a href="nomenclature-label-list.html"><span>Етикети и съобщения</span></a></li>
+                                <li><a href="language-list.html"><span>Езици</span></a></li>
+                                <li><a href="service-groups-list.html"><span>Списък с групи услуги</span></a></li>
+                            </ul>
+                        
+                        </li>
+                        <li><a href="limit-list.html" class="active"><i class="nav-icon nav-icon-limits"></i><span>Лимити</span></a></li>
+                        <li><a href="param-list.html" class=""><i class="nav-icon nav-icon-configuration"></i><span>Параметри</span></a></li>
+                        <li><a href="#" class=""><i class="nav-icon nav-icon-payment"></i><span>Плащания</span></a>
+                            <ul>
+                                <li><a href="epay.html"><span>Администриране на регистрационни данни на МВР за ePay</span></a></li>
+                                <li><a href="pep.html"><span>Администриране на регистрационни данни на МВР за ПЕП на ДАЕУ</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="nav-icon nav-icon-references"></i><span>Справки</span></a>
+                            <ul>
+                                <li><a href="reports-payment.html"><span>Справка за извършено плащане</span></a></li>
+                                <li><a href="reports-notary.html"><span>Справка за проявен интерес от нотариална кантора</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="page-wrapper">
+
+                <div class="container-fluid" >
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Начало</a></li>
+                            <li class="breadcrumb-item active">Лимити</li>
+                        </ol>
+                    </nav>
+
+                    <div class="page-title">
+                        <h2>Лимити</h2>
+                    </div>
+
+                    <div class="card">
+
+                        <div class="card-header">
+                            <h3>Търсене
+                                <button class="system-button toggle-collapse" data-toggle="collapse" data-target="#collapsable-content" aria-expanded="true">
+                                    <i class="ui-icon ui-icon-chevron-up" aria-hidden="true"></i>
+                                </button>
+                            </h3>
+                        </div>
+
+                        <div id="collapsable-content" class="collapse show">
+                            <div class="card-body">                            
+                                <div class="row">
+                                    <div class="form-group col-md-6 col-xl-4">
+                                        <label>Код</label>
+                                        <input class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-xl-4">
+                                        <label>Описание</label>
+                                        <input class="form-control">
+                                    </div>
+                                    <div class="form-group col-12 col-xl-4">
+                                        <label>Статус</label>
+                                        <div class="form-inline">
+                                            <div class="custom-control-inline custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" name="exampleRadiosA" id="exampleRadiosA1" value="option1" checked>
+                                                <label class="custom-control-label" for="exampleRadiosA1">Всички</label>
+                                            </div>
+                                            <div class="custom-control-inline custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" name="exampleRadiosA" id="exampleRadiosA2" value="option2">
+                                                <label class="custom-control-label" for="exampleRadiosA2">Активни</label>
+                                            </div>
+                                            <div class="custom-control-inline custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" name="exampleRadiosA" id="exampleRadiosA3" value="option3" >
+                                                <label class="custom-control-label" for="exampleRadiosA3">Неактивни</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                   
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="button-bar">
+                                    <div class="right-side">
+                                        <button type="button" class="btn btn-primary"><i class="ui-icon ui-icon-search"></i>&nbsp;Търси</button>
+                                    </div>
+                                    <div class="left-side">
+                                        <button type="button" class="btn btn-secondary">Изчисти</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div class="pagination-container">
+                                <div class="result-count">
+                                    общо: 25
+                                </div>
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">First</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">‹</span>
+                                        <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">›</span>
+                                        <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Last</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Лимит</th>
+                                            <th>Период</th>
+                                            <th>Максимален брой заявки</th>
+                                            <th>Статус</th>                                        
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="word-break"><b>PEAU_APPLICATION_PREVIEW_LIMIT</b></span><br>
+                                                Допустим максимален брой заявки за преглед на заявление
+                                            </td>
+                                            <td>
+                                                00:01:00.0
+                                            </td>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td class="icons-td">
+                                                <i class="ui-icon ui-icon-state-active" aria-hidden="true"></i>Активен
+                                            </td>                                
+                                            <td class="buttons-td">                                                                                    
+                                                <button class="btn btn-secondary" title="Редактиране"><i class="ui-icon ui-icon-edit"></i></button><button class="btn btn-secondary" title="Деактивиране" data-toggle="modal" data-target="#modal-confirm-deactivate"><i class="ui-icon ui-icon-deactivate"></i></button>
+                                            </td>                                    
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="word-break"><b>PEAU_FAILED_LOGIN_LIMIT</b></span><br>
+                                                Допустим максимален брой на опити за автентикация на потребител
+                                            </td>
+                                            <td>
+                                                00:01:00.0
+                                            </td>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td class="icons-td">
+                                                <i class="ui-icon ui-icon-state-active" aria-hidden="true"></i>Активен
+                                            </td>                                
+                                            <td class="buttons-td">                                                                                    
+                                                <button class="btn btn-secondary" title="Редактиране"><i class="ui-icon ui-icon-edit"></i></button><button class="btn btn-secondary" title="Деактивиране" data-toggle="modal" data-target="#modal-confirm-deactivate"><i class="ui-icon ui-icon-deactivate"></i></button>
+                                            </td>                                    
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="word-break"><b>PEAU_PASS_LIMIT</b></span><br>
+                                                Допустим максимален брой на опити за заявяване на изпращане на забравена парола
+                                            </td>               
+                                            <td>
+                                                <div class="period-control">
+                                                    <div class="form-group mr-2"><label class="mr-1">дни</label><input class="form-control period-control-2" maxlength="2" type="text"></div>
+                                                    <div class="form-group mr-2"><label class="mr-1">часове</label><input class="form-control period-control-2" maxlength="2" type="text"></div>
+                                                    <div class="form-group mr-2"><label class="mr-1">минути</label><input class="form-control period-control-2" maxlength="2" type="text"></div>
+                                                    <div class="form-group text-nowrap"><label class="mr-1">секунди</label><input class="form-control period-control-2" maxlength="2" type="text"><span class="mr-1 ml-1">.</span><input class="form-control period-control-3" maxlength="3" type="text"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input class="form-control contorl-width-4" maxlength="4" value="9999">
+                                            </td>
+                                            <td class="icons-td">
+                                                <i class="ui-icon ui-icon-state-active" aria-hidden="true"></i>Активен
+                                            </td>                                    
+                                            <td class="buttons-td">                                    
+                                                <div class="btn-group">
+                                                    <button class="btn btn-secondary" title="Запази"><i class="ui-icon ui-icon-check"></i></button><button class="btn btn-secondary" title="Откажи"><i class="ui-icon ui-icon-ban"></i></button>
+                                                </div>
+                                            </td>                                    
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="word-break"><b>PEAU_REGISTRATION_LIMIT</b></span><br>
+                                                Допустим максимален брой на заявки за регистрация
+                                            </td>
+                                            <td>
+                                                4 дни 00:01:01.0
+                                            </td>
+                                            <td>
+                                                50
+                                            </td>
+                                            <td class="icons-td">
+                                                <i class="ui-icon ui-icon-state-inactive" aria-hidden="true"></i>Неактивен
+                                            </td>                                
+                                            <td class="buttons-td">                                                                                    
+                                                <button class="btn btn-secondary" title="Редактиране"><i class="ui-icon ui-icon-edit"></i></button><button class="btn btn-secondary" title="Активиране" data-toggle="modal" data-target="#modal-confirm-activate"><i class="ui-icon ui-icon-activate"></i></button>
+                                            </td>                                    
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="word-break"><b>PEAU_SEARCH_LIMIT</b></span><br>
+                                                Допустим максимален брой на опити за търсене в съдържание
+                                            </td>
+                                            <td>
+                                                00:01:00.0
+                                            </td>
+                                            <td>
+                                                2
+                                            </td>
+                                            <td class="icons-td">
+                                                <i class="ui-icon ui-icon-state-active" aria-hidden="true"></i>Активен
+                                            </td>                                
+                                            <td class="buttons-td">                                                                                    
+                                                <button class="btn btn-secondary" title="Редактиране"><i class="ui-icon ui-icon-edit"></i></button><button class="btn btn-secondary" title="Деактивиране" data-toggle="modal" data-target="#modal-confirm-deactivate"><i class="ui-icon ui-icon-deactivate"></i></button>
+                                            </td>                                    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="pagination-container">
+                                <div class="result-count">
+                                    общо: 25
+                                </div>
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">First</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">‹</span>
+                                        <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">›</span>
+                                        <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Last</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="software-version">версия: 1.4.7.9</div>
+            <div class="brand-line"></div>
+            <div class="container-fluid footer-containter">
+                <div class="row">
+                    <div class="col-md-8 col-xl-10 order-md-2 text-center">
+                        <p>Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-md-2 col-xl-1 order-md-1 text-center" >
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-md-2 col-xl-1 order-md-3 text-center">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+<div id="modal-confirm-activate" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Активиране</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            	<div class="alert alert-warning">Потвърдете активирането.</div>
+            </div>
+            <div class="modal-footer">
+                <div class="button-bar">
+                    <div class="right-side">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Потвърди</button>
+                    </div>
+                    <div class="left-side">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Откажи</button>
+                    </div>
+                </div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-confirm-deactivate" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Деактивиране</h3>                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            	<div class="alert alert-warning">Потвърдете деактивирането.</div>
+            </div>
+            <div class="modal-footer">
+				<div class="button-bar">
+                    <div class="right-side">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Потвърди</button>
+                    </div>
+                    <div class="left-side">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Откажи</button>
+                    </div>
+                </div>
+			</div>
+        </div>
+    </div>
+</div>
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- jQuery UI library -->
+    <!-- <script src="js/jquery-ui.js"></script>
+    <script src="js/combobox.js"></script> -->
+
+
+    <!-- For tempusdominus-bootstrap-4 datetimepicker -->
+    <!-- <script type="text/javascript" src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js"></script> -->
+
+	<!-- Page Scripst -->
+	<script>
+
+		$(document).ready(function () {
+
+
+            // //Sortable-Draggable
+			// $(".tree-list").sortable({
+			// 	handle: ".drag-handle",
+			// 	// helper: fixHelperModified,
+			// 	start: function(e, ui){
+			// 		ui.placeholder.css('visibility', 'visible');
+			// 	}
+            // });
+
+
+            // //Sortable-Draggable Table
+
+			// var fixHelperModified = function(e, tr) {
+			// 	var $originals = tr.children();
+			// 	var $helper = tr.clone();
+
+			// 	$helper.children().each(function(index) {
+			// 		$(this).outerWidth($originals.eq(index).outerWidth())
+			// 	});
+
+			// 	return $helper;
+			// };
+
+			// $(".table-sortable tbody").sortable({
+			// 	handle: ".drag-handle",
+			// 	helper: fixHelperModified,
+			// 	start: function(e, ui){
+			// 		ui.placeholder.css('visibility', 'visible');
+			// 	}
+			// });
+
+
+            // Combobox with autocomplete
+            // $("#combobox1").combobox();
+            
+            // $("#combobox1").combobox();
+
+			//$('#myModal_3').modal('show');
+
+			// Minimalize Left Navigation
+			$('.navbar-minimalize').on('click', function () {
+				$("#content-wrapper").toggleClass("mini-navbar-left");
+			});
+
+            
+
+			// Activate Left Navigation
+
+			$("#navbar-left li ul").addClass("collapse");
+			$("#navbar-left ul").closest('li').find('>a').append("<i class='ui-icon ui-icon-chevron-right collapse-arrow' aria-hidden='true'></i>");
+
+
+			$("#navbar-left ul").on('show.bs.collapse', function (e) {
+				$(e.currentTarget).closest('li').find('>a .collapse-arrow').toggleClass('rotate-90');
+				e.stopImmediatePropagation();
+			});
+
+			$("#navbar-left ul").on('hide.bs.collapse', function (e) {
+				$(e.currentTarget).closest('li').find('>a .collapse-arrow').toggleClass('rotate-90');
+				e.stopImmediatePropagation();
+			});
+
+			$("#navbar-left a").click(function(e) {
+				$(this).closest('li').find('>ul').collapse('toggle');
+				$(this).closest('ul').find('li ul.collapse').collapse('hide');
+				$(this).closest('ul').find('li a').removeClass("selected");
+				$(this).addClass("selected");
+
+				//e.preventDefault();
+			});
+
+            // Button shows Loader
+            $('#loader_preview').on('click', function () {
+                $("#loader").toggleClass("show");
+            });
+            $('#loader').on('click', function () {
+                $(this).toggleClass("show");
+            });
+
+            $('#local_loader_preview').on('click', function () {
+                $("#local-loader").toggleClass("show");
+            });
+            $('#local-loader').on('click', function () {
+                $(this).toggleClass("show");
+            });
+
+
+
+
+            // $('#datetimepicker1, #datetimepicker3').datetimepicker(
+            //     {
+            //         widgetPositioning: {
+            //             horizontal: 'left',
+            //             vertical: 'bottom'
+            //         },
+            //         // widgetParent : '#datetimepicker-container',
+            //         icons: {
+            //             time: 'ui-icon dt-icon-time',
+            //             date: 'ui-icon dt-icon-date',
+
+            //             up: 'ui-icon dt-icon-up',
+            //             down: 'ui-icon dt-icon-down',
+
+            //             previous: 'ui-icon dt-icon-previous',
+            //             next: 'ui-icon dt-icon-next',
+
+            //             today: 'ui-icon dt-icon-today',
+            //             clear: 'ui-icon dt-icon-clear',
+            //             close: 'ui-icon dt-icon-close'
+            //         },
+            //         locale: moment.locale('bg'),
+            //         // buttons: {
+            //         //     showToday: true
+            //         // },
+            //         format: 'L'
+            //         // format: 'LT'
+            //     }
+            // );
+
+            // $('#datetimepicker2, #datetimepicker4').datetimepicker(
+            //     {
+            //         widgetPositioning: {
+            //             horizontal: 'left',
+            //             vertical: 'bottom'
+            //         },
+            //         // widgetParent : '#datetimepicker-container',
+            //         icons: {
+            //             time: 'ui-icon dt-icon-time',
+            //             date: 'ui-icon dt-icon-date',
+
+            //             up: 'ui-icon dt-icon-up',
+            //             down: 'ui-icon dt-icon-down',
+
+            //             previous: 'ui-icon dt-icon-previous',
+            //             next: 'ui-icon dt-icon-next',
+
+            //             today: 'ui-icon dt-icon-today',
+            //             clear: 'ui-icon dt-icon-clear',
+            //             close: 'ui-icon dt-icon-close'
+            //         },
+            //         locale: moment.locale('bg'),
+            //         format: 'LT'
+            //     }
+            // );
+
+
+        });
+
+
+        // // Add space for datetimepicker in .table-responsive on show.datetimepicker
+        // $("#datetimepicker1, #datetimepicker2, #datetimepicker3, #datetimepicker4").on("show.datetimepicker", function(event) {
+        //     $responsive_container = $(event.target).closest('.table-responsive');
+        //     $responsive_container_padding_bottom = $responsive_container.css("padding-bottom");
+        //     $responsive_container.css("padding-bottom", "15.625rem");
+        // });
+
+        // // Remove space added for datetimepicker in .table-responsive on hide.datetimepicker
+        // $("#datetimepicker1, #datetimepicker2, #datetimepicker3, #datetimepicker4").on("hide.datetimepicker", function(event) {
+        //     $responsive_container = $(event.target).closest('.table-responsive');
+        //     $responsive_container.css("padding-bottom", $responsive_container_padding_bottom );
+        // });
+
+
+
+
+        $(document).on('change', 'input:file', function () {
+            var inputId = this.id;
+            var filename = $(this).val().split('\\').pop();
+            $("label[for='" + inputId + "'] .fileName").html(filename);
+        });
+
+
+        function setFontSize(arg) {            
+            var doc = document.getElementsByTagName ("HTML")[0];
+            switch(arg) {
+                case -1:
+                doc.style.fontSize = "80%";
+                break;
+                case 1:
+                doc.style.fontSize = "120%";
+                break;
+                default:
+                doc.style.fontSize = "100%";
+            }             
+        }
+
+	</script>
+
+  </body>
+</html>
+

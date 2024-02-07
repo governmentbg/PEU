@@ -1,0 +1,118 @@
+/* MVR Public Portal */
+/* SOURCE SASS */
+
+// Fonts
+@import "src/scss/fonts";
+
+/*!
+ * Bootstrap v4.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+ @import "src/bootstrap-4.4.1/scss/functions";
+ 
+ @import "src/scss/bootstrap_variables"; // Custom variables
+ @import "src/bootstrap-4.4.1/scss/variables";
+
+ @import "src/bootstrap-4.4.1/scss/mixins";
+ @import "src/bootstrap-4.4.1/scss/root";
+ @import "src/bootstrap-4.4.1/scss/reboot"; 
+ @import "src/bootstrap-4.4.1/scss/type";
+//  @import "src/bootstrap-4.4.1/scss/images";
+//  @import "src/bootstrap-4.4.1/scss/code";
+ @import "src/bootstrap-4.4.1/scss/grid";
+ @import "src/bootstrap-4.4.1/scss/tables";
+ @import "src/bootstrap-4.4.1/scss/forms";
+ @import "src/bootstrap-4.4.1/scss/buttons";
+ @import "src/bootstrap-4.4.1/scss/transitions";
+ @import "src/bootstrap-4.4.1/scss/dropdown";
+ @import "src/bootstrap-4.4.1/scss/button-group";
+ @import "src/bootstrap-4.4.1/scss/input-group";
+
+ @import "src/bootstrap-4.4.1/scss/custom-forms";
+
+ @import "src/bootstrap-4.4.1/scss/nav";
+//  @import "src/bootstrap-4.4.1/scss/navbar";
+ @import "src/bootstrap-4.4.1/scss/card";
+ @import "src/bootstrap-4.4.1/scss/breadcrumb";
+ @import "src/bootstrap-4.4.1/scss/pagination";
+//  @import "src/bootstrap-4.4.1/scss/badge";
+//  @import "src/bootstrap-4.4.1/scss/jumbotron";
+ @import "src/bootstrap-4.4.1/scss/alert";
+ @import "src/bootstrap-4.4.1/scss/progress";
+//  @import "src/bootstrap-4.4.1/scss/media";
+ @import "src/bootstrap-4.4.1/scss/list-group";
+ @import "src/bootstrap-4.4.1/scss/close";
+//  @import "src/bootstrap-4.4.1/scss/toasts";
+ @import "src/bootstrap-4.4.1/scss/modal";
+//  @import "src/bootstrap-4.4.1/scss/tooltip";
+//  @import "src/bootstrap-4.4.1/scss/popover";
+//  @import "src/bootstrap-4.4.1/scss/carousel";
+// @import "src/bootstrap-4.4.1/scss/spinners";
+ @import "src/bootstrap-4.4.1/scss/utilities";
+//  @import "src/bootstrap-4.4.1/scss/print";
+
+
+
+// Template CSS
+
+// Template variables and mixins
+@import "src/scss/style_variables";
+@import "src/scss/style_mixins";
+
+@import "src/scss/ui-icons";
+
+// Main sections
+@import "src/scss/layout";
+@import "src/scss/main"; 
+@import "src/scss/skip-link"; 
+
+// Portal Elements
+@import "src/scss/header";
+@import "src/scss/footer";
+@import "src/scss/navbar-top";
+
+@import "src/scss/page";
+@import "src/scss/page-nav";
+
+@import "src/scss/application";
+@import "src/scss/nav-services";
+@import "src/scss/cookies";
+
+@import "src/scss/stage-view";
+
+
+// Elements
+@import "src/scss/loader";
+
+@import "src/scss/rdtPicker";
+@import "src/scss/autocomplete-combobox";
+@import "react-select";
+@import "html-editor";
+
+@import "src/scss/custom-forms";
+
+@import "src/scss/card";
+@import "src/scss/breadcrumb";
+@import "src/scss/alert";
+@import "src/scss/nav";
+
+
+@import "src/scss/table";
+
+@import "src/scss/buttons";
+@import "src/scss/button-bar";
+@import "src/scss/pagination";
+
+@import "src/scss/modal";
+@import "src/scss/search";
+
+
+
+
+@import "src/scss/plain-text";
+
+
+

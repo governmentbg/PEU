@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3016" 
+            xmlns="http://ereg.egov.bg/segment/R-3016" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eash="http://ereg.egov.bg/segment/0009-000152" 
+            xmlns:stbt="http://ereg.egov.bg/value/0008-000143" 
+            xmlns:sard="http://ereg.egov.bg/segment/0009-000141" 
+            xmlns:afipfsg="http://ereg.egov.bg/segment/R-3042"
+            xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+            xmlns:dm="http://ereg.egov.bg/segment//R-3136"
+            xmlns:ad="http://ereg.egov.bg/segment/0009-000139"
+            xmlns:easf="http://ereg.egov.bg/segment/0009-000153" 
+            elementFormDefault="qualified">
+  
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000152" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000143"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000141" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3042" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/segment//R-3136" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000139" />  
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000153" />    
+  
+  <xsd:element name="ApplicationByFormAnnex9" type="ApplicationByFormAnnex9" />
+  <xsd:complexType name="ApplicationByFormAnnex9">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Заявление по Образец Приложение №  9 /към чл. 16, чл. 17, ал. 1 и 3, чл. 18, чл. 24, ал. 1,чл. 37, чл. 42, чл. 61, ал.1 във връзка с лицата по чл. 51, ал. 2 и 3, чл. 63а, чл. 76, ал. 2, чл. 78а, ал. 2, чл. 112, ал. 2, чл. 113, ал. 1, т. 1, чл. 114, ал. 2, чл. 115, ал. 2, чл. 116, ал. 4, чл. 117, ал. 2, чл. 120а, ал. 1, чл. 121, ал. 2, чл. 122, ал. 2, чл. 123, ал. 2, чл. 126, ал. 2, чл. 128, ал. 2/</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ElectronicAdministrativeServiceHeader" type="eash:ElectronicAdministrativeServiceHeader"  minOccurs="0" />
+	  <xsd:element name="ServiceTermType" type="stbt:ServiceTermType" minOccurs="0" />
+      <xsd:element name="ServiceApplicantReceiptData" type="sard:ServiceApplicantReceiptData"  minOccurs="0" /> 
+      <xsd:element name="ApplicationByFormAnnex9Data" type="afipfsg:ApplicationByFormAnnex9Data"  minOccurs="0" /> 
+      <xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment"  minOccurs="0" />
+      <xsd:element name="Declarations" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Declaration" type="dm:Declaration" maxOccurs="unbounded" />
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AttachedDocuments" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AttachedDocument" type="ad:AttachedDocument" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElectronicAdministrativeServiceFooter" type="easf:ElectronicAdministrativeServiceFooter"  minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

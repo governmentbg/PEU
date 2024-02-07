@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3022" xmlns="http://ereg.egov.bg/segment/R-3022" xmlns:fcd="http://ereg.egov.bg/segment/0009-000109" xmlns:pi="http://ereg.egov.bg/segment/0009-000006" xmlns:ec="http://ereg.egov.bg/value/R-2005" xmlns:ms="http://ereg.egov.bg/value/R-2006" xmlns:ph="http://ereg.egov.bg/value/R-2034" xmlns:mp="http://ereg.egov.bg/value/R-2038" xmlns:e="http://ereg.egov.bg/value/R-2048"  xmlns:egn="http://ereg.egov.bg/value/0008-000012" xmlns:lnch="http://ereg.egov.bg/value/0008-000013" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000109" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000006"/>  
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2005" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2006" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2034" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2038" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2048" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000012" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000013" />
+  <xsd:complexType name="ForeignIdentityBasicData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Основни данни за чужденци</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ForeignCitizenData" type="fcd:ForeignCitizenData"  />     
+      <xsd:element name="EGN" type="egn:EGN" minOccurs="0" />
+      <xsd:element name="LNCh" type="lnch:LNCh" minOccurs="0" />
+      <xsd:element name="EyesColor" type="ec:BIDEyesColor" minOccurs="0" />
+      <xsd:element name="MaritalStatus" type="ms:BIDMaritalStatus" minOccurs="0" />
+      <xsd:element name="Height" type="ph:PersonHeight" minOccurs="0" />
+      <xsd:element name="Phone" type="mp:MobilePhone" minOccurs="0" />
+      <xsd:element name="Education" type="e:Education" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

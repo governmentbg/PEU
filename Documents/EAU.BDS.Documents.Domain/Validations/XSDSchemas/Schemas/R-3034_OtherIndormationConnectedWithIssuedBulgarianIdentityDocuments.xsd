@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-3034"
+			xmlns="http://ereg.egov.bg/value/R-3034"
+			xmlns:dcc="http://ereg.egov.bg/nomenclature/R-1007"
+			xmlns:idn="http://ereg.egov.bg/value/R-2058"
+			xmlns:idi="http://ereg.egov.bg/value/R-3250"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified">
+	<xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1007" />
+	<xsd:import namespace="http://ereg.egov.bg/value/R-2058" />
+	<xsd:import namespace="http://ereg.egov.bg/value/R-3250" />
+	<xsd:complexType name="OtherIndormationConnectedWithIssuedBulgarianIdentityDocuments">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Друга информация свързана с издадени български лични документи.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="NessesaryInformation" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="DocumentNumbers" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DocumentNumber" type="idn:IdentityDocumentNumber" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DocumentsInfos" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DocumentInfo" type="idi:IssuedBulgarianIdentityDocumentInfo" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IncludsDataInCertificate" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IncludedDataInCertificate" type="dcc:DataContainsInCertificateNomenclature" minOccurs="0" maxOccurs="unbounded"  />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

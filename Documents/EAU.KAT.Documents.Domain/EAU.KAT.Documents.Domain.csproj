@@ -1,0 +1,242 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Validations\XSDSchemas\Schemas\R-1100_DocumentForNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1111_OwnershipCertificateReasonNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1112_ANDCertificateReasonNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1301_RegistrationCertificateTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2117_DocumentFor.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2118_RegistrationNumber.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2119_MakeModel.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2139_IdentificationNumber.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2140_EngineNumber.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2141_VehicleFirstRegistrationDate.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2142_VehicleStartEndOwnerDate.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2143_DateTimeOfKATVerification.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2144_VehicleType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2145_VehicleOwnerAddresSupplement.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2157_OwnershipCertificateReason.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2158_ANDCertificateReason.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2170_PreviousRegistrationNumber.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2211_CouponDuplicateIssuensReasonsNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2212_CouponDuplicateIssuensReason.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2231_VehicleOwnershipChangeTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2232_VehicleOwnershipChangeType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2233_VehicleOwnerAdditionalCircumstancesNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2234_VehicleOwnerAdditionalCircumstances.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2235_PlatesContentTypesNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2236_PlatesContentTypes.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3045_RequestForApplicationForIssuingDuplicateDrivingLicense.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3055_ApplicationForIssuingDriverLicense.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3056_ApplicationForIssuingDriverLicenseData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3104_ApplicationForIssuingDocumentofVehicleOwnership.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3105_ApplicationForIssuingDocumentofVehicleOwnershipData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3117_ApplicationForIssuingDocumentForRightsAndImposedPenaltiesOfVehicleDriver.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3118_ApplicationForIssuingDocumentForRightsAndImposedPenaltiesOfVehicleDriverData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3125_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriver.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3126_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3127_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverHeader.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3128_VehicleDataItem.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3129_VehicleDataItemCollection.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3130_VechicalData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3131_VehicleOwnerInformationItem.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3132_VehicleOwnerInformationCollection.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3133_CertificateOfVehicleOwnership.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3134_CertificateOfVehicleOwnershipHeader.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3135_VehicleOwnerAddress.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3155_ApplicationForIssuingOfControlCouponForDriverWithNoPenalties.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3156_ApplicationForIssuingOfControlCouponForDriverWithNoPenaltiesData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3157_ApplicationForIssuingDuplicateOfDrivingLicenseControlCoupon.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3158_ApplicationForIssuingOfDuplicateOfDrivingLicenseControlCouponData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3300_PersonData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3301_Status.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3302_EntityData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3303_VehicleRegistrationData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3304_RequestForDecisionForDealData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3305_RequestForDecisionForDeal.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3306_ReportForChangingOwnership.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3307_VehicleCategory.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3308_DataForPrintSRMPS.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3310_DataForPrintSRMPSData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3311_ApplicationForTerminationOfVehicleRegistration.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3313_VehicleDataRequest.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3315_AISKATReason.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3316_ApplicationForIssuingOfDuplicateOfVehicleRegistrationCertificate.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3317_ApplicationForIssuingTempraryTraficPermitForVehicle.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3318_ApplicationForTemporaryTakingOffRoadOfVehicle.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3319_ApplicationForCommissioningTemporarilySuspendedVehicle.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3320_DeclarationForLostSRPPS.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3322_ApplicationForMountingOfRegistrationPlatesAndOrIdentificationOfVehicles.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3323_ApplicationForMountingOfRegistrationPlatesAndOrIdentificationOfVehiclesData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3324_ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchants.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3325_ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3326_MerchantData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3327_ApplicationForChangeRegistrationOfVehicles.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3328_ApplicationForChangeRegistrationOfVehiclesData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3329_VehicleChangeOwnershipData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3330_ApplicationForInitialVehicleRegistration.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3331_ApplicationForInitialVehicleRegistrationData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3332_InitialVehicleRegistrationOwnerData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3333_ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigits.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3333_FarmerData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3334_ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3335_NotificationForTemporaryRegistrationPlates.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3340_ReportForVehicle.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3341_ReportForChangingOwnershipV2.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3125_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriver.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3133_CertificateOfVehicleOwnership.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3306_ReportForChangingOwnership.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3335_NotificationForTemporaryRegistrationPlates.xsd" />
+    <None Remove="Validations\XSDSchemas\WeakenedSchemas\R-3341_ReportForChangingOwnershipV2.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1100_DocumentForNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1111_OwnershipCertificateReasonNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1112_ANDCertificateReasonNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1301_RegistrationCertificateTypeNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2117_DocumentFor.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2118_RegistrationNumber.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2119_MakeModel.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2139_IdentificationNumber.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2140_EngineNumber.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2141_VehicleFirstRegistrationDate.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2142_VehicleStartEndOwnerDate.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2143_DateTimeOfKATVerification.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2144_VehicleType.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2145_VehicleOwnerAddresSupplement.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2157_OwnershipCertificateReason.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2158_ANDCertificateReason.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2170_PreviousRegistrationNumber.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2212_CouponDuplicateIssuensReason.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2231_VehicleOwnershipChangeTypeNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2232_VehicleOwnershipChangeType.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2233_VehicleOwnerAdditionalCircumstancesNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2234_VehicleOwnerAdditionalCircumstances.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2236_PlatesContentTypes.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2235_PlatesContentTypesNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2211_CouponDuplicateIssuensReasonsNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3045_RequestForApplicationForIssuingDuplicateDrivingLicense.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3055_ApplicationForIssuingDriverLicense.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3056_ApplicationForIssuingDriverLicenseData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3104_ApplicationForIssuingDocumentofVehicleOwnership.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3105_ApplicationForIssuingDocumentofVehicleOwnershipData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3334_ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3333_ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigits.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3331_ApplicationForInitialVehicleRegistrationData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3332_InitialVehicleRegistrationOwnerData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3330_ApplicationForInitialVehicleRegistration.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3329_VehicleChangeOwnershipData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3328_ApplicationForChangeRegistrationOfVehiclesData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3327_ApplicationForChangeRegistrationOfVehicles.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3326_MerchantData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3325_ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3158_ApplicationForIssuingOfDuplicateOfDrivingLicenseControlCouponData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3324_ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchants.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3322_ApplicationForMountingOfRegistrationPlatesAndOrIdentificationOfVehicles.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3323_ApplicationForMountingOfRegistrationPlatesAndOrIdentificationOfVehiclesData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3157_ApplicationForIssuingDuplicateOfDrivingLicenseControlCoupon.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3155_ApplicationForIssuingOfControlCouponForDriverWithNoPenalties.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3117_ApplicationForIssuingDocumentForRightsAndImposedPenaltiesOfVehicleDriver.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3118_ApplicationForIssuingDocumentForRightsAndImposedPenaltiesOfVehicleDriverData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3125_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriver.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3126_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3127_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriverHeader.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3128_VehicleDataItem.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3129_VehicleDataItemCollection.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3130_VechicalData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3131_VehicleOwnerInformationItem.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3132_VehicleOwnerInformationCollection.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3133_CertificateOfVehicleOwnership.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3134_CertificateOfVehicleOwnershipHeader.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3135_VehicleOwnerAddress.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3320_DeclarationForLostSRPPS.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3319_ApplicationForCommissioningTemporarilySuspendedVehicle.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3318_ApplicationForTemporaryTakingOffRoadOfVehicle.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3317_ApplicationForIssuingTempraryTraficPermitForVehicle.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3316_ApplicationForIssuingOfDuplicateOfVehicleRegistrationCertificate.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3311_ApplicationForTerminationOfVehicleRegistration.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3315_AISKATReason.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3313_VehicleDataRequest.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3300_PersonData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3301_Status.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3302_EntityData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3303_VehicleRegistrationData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3156_ApplicationForIssuingOfControlCouponForDriverWithNoPenaltiesData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3304_RequestForDecisionForDealData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3305_RequestForDecisionForDeal.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3306_ReportForChangingOwnership.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3307_VehicleCategory.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3308_DataForPrintSRMPS.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3310_DataForPrintSRMPSData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3340_ReportForVehicle.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3335_NotificationForTemporaryRegistrationPlates.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3341_ReportForChangingOwnershipV2.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3125_CertificateAttestingToTheRightsAndPenaltiesOfVehicleDriver.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3133_CertificateOfVehicleOwnership.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3306_ReportForChangingOwnership.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3335_NotificationForTemporaryRegistrationPlates.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\WeakenedSchemas\R-3341_ReportForChangingOwnershipV2.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EAU.Documents.Domain\EAU.Documents.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

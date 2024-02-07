@@ -1,0 +1,1188 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Искане за промяна в регистрацията на пътно превозно средство - Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+
+
+<a href="#PAGE-CONTENT" class="skip-to-content">Пропусни основната навигация</a>
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png" alt="">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <main class="content-wrapper">
+        <div class="page-header-wrapper section-wrapper fixed-content-width">
+            <div class="breadcrumbs">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Промяна в регистрацията на пътно превозно средство</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+            <div class="page-header" id="PAGE-CONTENT">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Искане за промяна в регистрацията на пътно превозно средство</h1>
+                    </div>
+                    <div class="col-auto">
+                        <div class="button-menu-container">                
+                            <button id="SHOW-MENU" type="button" class="button-menu collapsed d-md-none" aria-expanded="false">
+                                <i class="ui-icon ui-icon-sub-menu" aria-hidden="true"></i>
+                                <span class="sr-only">Покажи навигацията за избор на секция в заявлението</span>
+                            </button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+            <div class="nav-wrapper collapse" id="PAGE-NAV">
+
+                <a href="#ARTICLE-CONTENT" class="skip-to-content">Пропусни навигацията за избор на секция в заявлението и премини към попълване на текущата секция</a>
+
+                <nav class="page-nav" aria-label="Секции в заявлението">
+                    <ul class="nav-section connected-nav-items">
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-processed"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('')">
+                                    Заявител
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link active" onclick="window.location.assign('')">
+                                    Обстоятелства
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('')">
+                                    Начин на получаване
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('')">
+                                    Политики и декларации
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('')">
+                                    Приложени документи
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="page-wrapper" id="ARTICLE-CONTENT">
+      
+                <div class="ui-form ui-form--input">
+
+                    <h2 class="section-title">
+                        Обстоятелства&nbsp;<button type="button" class="btn btn-context-help" title="Контекстна помощ"></button>
+                    </h2>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                Вид на извършваната промяна на собственост
+                            </h3>
+                        </legend>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" name="Type" id="Type1" value="option1" type="radio" checked="">
+                                    <label class="custom-control-label" for="Type1">Промяна на собственост на пътно превозно средство</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" name="Type" id="Type2" value="option2" type="radio">
+                                    <label class="custom-control-label" for="Type2">Замяна на ППС между двама собственици</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset id="CHANGE-TYPE-2" class="d-none"> <!-- този fieldset с id е само за да работи прототипа  -->
+
+                        <fieldset class="fields-group">
+                            <legend>
+                                <h3 class="field-title">
+                                    Идентификационни данни за ППС (Първо ППС)
+                                </h3>
+                            </legend>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label required-field" for="REGPPS-2">Регистрационен номер на ППС</label>
+                                    <input type="text" class="form-control" id="REGPPS-2" required="">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label required-field" for="VIN-2">Рама (VIN) на ППС</label>
+                                    <input type="text" class="form-control" id="VIN-2" required="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <fieldset>
+                                        <legend class="form-control-label">Вид документ</legend>
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" name="DocF-2" id="DocF-21" value="option1" type="radio" checked="">
+                                            <label class="custom-control-label" for="DocF-21">Свидетелство за регистрация на МПС</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" name="DocF-2" id="DocF-22" value="option2" type="radio">
+                                            <label class="custom-control-label" for="DocF-22">Регистрационен талон</label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label required-field" for="DOKN-2">Номер на документ за регистрация на ППС</label>
+                                    <input type="text" class="form-control" id="DOKN-2" required="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">                                
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="DAN2" type="checkbox">
+                                        <label class="custom-control-label" for="DAN2">наличен документ за платен годишен данък</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        
+                        <fieldset class="fields-group">
+                            <legend>
+                                <h3 class="field-title">
+                                    Настоящи собственици (Първо ППС)
+                                </h3>
+                            </legend>
+                            <ul class="list-filed" id="FIELD-F2">
+                                <li class="list-filed__item" role="group" aria-label="Настоящ собственик 1">
+                                    <div class="interactive-container interactive-container--form">
+                                        <div class="interactive-container__content record-container">
+
+                                            <div id="LICE-2" class=""> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <fieldset>
+                                                            <legend class="form-control-label">Вид на лицето</legend>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-2" id="radioF-21" value="option2" type="radio" checked="">
+                                                                <label class="custom-control-label" for="radioF-21">Физическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-2" id="radioF-22" value="option2" type="radio">
+                                                                <label class="custom-control-label" for="radioF-22">Юридическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-2" id="radioF-23" value="option3" type="radio">
+                                                                <label class="custom-control-label" for="radioF-23">Земеделски производител</label>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="ZEMEDELEC-2" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="USER-BULSTAT-2">БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="USER-BULSTAT-2" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="IURIDICHESKO-2" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="USER-EIK-2">ЕИК/БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="USER-EIK-2" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="FIZICHESKO-2" class=""> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-lg-7">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <label class="form-control-label required-field" for="EGN-2">Идентификатор на физическо лице</label>
+                                                            </div>
+                                                            <div class="form-group col col-sm-6 col-lg">
+                                                                <input type="text" class="form-control" id="EGN-2" required>
+                                                            </div>
+                                                            <div class="form-group col-auto">
+                                                                <fieldset class="form-inline">
+                                                                    <legend class="sr-only">Вид на идентификатор</legend>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="TYPE-EGN-ID-2" id="TYPE-EGN-2" value="1" type="radio" checked="">
+                                                                        <label class="custom-control-label" for="TYPE-EGN-2">ЕГН</label>
+                                                                    </div>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="TYPE-EGN-ID-2" id="TYPE-LNCH-2" value="2" type="radio">
+                                                                        <label class="custom-control-label" for="TYPE-LNCH-2">ЛНЧ/ЛН</label>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-9 col-lg-5">
+                                                        <label class="form-control-label required-field" for="IDSN-2">Номер на документ за самоличност</label>
+                                                        <input type="text" class="form-control" id="IDSN-2" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <label class="form-control-label" for="STAT-1-2">Статус на лицето</label>
+                                                        <select class="form-control" id="STAT-1-2">
+                                                            <option value="" selected="">Избери</option>
+                                                            <option value="2">Лицето е лишено от свобода</option>
+                                                            <option value="3">Лицето се представлява от родител, законен представител</option>
+                                                            <option value="4">Лицето се представлява от настойник</option>
+                                                            <option value="5">Лицето се представлява от попечител</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="interactive-container__controls"></div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="row">
+                                <div class="form-group col">
+                                    <hr>
+                                    <button type="button" class="btn btn-light" onclick="addField('FIELD-F2')"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави настоящ собственик</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset class="fields-group">
+                            <legend>
+                                <h3 class="field-title">
+                                    Идентификационни данни за ППС (Второ ППС)
+                                </h3>
+                            </legend>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label required-field" for="REGPPS-22">Регистрационен номер на ППС</label>
+                                    <input type="text" class="form-control" id="REGPPS-22" required="">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label required-field" for="VIN-22">Рама (VIN) на ППС</label>
+                                    <input type="text" class="form-control" id="VIN-22" required="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <fieldset>
+                                        <legend class="form-control-label">Вид документ</legend>
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" name="DocF-22" id="DocF-221" value="option1" type="radio" checked="">
+                                            <label class="custom-control-label" for="DocF-221">Свидетелство за регистрация на МПС</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" name="DocF-22" id="DocF-222" value="option2" type="radio">
+                                            <label class="custom-control-label" for="DocF-222">Регистрационен талон</label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-control-label required-field" for="DOKN-22">Номер на документ за регистрация на ППС</label>
+                                    <input type="text" class="form-control" id="DOKN-22" required="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">                                
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="DAN3" type="checkbox">
+                                        <label class="custom-control-label" for="DAN3">наличен документ за платен годишен данък</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        
+                        <fieldset class="fields-group">
+                            <legend>
+                                <h3 class="field-title">
+                                    Настоящи собственици (Второ ППС)
+                                </h3>
+                            </legend>
+                            <ul class="list-filed" id="FIELD-F22">
+                                <li class="list-filed__item" role="group" aria-label="Настоящ собственик 1">
+                                    <div class="interactive-container interactive-container--form">
+                                        <div class="interactive-container__content record-container">
+
+                                            <div id="LICE-22" class=""> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <fieldset>
+                                                            <legend class="form-control-label">Вид на лицето</legend>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-22" id="radioF-221" value="option2" type="radio" checked="">
+                                                                <label class="custom-control-label" for="radioF-221">Физическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-22" id="radioF-222" value="option2" type="radio">
+                                                                <label class="custom-control-label" for="radioF-222">Юридическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-22" id="radioF-223" value="option3" type="radio">
+                                                                <label class="custom-control-label" for="radioF-223">Земеделски производител</label>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="ZEMEDELEC-22" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="USER-BULSTAT-22">БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="USER-BULSTAT-22" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="IURIDICHESKO-22" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="USER-EIK-22">ЕИК/БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="USER-EIK-22" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="FIZICHESKO-22" class=""> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-lg-7">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <label class="form-control-label required-field" for="EGN-22">Идентификатор на физическо лице</label>
+                                                            </div>
+                                                            <div class="form-group col col-sm-6 col-lg">
+                                                                <input type="text" class="form-control" id="EGN-22" required>
+                                                            </div>
+                                                            <div class="form-group col-auto">
+                                                                <fieldset class="form-inline">
+                                                                    <legend class="sr-only">Вид на идентификатор</legend>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="TYPE-EGN-ID-22" id="TYPE-EGN-22" value="1" type="radio" checked="">
+                                                                        <label class="custom-control-label" for="TYPE-EGN-22">ЕГН</label>
+                                                                    </div>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="TYPE-EGN-ID-22" id="TYPE-LNCH-22" value="2" type="radio">
+                                                                        <label class="custom-control-label" for="TYPE-LNCH-22">ЛНЧ/ЛН</label>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-9 col-lg-5">
+                                                        <label class="form-control-label required-field" for="IDSN-22">Номер на документ за самоличност</label>
+                                                        <input type="text" class="form-control" id="IDSN-22" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <label class="form-control-label" for="STAT-1-22">Статус на лицето</label>
+                                                        <select class="form-control" id="STAT-1-22">
+                                                            <option value="" selected="">Избери</option>
+                                                            <option value="2">Лицето е лишено от свобода</option>
+                                                            <option value="3">Лицето се представлява от родител, законен представител</option>
+                                                            <option value="4">Лицето се представлява от настойник</option>
+                                                            <option value="5">Лицето се представлява от попечител</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="interactive-container__controls"></div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="row">
+                                <div class="form-group col">
+                                    <hr>
+                                    <button type="button" class="btn btn-light" onclick="addField('FIELD-F22')"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави настоящ собственик</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+           
+                    </fieldset>
+                    
+                    <fieldset id="CHANGE-TYPE-1"> <!-- този fieldset с id е само за да работи прототипа  -->
+
+                        <fieldset class="fields-group">
+                            <legend>
+                                <h3 class="field-title">
+                                    Идентификационни данни за ППС
+                                </h3>
+                            </legend>
+
+                            <ul class="list-filed" id="FIELD-PPS-1">
+                                <li class="list-filed__item" role="group" aria-label="Пътно превозно средство 1">
+                                    <div class="interactive-container interactive-container--form">
+                                        <div class="interactive-container__content record-container">
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label class="form-control-label required-field" for="REGPPS-3">Регистрационен номер на ППС</label>
+                                                    <input type="text" class="form-control" id="REGPPS-3" required="">
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label class="form-control-label required-field" for="VIN-3">Рама (VIN) на ППС</label>
+                                                    <input type="text" class="form-control" id="VIN-3" required="">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <fieldset>
+                                                        <legend class="form-control-label">Вид документ</legend>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="DocF-3" id="DocF-31" value="option1" type="radio" checked="">
+                                                            <label class="custom-control-label" for="DocF-31">Свидетелство за регистрация на МПС</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="DocF-3" id="DocF-32" value="option2" type="radio">
+                                                            <label class="custom-control-label" for="DocF-32">Регистрационен талон</label>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label class="form-control-label required-field" for="DOKN-3">Номер на документ за регистрация на ППС</label>
+                                                    <input type="text" class="form-control" id="DOKN-3" required="">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-12">                                
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" id="DAN" type="checkbox">
+                                                        <label class="custom-control-label" for="DAN">наличен документ за платен годишен данък</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="interactive-container__controls"></div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="row">
+                                <div class="form-group col">
+                                    <hr>
+                                    <button type="button" class="btn btn-light" onclick="addField('FIELD-PPS-1')"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави ППС</button>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="fields-group">
+                            <legend>
+                                <h3 class="field-title">
+                                    Настоящи собственици
+                                </h3>
+                            </legend>
+                            <ul class="list-filed" id="FIELD-F3">
+                                <li class="list-filed__item" role="group" aria-label="Настоящ собственик 1">
+                                    <div class="interactive-container interactive-container--form">
+                                        <div class="interactive-container__content record-container">
+
+                                            <div id="LICE-3" class=""> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <fieldset>
+                                                            <legend class="form-control-label">Вид на лицето</legend>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-3" id="radioF-31" value="option2" type="radio" checked="">
+                                                                <label class="custom-control-label" for="radioF-31">Физическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-3" id="radioF-32" value="option2" type="radio">
+                                                                <label class="custom-control-label" for="radioF-32">Юридическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="radioF-3" id="radioF-33" value="option3" type="radio">
+                                                                <label class="custom-control-label" for="radioF-33">Земеделски производител</label>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="ZEMEDELEC-3" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="USER-BULSTAT-3">БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="USER-BULSTAT-3" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="IURIDICHESKO-3" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="USER-EIK-3">ЕИК/БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="USER-EIK-3" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input" id="SYNDIC-2" type="checkbox">
+                                                            <label class="custom-control-label" for="SYNDIC-2">продажбата се извършва чрез синдик</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div id="FIZICHESKO-3" class=""> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-lg-7">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <label class="form-control-label required-field" for="EGN-3">Идентификатор на физическо лице</label>
+                                                            </div>
+                                                            <div class="form-group col col-sm-6 col-lg">
+                                                                <input type="text" class="form-control" id="EGN-3" required>
+                                                            </div>
+                                                            <div class="form-group col-auto">
+                                                                <fieldset class="form-inline">
+                                                                    <legend class="sr-only">Вид на идентификатор</legend>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="TYPE-EGN-ID-3" id="TYPE-EGN-3" value="1" type="radio" checked="">
+                                                                        <label class="custom-control-label" for="TYPE-EGN-3">ЕГН</label>
+                                                                    </div>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="TYPE-EGN-ID-3" id="TYPE-LNCH-3" value="2" type="radio">
+                                                                        <label class="custom-control-label" for="TYPE-LNCH-3">ЛНЧ/ЛН</label>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-9 col-lg-5">
+                                                        <label class="form-control-label required-field" for="IDSN-3">Номер на документ за самоличност</label>
+                                                        <input type="text" class="form-control" id="IDSN-3" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <label class="form-control-label" for="STAT-1-3">Статус на лицето</label>
+                                                        <select class="form-control" id="STAT-1-3">
+                                                            <option value="" selected="">Избери</option>
+                                                            <option value="1">Лицето е починало</option>
+                                                            <option value="2">Лицето е лишено от свобода</option>
+                                                            <option value="3">Лицето се представлява от родител, законен представител</option>
+                                                            <option value="4">Лицето се представлява от настойник</option>
+                                                            <option value="5">Лицето се представлява от попечител</option>
+                                                            <option value="6">Лицето е с изтекъл срок на пребиваване/ отнет статут на пребиваване</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-12 d-none" id="SUCCESSOR-1-3"> <!-- това id и клас .d-none са само за да работи прототипа  -->
+                                                        <label class="form-control-label required-field" for="SUCCESSORS-1-3">Данни за наследници</label>
+                                                        <textarea class="form-control" rows="3" id="SUCCESSORS-1-3" required="" aria-describedby="HELP-SUCCESSORS-1-3"></textarea>
+                                                        <div class="help-text-inline" id="HELP-SUCCESSORS-1-3">( Попълнете номер на удостоверение за наследници и допълнителна информация за наследниците )</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="interactive-container__controls"></div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="row">
+                                <div class="form-group col">
+                                    <hr>
+                                    <button type="button" class="btn btn-light" onclick="addField('FIELD-F3')"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави настоящ собственик</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset class="fields-group">
+                            <legend>
+                                <h3 class="field-title">
+                                    Нови собственици
+                                </h3>
+                            </legend>
+                            <ul class="list-filed" id="NEW-FIELD-F3">
+                                <li class="list-filed__item" role="group" aria-label="Нов собственик 1">
+                                    <div class="interactive-container interactive-container--form">
+                                        <div class="interactive-container__content record-container">
+
+                                            <div id="NEW-LICE-3" class=""> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <fieldset>
+                                                            <legend class="form-control-label">Вид на лицето</legend>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="new-radioF-3" id="new-radioF-31" value="option2" type="radio" checked="">
+                                                                <label class="custom-control-label" for="new-radioF-31">Физическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="new-radioF-3" id="new-radioF-32" value="option2" type="radio">
+                                                                <label class="custom-control-label" for="new-radioF-32">Юридическо лице</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" name="new-radioF-3" id="new-radioF-33" value="option3" type="radio">
+                                                                <label class="custom-control-label" for="new-radioF-33">Земеделски производител</label>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="NEW-ZEMEDELEC-3" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="NEW-USER-BULSTAT-3">БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="NEW-USER-BULSTAT-3" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="NEW-IURIDICHESKO-3" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="form-control-label required-field" for="NEW-USER-EIK-3">ЕИК/БУЛСТАТ</label>
+                                                    </div>
+                                                    <div class="form-group col col-sm-6">
+                                                        <input type="text" class="form-control" id="NEW-USER-EIK-3" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="NEW-FIZICHESKO-3" class=""> <!-- този div е само за да работи прототипа  -->                                            
+                                                <div class="row">
+                                                    <div class="col-lg-7">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <label class="form-control-label required-field" for="NEW-EGN-3">Идентификатор на физическо лице</label>
+                                                            </div>
+                                                            <div class="form-group col col-sm-6 col-lg">
+                                                                <input type="text" class="form-control" id="NEW-EGN-3" required>
+                                                            </div>
+                                                            <div class="form-group col-auto">
+                                                                <fieldset class="form-inline">
+                                                                    <legend class="sr-only">Вид на идентификатор</legend>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="NEW-TYPE-EGN-ID-3" id="NEW-TYPE-EGN-3" value="1" type="radio" checked="">
+                                                                        <label class="custom-control-label" for="NEW-TYPE-EGN-3">ЕГН</label>
+                                                                    </div>
+                                                                    <div class="custom-control-inline custom-control custom-radio">
+                                                                        <input class="custom-control-input" name="NEW-TYPE-EGN-ID-3" id="NEW-TYPE-LNCH-3" value="2" type="radio">
+                                                                        <label class="custom-control-label" for="NEW-TYPE-LNCH-3">ЛНЧ/ЛН</label>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-9 col-lg-5">
+                                                        <label class="form-control-label required-field" for="NEW-IDSN-3">Номер на документ за самоличност</label>
+                                                        <input type="text" class="form-control" id="NEW-IDSN-3" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <label class="form-control-label" for="NEW-STAT-1-3">Статус на лицето</label>
+                                                        <select class="form-control" id="NEW-STAT-1-3">
+                                                            <option value="" selected="">Избери</option>
+                                                            <option value="2">Лицето е лишено от свобода</option>
+                                                            <option value="3">Лицето се представлява от родител, законен представител</option>
+                                                            <option value="4">Лицето се представлява от настойник</option>
+                                                            <option value="5">Лицето се представлява от попечител</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="email-3">Адрес на електронна поща за получаване на съобщения</label>
+                                                    <input type="text" class="form-control" value="ivan.ivanov@yahoomaildot.com" id="email-3" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="interactive-container__controls"></div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="row">
+                                <div class="form-group col">
+                                    <hr>
+                                    <button type="button" class="btn btn-light" onclick="addField('NEW-FIELD-F3')"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави нов собственик</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                    </fieldset>
+
+                    <div class="button-bar button-bar--form button-bar--responsive">
+                        <div class="right-side"> 
+                            <a class="btn btn-primary" href="#">Продължи</a>
+                            <a class="btn btn-secondary" href="#">Прегледай</a>
+                        </div>
+                        <div class="left-side">
+                            <button type="button" class="btn btn-secondary">Откажи</button>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+        
+                        <ul>
+                            <li class="footer-link"><a href="#">Помощ</a></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg" alt="">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg" alt="">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        $(document).ready(function () {
+            // Show Page SubNavigation
+            $('#show_menu').on('click', function () {
+                $(this).toggleClass('collapsed');
+                $(".nav-wrapper").slideToggle(
+                    function() {
+                    $(this).css('display','');
+                    $(this).toggleClass('show');
+                });
+            });
+
+
+
+            // Вид на извършваната промяна на собственост 
+            $('#Type1').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#CHANGE-TYPE-1').removeClass('d-none');
+                    $('#CHANGE-TYPE-2').addClass('d-none');
+                    $('#CHANGE-TYPE-3').addClass('d-none');
+                }
+            });
+            $('#Type2').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#CHANGE-TYPE-1').addClass('d-none');
+                    $('#CHANGE-TYPE-2').removeClass('d-none');
+                    $('#CHANGE-TYPE-3').addClass('d-none');
+                }
+            });
+            $('#Type3').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#CHANGE-TYPE-1').addClass('d-none');
+                    $('#CHANGE-TYPE-2').addClass('d-none');
+                    $('#CHANGE-TYPE-3').removeClass('d-none');
+                }
+            });
+
+
+
+            // физическо, юридическо лице 2
+            $('#radioF-21').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-2').addClass('d-none');
+                    $('#IURIDICHESKO-2').addClass('d-none');
+                    $('#FIZICHESKO-2').removeClass('d-none');
+                }
+            });
+
+            $('#radioF-22').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-2').addClass('d-none');
+                    $('#IURIDICHESKO-2').removeClass('d-none');
+                    $('#FIZICHESKO-2').addClass('d-none');
+                }
+            });
+
+            $('#radioF-23').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-2').removeClass('d-none');
+                    $('#IURIDICHESKO-2').addClass('d-none');
+                    $('#FIZICHESKO-2').addClass('d-none');
+                }
+            });
+
+            // физическо, юридическо лице 22
+            $('#radioF-221').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-22').addClass('d-none');
+                    $('#IURIDICHESKO-22').addClass('d-none');
+                    $('#FIZICHESKO-22').removeClass('d-none');
+                }
+            });
+
+            $('#radioF-222').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-22').addClass('d-none');
+                    $('#IURIDICHESKO-22').removeClass('d-none');
+                    $('#FIZICHESKO-22').addClass('d-none');
+                }
+            });
+
+            $('#radioF-223').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-22').removeClass('d-none');
+                    $('#IURIDICHESKO-22').addClass('d-none');
+                    $('#FIZICHESKO-22').addClass('d-none');
+                }
+            });
+
+
+            // физическо, юридическо лице 3
+            $('#radioF-31').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-3').addClass('d-none');
+                    $('#IURIDICHESKO-3').addClass('d-none');
+                    $('#FIZICHESKO-3').removeClass('d-none');
+                }
+            });
+
+            $('#radioF-32').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-3').addClass('d-none');
+                    $('#IURIDICHESKO-3').removeClass('d-none');
+                    $('#FIZICHESKO-3').addClass('d-none');
+                }
+            });
+
+            $('#radioF-33').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#ZEMEDELEC-3').removeClass('d-none');
+                    $('#IURIDICHESKO-3').addClass('d-none');
+                    $('#FIZICHESKO-3').addClass('d-none');
+                }
+            });
+
+            $('#new-radioF-31').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#NEW-ZEMEDELEC-3').addClass('d-none');
+                    $('#NEW-IURIDICHESKO-3').addClass('d-none');
+                    $('#NEW-FIZICHESKO-3').removeClass('d-none');
+                }
+            });
+
+            $('#new-radioF-32').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#NEW-ZEMEDELEC-3').addClass('d-none');
+                    $('#NEW-IURIDICHESKO-3').removeClass('d-none');
+                    $('#NEW-FIZICHESKO-3').addClass('d-none');
+                }
+            });
+
+            $('#new-radioF-33').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#NEW-ZEMEDELEC-3').removeClass('d-none');
+                    $('#NEW-IURIDICHESKO-3').addClass('d-none');
+                    $('#NEW-FIZICHESKO-3').addClass('d-none');
+                }
+            });
+
+            // Статус на лицето 3
+            $('#STAT-1-3').on('change', function () {
+                if( $(this).val()=="1") {
+                    $('#SUCCESSOR-1-3').removeClass('d-none');
+                } else {
+                    $('#SUCCESSOR-1-3').addClass('d-none');
+                }
+            });
+
+
+
+
+        });
+
+        // Show Navigation
+        function toggleNav() {
+            $(".navbar-top-container--mobile").collapse('toggle');
+        };
+    
+
+        // Add Field - List Field
+        function addField(field) {
+            var listField = $('#'+field);            
+            var cloneField = listField.find('li').last().clone();
+
+            cloneField.find('[id]').each( function(index, elem){
+                var input = $(elem);
+                var label = $(elem).siblings('[for]');
+                input.attr('id', input.attr('id')+'_1');
+                input.attr('name', input.attr('name')+'_1');
+                input.val('');
+                label.attr('for', label.attr('for')+'_1');
+            })
+
+            cloneField.find('.interactive-container__controls').empty();
+            cloneField.find('.interactive-container__controls').append('<button onClick="$(this).closest(\'.list-filed\').find(\'a, button, input, textarea\').first().focus(); $(this).closest(\'li\').remove();" class="btn btn-light btn-sm" title="Изтрий"><i class="ui-icon ui-icon-times" aria-hidden="true"></i><span class="d-none">Изтрий</sapn></button>');
+
+            listField.append(cloneField);
+
+            cloneField.find('a, button, input, textarea').first().focus();
+
+            activateFieldEditControls();
+            reorderListLabels(listField);
+        };
+
+        // Reorder list labels - List Field 
+        function reorderListLabels(listField) {
+            var li = listField.children('li');
+            var label = li.first().attr('aria-label');
+            label = label.replace(/.[0-9]+$/,'');
+            li.each( function(index, elem){
+                $(elem).attr('aria-label', label + ' ' + (index+1))
+            });
+        }
+
+
+        function activateFieldEditControls () {
+
+            var field = $('.interactive-container').find('.interactive-container__controls').find('.btn');
+
+            field.on('mouseover focus', function () {
+                $(this).closest('.interactive-container').addClass("interactive-container--focus");
+            });
+
+            field.on('mouseout focusout', function () {
+                $(this).closest('.interactive-container').removeClass("interactive-container--focus");
+            });
+        }
+
+
+
+    </script>
+    
+
+  </body>
+</html>

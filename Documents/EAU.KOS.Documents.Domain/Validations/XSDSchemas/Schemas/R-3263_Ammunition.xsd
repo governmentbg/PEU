@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="R-3263_Ammunition"
+    targetNamespace="http://ereg.egov.bg/segment/R-3263"
+	xmlns="http://ereg.egov.bg/segment/R-3263"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+	<xsd:element name="Ammunition" type="Ammunition" />
+	<xsd:complexType name="Ammunition">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">
+				Боеприпас
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TradeName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="NumberOON" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Caliber" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Count" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3306" xmlns="http://ereg.egov.bg/segment/R-3306"
+            
+  xmlns:dtu="http://ereg.egov.bg/segment/0009-000003"
+  xmlns:dtn="http://ereg.egov.bg/value/0008-000007"
+	xmlns:du="http://ereg.egov.bg/segment/0009-000001"
+	xmlns:acu="http://ereg.egov.bg/segment/0009-000073"
+  xmlns:vr="http://ereg.egov.bg/segment/R-3303"
+  xmlns:pd="http://ereg.egov.bg/segment/R-3300"
+  xmlns:rd="http://ereg.egov.bg/segment/R-3302"
+  xmlns:ea="http://ereg.egov.bg/value/0008-000036"
+  xmlns:esa="http://ereg.egov.bg/segment/0009-000016"
+  xmlns:s="http://ereg.egov.bg/segment/R-3301"
+  xmlns:drosd="http://ereg.egov.bg/value/0008-000004"
+  xmlns:abn="http://ereg.egov.bg/value/0008-000047"
+  xmlns:xds="http://ereg.egov.bg/segment/0009-000004"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000003" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000007" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000001" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000073" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3303" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3300" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3302" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000036" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3301" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000047" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000016" />
+  <xsd:element name="ReportForChangingOwnership" type="ReportForChangingOwnership" />
+  <xsd:complexType name="ReportForChangingOwnership">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Справка за промяна на собственост на МПС.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentTypeURI" type="dtu:DocumentTypeURI" minOccurs="0" />
+      <xsd:element name="DocumentTypeName" type="dtn:DocumentTypeName" minOccurs="0" />
+      <xsd:element name="DocumentURI" type="du:DocumentURI" minOccurs="0" />
+      <xsd:element name="AISCaseURI" type="acu:AISCaseURI" minOccurs="0" />
+			<xsd:element name="ElectronicServiceApplicant" type="esa:ElectronicServiceApplicant" minOccurs="0"  />
+      <xsd:element name="VehicleRegistrationData" type="vr:VehicleRegistrationData" minOccurs="0" />
+      <xsd:element name="OldOwnersData"  minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="OldOwners" minOccurs="0" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence >
+                  <xsd:choice>
+                    <xsd:element name="PersonData" type="pd:PersonData" minOccurs="0"/>
+                    <xsd:element name="EntityData" type="rd:EntityData" minOccurs="0"/>
+                  </xsd:choice>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Status" minOccurs="0">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Status" type="s:Status" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOwnersData"  minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence >
+            <xsd:element name="NewOwners" minOccurs="0"  maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence >
+                  <xsd:choice>
+                    <xsd:element name="PersonData" minOccurs="0" type="pd:PersonData"/>
+                    <xsd:element name="EntityData" minOccurs="0" type="rd:EntityData"/>
+                  </xsd:choice>
+                  <xsd:element name="EmailAddress" type="ea:EmailAddress" minOccurs="0" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Status" minOccurs="0">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Status" type="s:Status" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+              </xsd:complexType>
+           </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LocalTaxes" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Status" type="s:Status" minOccurs="0" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PeriodicTechnicalCheck" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Status" type="s:Status" minOccurs="0" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GuaranteeFund" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PolicyValidTo" type="xsd:date" minOccurs="0"  maxOccurs="1" />
+            <xsd:element name="Status" type="s:Status" minOccurs="0" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DocumentReceiptOrSigningDate" type="drosd:DocumentReceiptOrSigningDate" minOccurs="0" />
+      <xsd:element name="AdministrativeBodyName" type="abn:AdministrativeBodyName" minOccurs="0" />
+      <xsd:element name="XMLDigitalSignature" type="xds:XMLDigitalSignature" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

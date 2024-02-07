@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3300" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/segment/R-3300"
+  xmlns:pbd="http://ereg.egov.bg/segment/0009-000008"
+  xmlns:ms="http://ereg.egov.bg/value/R-2006"
+  xmlns:s="http://ereg.egov.bg/segment/R-3301"
+  xmlns:pa="http://ereg.egov.bg/segment/0009-000094"
+	elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000008" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2006" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3301" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+
+  <xsd:element name="PersonData" type="PersonData" />
+  <xsd:complexType name="PersonData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за физическо лице.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PersonBasicData" type="pbd:PersonBasicData" minOccurs="0" />
+      <xsd:element name="MaritalStatus" type="ms:BIDMaritalStatus" minOccurs="0" />
+      <xsd:element name="DeathDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="Status" type="s:Status" minOccurs="0" />
+      <xsd:element name="PermanentAddress" type="pa:PersonAddress" minOccurs="0" />
+      <xsd:element name="BDSCategoryCode" type="xsd:string" minOccurs="0" />
+      <xsd:element name="BDSCategoryValue" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

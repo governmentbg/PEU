@@ -1,0 +1,9 @@
+{
+  "name": "eau.web.portal.app.task.runnner",
+  "version": "1.0.0",
+  "scripts": {
+    "restore-packages": "cd client-app  && npm ci",
+    "run": "cd client-app && npm start",
+    "build": "cd client-app && npm run build && cd .. && (if exist wwwroot del /s wwwroot\\**) && xcopy /e /i /y client-app\\build wwwroot"
+  }
+}

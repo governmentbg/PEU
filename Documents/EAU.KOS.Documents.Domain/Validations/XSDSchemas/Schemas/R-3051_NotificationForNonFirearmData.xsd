@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3051" xmlns="http://ereg.egov.bg/segment/R-3051" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+               xmlns:wnt="http://ereg.egov.bg/segment/R-2203"
+               xmlns:pi="http://ereg.egov.bg/segment/R-3015"
+               xmlns:tsow="http://ereg.egov.bg/segment/R-3054"
+            elementFormDefault="qualified">
+
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-2203" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3015" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3054" />
+
+	<xsd:complexType name="NotificationForNonFirearmData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">Данни за заявление по уведомление за придобиване, продажба, дарение или замяна на неогнестрелно оръжие и издаване на удостоверение</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" />
+			<xsd:element name="WeaponNoticeType" type="wnt:WeaponNoticeType" />
+			<xsd:element name="ApplicantInformation" type="pi:PersonalInformation" />
+			<xsd:element name="PurchaserInformation" type="xsd:string" minOccurs="0" />
+			<xsd:element name="TechnicalSpecificationsOfWeapons" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TechnicalSpecificationOfWeapon" type="tsow:TechnicalSpecificationOfWeapon" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AgreementToReceiveERefusal" type="xsd:boolean" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

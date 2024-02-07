@@ -1,0 +1,45 @@
+/* ----  Footer  ---- */
+
+.footer {	
+	color: $gray-700;
+	background-color: $gray-100;
+}
+
+.footer-containter {
+	padding: $template-padding-vertical * 2 0 $template-padding-vertical * 2 0;
+	min-height: $template-padding-vertical;
+}
+
+.footer-containter-bg {
+	background-color: $primary-dark;
+	width: 100%;
+}
+
+.footer-text {
+	display: block;
+	margin: 0 auto;
+	max-width: 42.5rem;	
+	padding-top: .65rem;
+	padding-bottom: 1.25rem;
+	text-align: center;
+	line-height: 1.15;
+}
+
+// .brand-line--footer {	
+// 	border-top: 1px solid $white;
+// }
+
+@include media-breakpoint-down(xs) {
+
+	.footer-containter {
+		padding: $template-padding-vertical * 2 $template-padding-horizontal $template-padding-vertical * 2 $template-padding-horizontal;
+	}
+
+	.footer-text {
+		padding-top: 0;
+		font-size: .8125rem; 		
+	}
+}
+
+
+/* ----  /Footer  ---- */

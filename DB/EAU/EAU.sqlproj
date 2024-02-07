@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>EAU</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a11b577e-5ee7-497c-ac11-106e9a18e911}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>EAU</RootNamespace>
+    <AssemblyName>EAU</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="nom\" />
+    <Folder Include="nom\Tables\" />
+    <Folder Include="audit\" />
+    <Folder Include="audit\Tables\" />
+    <Folder Include="templates\" />
+    <Folder Include="templates\Tables\" />
+    <Folder Include="users\" />
+    <Folder Include="users\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="eml\" />
+    <Folder Include="eml\Tables\" />
+    <Folder Include="aspnetcore\" />
+    <Folder Include="aspnetcore\Tables\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="users\Stored Procedures\" />
+    <Folder Include="templates\Stored Procedures\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="audit\Stored Procedures\" />
+    <Folder Include="eml\Stored Procedures\" />
+    <Folder Include="aspnetcore\Stored Procedures\" />
+    <Folder Include="dbo\User Defined Types\" />
+    <Folder Include="templates\Sequences\" />
+    <Folder Include="users\Sequences\" />
+    <Folder Include="eml\Sequences\" />
+    <Folder Include="audit\Sequences\" />
+    <Folder Include="dbo\Sequences\" />
+    <Folder Include="nom\Stored Procedures\" />
+    <Folder Include="templates\User Defined Types\" />
+    <Folder Include="nom\Sequences\" />
+    <Folder Include="cms\" />
+    <Folder Include="cms\Tables\" />
+    <Folder Include="cms\Stored Procedures\" />
+    <Folder Include="pmt\" />
+    <Folder Include="pmt\Tables\" />
+    <Folder Include="pmt\Stored Procedures\" />
+    <Folder Include="audit\Static Data" />
+    <Folder Include="cms\Static Data" />
+    <Folder Include="pmt\Static Data" />
+    <Folder Include="dbo\Static Data" />
+    <Folder Include="eml\Static Data" />
+    <Folder Include="nom\Static Data" />
+    <Folder Include="pmt\Sequences\" />
+    <Folder Include="eau_sql_dependency\" />
+    <Folder Include="eau_sql_dependency\Stored Procedures\" />
+    <Folder Include="pmt\User Defined Types\" />
+    <Folder Include="sign\" />
+    <Folder Include="sign\Tables\" />
+    <Folder Include="sign\Stored Procedures\" />
+    <Folder Include="sign\Sequences\" />
+    <Folder Include="rebus\" />
+    <Folder Include="rebus\Tables\" />
+    <Folder Include="rebus\Stored Procedures\" />
+    <Folder Include="dbo\Upgrade" />
+    <Folder Include="pmt\Upgrade" />
+    <Folder Include="migration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="nom\Tables\n_d_languages.sql" />
+    <Build Include="templates\Tables\templates_content.sql" />
+    <Build Include="audit\Tables\n_s_action_types.sql" />
+    <Build Include="users\Tables\login_sessions.sql" />
+    <Build Include="nom\Tables\n_d_service_groups_i18n.sql" />
+    <Build Include="audit\Tables\n_s_object_types.sql" />
+    <Build Include="users\Tables\users_h.sql" />
+    <Build Include="nom\Tables\n_d_labels_i18n.sql" />
+    <Build Include="users\Tables\users.sql" />
+    <Build Include="users\Tables\certificates.sql" />
+    <Build Include="dbo\Tables\n_s_dberrors.sql" />
+    <Build Include="users\Tables\n_s_permissions.sql" />
+    <Build Include="users\Tables\user_permissions.sql" />
+    <Build Include="eml\Tables\n_s_email_templates.sql" />
+    <Build Include="audit\Tables\log_actions.sql" />
+    <Build Include="eml\Tables\email_messages.sql" />
+    <Build Include="users\Tables\user_authentications.sql" />
+    <Build Include="users\Tables\user_failed_login_attempts.sql" />
+    <Build Include="dbo\Tables\document_processes.sql" />
+    <Build Include="users\Tables\user_processes.sql" />
+    <Build Include="users\Tables\users_audit.sql" />
+    <Build Include="dbo\Tables\versions.sql" />
+    <Build Include="nom\Tables\n_d_labels.sql" />
+    <Build Include="templates\Tables\templates_ver.sql" />
+    <Build Include="aspnetcore\Tables\data_protection_keys.sql" />
+    <Build Include="nom\Tables\n_d_service_groups.sql" />
+    <Build Include="templates\Tables\templates.sql" />
+    <Build Include="dbo\Tables\attached_documents.sql" />
+    <Build Include="Storage\EML.sql" />
+    <Build Include="Storage\INDEXES.sql" />
+    <Build Include="Storage\AUDIT.sql" />
+    <Build Include="Storage\CONTENT.sql" />
+    <Build Include="Security\sql_dependency_subscriber.sql" />
+    <Build Include="Security\eau_owner.sql" />
+    <Build Include="Security\eau_owner_1.sql" />
+    <Build Include="Security\eau_sql_dependency.sql" />
+    <Build Include="Security\eau_sql_dependency_1.sql" />
+    <Build Include="Security\eau_user.sql" />
+    <Build Include="Security\eau_user_1.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Functions\f_sys_get_time.sql" />
+    <Build Include="dbo\Functions\f_sys_sprintf.sql" />
+    <Build Include="dbo\Functions\f_sys_split_string_to_int_numbers.sql" />
+    <Build Include="users\Stored Procedures\p_user_authentications_create.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_ver_create.sql" />
+    <Build Include="users\Stored Procedures\p_user_authentications_delete.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_ver_update.sql" />
+    <Build Include="users\Stored Procedures\p_user_authentications_update.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_ver_delete.sql" />
+    <Build Include="users\Stored Procedures\p_user_authentications_search.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_search.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_ver_search.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_content_create.sql" />
+    <Build Include="users\Stored Procedures\p_login_sessions_create.sql" />
+    <Build Include="users\Stored Procedures\p_login_sessions_update.sql" />
+    <Build Include="users\Stored Procedures\p_user_permissions_create.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_content_upload.sql" />
+    <Build Include="users\Stored Procedures\p_user_permissions_delete.sql" />
+    <Build Include="users\Stored Procedures\p_user_permissions_search.sql" />
+    <Build Include="users\Stored Procedures\p_certificates_create.sql" />
+    <Build Include="users\Stored Procedures\p_certificates_search.sql" />
+    <Build Include="users\Stored Procedures\p_user_processes_create.sql" />
+    <Build Include="users\Stored Procedures\p_user_processes_update.sql" />
+    <Build Include="users\Stored Procedures\p_user_processes_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_processes_create.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_processes_update.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_processes_delete.sql" />
+    <Build Include="audit\Stored Procedures\p_log_actions_create.sql" />
+    <Build Include="audit\Stored Procedures\p_log_actions_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_process_contents_delete.sql" />
+    <Build Include="dbo\Stored Procedures\p_attached_documents_delete.sql" />
+    <Build Include="dbo\Stored Procedures\p_attached_documents_create.sql" />
+    <Build Include="dbo\Stored Procedures\p_attached_documents_update.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_process_contents_upload.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_process_contents_read.sql" />
+    <Build Include="dbo\Stored Procedures\p_attached_documents_search.sql" />
+    <Build Include="eml\Stored Procedures\p_email_messages_create.sql" />
+    <Build Include="eml\Stored Procedures\p_email_messages_search.sql" />
+    <Build Include="eml\Stored Procedures\p_email_messages_pending.sql" />
+    <Build Include="eml\Stored Procedures\p_email_messages_send_attempt.sql" />
+    <Build Include="eml\Stored Procedures\p_n_s_email_templates_search.sql" />
+    <Build Include="users\Stored Procedures\p_user_failed_login_attempts_create.sql" />
+    <Build Include="users\Stored Procedures\p_user_failed_login_attempts_update.sql" />
+    <Build Include="users\Stored Procedures\p_user_failed_login_attempts_delete.sql" />
+    <Build Include="users\Stored Procedures\p_user_failed_login_attempts_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_versions_get_next.sql" />
+    <Build Include="aspnetcore\Stored Procedures\p_data_protection_keys_create.sql" />
+    <Build Include="aspnetcore\Stored Procedures\p_data_protection_keys_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_sys_raise_dberror.sql" />
+    <Build Include="users\Stored Procedures\p_users_create.sql" />
+    <Build Include="users\Stored Procedures\p_users_h_create.sql" />
+    <Build Include="dbo\Stored Procedures\p_sys_get_current_user.sql" />
+    <Build Include="users\Stored Procedures\p_users_update.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_create.sql" />
+    <Build Include="users\Stored Procedures\p_users_delete.sql" />
+    <Build Include="dbo\Stored Procedures\p_sys_set_current_user.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_update.sql" />
+    <Build Include="users\Stored Procedures\p_users_search.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_delete.sql" />
+    <Build Include="dbo\User Defined Types\tt_strings.sql" />
+    <Build Include="dbo\User Defined Types\tt_integers.sql" />
+    <Build Include="Security\aspnetcore.sql" />
+    <Build Include="Security\audit.sql" />
+    <Build Include="Security\eml.sql" />
+    <Build Include="Security\nom.sql" />
+    <Build Include="Security\templates.sql" />
+    <Build Include="Security\users.sql" />
+    <Build Include="templates\Sequences\seq_templates_ver.sql" />
+    <Build Include="users\Sequences\seq_user_processes.sql" />
+    <Build Include="eml\Sequences\seq_email_messages.sql" />
+    <Build Include="users\Sequences\seq_users.sql" />
+    <Build Include="users\Sequences\seq_certificates.sql" />
+    <Build Include="users\Sequences\seq_user_authentications.sql" />
+    <Build Include="users\Sequences\seq_user_failed_login_attempts.sql" />
+    <Build Include="templates\Sequences\seq_templates.sql" />
+    <Build Include="audit\Sequences\seq_log_actions.sql" />
+    <Build Include="dbo\Sequences\seq_document_processes.sql" />
+    <Build Include="dbo\Sequences\seq_attached_documents.sql" />
+    <Build Include="dbo\Sequences\seq_document_process_contents.sql" />
+    <Build Include="Security\Permissions.sql" />
+    <Build Include="users\Sequences\seq_users_cin.sql" />
+    <Build Include="nom\Tables\n_d_services.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_process_contents_search.sql" />
+    <Build Include="nom\Tables\n_s_document_types.sql" />
+    <Build Include="nom\Tables\n_s_delivery_channels.sql" />
+    <Build Include="nom\Tables\n_d_services_i18n.sql" />
+    <Build Include="nom\Tables\n_d_service_terms.sql" />
+    <Build Include="nom\Tables\n_d_service_document_types.sql" />
+    <Build Include="nom\Tables\n_d_service_delivery_channels.sql" />
+    <Build Include="nom\Tables\n_d_service_declarations.sql" />
+    <Build Include="nom\Tables\n_d_declarations.sql" />
+    <Build Include="dbo\Functions\f_sys_split_string_to_strings.sql" />
+    <Build Include="dbo\Functions\f_sys_split_string_to_bigint_numbers.sql" />
+    <Build Include="users\Stored Procedures\p_users_delete_data.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_search_multi.sql" />
+    <Build Include="templates\Stored Procedures\p_templates_content_read.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_services_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_services_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_services_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_terms_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_terms_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_terms_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_groups_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_groups_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_groups_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_document_types_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_document_types_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_delivery_channels_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_delivery_channels_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_declarations_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_declarations_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_languages_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_languages_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_languages_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_labels_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_labels_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_labels_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_declarations_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_declarations_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_declarations_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_declarations_create.sql" />
+    <Build Include="templates\User Defined Types\tt_templates_info.sql" />
+    <Build Include="dbo\User Defined Types\tt_document_processes.sql" />
+    <Build Include="dbo\User Defined Types\tt_bigintegers.sql" />
+    <Build Include="dbo\User Defined Types\tt_attached_documents.sql" />
+    <Build Include="nom\Sequences\seq_n_d_services.sql" />
+    <Build Include="nom\Sequences\seq_n_d_service_terms.sql" />
+    <Build Include="nom\Sequences\seq_n_d_service_groups.sql" />
+    <Build Include="nom\Sequences\seq_n_d_service_document_types.sql" />
+    <Build Include="nom\Sequences\seq_n_d_service_delivery_channels.sql" />
+    <Build Include="nom\Sequences\seq_n_d_service_declarations.sql" />
+    <Build Include="nom\Sequences\seq_n_d_languages.sql" />
+    <Build Include="nom\Sequences\seq_n_d_labels.sql" />
+    <Build Include="nom\Sequences\seq_n_d_document_kinds.sql" />
+    <Build Include="nom\Sequences\seq_n_d_declarations.sql" />
+    <Build Include="nom\Tables\nomenclature_changes.sql" />
+    <Build Include="nom\Tables\n_s_grao_types.sql" />
+    <Build Include="nom\Tables\n_s_grao.sql" />
+    <Build Include="nom\Tables\n_s_ekatte_types.sql" />
+    <Build Include="nom\Tables\n_s_ekatte.sql" />
+    <Build Include="dbo\Tables\n_s_functionalities.sql" />
+    <Build Include="dbo\Tables\app_parameters.sql" />
+    <Build Include="dbo\Functions\f_sys_search_coalesce_i18n.sql" />
+    <Build Include="dbo\Functions\f_get_n_d_services_ver_id.sql" />
+    <Build Include="dbo\Functions\f_get_n_d_service_groups_id.sql" />
+    <Build Include="dbo\Functions\f_get_n_d_labels_ver_id.sql" />
+    <Build Include="dbo\Functions\f_get_n_d_declarations_ver_id.sql" />
+    <Build Include="nom\Stored Procedures\p_n_s_grao_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_s_ekatte_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_s_document_types_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_s_delivery_channels_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_services_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_services_i18n_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_services_i18n_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_terms_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_groups_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_groups_i18n_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_groups_i18n_create.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_document_types_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_delivery_channels_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_service_declarations_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_languages_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_labels_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_labels_i18n_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_labels_i18n_create.sql" />
+    <Build Include="dbo\Stored Procedures\p_sys_cache_update_nom_changes.sql" />
+    <Build Include="dbo\Stored Procedures\p_sys_cache_querynotify.sql" />
+    <Build Include="dbo\Stored Procedures\p_app_parameters_search.sql" />
+    <Build Include="dbo\Tables\data_service_user_limits.sql" />
+    <Build Include="dbo\Tables\data_service_limits.sql" />
+    <Build Include="dbo\Stored Procedures\p_data_service_user_limits_update.sql" />
+    <Build Include="dbo\Stored Procedures\p_data_service_limits_update.sql" />
+    <Build Include="dbo\Stored Procedures\p_data_service_limits_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_data_service_user_limits_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_data_service_user_limits_create.sql" />
+    <Build Include="dbo\Sequences\seq_data_service_user_limits.sql" />
+    <Build Include="dbo\Stored Procedures\p_app_parameters_update.sql" />
+    <Build Include="cms\Tables\pages.sql" />
+    <Build Include="cms\Stored Procedures\p_pages_search.sql" />
+    <Build Include="cms\Stored Procedures\p_pages_update.sql" />
+    <Build Include="Security\cms.sql" />
+    <Build Include="nom\Tables\n_s_document_template_fields.sql" />
+    <Build Include="nom\Tables\n_d_document_templates.sql" />
+    <Build Include="nom\Stored Procedures\p_n_s_document_template_fields_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_document_templates_update.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_document_templates_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_document_templates_delete.sql" />
+    <Build Include="nom\Stored Procedures\p_n_d_document_templates_create.sql" />
+    <Build Include="nom\Sequences\seq_n_d_document_templates.sql" />
+    <Build Include="cms\Tables\pages_i18n.sql" />
+    <Build Include="cms\Stored Procedures\p_pages_i18n_update.sql" />
+    <Build Include="cms\Stored Procedures\p_pages_i18n_create.sql" />
+    <Build Include="Security\pmt.sql" />
+    <Build Include="pmt\Tables\n_d_registration_data.sql" />
+    <Build Include="pmt\Stored Procedures\p_n_d_registration_data_update.sql" />
+    <Build Include="pmt\Stored Procedures\p_n_d_registration_data_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_n_s_functionalities_search.sql" />
+    <Build Include="Security\sql_dependency_subscriber_1.sql" />
+    <Build Include="Security\eau_sql_dependency_2.sql" />
+    <None Include="audit\Static Data\n_s_object_types.sql" />
+    <None Include="cms\Static Data\pages.sql" />
+    <None Include="pmt\Static Data\n_d_registration_data.sql" />
+    <None Include="dbo\Static Data\app_parameters.sql" />
+    <None Include="dbo\Static Data\data_service_limits.sql" />
+    <None Include="dbo\Static Data\data_service_user_limits.sql" />
+    <None Include="dbo\Static Data\n_s_dberrors.sql" />
+    <None Include="dbo\Static Data\n_s_functionalities.sql" />
+    <None Include="eml\Static Data\n_s_email_templates.sql" />
+    <None Include="nom\Static Data\n_s_delivery_channels.sql" />
+    <None Include="nom\Static Data\n_s_document_types.sql" />
+    <None Include="nom\Static Data\n_s_document_template_fields.sql" />
+    <None Include="nom\Static Data\n_s_grao.sql" />
+    <None Include="nom\Static Data\n_s_grao_types.sql" />
+    <None Include="nom\Static Data\n_s_ekatte_types.sql" />
+    <None Include="nom\Static Data\n_s_ekatte.sql" />
+    <Build Include="dbo\Tables\service_instances.sql" />
+    <Build Include="dbo\Sequences\seq_service_instances.sql" />
+    <Build Include="dbo\Functions\f_has_user_access_to_row.sql" />
+    <Build Include="pmt\Stored Procedures\p_n_d_registration_data_create.sql" />
+    <Build Include="pmt\Sequences\seq_n_d_registration_data.sql" />
+    <Build Include="pmt\Stored Procedures\p_n_d_registration_data_delete.sql" />
+    <Build Include="pmt\Tables\payment_requests.sql" />
+    <Build Include="pmt\Tables\obligations.sql" />
+    <Build Include="pmt\Stored Procedures\p_payment_requests_update.sql" />
+    <Build Include="pmt\Stored Procedures\p_payment_requests_search.sql" />
+    <Build Include="pmt\Stored Procedures\p_payment_requests_create.sql" />
+    <Build Include="pmt\Stored Procedures\p_obligations_update.sql" />
+    <Build Include="pmt\Stored Procedures\p_obligations_search.sql" />
+    <Build Include="pmt\Stored Procedures\p_obligations_create.sql" />
+    <Build Include="pmt\Sequences\seq_payment_requests.sql" />
+    <Build Include="pmt\Sequences\seq_obligations.sql" />
+    <Build Include="pmt\Stored Procedures\p_payment_requests_delete.sql" />
+    <Build Include="pmt\User Defined Types\tt_obligations.sql" />
+    <Build Include="dbo\Stored Procedures\p_srv_instances_update_1.sql" />
+    <Build Include="dbo\Stored Procedures\p_srv_instances_search_1.sql" />
+    <Build Include="dbo\Stored Procedures\p_srv_instances_create_1.sql" />
+    <Build Include="nom\Tables\n_s_countries_1.sql" />
+    <Build Include="sign\Tables\signing_processes.sql" />
+    <Build Include="sign\Tables\signers.sql" />
+    <Build Include="sign\Tables\n_s_callback_clients_config.sql" />
+    <Build Include="users\Stored Procedures\p_login_sessions_search.sql" />
+    <Build Include="nom\Stored Procedures\p_n_s_countries_search_1.sql" />
+    <Build Include="sign\Stored Procedures\p_signing_process_search.sql" />
+    <Build Include="sign\Stored Procedures\p_signing_process_delete.sql" />
+    <Build Include="sign\Stored Procedures\p_signers_delete.sql" />
+    <Build Include="sign\Stored Procedures\p_signers_search.sql" />
+    <Build Include="sign\Stored Procedures\p_signing_process_create.sql" />
+    <Build Include="sign\Stored Procedures\p_signing_process_content_upload.sql" />
+    <Build Include="sign\Stored Procedures\p_signers_create.sql" />
+    <Build Include="sign\Stored Procedures\p_signing_process_content_read.sql" />
+    <Build Include="sign\Stored Procedures\p_signing_process_delete_all.sql" />
+    <Build Include="sign\Stored Procedures\p_signing_process_update.sql" />
+    <Build Include="sign\Stored Procedures\p_signers_update.sql" />
+    <Build Include="dbo\User Defined Types\tt_guids.sql" />
+    <Build Include="Security\sign.sql" />
+    <Build Include="sign\Sequences\seq_signers.sql" />
+    <Build Include="rebus\Tables\QT_EAU_PORTAL_API_GG.sql" />
+    <Build Include="rebus\Tables\QT_EAU_PORTAL_API_ERRORS.sql" />
+    <Build Include="rebus\Tables\QT_EAU_PORTAL_API.sql" />
+    <Build Include="Security\rebus.sql" />
+    <Build Include="rebus\Tables\qt_portal_api_errors.sql" />
+    <Build Include="rebus\Tables\qt_portal_api.sql" />
+    <Build Include="rebus\Stored Procedures\p_portal_queue_retry.sql" />
+    <Build Include="rebus\Stored Procedures\p_message_move.sql" />
+    <Build Include="pmt\User Defined Types\tt_obligations_search_ids.sql" />
+    <Build Include="audit\Stored Procedures\p_n_s_object_types_search.sql" />
+    <Build Include="audit\Stored Procedures\p_n_s_action_types_search.sql" />
+    <None Include="dbo\Upgrade\MVREAU2020-715.sql" />
+    <None Include="pmt\Upgrade\PepPaymentPortalChange.sql" />
+    <None Include="dbo\Upgrade\MVREAU2020-335.sql" />
+    <None Include="dbo\Upgrade\MVREAU2020-1028.sql" />
+    <Build Include="dbo\Tables\document_process_contents.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_processes_search.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_process_contents_update.sql" />
+    <Build Include="dbo\Stored Procedures\p_document_process_contents_create.sql" />
+    <Build Include="migration\1_Clear_Services.sql" />
+    <Build Include="migration\2_Clear_Nomenclatures.sql" />
+    <Build Include="migration\3_Users_Migration.sql" />
+    <Build Include="migration\4_Services_Migration.sql" />
+    <Build Include="migration\5_ServicePayments_Migration.sql" />
+    <Build Include="migration\6_ANDPayments_Migration.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="audit\Static Data\n_s_action_types.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Upgrade\MVREAU2020-731.sql" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,4020 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "title": "Vendor API",
+    "description": "This is Evrotrust Vendor server API<br/><hr><br/><b>How to set Authorization Header</b><br/>On every request you have to set a HTTP header parameter \"Authorization\". Below you can find an example, how to generate such a parameter.<br/><br/><h4>EXAMPLE</h4><br/><br/><i><u>Input Data</u></i><br/>Vendor API Key - 7f4b9ef3-298d-4ced-8656-a5d8b7f96666<br/>Vendor Number - ahZsmRHbDHL6TeED<br/>Vendor API key and number are provided by Evrotrust.<br/><br/>DATA (the request you want to send through the API)<br/>{\"vendorNumber\":\"ahZsmRHbDHL6TeED\",\"user\":{\"identificationNumber\":\"8611048980\"}}<br/><br/><i><u>Generate \"Authorization\" header</u></i><br/>DATA_TO_HEX<br/>7b2276656e646f724e756d626572223a2261685a736d52486244484c3654654544222c2275736572<br/>223a7b226964656e74696669636174696f6e4e756d626572223a2238363131303438393830227d7d<br/><br/>VENDOR_API_KEY_SHA256 = SHA256(VENDOR_API_KEY)<br/>05f1a4f713f589ec6126e6161255649eca830a32ce55f3ec2fa9268c9add8d69<br/><br/>AUTHORIZATION = HMAC(SHA256,  DATA_TO_HEX, VENDOR_API_KEY_SHA256)<br/>5a90fc151ff466434e615f1a6aac28228e8607d900b8f9129e8bfa919cff5140<br/><br/><br/><b>PublicKey parameter</b><br/>First you need to generate RSA 2048 key pair. The public key of the pair has to be encoded  in Base64 before adding it in the JSON. It is used by Evrotrust backend to encrypt the documents. The private key is used to decrypt the downloaded documents after signing.<br/><br/><h4>EXAMPLE</h4><i><u>Public Key</u></i><br/>-----BEGIN PUBLIC KEY-----<br/>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+rVL9PnkZfCEUnLHJhHX<br/>EqUPmQlrvQRW4MqNtIjNzpfl2uJkF9eLt0z9ibL8I4+Nq3j3yiSCKZepTRNMdh2s<br/>Px6hnMLqiidlC78vRd+okVVgjLkddzEw7bqUqHzdxfFQ4zLHIJg5tzOIEKwX0Jws<br/>Y6rwWaHKuHwyhygTOQ01VFqK3h8cpciKhEZST6b5MUfdP+XqWCevk6iL9jKIIhAl<br/>VIH5kIgO27oeB5mwNtt0r26TWbqzK7T45k5fKW3w5Z1HbQayMfOvp1VcLzJKqWI7<br/>INkOsYNNIIm+54hypJOAx/Dx4jLs45rGARV/l93puSXnBRfYJWalx+yXxBYC/xd0<br/>FwIDAQAB<br/>-----END PUBLIC KEY-----<br/><br/><i><u>Base64 encoded Public key</u></i><br/>LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUErclZMOV...<br/>",
+    "contact": {
+      "name": "Iteco ltd. at et.support@iteco.bg",
+      "email": "et.support@iteco.bg"
+    },
+    "version": "1.0.154"
+  },
+  "host": "et.test.iteco.bg",
+  "basePath": "/vendor",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/user/check": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "User check",
+        "description": "Check for existing Evrotrust user<br/><br/><b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".",
+        "operationId": "checkUserVendor",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "User info",
+            "schema": {
+              "$ref": "#/definitions/DataCheckUserInfo"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User found"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/user/check/extended": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "User check",
+        "description": "Returns information about Evrotrust user identification status: is registered, is identified, has confirmed phone, has confirmed email and if identification is confirmed by supervisor<br/>",
+        "operationId": "checkUserExtendedVendor",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "User info",
+            "schema": {
+              "$ref": "#/definitions/DataCheckExtendedUserInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificates list",
+            "schema": {
+              "$ref": "#/definitions/ResultUserExtendedCheck"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/user/certificate/get": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get latest certificate",
+        "description": "Return last active user certificate<br/><br/><b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/><b>\"certificate\"</b>: Mandatory filter. <br/>coverage \"integer\" 0, 500, 20000, 100000, 250000; <br/>isPidIncluded \"boolean\" whether the personal identifier is included in the certificate or not; <br/>type \"integer\" valid values 1 - Е-Sign Qualified; 2 - E-Sign Advanced;",
+        "operationId": "userVendorCertificate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "User info",
+            "schema": {
+              "$ref": "#/definitions/DataUserCertificate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate",
+            "schema": {
+              "$ref": "#/definitions/ResultGetUserCertificate"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "442": {
+            "description": "Certificate not found"
+          },
+          "438": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/user/certificate/check": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Check user certificate status",
+        "description": "Check if certificate belongs to an user.<br/><b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/><b>\"certificate\"</b>: Mandatory string. Certificate serial number.",
+        "operationId": "checkUserVendorCertificate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "User info",
+            "schema": {
+              "$ref": "#/definitions/DataUserCheckCertificate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate",
+            "schema": {
+              "$ref": "#/definitions/ResultCheckCertificate"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/document/hash/online": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Send hash of file to Evrotrust user",
+        "description": "Valid values:<br/><b>\"document\"</b><br/>\"hash\": max chars 100<br/>\"description\": max chars 4000<br/>\"dateExpire\": timestamp<br/> <br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"certificateSerialNumber\":</b> \"string\"<br/> <b>\"vendorNumber\":</b> \"string\"<br/><b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/>  <b>\"urlCallback\":</b> \"string\". Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.<br/>",
+        "operationId": "addDocumentHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataDocument"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocument"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "442": {
+            "description": "Certificate not found"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/document/group/hash/online": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Send group of hashes to Evrotrust user",
+        "description": "Valid values:<br/><b>\"documents\"</b><br/>\"hash\": max chars 100<br/>\"description\": max chars 4000<br/><br/>  <b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/><b>\"dateExpire\"</b>: timestamp<br/><b>\"groupDescription\":</b> \"string\"<br/><b>\"certificateSerialNumber\":</b> \"string\"<br/> <b>\"vendorNumber\":</b> \"string\"<br/>  <b>\"urlCallback\":</b> \"string\". Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.<br/>",
+        "operationId": "addDocumentGroupHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Group info",
+            "schema": {
+              "$ref": "#/definitions/DataHashGroupOnline"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultGroupHash"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "442": {
+            "description": "Certificate not found"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/document/doc/online": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send file to Evrotrust users",
+        "description": "Valid values:<br/><b>\"document\"</b><br/>\"description\": max chars 4000<br/>\"dateExpire\": timestamp<br/>\"coverage\": 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited.<br/> \"preview\": 0/1 whether the document requires previewing before signing<br/>\"checksumDocument\": SHA-512 of the file<br/><br/><b>\"signInfo\"</b><br/>\"type\": \"PDF1\" (PDF Baseline), \"PDF2\" (PDF Baseline + Long Term), \"XML1\" (XML Baseline), \"XML2\" (XML Baseline + Long Term), \"CAD1\" (Sign any file type), \"CAD2\" (Sign any file type with timestamp)<br/>\"algorithm\": \"SHA256\"<br/><br/>  <b>\"urlCallback\":</b> \"string\"  Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used.<br/> <b>\"vendorNumber\":</b> \"string\".<br/>  <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/> <b>\"users\"</b>: in every item of the array has to be added only one of the parameters.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.<br/>",
+        "operationId": "addDocumentDoc",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "document",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"document\": {<br/>    \"description\": \"string\",<br/>    \"dateExpire\": 0,<br/> \"coverage\": 0,<br/> \"preview\": 0,<br/> \"checksumDocument\": \"string\"<br/>},<br/>  \"signInfo\": {<br/>    \"type\": \"string\",<br/>    \"algorithm\": \"string\"<br/>  },<br/>  \"urlCallback\": \"string\",<br/>  \"vendorNumber\": \"string\", <br/>  \"users\": [{\"identificationNumber\": \"string\", \"country\": \"string\", \"email\": \"string\", \"phone\": \"string\"}] ,<br/>\"publicKey\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentTransaction"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          }
+        }
+      }
+    },
+    "/delivery/online": {
+      "post": {
+        "tags": [
+          "delivery"
+        ],
+        "summary": "Send file for delivery to Evrotrust users",
+        "description": "Valid values:<br/><b>\"document\"</b><br/>\"description\": max chars 4000<br/>\"dateExpire\": timestamp<br/>\"checksumDocument\": SHA-512 of the file<br/> <b>\"vendorNumber\":</b> \"string\"<br/>  <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/><br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.<br/>",
+        "operationId": "addDeliveryDoc",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "document",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"document\": {<br/>    \"description\": \"string\",<br/>    \"dateExpire\": 0, <br/> \"checksumDocument\": \"string\"<br/>},<br/>  \"vendorNumber\": \"string\",  <br/>  \"user\": {\"identificationNumber\": \"string\", \"country\": \"string\", \"email\": \"string\", \"phone\": \"string\"} ,<br/>\"publicKey\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDeliveryTransaction"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "457": {
+            "description": "Not supported file types"
+          }
+        }
+      }
+    },
+    "/delivery/receipts/download": {
+      "post": {
+        "tags": [
+          "delivery"
+        ],
+        "summary": "Download receipts",
+        "description": "Download zip file containing the receipts for a document",
+        "operationId": "receiptDownload",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "File data",
+            "schema": {
+              "$ref": "#/definitions/DataDeliveryDownload"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File downloaded",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/document/group/online": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send group of files to Evrotrust users",
+        "description": "Valid values:<br/><b>documents:</b> The count of documents must be between 2 and 20.<br/> <b>\"document\"</b><br/>\"description\": max chars 4000 <br/> \"optional\": 0/1 Whether the document is optional for signing. The first document must always be optional=0<br/>\"preview\": 0/1 whether the document requires previewing before signing<br/>\"checksumDocument\": SHA-512 of the file<br/><br/><b>\"signInfo\"</b><br/>\"type\": \"PDF1\" (PDF Baseline), \"PDF2\" (PDF Baseline + Long Term)<br/>\"algorithm\": \"SHA256\"<br/><br/>  <b>\"urlCallback\":</b> \"string\"  Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used.<br/> <b>\"vendorNumber\":</b> \"string\"<br/> <b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/>  <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/>  <b>\"groupDescription\":</b> string<br/><b>\"coverage\":</b> 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited.<br/><b>\"dateExpire\":</b> \"timestamp\"<br/><br/><br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.<br/>",
+        "operationId": "addDocumentGroupDoc",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "documents",
+            "in": "formData",
+            "required": true,
+            "description": "Array of files"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "{<br/>\"documents\": [{<br/>\"description\": \"string\",<br/> \"optional\": 0,<br/> \"preview\": 0,<br/> \"checksumDocument\": \"string\"<br/>}],<br/>  \"signInfo\": {<br/>    \"type\": \"string\",<br/>\"algorithm\": \"string\"<br/>},<br/>  \"groupDescription\": \"string\", <br/>  \"coverage\": 0  , <br/>  \"dateExpire\": 0, <br/>  \"urlCallback\": \"string\",<br/>  \"vendorNumber\": \"string\", <br/>  \"users\": [{\"identificationNumber\": \"string\", \"country\": \"string\", \"email\": \"string\", \"phone\": \"string\"}] , <br/>  \"publicKey\": \"string\"  <br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentTransactionGroup"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          }
+        }
+      }
+    },
+    "/document/auth/online": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send request for authentication to Evrotrust user",
+        "description": "Valid values:<br/><b>\"document\"</b><br/>\"description\": max chars 4000<br/>\"dateExpire\": timestamp<br/><br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/>  <b>\"urlCallback\":</b> \"string\"  Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/>  <b>\"vendorNumber\":</b> \"string\"<br/>  <b>\"isRequiredSigning\":</b> \"boolean\" Optional boolean parameter with default value true. Determines whether the document will be signed or only confirmed by the user.<br/> <b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/>  <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><br/><br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.",
+        "operationId": "addDocumentAuth",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataDocumentAuth"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocument"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          }
+        }
+      }
+    },
+    "/agents": {
+      "post": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Add an agent",
+        "description": "Valid values:<br/><b>\"vendorNumber\"</b>: string<b><br/>\"masterIdentificationNumber\":</b> Identification number of the master agent, who will approve the addition.<br/><b>\"agents\"</b>: array<br/>&nbsp;<b>\"identificationNumber\"</b>: Agent ID number.<br/>&nbsp;<b>\"names\":</b> Names of the agent.<br/>&nbsp;<b>\"certificateSerialNumber\":</b> Serial number of the agent certiricate.<br/>",
+        "operationId": "agentAdd",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Agent info",
+            "schema": {
+              "$ref": "#/definitions/Agents"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agents added",
+            "schema": {
+              "$ref": "#/definitions/ResultAgentsAdded"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User for master agent not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Delete an agent",
+        "description": "Delete an agent by identification number",
+        "operationId": "removeAgent",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Delete agent",
+            "schema": {
+              "$ref": "#/definitions/DataDeleteAgents"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agents deleted",
+            "schema": {
+              "$ref": "#/definitions/ResultAgentsDeleted"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/document/doc/offline": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send file to user for one-time signing",
+        "description": "Valid values:<br/><b>\"vendorNumber\"</b>: string<br/><b>\"user\"</b><br/>\"identificationNumber\": string<br/>\"documentNumber\": string<br/>\"phone\": string, should match the following pattern \"+[0-9]\"<br/>\"email\": string <br/><br/> <b>\"document\"</b><br/>\"description\": max chars 4000<br/>\"coverage\": 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited<br/>\"checksumDocument\": SHA-512 of the file.<br/><br/><b>\"signInfo\"</b><br/>\"type\": \"PDF1\" (PDF Baseline), \"PDF2\" (PDF Baseline + Long Term), \"XML1\" (XML Baseline), \"XML2\" (XML Baseline + Long Term), \"CAD1\" (Sign any file type), \"CAD2\" (Sign any file type with timestamp)<br/>\"algorithm\": \"SHA256\"<br/><br/>  <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"agentIdentificationNumber\":</b> Identification number of the agent<br/><b>\"urlCallback\"</b>: Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/>",
+        "operationId": "docOneTimeDocument",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "document",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"user\": {<br/>    \"identificationNumber\": \"string\", <br/>    \"documentNumber\": \"string\",<br/>    \"phone\": \"string\", <br/>    \"email\": \"string\"<br/>  }, <br/>  \"document\": {<br/>    \"description\": \"string\",<br/> \"coverage\": 0,<br/>    \"checksumDocument\": \"string\"<br/>  },<br/>  \"signInfo\": {<br/>    \"type\": \"string\",<br/>    \"algorithm\": \"string\"<br/>  },<br/>  \"vendorNumber\": \"string\",<br/>  \"publicKey\": \"string\",<br/> \"agentIdentificationNumber\": \"string\",<br/> \"urlCallback\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultOneTimeDocument"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/doc/offline/file": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send file to user for one-time signing",
+        "description": "Valid values:<br/><b>\"vendorNumber\"</b>: string<br/><br/><b>\"user\"</b><br/>\"identificationNumber\": string<br/>\"documentNumber\": string<br/>\"phone\": string, should match the following pattern \"+[0-9]\"<br/>\"email\": string <br/><br/> <b>\"document\"</b><br/>\"description\": max chars 4000<br/>\"coverage\": 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited<br/>\"checksumDocument\": SHA-512 of the file.<br/><br/><b>\"signInfo\"</b><br/>\"type\": \"PDF1\" (PDF Baseline), \"PDF2\" (PDF Baseline + Long Term), \"XML1\" (XML Baseline), \"XML2\" (XML Baseline + Long Term), \"CAD1\" (Sign any file type), \"CAD2\" (Sign any file type with timestamp)<br/>\"algorithm\": \"SHA256\"<br/><br/>  <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"urlCallback\"</b>: Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/>",
+        "operationId": "docOneTimeDocumentFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "document",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "file",
+            "name": "signedfile",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"user\": {<br/>    \"identificationNumber\": \"string\", <br/>    \"documentNumber\": \"string\",<br/>    \"phone\": \"string\", <br/>    \"email\": \"string\"<br/>  }, <br/>  \"document\": {<br/>    \"description\": \"string\",<br/> \"coverage\": 0,<br/>    \"checksumDocument\": \"string\"<br/>  },<br/>  \"signInfo\": {<br/>    \"type\": \"string\",<br/>    \"algorithm\": \"string\"<br/>  },<br/>  \"vendorNumber\": \"string\",<br/>  \"publicKey\": \"string\", <br/> \"urlCallback\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultOneTimeDocument"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/doc/offline/activate": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Activate one-time signing process",
+        "description": "Activate one-time signing process",
+        "operationId": "docOneActivate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/DocumentActivate"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "432": {
+            "description": "Wrong activation code"
+          },
+          "443": {
+            "description": "Document not found"
+          },
+          "448": {
+            "description": "Expired activation code"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/doc/offline/activate/resend": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Resend an SMS for activation of one-time signing process",
+        "description": "Resend an SMS for activation of one-time signing process",
+        "operationId": "docOneResend",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/DocumentActivateResend"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/document/group/offline": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send group of files to user for one-time signing",
+        "description": "Valid values:<br/><b>\"user\"</b><br/>\"identificationNumber\": string<br/>\"documentNumber\": string<br/>\"phone\": string, should match the following pattern \"+[0-9]\"<br/>\"email\": string <br/><br/><b>\"Documents:\"</b> The count of documents must be between 2 and 20.<br/>\"description\": max chars 4000<br/>\"checksumDocument\": SHA-512 of the file.<br/><br/><b>\"signInfo\"</b><br/>\"type\": \"PDF1\" (PDF Baseline), \"PDF2\" (PDF Baseline + Long Term), \"XML1\" (XML Baseline), \"XML2\" (XML Baseline + Long Term), \"CAD1\" (Sign any file type), \"CAD2\" (Sign any file type with timestamp)<br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"groupDescription\":</b> string<br/><b>\"coverage\"</b>: 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited<br/><b>\"vendorNumber\"</b>: string<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"agentIdentificationNumber\":</b> Identification number of the agent<br/><b>\"urlCallback\":</b> Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/>",
+        "operationId": "docOneTimeDocumentGroup",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "documents",
+            "in": "formData",
+            "required": true,
+            "description": "Array of files"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"user\": {<br/>    \"identificationNumber\": \"string\", <br/>    \"documentNumber\": \"string\",<br/>    \"phone\": \"string\", <br/>    \"email\": \"string\"<br/>  }, <br/><br/>  \"documents\": [{<br/>    \"description\": \"string\",<br/>  \"checksumDocument\": \"string\"<br/>  }],<br/>  \"signInfo\": {<br/>    \"type\": \"string\",<br/>  \"algorithm\": \"string\"<br/>  },<br/>  \"groupDescription\": \"string\", <br/>  \"coverage\": 0  ,<br/>  \"vendorNumber\": \"string\",<br/>  \"publicKey\": \"string\",<br/> \"agentIdentificationNumber\": \"string\",<br/> \"urlCallback\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultOneTimeDocumentGroup"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/group/offline/file": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send group of files to user for one-time signing",
+        "description": "Valid values:<br/><b>\"user\"</b><br/>\"identificationNumber\": string<br/>\"documentNumber\": string<br/>\"phone\": string, should match the following pattern \"+[0-9]\"<br/>\"email\": string <br/><br/><b>\"Documents:\"</b> The count of documents must be between 2 and 20.<br/>\"description\": max chars 4000<br/>\"checksumDocument\": SHA-512 of the file.<br/><br/><b>\"signInfo\"</b><br/>\"type\": \"PDF1\" (PDF Baseline), \"PDF2\" (PDF Baseline + Long Term), \"XML1\" (XML Baseline), \"XML2\" (XML Baseline + Long Term), \"CAD1\" (Sign any file type), \"CAD2\" (Sign any file type with timestamp)<br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"groupDescription\":</b> string<br/><b>\"coverage\"</b>: 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited<br/><b>\"vendorNumber\"</b>: string<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"urlCallback\"</b>:Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/><br/>",
+        "operationId": "docOneTimeDocumentGroupFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "documents",
+            "in": "formData",
+            "required": true,
+            "description": "Array of files"
+          },
+          {
+            "type": "file",
+            "name": "signedfile",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"user\": {<br/>    \"identificationNumber\": \"string\", <br/>    \"documentNumber\": \"string\",<br/>    \"phone\": \"string\", <br/>    \"email\": \"string\"<br/>  }, <br/><br/>  \"documents\": [{<br/>    \"description\": \"string\",<br/>  \"checksumDocument\": \"string\"<br/>  }],<br/>  \"signInfo\": {<br/>    \"type\": \"string\",<br/>  \"algorithm\": \"string\"<br/>  },<br/>  \"groupDescription\": \"string\", <br/>  \"coverage\": 0  ,<br/>  \"vendorNumber\": \"string\",<br/>  \"publicKey\": \"string\",<br/>\"urlCallback\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultOneTimeDocumentGroup"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/group/offline/activate": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Activate group of files to user one-time signing process",
+        "description": "Activate group of files to user one-time signing process",
+        "operationId": "docOneTimeGroupActivate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/OneTimeDocumentGroupActivate"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "432": {
+            "description": "Wrong activation code"
+          },
+          "443": {
+            "description": "Document group not found"
+          },
+          "448": {
+            "description": "Expired activation code"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/group/offline/activate/resend": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Resend an SMS for activation group of files to user of one-time signing process",
+        "description": "Resend an SMS for activation group of files to user of one-time signing process",
+        "operationId": "docOneTimeGroupResend",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/OneTimeDocumentGroupActivateResend"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/document/doc/identification": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send request to Evrotrust user to confirm their personal data",
+        "description": "Valid values:<br/><b>\"document\"</b><br/>\"dateExpire\": timestamp<br/><br/><b>\"includes\"</b><br/> \"names\":boolean<br/> \"latinNames\":boolean<br/> \"phones\":boolean<br/> \"emails\":boolean<br/> \"address\":boolean<br/>\"documentType\":boolean<br/> \"documentNumber\":boolean<br/> \"documentIssuerName\":boolean<br/> \"documentValidDate\":boolean<br/> \"documentIssueDate\":boolean<br/> \"identificationNumber\":boolean<br/> \"gender\":boolean<br/> \"nationality\":boolean<br/> \"documentPicture\":boolean<br/> \"documentSignature\":boolean<br/>\"picFront\":boolean<br/>\"picBack\":boolean<br/> \"picIDCombined\":boolean<br/>  \"dateOfBirth\":boolean<br/> \"placeOfBirth\":boolean<br/><br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/> <b>\"vendorNumber\":</b> \"string\",<br/> <b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/>  <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.<br/>",
+        "operationId": "signDocCertAttribute",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataAttrCertDocument"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocument"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/doc/identification/offline": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send request to Evrotrust user to confirm their personal data",
+        "description": "Valid values:<br/><b>\"includes\"</b><br/> \"names\":boolean<br/> \"latinNames\":boolean<br/> \"address\":boolean<br/>\"documentType\":boolean<br/> \"documentNumber\":boolean<br/> \"documentIssuerName\":boolean<br/> \"documentValidDate\":boolean<br/> \"documentIssueDate\":boolean<br/> \"identificationNumber\":boolean<br/> \"gender\":boolean<br/> \"nationality\":boolean<br/> \"documentPicture\":boolean<br/> \"documentSignature\":boolean<br/> \"dateOfBirth\":boolean<br/> \"placeOfBirth\":boolean<br/><br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"user\"</b><br/>\"identificationNumber\": string<br/>\"documentNumber\": string<br/>\"email\": string<br/>\"phone\": string<br/><br/> <b>\"vendorNumber\":</b> \"string\",<br/><b>\"agentIdentificationNumber\"</b>: Identification number of the agent<br/> <b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"urlCallback\"</b>: Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/>",
+        "operationId": "signDocCertAttributeOffline",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataAttrCertDocumentOffline"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentOffline"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/doc/identification/offline/file": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Send request to Evrotrust user to confirm their personal data",
+        "description": "Valid values:<br/><b>\"includes\"</b><br/> \"names\":boolean<br/> \"latinNames\":boolean<br/> \"address\":boolean<br/>\"documentType\":boolean<br/> \"documentNumber\":boolean<br/> \"documentIssuerName\":boolean<br/> \"documentValidDate\":boolean<br/> \"documentIssueDate\":boolean<br/> \"identificationNumber\":boolean<br/> \"gender\":boolean<br/> \"nationality\":boolean<br/> \"documentPicture\":boolean<br/> \"documentSignature\":boolean<br/> \"dateOfBirth\":boolean<br/> \"placeOfBirth\":boolean<br/><br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"user\"</b><br/>\"identificationNumber\": string<br/>\"documentNumber\": string<br/>\"email\": string<br/>\"phone\": string<br/><br/> <b>\"vendorNumber\":</b> \"string\",<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"urlCallback\"</b>: Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/><br/>",
+        "operationId": "signDocCertAttributeOfflineFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "signedfile",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>\"includes\": { <br/>    \"names\": \"boolean\", <br/>\"latinNames\": \"boolean\", <br/>\"address\": \"boolean\", <br/>    \"documentType\": \"boolean\", <br/>    \"documentNumber\": \"boolean\", <br/>    \"documentIssuerName\": \"boolean\", <br/>    \"documentValidDate\": \"boolean\", <br/>    \"documentIssueDate\": \"boolean\", <br/>    \"identificationNumber\": \"boolean\", <br/>    \"gender\": \"boolean\", <br/>    \"nationality\": \"boolean\", <br/>    \"documentPicture\": \"boolean\", <br/>    \"documentSignature\": \"boolean\", <br/>    \"dateOfBirth\": \"boolean\",  <br/>   \"placeOfBirth\": \"boolean\" <br/>  }, <br/>  \"identificationReason\": \"string\", <br/> \"signInfo\": { <br/>    \"algorithm\": \"string\" <br/>  },  <br/> \"user\": {  <br/>   \"identificationNumber\": \"string\", <br/>    \"documentNumber\": \"string\",  <br/>   \"email\": \"string\",<br/>   \"phone\": \"string\" <br/>  }, <br/>  \"vendorNumber\": \"string\",  <br/> \"publicKey\": \"string\",<br/>\"urlCallback\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentOffline"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/document/doc/dopk": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Add DOPK document",
+        "description": "Add DOPK document. Valid values:<br/><b>\"document\"</b><br/>\"dateExpire\": timestamp<br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><b>\"vendorNumber\":</b> \"string\",<br/> <b>\"user\"</b>: only one of the parameters has to be sent.<br/> \"country\": This parameter will be used only if \"identificationNumber\" is send. Valid values are the ISO 3166-1 alpha-2 codes. It is optional parameter and if it is not send, the default value will be applied which is \"BG\".<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><br/>Return values:<br/><b>\"threadID\"</b><br/>Unique ID refers to the signing operation.<br/><b>\"transactionID\"</b><br/>Unique ID refers to a single document of the signing operation.<br/><br/>For example: One document send to be signed by two users. Every user will have a different transactionID, but the same threadID.<br/>",
+        "operationId": "addMobileDocumentDOPK",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Add DOPK document",
+            "schema": {
+              "$ref": "#/definitions/DataAddDOPKDocument"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document added success",
+            "schema": {
+              "$ref": "#/definitions/ResultDocument"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/document/status": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Check for file/hash signing status",
+        "description": "Valid values:<br/>\"status\": 1 - Pending, 2 - Signed, 3 - Rejected, 4 - Expired, 5 - Failed, 6 - Withdrawn, 99 - On hold;<br/>",
+        "operationId": "statusDocument",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataDocumentStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document status",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentStatus"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/document/group/status": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Check for group signing status",
+        "description": "Valid values:<br/>\"status\": 1 - Pending, 2 - Signed, 3 - Rejected, 4 - Expired, 5 - Failed, 6 - Withdrawn, 99 - On hold;<br/>",
+        "operationId": "statusDocumentGroup",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataDocumentGroupStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document group status",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentGroupStatus"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document group not found"
+          }
+        }
+      }
+    },
+    "/document/thread/status": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Check status",
+        "description": "Valid values:<br/>\"status\": 1 - Pending, 2 - Signed, 3 - Rejected, 4 - Expired, 5 - Failed, 6 - Withdrawn, 99 - On hold;<br/><br/>The following parameters will be returned only if group of documents has been sent:<br/>\"groupTransactionID\"<br/>\"groupIsProcessing\"<br/>\"groupStatus\"<br/>",
+        "operationId": "statusDocumentThread",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataDocumentThreadStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document status",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentThreadStatus"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/document/download": {
+      "post": {
+        "tags": [
+          "file"
+        ],
+        "summary": "Download signed file",
+        "description": "Download zip file containing the signed file encrypted (.enc) and key for decryption, encrypted with your public key (.key)",
+        "operationId": "documentDownload",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "File data",
+            "schema": {
+              "$ref": "#/definitions/DataDocumentDownload"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File downloaded",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/document/group/download": {
+      "post": {
+        "tags": [
+          "file"
+        ],
+        "summary": "Download signed group with file",
+        "description": "Download zip file containing the signed files encrypted (.enc) and key for decryption, encrypted with your public key (.key)",
+        "operationId": "documentGroupDownload",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "File data",
+            "schema": {
+              "$ref": "#/definitions/DataDocumentGroupDownload"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document group downloaded",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "User not found"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/document/withdraw": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Withdraw a document",
+        "description": "Withdraw a document. <br/>Valid return status values: 1 - successfull withdraw; 2 - not successfull withdraw; 3 - document already withdrawn.",
+        "operationId": "documentWithdraw",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "File data",
+            "schema": {
+              "$ref": "#/definitions/DataDocumentWithdraw"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document withdraw status.",
+            "schema": {
+              "$ref": "#/definitions/ResultDocumentWithdraw"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/hash/offline/init": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Sending initial information for offline hash",
+        "description": "Valid values:<br/><b>\"document\"</b><br/>\"description\": max chars 4000<br/>\"coverage\": 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited<br/> <br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"vendorNumber\":</b> \"string\"<br/><b>\"user\"</b>: all parameters are required<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"agentIdentificationNumber\":</b> Identification number of the agent<br/><b>\"urlCallback\":</b> Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/>",
+        "operationId": "initOfflineHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document info",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineInitHash"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document created successfully",
+            "schema": {
+              "$ref": "#/definitions/ResultInitHash"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/hash/offline/file/init": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Sending initial information for offline hash using file identification",
+        "description": "Valid values:<br/><b>\"document\"</b><br/>\"description\": max chars 4000<br/>\"coverage\": 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited<br/> <br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"vendorNumber\":</b> \"string\"<br/><b>\"user\"</b>: all parameters are required<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"urlCallback\":</b> Optional parameter. It has to be sent a host name if Evrotrust Vendor callback API is used<br/>",
+        "operationId": "initOfflineFileHash",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "signedfile",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"user\": {<br/>    \"identificationNumber\": \"string\", <br/>    \"documentNumber\": \"string\",<br/>    \"phone\": \"string\", <br/>    \"email\": \"string\"<br/>  }, <br/> \"document\": {<br/>    \"description\": \"string\",<br/> \"coverage\": 0},<br/>  \"signInfo\": {<br/>    \"algorithm\": \"string\"<br/>  },<br/>  \"vendorNumber\": \"string\",<br/>  \"publicKey\": \"string\", <br/> \"urlCallback\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document created successfully",
+            "schema": {
+              "$ref": "#/definitions/ResultInitFileHash"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "Agent not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/hash/group/offline/init": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Sending initial information for offline group hash",
+        "description": "Valid values:<br/><br/><b>\"Documents\"</b><br/>\"description\": max chars 4000<br/><br/><b>\"coverage\"</b>: 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited.<br/> <br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"vendorNumber\":</b> \"string\",<br/><b>\"user\"</b>: all parameters are required<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"groupDescription\":</b> Description of the entire group<br/><b>\"agentIdentificationNumber\":</b> Identification number of the agent<br/><b>\"urlCallback\"</b>: Optional parameter. Vendor API URL that will receive the push with document status data.<br/><br/><br/>",
+        "operationId": "initOfflineGroupHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Documents info",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineGroupInitHash"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document created successfully",
+            "schema": {
+              "$ref": "#/definitions/ResultInitHash"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/hash/group/offline/file/init": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Sending initial information for offline group hash using file identification",
+        "description": "Valid values:<br/><br/><b>\"Documents\"</b><br/>\"description\": max chars 4000<br/><br/><b>\"coverage\"</b>: 0, 500, 20000, 100000, 250000. The amount is in euro. 0 stands for unlimited.<br/> <br/><b>\"signInfo\"</b><br/>\"algorithm\": \"SHA256\"<br/><br/><b>\"vendorNumber\":</b> \"string\",<br/><b>\"user\"</b>: all parameters are required<br/><b>\"publicKey\":</b> base64 encoded string of public key, necessary for encryption process<br/><b>\"groupDescription\":</b> Description of the entire group<br/><b>\"urlCallback\"</b>: Optional parameter. Vendor API URL that will receive the push with document status data.<br/><br/><br/>",
+        "operationId": "initOfflineFileGroupHash",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "type": "file",
+            "name": "signedfile",
+            "in": "formData",
+            "required": true,
+            "description": "File bytes"
+          },
+          {
+            "type": "string",
+            "name": "data",
+            "in": "formData",
+            "required": true,
+            "description": "JSON string with structure<br/>{<br/>  \"user\": {<br/>    \"identificationNumber\": \"string\", <br/>    \"documentNumber\": \"string\",<br/>    \"phone\": \"string\", <br/>    \"email\": \"string\"<br/>  }, <br/><br/>  \"documents\": [{<br/>    \"description\": \"string\"}],<br/>  \"signInfo\": {<br/>    \"algorithm\": \"string\"<br/>  },<br/>  \"coverage\": 0,<br/>  \"vendorNumber\": \"string\",<br/>  \"groupDescription\": \"string\",<br/>  \"publicKey\": \"string\", <br/> \"urlCallback\": \"string\"<br/>}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document created successfully",
+            "schema": {
+              "$ref": "#/definitions/ResultInitFileHash"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "438": {
+            "description": "Agent not found"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "450": {
+            "description": "File exceeds max allowed file size"
+          },
+          "454": {
+            "description": "Incorrect coverage"
+          },
+          "457": {
+            "description": "Not supported file types"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/hash/offline/activate": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Activate one-time hash",
+        "description": "Activate one-time hash",
+        "operationId": "hashOneActivate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/HashActivate"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "432": {
+            "description": "Wrong activation code"
+          },
+          "443": {
+            "description": "Document not found"
+          },
+          "448": {
+            "description": "Expired activation code"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/hash/group/offline/activate": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Activate one-time group hash",
+        "description": "Activate one-time group hash",
+        "operationId": "grouOneActivate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/HashActivate"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "432": {
+            "description": "Wrong activation code"
+          },
+          "443": {
+            "description": "Group not found"
+          },
+          "448": {
+            "description": "Expired activation code"
+          },
+          "449": {
+            "description": "User data is not valid"
+          },
+          "469": {
+            "description": "The request can not be processed. Try again in 60 seconds."
+          }
+        }
+      }
+    },
+    "/hash/offline/activate/resend": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Resend an SMS for activation of one-time signing process",
+        "description": "Resend an SMS for activation of one-time signing process",
+        "operationId": "hashOneResend",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/HashActivateResend"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/hash/group/offline/activate/resend": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Resend an SMS for activation of group one-time hash signing process",
+        "description": "Resend an SMS for activation of one-time hash signing process",
+        "operationId": "hashGroupResend",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Document",
+            "schema": {
+              "$ref": "#/definitions/HashActivateResend"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Activated"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
+    "/hash/certificate/check": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Check certificate status for hash",
+        "description": "Check status of the certificate. Returns if the certificate is in processing and if is issued. If isProcessing = 1, the certificate issued state can be changed. If isProcessing = 0 this is the final state of the certificate and cannot be changed.<br/><b>\"transactionID\"</b>: Transaction ID of the document hash, the certificate will be used to sign.",
+        "operationId": "checkHashCertificate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataHashCheckCertificate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate",
+            "schema": {
+              "$ref": "#/definitions/ResultCheckHashCertificate"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/hash/certificate/get": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Get certificate",
+        "description": "Returns the certificate if is ready. <br/><b>\"transactionID\"</b>: Transaction ID of the document hash, the certificate will be used to sign.",
+        "operationId": "getHashCertificate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataHashGetCertificate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate",
+            "schema": {
+              "$ref": "#/definitions/ResultGetHashCertificate"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "442": {
+            "description": "Certificate not found"
+          },
+          "443": {
+            "description": "Document not found"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/hash/group/certificate/check": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Check certificate status for group of hashes",
+        "description": "Check status of the certificate. Returns if the certificate is in processing and if is issued. If isProcessing = 1, the certificate issued state can be changed. If isProcessing = 0 this is the final state of the certificate and cannot be changed.<br/><b>\"transactionID\"</b>: Transaction ID of the group hash, the certificate will be used to sign.",
+        "operationId": "checkHashGroupCertificate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataHashCheckCertificate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate",
+            "schema": {
+              "$ref": "#/definitions/ResultCheckHashCertificate"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/hash/group/certificate/get": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Get certificate",
+        "description": "Returns the certificate if is ready. <br/><b>\"transactionID\"</b>: Transaction ID of the group of hashes, the certificate will be used to sign.",
+        "operationId": "getHashGroupCertificate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataHashGetCertificate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate",
+            "schema": {
+              "$ref": "#/definitions/ResultGetHashCertificate"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "442": {
+            "description": "Certificate not found"
+          },
+          "443": {
+            "description": "Group not found"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/hash/offline/send": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Send hash of files to Evrotrust for signing",
+        "description": "Sending the hash value and transaction ID so document and certificate can be identified",
+        "operationId": "sendOfflineHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Hash and transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineSendHash"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Hash send for sigining"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/hash/offline/check": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Check the sigining status of hash",
+        "description": "Sending the transaction ID and returns status of the signed hash<br/>Valid values:<br/>\"status\": 1 - Pending, 2 - Signed, 3 - Rejected, 4 - Expired, 5 - Failed, 6 - Withdrawn, 99 - On hold;<br/>",
+        "operationId": "checkOfflineHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineCheckHash"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of the hash",
+            "schema": {
+              "$ref": "#/definitions/ResultDataOfflineCheckHash"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/hash/offline/download": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Get signed hash",
+        "description": "Sending the transaction ID and download signed hash",
+        "operationId": "getOfflineHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineGetHash"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File downloaded",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/hash/group/offline/send": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Send hash of files to Evrotrust for signing",
+        "description": "Sending the group of hash values and transaction ID so group and certificate can be identified",
+        "operationId": "sendGroupOfflineHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Hash and transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineGroupSendHash"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Hash send for sigining"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Group not found"
+          },
+          "468": {
+            "description": "Certificate expired"
+          }
+        }
+      }
+    },
+    "/hash/group/offline/check": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Check the sigining status of hash",
+        "description": "Sending the transaction ID and returns status of the signed hash<br/>Valid values:<br/>\"status: 1 - Pending, 2 - Signed, 3 - Rejected, 4 - Expired, 5 - Failed, 6 - Withdrawn, 99 - On hold;<br/>",
+        "operationId": "checkGroupOfflineHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineGroupCheckHash"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of the hash",
+            "schema": {
+              "$ref": "#/definitions/ResultDataOfflineCheckHash"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
+    "/hash/group/offline/download": {
+      "post": {
+        "tags": [
+          "hash"
+        ],
+        "summary": "Get signed hash",
+        "description": "Sending the transaction ID and download signed hashes",
+        "operationId": "getGroupOfflineHash",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "auth value"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "transaction ID",
+            "schema": {
+              "$ref": "#/definitions/DataOfflineGroupGetHash"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Files downloaded",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "443": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/version/get": {
+      "post": {
+        "tags": [
+          "version"
+        ],
+        "summary": "Get API version",
+        "description": "Get API version",
+        "operationId": "versionCheck",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Supported versions",
+            "schema": {
+              "$ref": "#/definitions/ResultVersionGet"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DataCheckUserInfo": {
+      "properties": {
+        "vendorNumber": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        }
+      }
+    },
+    "DataCheckExtendedUserInfo": {
+      "properties": {
+        "vendorNumber": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        }
+      }
+    },
+    "UserIdentifyData": {
+      "properties": {
+        "identificationNumber": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "UserIdentifyDataOffline": {
+      "properties": {
+        "identificationNumber": {
+          "type": "string"
+        },
+        "documentNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "DataFilterGetCertificate": {
+      "properties": {
+        "coverage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isPidIncluded": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataFilterCheckCertificate": {
+      "properties": {
+        "serialNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataUserCertificate": {
+      "properties": {
+        "vendorNumber": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        },
+        "certificate": {
+          "$ref": "#/definitions/DataFilterGetCertificate"
+        }
+      }
+    },
+    "DataUserCheckCertificate": {
+      "properties": {
+        "vendorNumber": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        },
+        "certificate": {
+          "$ref": "#/definitions/DataFilterCheckCertificate"
+        }
+      }
+    },
+    "DataHashCheckCertificate": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataHashGetCertificate": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "Document": {
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dateExpire": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DocumentHash": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "coverage": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DocumentGroupHash": {
+      "properties": {
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "DocumentGroupOnlineHash": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        }
+      }
+    },
+    "HashActivate": {
+      "properties": {
+        "activationCode": {
+          "type": "string"
+        },
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DocumentAuth": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "dateExpire": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Certificate": {
+      "properties": {
+        "serialNumber": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "certificate": {
+          "type": "string"
+        },
+        "coverage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dateValidTo": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Transaction": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "identificationNumber": {
+          "type": "string"
+        },
+        "country": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "StatusThreads": {
+      "properties": {
+        "groupTransactionID": {
+          "type": "string"
+        },
+        "groupIsProcessing": {
+          "type": "boolean"
+        },
+        "groupStatus": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rejectReason": {
+          "type": "string"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocumentThreadStatus"
+          }
+        }
+      }
+    },
+    "DocumentThreadStatus": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "isProcessing": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DocumentAttr": {
+      "properties": {
+        "dateExpire": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DocumentDopk": {
+      "properties": {
+        "dateExpire": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DocumentActivate": {
+      "properties": {
+        "activationCode": {
+          "type": "string"
+        },
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DocumentActivateResend": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "HashActivateResend": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataAddDOPKDocument": {
+      "properties": {
+        "document": {
+          "$ref": "#/definitions/DocumentDopk"
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHash"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        }
+      }
+    },
+    "SignInfoHash": {
+      "properties": {
+        "algorithm": {
+          "type": "string"
+        }
+      }
+    },
+    "SignInfoHashAuth": {
+      "properties": {
+        "algorithm": {
+          "type": "string"
+        }
+      }
+    },
+    "DataHashGroupOnline": {
+      "properties": {
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocumentGroupOnlineHash"
+          }
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHash"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        },
+        "dateExpire": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "groupDescription": {
+          "type": "string"
+        },
+        "certificateSerialNumber": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        }
+      }
+    },
+    "DataDocument": {
+      "properties": {
+        "document": {
+          "$ref": "#/definitions/Document"
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHash"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        },
+        "certificateSerialNumber": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        }
+      }
+    },
+    "DataDocumentAuth": {
+      "properties": {
+        "document": {
+          "$ref": "#/definitions/DocumentAuth"
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHashAuth"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "isRequiredSigning": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Includes": {
+      "properties": {
+        "names": {
+          "type": "boolean"
+        },
+        "latinNames": {
+          "type": "boolean"
+        },
+        "emails": {
+          "type": "boolean"
+        },
+        "phones": {
+          "type": "boolean"
+        },
+        "address": {
+          "type": "boolean"
+        },
+        "documentType": {
+          "type": "boolean"
+        },
+        "documentNumber": {
+          "type": "boolean"
+        },
+        "documentIssuerName": {
+          "type": "boolean"
+        },
+        "documentValidDate": {
+          "type": "boolean"
+        },
+        "documentIssueDate": {
+          "type": "boolean"
+        },
+        "identificationNumber": {
+          "type": "boolean"
+        },
+        "gender": {
+          "type": "boolean"
+        },
+        "nationality": {
+          "type": "boolean"
+        },
+        "documentPicture": {
+          "type": "boolean"
+        },
+        "documentSignature": {
+          "type": "boolean"
+        },
+        "picFront": {
+          "type": "boolean"
+        },
+        "picBack": {
+          "type": "boolean"
+        },
+        "picIDCombined": {
+          "type": "boolean"
+        },
+        "dateOfBirth": {
+          "type": "boolean"
+        },
+        "placeOfBirth": {
+          "type": "boolean"
+        }
+      }
+    },
+    "IncludesOffline": {
+      "properties": {
+        "names": {
+          "type": "boolean"
+        },
+        "latinNames": {
+          "type": "boolean"
+        },
+        "address": {
+          "type": "boolean"
+        },
+        "documentType": {
+          "type": "boolean"
+        },
+        "documentNumber": {
+          "type": "boolean"
+        },
+        "documentIssuerName": {
+          "type": "boolean"
+        },
+        "documentValidDate": {
+          "type": "boolean"
+        },
+        "documentIssueDate": {
+          "type": "boolean"
+        },
+        "identificationNumber": {
+          "type": "boolean"
+        },
+        "gender": {
+          "type": "boolean"
+        },
+        "nationality": {
+          "type": "boolean"
+        },
+        "documentPicture": {
+          "type": "boolean"
+        },
+        "documentSignature": {
+          "type": "boolean"
+        },
+        "dateOfBirth": {
+          "type": "boolean"
+        },
+        "placeOfBirth": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResultDocument": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "threadID": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDocumentOffline": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultGroupHash": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "threadID": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDocumentTransactionGroup": {
+      "properties": {
+        "threadID": {
+          "type": "string"
+        },
+        "transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          }
+        }
+      }
+    },
+    "ResultDocumentTransaction": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "threadID": {
+          "type": "string"
+        },
+        "transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          }
+        }
+      }
+    },
+    "ResultDeliveryTransaction": {
+      "properties": {
+        "threadID": {
+          "type": "string"
+        },
+        "transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          }
+        }
+      }
+    },
+    "ResultGetUserCertificate": {
+      "properties": {
+        "serialNumber": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "certificate": {
+          "type": "string"
+        },
+        "coverage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dateValidTo": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ResultCheckCertificate": {
+      "properties": {
+        "result": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResultGetHashCertificate": {
+      "properties": {
+        "serialNumber": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "certificate": {
+          "type": "string"
+        },
+        "coverage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dateValidTo": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ResultCheckHashCertificate": {
+      "properties": {
+        "issued": {
+          "type": "boolean"
+        },
+        "isProcessing": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResultUserExtendedCheck": {
+      "properties": {
+        "isRegistered": {
+          "type": "boolean"
+        },
+        "isIdentified": {
+          "type": "boolean"
+        },
+        "isSupervised": {
+          "type": "boolean"
+        },
+        "hasConfirmedPhone": {
+          "type": "boolean"
+        },
+        "hasConfirmedEmail": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DataAttrCertDocument": {
+      "properties": {
+        "document": {
+          "$ref": "#/definitions/DocumentAttr"
+        },
+        "includes": {
+          "$ref": "#/definitions/Includes"
+        },
+        "identificationReason": {
+          "type": "string"
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHash"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyData"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        }
+      }
+    },
+    "Agents": {
+      "properties": {
+        "vendorNumber": {
+          "type": "string"
+        },
+        "masterIdentificationNumber": {
+          "type": "string"
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Agent"
+          }
+        }
+      }
+    },
+    "Agent": {
+      "properties": {
+        "identificationNumber": {
+          "type": "string"
+        },
+        "certificateSerialNumber": {
+          "type": "string"
+        },
+        "names": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultAgentsAdded": {
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentAdded"
+          }
+        }
+      }
+    },
+    "AgentAdded": {
+      "properties": {
+        "identificationNumber": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DataDeleteAgents": {
+      "properties": {
+        "vendorNumber": {
+          "type": "string"
+        },
+        "masterIdentificationNumber": {
+          "type": "string"
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeleteAgent"
+          }
+        }
+      }
+    },
+    "DataOfflineInitHash": {
+      "properties": {
+        "document": {
+          "$ref": "#/definitions/DocumentHash"
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHash"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyDataOffline"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "agentIdentificationNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        }
+      }
+    },
+    "DataOfflineGroupInitHash": {
+      "properties": {
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocumentGroupHash"
+          }
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHash"
+        },
+        "coverage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyDataOffline"
+        },
+        "groupDescription": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "agentIdentificationNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        }
+      }
+    },
+    "DataOfflineSendHash": {
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataOfflineCheckHash": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataOfflineGetHash": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataOfflineGroupSendHash": {
+      "properties": {
+        "hash": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataOfflineGroupCheckHash": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataOfflineGroupGetHash": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDataOfflineCheckHash": {
+      "properties": {
+        "isProcessing": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rejectReason": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDataOfflineGetHash": {
+      "properties": {
+        "isProcessing": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rejectReason": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultInitHash": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultInitFileHash": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        }
+      }
+    },
+    "DeleteAgent": {
+      "properties": {
+        "identificationNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultAgentsDeleted": {
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentDeleted"
+          }
+        }
+      }
+    },
+    "AgentDeleted": {
+      "properties": {
+        "identificationNumber": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DataAttrCertDocumentOffline": {
+      "properties": {
+        "includes": {
+          "$ref": "#/definitions/IncludesOffline"
+        },
+        "identificationReason": {
+          "type": "string"
+        },
+        "signInfo": {
+          "$ref": "#/definitions/SignInfoHash"
+        },
+        "user": {
+          "$ref": "#/definitions/UserIdentifyDataOffline"
+        },
+        "vendorNumber": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "agentIdentificationNumber": {
+          "type": "string"
+        },
+        "urlCallback": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultOneTimeDocument": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        }
+      }
+    },
+    "DataDocumentStatus": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataDocumentThreadStatus": {
+      "properties": {
+        "threadID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultVersionGet": {
+      "properties": {
+        "environment": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDocumentStatus": {
+      "properties": {
+        "isProcessing": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rejectReason": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDocumentThreadStatus": {
+      "properties": {
+        "statuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StatusThreads"
+          }
+        }
+      }
+    },
+    "DataDocumentGroupStatus": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDocumentGroupStatus": {
+      "properties": {
+        "isProcessing": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rejectReason": {
+          "type": "string"
+        }
+      }
+    },
+    "DataDocumentDownload": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataDocumentWithdraw": {
+      "properties": {
+        "threadID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultDocumentWithdraw": {
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataDeliveryDownload": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataDocumentGroupDownload": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultOneTimeDocumentGroup": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        }
+      }
+    },
+    "OneTimeDocumentGroupActivate": {
+      "properties": {
+        "activationCode": {
+          "type": "string"
+        },
+        "transactionID": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "OneTimeDocumentGroupActivateResend": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "vendorNumber": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

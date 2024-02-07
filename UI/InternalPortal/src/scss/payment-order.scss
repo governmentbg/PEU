@@ -1,0 +1,67 @@
+@import "src/bootstrap-4.0.0/scss/functions";
+@import "src/scss/bootstrap_variables"; // Custom variables
+@import "src/bootstrap-4.0.0/scss/variables";
+@import "src/bootstrap-4.0.0/scss/mixins";
+
+
+/* ----  PaymentOrder  ---- */
+
+// page variables
+$main-padding: 0.625rem;
+
+.payment-order {
+
+	font-family: "Courier New", "Courier", monospace;
+	font-size: 1rem;
+	line-height: 1.1;
+	color: $gray-800;
+
+	table {
+		width: 100%;		
+		min-width: 46.25rem;
+		max-width: 46.75rem;		
+		table-layout: fixed;
+		border-collapse: collapse;
+	}
+
+	td, th {
+		border: 1px solid $gray-500;
+		padding: 0.5rem $main-padding;
+		vertical-align: top;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.payment-order-title {
+		font-size: 1.1rem;
+		font-weight: bold;
+		line-height: 1;
+	}
+	
+	.value {
+		font-weight: bold;
+	}
+
+	.table-primary {
+		background-color: lighten($primary, 37%);
+	}
+
+	// .borderless {
+	// 	border: none;
+	// }
+
+}
+
+.payment-order-list {		
+	table {		
+		min-width: 44rem;		
+	}
+
+	.w-sum {
+		width: 8rem;
+	}
+}
+
+/* ----  /PaymentOrder  ---- */

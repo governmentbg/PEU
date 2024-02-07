@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3252" 
+			xmlns="http://ereg.egov.bg/segment/R-3252" 
+			xmlns:dt="http://ereg.egov.bg/nomenclature/R-1008"
+			xmlns:a="http://ereg.egov.bg/segment/0009-000094"
+			xmlns:rd="http://ereg.egov.bg/segment/R-3253"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1008" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3253" />
+  <xsd:complexType name="DeclarationUndurArticle17Data">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни относно подаване на декларация по чл.17, ал.1 от Правилника за издаване на българските лични документи при изгубване/ кражба/ повреждане/ унищожаване.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+		<xsd:element name="DocType" type="dt:BulgarianIdentityDocumentTypes"  />
+		<xsd:element name="PermanentAddress" type="a:PersonAddress" minOccurs="0" maxOccurs="1"  />
+		<xsd:element name="PresentAddress" type="a:PersonAddress" minOccurs="0" maxOccurs="1"  />
+		<xsd:element name="ReasonData" type="rd:IssuingBgPersonalDocumentReasonData"  />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

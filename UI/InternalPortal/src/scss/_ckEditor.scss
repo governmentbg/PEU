@@ -1,0 +1,196 @@
+/* ----  ckEditor  ---- */
+
+
+    // SCSS е коментиран
+    // по-долу е използван генерирания CSS
+
+    // .cke_reset_all,
+    // .cke_reset_all *,
+    // .cke_reset_all a,
+    // .cke_reset_all textarea {
+    //     // font-family: $font-family-base;
+    // }
+
+    // .cke_reset {
+    //     @include border-radius($border-radius);
+    // }
+
+    // a.cke_button {
+    //     @include border-radius($border-radius);
+    //     font-weight: $btn-font-weight;
+        
+    // }
+
+    // .cke_dialog
+    // // cke_dialog_body
+    // {
+    //     @include border-radius($border-radius); 
+    // }
+
+    // a.cke_dialog_ui_button, a.cke_combo_button {
+    //     font-weight: $btn-font-weight;
+    //     @include border-radius($border-radius);
+    // }
+    // a.cke_dialog_ui_button {
+    //     @include button-variant($secondary, darken($secondary, 7%));
+    // }
+
+    // a.cke_dialog_ui_button_ok {
+    //     @include button-variant(pink, darken($primary, 7%));
+    // }
+    // a.cke_dialog_ui_button_ok:focus, a.cke_dialog_ui_button_ok:active {
+    //     // border-color: transparent;
+    // }
+
+
+    // a.cke_dialog_ui_button_cancel {
+        
+    // }
+
+
+
+    // input.cke_dialog_ui_input_text:focus,
+    // input.cke_dialog_ui_input_password:focus,
+    // textarea.cke_dialog_ui_input_textarea:focus,
+    // select.cke_dialog_ui_input_select:focus {
+    //     // border: 2px solid #139ff7;
+    //     box-shadow: $btn-focus-box-shadow;
+    //     border: 2px solid transparent;
+    // }
+
+    // input.cke_dialog_ui_checkbox_input:focus,
+    // input.cke_dialog_ui_checkbox_input:active,
+    // input.cke_dialog_ui_radio_input:focus, 
+    // input.cke_dialog_ui_radio_input:active {
+    //     // outline: 2px solid #139ff7;
+    //     box-shadow: $btn-focus-box-shadow;
+    //     outline: 0;
+        
+    // }
+
+    // a.cke_dialog_tab:focus {
+    //     // border: 2px solid #139ff7;
+    //     box-shadow: $btn-focus-box-shadow;
+    //     border: 2px solid transparent;
+    // }
+
+
+    // a.cke_dialog_ui_button:focus, a.cke_dialog_ui_button:active {
+    //     // border: 2px solid #139ff7;
+    //     box-shadow: $btn-focus-box-shadow;
+    //     border: 2px solid transparent;
+    // }
+
+
+
+
+
+
+    // .cke_button_label.cke_button__activefield_label {
+    //     display: inline;
+    //     padding-left: 6px;
+    // }
+
+
+
+
+    .cke_reset {
+        border-radius: 0.125rem !important; }
+    
+    a.cke_button {
+        border-radius: 0.125rem !important;
+        font-weight: 400 !important; }
+    
+    .cke_dialog {
+        border-radius: 0.125rem !important; }
+    
+    a.cke_dialog_ui_button, a.cke_combo_button {
+        font-weight: 400 !important;
+        border-radius: 0.125rem !important; }
+    
+    a.cke_dialog_ui_button {
+        color: #1a1a1a !important;
+        background-color: #ebebeb !important;
+        border-color: #d9d9d9 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important; }
+        a.cke_dialog_ui_button:hover {
+        color: #1a1a1a !important;
+        background-color: #d8d8d8 !important;
+        border-color: silver !important; }
+        a.cke_dialog_ui_button:focus, a.cke_dialog_ui_button.focus {
+        -webkit-box-shadow: none, 0 0 0 0.18rem rgba(217, 217, 217, 0.5) !important;
+        box-shadow: none, 0 0 0 0.18rem rgba(217, 217, 217, 0.5) !important; }
+        a.cke_dialog_ui_button.disabled, a.cke_dialog_ui_button:disabled {
+        color: #1a1a1a !important;
+        background-color: #ebebeb !important;
+        border-color: #d9d9d9 !important; }
+        a.cke_dialog_ui_button:not(:disabled):not(.disabled):active, a.cke_dialog_ui_button:not(:disabled):not(.disabled).active,
+        .show > a.cke_dialog_ui_button.dropdown-toggle {
+        color: #1a1a1a !important;
+        background-color: #d2d2d2 !important;
+        border-color: #b9b9b9 !important; }
+        a.cke_dialog_ui_button:not(:disabled):not(.disabled):active:focus, a.cke_dialog_ui_button:not(:disabled):not(.disabled).active:focus,
+        .show > a.cke_dialog_ui_button.dropdown-toggle:focus {
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.18rem rgba(217, 217, 217, 0.5) !important;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.18rem rgba(217, 217, 217, 0.5) !important; }
+    
+    a.cke_dialog_ui_button_ok {
+        color: #fff !important;
+        background-color: #e96c27 !important;
+        border-color: #d65a16 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important; }
+        a.cke_dialog_ui_button_ok:hover {
+        color: #fff !important;
+        background-color: #d45916 !important;
+        border-color: #a84711 !important; }
+        a.cke_dialog_ui_button_ok:focus, a.cke_dialog_ui_button_ok.focus {
+        -webkit-box-shadow: none, 0 0 0 0.18rem rgba(214, 90, 22, 0.5) !important;
+        box-shadow: none, 0 0 0 0.18rem rgba(214, 90, 22, 0.5) !important; }
+        a.cke_dialog_ui_button_ok.disabled, a.cke_dialog_ui_button_ok:disabled {
+        color: #fff !important;
+        background-color: #e96c27 !important;
+        border-color: #d65a16 !important; }
+        a.cke_dialog_ui_button_ok:not(:disabled):not(.disabled):active, a.cke_dialog_ui_button_ok:not(:disabled):not(.disabled).active,
+        .show > a.cke_dialog_ui_button_ok.dropdown-toggle {
+        color: #fff !important;
+        background-color: #c95514 !important;
+        border-color: #9d4210 !important; }
+        a.cke_dialog_ui_button_ok:not(:disabled):not(.disabled):active:focus, a.cke_dialog_ui_button_ok:not(:disabled):not(.disabled).active:focus,
+        .show > a.cke_dialog_ui_button_ok.dropdown-toggle:focus {
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.18rem rgba(214, 90, 22, 0.5) !important;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.18rem rgba(214, 90, 22, 0.5) !important; }
+    
+    input.cke_dialog_ui_input_text:focus,
+    input.cke_dialog_ui_input_password:focus,
+    textarea.cke_dialog_ui_input_textarea:focus,
+    select.cke_dialog_ui_input_select:focus {
+        -webkit-box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        border: 2px solid transparent !important; }
+    
+    input.cke_dialog_ui_checkbox_input:focus,
+    input.cke_dialog_ui_checkbox_input:active,
+    input.cke_dialog_ui_radio_input:focus,
+    input.cke_dialog_ui_radio_input:active {
+        -webkit-box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        outline: 0; }
+    
+    a.cke_dialog_tab:focus {
+        -webkit-box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        border: 2px solid transparent !important; }
+    
+    a.cke_dialog_ui_button:focus, a.cke_dialog_ui_button:active {
+        -webkit-box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        box-shadow: 0 0 0 0.18rem rgba(233, 108, 39, 0.25) !important;
+        border: 2px solid transparent !important; }
+    
+    .cke_button_label.cke_button__activefield_label {
+        display: inline !important;
+        padding-left: 6px !important; }
+  
+  
+  /* ----  /ckEditor  ---- */

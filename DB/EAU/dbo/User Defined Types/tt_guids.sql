@@ -1,0 +1,3 @@
+﻿CREATE TYPE [dbo].[tt_guids] AS TABLE (
+    [id] UNIQUEIDENTIFIER NOT NULL);
+

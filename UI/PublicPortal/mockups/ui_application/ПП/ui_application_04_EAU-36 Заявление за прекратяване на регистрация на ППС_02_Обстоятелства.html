@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Заявление за прекратяване на регистрация на ППС - Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../../">
+
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+
+
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <div class="skip-link">
+            <a href="#PAGE-CONTENT" class="skip-to-content">Пропусни основната навигация</a> 
+        </div>
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png" alt="">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <main class="content-wrapper">
+        
+        <div class="page-header-wrapper section-wrapper section-wrapper--margin-top fixed-content-width">
+            <div class="breadcrumbs">
+                
+                <nav aria-label="Път до текуща страница">
+                    <ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Прекратяване на регистрация на ППС с писмено заявление от собственика</li>
+                    </ol>
+                </nav>
+            
+            </div>
+
+        </div>
+        
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+            <div class="page-header" id="PAGE-CONTENT">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Заявление за прекратяване на регистрация на ППС</h1>
+                    </div>
+                    <div class="col-auto">
+                        <div class="button-menu-container">                
+                            <button id="SHOW-MENU" type="button" class="button-menu collapsed d-md-none" aria-expanded="false">
+                                <i class="ui-icon ui-icon-sub-menu" aria-hidden="true"></i>
+                                <span class="sr-only">Покажи навигацията за избор на секция в заявлението</span>
+                            </button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+
+            <div class="nav-wrapper collapse" id="PAGE-NAV">
+                <div class="skip-link">
+                    <a href="#ARTICLE-CONTENT" class="skip-to-content">Пропусни навигацията за избор на секция в заявлението и премини към попълване на текущата секция</a>
+                </div>
+                <nav class="page-nav" aria-label="Секции в заявлението">
+                    <ul class="nav-section connected-nav-items">
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-processed"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('')">
+                                    Заявител
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link active" onclick="window.location.assign('ui_application/ПП/ui_application_04_EAU-36 Заявление за прекратяване на регистрация на ППС_02_Обстоятелства.html')">
+                                    Обстоятелства
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class=" nav-link" onclick="window.location.assign('')">
+                                    Политики и декларации
+                                </button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-state">
+                                <i class="ui-icon ui-icon-empty"></i>
+                            </div>
+                            <div class="nav-item-title">
+                                <button type="button" class="nav-link" onclick="window.location.assign('')">
+                                    Приложени документи
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="page-wrapper" id="ARTICLE-CONTENT">
+      
+                <div class="ui-form ui-form--input">
+
+                    <h2 class="section-title">
+                        Обстоятелства&nbsp;<button type="button" class="btn btn-context-help" title="Контекстна помощ. Страницата се отваря в нов таб на браузъра."><span class="d-none">Контекстна помощ</span></button>
+                    </h2>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                Идентификационни данни за ППС
+                            </h3>
+                        </legend>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label required-field" for="REGPPS">Регистрационен номер на ППС</label>
+                                <input type="text" class="form-control" id="REGPPS" required="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <fieldset>
+                                    <legend class="form-control-label">Вид документ</legend>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" name="DocF" id="DocF1" value="option2" type="radio" checked="">
+                                        <label class="custom-control-label" for="DocF1">Свидетелство за регистрация на МПС</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" name="DocF" id="DocF2" value="option2" type="radio">
+                                        <label class="custom-control-label" for="DocF2">Регистрационен талон</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label required-field" for="DOKN">Номер на документ за регистрация на ППС</label>
+                                <input type="text" class="form-control" id="DOKN" required="">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                Собственици по документ за регистрация на ППС
+                            </h3>
+                        </legend>
+                        <div class="alert alert-info"><p>При довършване на обслужването по заявената услуга на гише в звеното "Пътна полиция" към ОДМВР/СДВР, е необходимо да присъстват всички собственици или техни законни представители/пълномощници</p></div>
+                        <ul class="list-filed" id="FIELD-F1">
+                            <li class="list-filed__item" role="group" aria-label="Собственик 1">
+                                <div class="interactive-container interactive-container--form">
+                                    <div class="interactive-container__content record-container">
+
+                                        <div id="LICE" class=""> <!-- този div е само за да работи прототипа  -->
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <fieldset>
+                                                        <legend class="form-control-label">Вид на лицето</legend>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioF" id="radioF1" value="option2" type="radio" checked="">
+                                                            <label class="custom-control-label" for="radioF1">Физическо лице</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input class="custom-control-input" name="radioF" id="radioF2" value="option2" type="radio">
+                                                            <label class="custom-control-label" for="radioF2">Юридическо лице/Земеделски производител</label>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="IURIDICHESKO" class="d-none"> <!-- този div е само за да работи прототипа  -->
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label class="form-control-label required-field" for="USER-EIK">ЕИК/БУЛСТАТ</label>
+                                                </div>
+                                                <div class="form-group col col-sm-6">
+                                                    <input type="text" class="form-control" id="USER-EIK" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="FIZICHESKO" class="">  <!-- този div е само за да работи прототипа  -->
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label class="form-control-label required-field" for="EGN">Идентификатор на физическо лице</label>
+                                                </div>
+                                                <div class="form-group col-6 col-xl-4">
+                                                    <input type="text" class="form-control" id="EGN" required="">
+                                                </div>
+                                                <div class="form-group col-auto">
+                                                    <fieldset class="form-inline">
+                                                        <legend class="sr-only">Вид на идентификатор</legend>
+                                                        <div class="custom-control-inline custom-control custom-radio">
+                                                            <input class="custom-control-input" name="TYPE-EGN-ID" id="TYPE-EGN" value="1" type="radio" checked="">
+                                                            <label class="custom-control-label" for="TYPE-EGN">ЕГН</label>
+                                                        </div>
+                                                        <div class="custom-control-inline custom-control custom-radio">
+                                                            <input class="custom-control-input" name="TYPE-EGN-ID" id="TYPE-LNCH" value="2" type="radio">
+                                                            <label class="custom-control-label" for="TYPE-LNCH">ЛНЧ/ЛН</label>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="interactive-container__controls"></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="row">
+                            <div class="form-group col">
+                                <hr>
+                                <button type="button" class="btn btn-light" onclick="addField('FIELD-F1')"><i class="ui-icon ui-icon-plus mr-1" aria-hidden="true"></i>Добави собственик</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title required-field">Причина за прекратяване на регистрацията на ППС</h3>
+                        </legend>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <select class="form-control" required="" id="STAT">
+                                    <option value="1" selected="">Избери</option>
+                                    <option value="2">конфискация или отнемане в полза на държавата</option>
+                                    <option value="3">напускане на страната</option>
+                                    <option value="4">откраднато ПС</option>
+                                    <option value="5">прекратяване след изплатена щета</option>
+                                    <option value="6">при рег. табели, които не отговарят на изискванията на действащия БДС 15980 и БДС ISO 75</option>
+                                    <option value="7">разкомплектоване</option>
+                                    <option value="8">регистрация на ПС в друга държава</option>
+                                    <option value="9">съхраняване на ПС в частен имот</option>
+                                    <option value="10">унищожено при пожар или природно бедствие</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title required-field">Телефон на заявителя</h3>
+                        </legend>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" id="PHONE" required="">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                <span>Предоставяне на документ за отказ на услугата</span>
+                            </h3>
+                        </legend>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" id="CheckboxAT12" value="option1" type="checkbox">
+                                    <label class="custom-control-label" for="CheckboxAT12">Отбележете, че при отказ от предоставяне на услугата, документът ще бъде получен като електронен, чрез Системата за сигурно електронно връчване (ССЕВ) на Държавна агенция „Електронно управление“, на адреса на лицето (ЕГН/ЛНЧ/ЛН/ЕИК/БУЛСТАТ) - първи собственик на ППС. В противен случай документът ще бъде предоставен на гише.
+                                    </label>
+                                </div>
+                            </div>                        
+                        </div>
+                    </fieldset>
+
+                    <div class="button-bar button-bar--form button-bar--responsive">
+                        <div class="right-side">
+                            <button type="button" class="btn btn-primary" onclick="window.location.assign('')">Продължи</button>
+                            <button type="button" class="btn btn-secondary" onclick="window.location.assign('ui_application/ПП/ui_application_04_EAU-36 Заявление за прекратяване на регистрация на ППС_05_Преглед.html')">Прегледай</button>
+                        </div>
+                        <div class="left-side">
+                            <button type="button" class="btn btn-secondary">Откажи</button>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+        
+                        <ul>
+                            <li class="footer-link"><button class="btn btn-link" type="button" title="Страницата се отваря в нов таб на браузъра.">Помощ</button></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg" alt="">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg" alt="">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        $(document).ready(function () {
+
+            // Show Page SubNavigation
+            $('#SHOW-MENU').on('click', function () {
+                if ( $(this).attr('aria-expanded') == 'false' ) {
+                    $(this).attr('aria-expanded','true');
+                } else if ( $(this).attr('aria-expanded') == 'true' ) {
+                    $(this).attr('aria-expanded','false');
+                }
+
+                $(this).toggleClass('collapsed');
+
+                $("#PAGE-NAV").slideToggle(
+                    function() {
+                    $(this).css('display','');
+                    $(this).toggleClass('show');
+                    
+                });
+            });
+
+            // Autocomplete Show
+            $('.auto-complete-container .auto-complete-options').addClass("d-none");
+
+            $('.auto-complete-container .custom-combobox-toggle').on('click', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').toggleClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focus', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').removeClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focusout', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').addClass("d-none");
+            });
+
+
+            // физическо, юридическо лице
+            $('#radioF1').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#IURIDICHESKO').addClass('d-none');
+                    $('#FIZICHESKO').removeClass('d-none');
+                }
+            });
+
+            $('#radioF2').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#IURIDICHESKO').removeClass('d-none');
+                    $('#FIZICHESKO').addClass('d-none');
+                }
+            });
+
+
+        });
+
+        // Show Navigation
+        function toggleNav() {
+            $(".navbar-top-container--mobile").collapse('toggle');
+        };
+    
+        // Text Version
+        function textOnlyVersion() {
+            $('[rel="stylesheet"]').attr('media','none');
+        };
+
+        // Add Field - List Field
+        function addField(field) {
+            var listField = $('#'+field);            
+            var cloneField = listField.find('li').last().clone();
+
+            cloneField.find('[id]').each( function(index, elem){
+                var input = $(elem);
+                var label = $(elem).siblings('[for]');
+                input.attr('id', input.attr('id')+'_1');
+                input.attr('name', input.attr('name')+'_1');
+                input.val('');
+                label.attr('for', label.attr('for')+'_1');
+            })
+
+            cloneField.find('.interactive-container__controls').empty();
+            cloneField.find('.interactive-container__controls').append('<button onClick="$(this).closest(\'.list-filed\').find(\'a, button, input, textarea\').first().focus(); $(this).closest(\'li\').remove();" class="btn btn-light btn-sm" title="Изтрий"><i class="ui-icon ui-icon-times" aria-hidden="true"></i><span class="d-none">Изтрий</sapn></button>');
+
+            listField.append(cloneField);
+
+            cloneField.find('a, button, input, textarea').first().focus();
+
+            activateFieldEditControls();
+            reorderListLabels(listField);
+        };
+
+        // Reorder list labels - List Field 
+        function reorderListLabels(listField) {
+            var li = listField.children('li');
+            var label = li.first().attr('aria-label');
+            label = label.replace(/.[0-9]+$/,'');
+            li.each( function(index, elem){
+                $(elem).attr('aria-label', label + ' ' + (index+1))
+            });
+        }
+
+
+        function activateFieldEditControls () {
+
+            var field = $('.interactive-container').find('.interactive-container__controls').find('.btn');
+
+            field.on('mouseover focus', function () {
+                $(this).closest('.interactive-container').addClass("interactive-container--focus");
+            });
+
+            field.on('mouseout focusout', function () {
+                $(this).closest('.interactive-container').removeClass("interactive-container--focus");
+            });
+        }
+ 
+
+    </script>
+    
+
+  </body>
+</html>

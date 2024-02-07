@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3154" xmlns="http://ereg.egov.bg/segment/R-3154" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:e="http://ereg.egov.bg/segment/R-3152"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3152" />
+
+  <xsd:complexType name="RemoveEmployeeRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Премахване на служител</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Employee" type="e:Employee" />
+      <xsd:element name="ContractTerminationNumber" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ContractTerminationDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="ContractTerminationEffectiveDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="ContractTerminationNote" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

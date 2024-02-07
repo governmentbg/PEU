@@ -1,0 +1,99 @@
+/* ----  Public-Portal-Css  ---- */
+
+.public-portal-css {
+    a {
+        color: $blue;
+       
+        @include hover() {
+          color: $link-hover-color;
+          
+        }
+      }
+      
+    h3.field-title-service {  
+        color: $blue;    
+    }
+    
+    [data-toggle="collapse"] {
+        cursor: pointer;
+    }
+
+    p {
+        margin-bottom: $template-container-margin-vertical;
+    }
+
+    .section-title {    
+        line-height: 1.125;
+        font-weight: bold;
+        font-style: italic;
+        color: $primary;
+    
+        border-bottom: 1px solid $gray-300;
+    }
+
+
+    
+    .card-page {
+        background: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .card--collapsible {
+        .card-header {
+            display: flex;
+            justify-content: space-between;		
+        }
+    }
+
+    .card-header {
+    
+        .toggle-collapse {
+            line-height: 1.1;
+            .ui-icon {
+                width: .8125rem;
+                height: .8125rem;
+                transition: ease-in-out 0.3s;			
+            }
+        }
+    
+        &.collapsed {				
+            .ui-icon {
+                transform: rotate(180deg);
+                transition: ease-in-out 0.3s;
+            }
+        }
+    }
+
+    .card-page__header {
+        border-bottom: double $gray-300;
+    
+        padding-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: $template-container-padding-vertical * 0.5 $template-container-padding-horizontal * 2 $template-container-padding-vertical * 1.5 $template-container-padding-horizontal * 2;
+    
+        .section-title--page {            
+            margin: 0; 
+            padding: 0;    
+            border-bottom: none;
+        }
+    
+    }
+
+    .card {
+        & + * .card-body, & + .card-body {
+            border-top: none;
+        }
+    }
+    .card-page__body {        
+        border-top: none;
+    }
+    
+
+
+}
+  
+/* ----  /Public-Portal-Css  ---- */

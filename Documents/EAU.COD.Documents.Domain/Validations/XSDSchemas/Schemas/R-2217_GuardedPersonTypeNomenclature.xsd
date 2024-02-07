@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2217" xmlns="http://ereg.egov.bg/nomenclature/R-2217" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:simpleType name="GuardedPersonTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Възложител по договора за охрана</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Охраняваното лице -->
+      <xsd:enumeration value="1" />
+      <!-- Представител -->
+      <xsd:enumeration value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3315" 	xmlns="http://ereg.egov.bg/segment/R-3315"	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	  elementFormDefault="qualified">
+
+  <xsd:element name="AISKATReason" type="AISKATReason" />
+  <xsd:complexType name="AISKATReason">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Причина от номенклатурата на АИС КАТ</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Name" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

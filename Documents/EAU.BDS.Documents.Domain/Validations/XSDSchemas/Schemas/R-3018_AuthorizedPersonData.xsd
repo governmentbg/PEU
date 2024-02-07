@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3018" xmlns="http://ereg.egov.bg/segment/R-3018" xmlns:id="http://ereg.egov.bg/segment/0009-000099" xmlns:pid="http://ereg.egov.bg/segment/R-3004" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3004" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000099" />
+  <xsd:complexType name="AuthorizedPersonData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за упълномощено лице</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IdentityDocumentBasicData" type="id:IdentityDocumentBasicData" minOccurs="0" />
+      <xsd:element name="PersonIdentificationData" type="pid:PersonIdentificationData" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3105" xmlns="http://ereg.egov.bg/segment/R-3105"  xmlns:rn="http://ereg.egov.bg/value/R-2118" xmlns:mm="http://ereg.egov.bg/value/R-2119" xmlns:adr="http://ereg.egov.bg/segment/0009-000094"  xmlns:df="http://ereg.egov.bg/value/R-2117" xmlns:ocr="http://ereg.egov.bg/value/R-2157" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2117" />
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2157"/>
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2118"/>
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2119"/>
+  <xsd:element name="ApplicationForIssuingDocumentofVehicleOwnershipData" type="ApplicationForIssuingDocumentofVehicleOwnershipData" />
+  <xsd:complexType name="ApplicationForIssuingDocumentofVehicleOwnershipData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявяване на услуга за издаване на удостоверение за собственост на ПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PermanentAddress" type="adr:PersonAddress" minOccurs="0" />
+      <xsd:element name="CurrentAddress" type="adr:PersonAddress" minOccurs="0" />
+      <xsd:element name="DocumentFor" type="df:DocumentFor" />
+      <xsd:choice minOccurs="0">
+        <xsd:element name="RegistrationAndMake">
+          <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="RegistrationNumber" type="rn:RegistrationNumber" minOccurs="0" />
+                <xsd:element name="MakeModel" type="mm:MakeModel" minOccurs="0" />
+              </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+       </xsd:choice>
+       <xsd:element name="OwnershipCertificateReason" type="ocr:OwnershipCertificateReason" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

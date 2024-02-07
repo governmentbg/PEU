@@ -1,0 +1,204 @@
+body {
+    width: initial;
+    height: initial;
+}
+
+.layout-wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+
+	// background-color: green;
+    height: 100vh;
+}
+
+.fixed-content-width {
+    width: 100%;
+    max-width: $template-page-max-width;
+    margin: 0 auto;
+   
+
+}
+
+// .full-screen-mode {
+//     .fixed-content-width,
+//     .main-wrapper.fixed-content-width {
+//         max-width: 100%;
+//     }
+// }
+
+.header-wrapper,
+.footer-wrapper {
+    flex: 0 0 auto;
+    // background-color: mediumvioletred;
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    flex: 1 0 auto;
+	display: flex;
+    flex-direction: column;
+}
+
+.page-header-wrapper {
+    width: 100%;
+    flex: 0 1 auto;
+
+    align-self: start;    
+}
+
+.main-wrapper  {
+
+    width: 100%;
+    flex: 1 0 auto;
+
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // flex-wrap: nowrap;
+    align-content: flex-start;
+    // align-content: stretch;   
+
+    position: relative;
+    // background-color:olive;
+
+    @include media-breakpoint-down(sm) {
+        flex-direction: column;
+    }
+}
+
+
+.nav-wrapper {
+    flex: 0 0 auto;
+    order: 1;
+    // background-color: wheat;    
+
+    width: 14.375rem;
+    // padding-right: $template-padding-horizontal;
+    padding-bottom: $template-padding-vertical;
+    margin-right: $template-margin-horizontal *2    ;
+    border-right: 1px solid $gray-300;
+    background-color: $white;
+
+    @include media-breakpoint-down(sm) {
+        width: auto;
+        flex: 0 0 auto;
+        position: relative;
+        display: none;
+
+        border-right: none;
+        padding: 0 $template-padding-horizontal*1.5 $template-padding-vertical $template-padding-horizontal*1.5;
+        margin-left: -$template-padding-horizontal *1.5;
+        margin-right: -$template-padding-horizontal *1.5;
+        margin-bottom: $template-padding-vertical;
+
+        @include box-shadow($navigation-box-shadow);
+
+
+        &.collapse:not(.show) {
+            display: none;
+        }
+
+    }
+
+    &.collapse {
+        display: block;
+    }
+
+    &.nav-wrapper--show {    // само за да работят старите прототипи
+        display: block;
+    }
+
+}
+
+
+.button-menu {
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    padding: $template-padding-horizontal /5;
+
+    border-radius: $border-radius;
+
+    .ui-icon {
+        width: 1.375rem;
+        height: 1.375rem;
+
+        transform: rotate(180deg);
+        // transition: transform ease-in-out 0.3s;
+    }
+
+    &.collapsed {
+        .ui-icon {
+            transform: rotate(0deg);        
+            // transition: transform ease-in-out 0.3s;
+        }
+    }
+
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: $btn-focus-box-shadow;
+        border-radius: $border-radius;
+    }
+}
+
+
+.page-wrapper {
+    // overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 1px;
+    flex: 1 0 0;
+    order: 3;
+
+    // background-color: purple;
+
+    @include media-breakpoint-down(sm) {
+        flex: 1 1 auto;
+    }
+}
+
+.section-wrapper {
+
+    width: 100%;
+    padding: 0 $template-padding-horizontal * 2;
+    margin: 0 auto;
+
+    @include media-breakpoint-down(sm) {
+        padding: 0 $template-padding-horizontal * 1.5;
+    }
+}
+
+.section-wrapper--margins {
+    margin: $template-padding-vertical auto $template-padding-vertical * 3 auto;
+}
+
+.section-wrapper--margin-top {
+    margin-top: $template-padding-vertical * 1.5;
+}
+
+
+.general-message-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+
+    @include media-breakpoint-down(sm) {
+        order: 2;
+    }
+}
+
+
+.scroll-to-top {
+    z-index: $zindex-scroll-to-top;
+    cursor: pointer;
+
+    .ui-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}

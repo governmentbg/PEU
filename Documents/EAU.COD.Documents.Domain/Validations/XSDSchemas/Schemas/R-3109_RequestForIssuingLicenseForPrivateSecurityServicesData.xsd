@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3109" 
+xmlns="http://ereg.egov.bg/segment/R-3109"  
+xmlns:ea="http://ereg.egov.bg/segment/R-3203" 
+xmlns:mp="http://ereg.egov.bg/value/R-2038" 
+xmlns:wp="http://ereg.egov.bg/value/R-2039" 
+xmlns:tsos="http://ereg.egov.bg/value/R-2120" 
+xmlns:popssl="http://ereg.egov.bg/value/R-2121" 
+xmlns:atrr="http://ereg.egov.bg/value/R-2061"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+elementFormDefault="qualified">
+  
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3203" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2038" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2039" />
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2120"/>
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2121"/>
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2061"/>
+  <xsd:element name="RequestForIssuingLicenseForPrivateSecurityServicesData" type="RequestForIssuingLicenseForPrivateSecurityServicesData" />
+  <xsd:complexType name="RequestForIssuingLicenseForPrivateSecurityServicesData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за искане за издаване на лиценз за извършване на частна охранителна дейност(чл. 15,ал. 1 от ЗЧОД)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="EntityManagementAddress" type="ea:EntityAddress"  />      
+      <xsd:element name="CorrespondingAddress" type="ea:EntityAddress" minOccurs="0" />
+	  <xsd:element name="WorkPhone" type="wp:WorkPhone" minOccurs="0" />
+      <xsd:element name="MobilePhone" type="mp:MobilePhone" minOccurs="0" />
+      <xsd:element name="SecurityServiceTypes" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PointOfPrivateSecurityServicesLaw" type="popssl:PointOfPrivateSecurityServicesLaw" minOccurs="0" />
+            <xsd:element name="TerritorialScopeOfServices" type="tsos:TerritorialScopeOfServices" minOccurs="0" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  <xsd:element name="AgreementToReceiveERefusal" type="atrr:AgreementToReceiveERefusal" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

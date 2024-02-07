@@ -1,0 +1,91 @@
+/* ----  Plain Text  ---- */
+
+.plain-text {
+    
+    font-size: 0.875rem;
+    
+    
+    & * {
+        color: $gray-900;
+    }
+
+    & .document-template * {
+        color: $gray-900;
+    }
+        
+    &.print-preview {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+
+        @media screen {
+            max-width: 750px;
+            margin: 1.875rem auto;
+        }
+    }
+
+    p, div[data-htmlenable] {
+        line-height: $line-height-base;
+        margin-bottom: 0.625rem;
+        // text-indent: 0.625rem *3;
+    }
+
+    p > p {        
+        margin-bottom: 0;        
+    }
+
+    span {
+        text-indent: 0;
+        display: inline-block;
+    }
+
+    // h1, h2, h3, h4, h5, h6 {
+    //     text-indent: 0.625rem *3;
+    // }
+
+    ul, ol, dl {
+        margin-top: 0.625rem *3;
+        margin-bottom: 0.625rem *3;
+        padding-left: 0.625rem *3;
+    }
+
+    li {
+        margin-bottom: 0.625rem;
+    }
+    
+    hr {
+        border-color: $gray-700;
+    }
+
+    .editable {
+        // border: $input-border-width solid transparent;
+        // @include border-radius($input-border-radius, 0);
+        // @include form-control-focus($ignore-warning: true);
+
+        // &:focus {
+        //     padding: 0.125rem;
+        // }
+            
+        &::before { // хак за да се визуализират полетата на правилното място, когато са празни
+            content: '\200B';
+            visibility: hidden;
+        }
+
+        outline: none;
+        padding: 0.25rem 0;
+        border-bottom: 2px dotted $gray-400;
+        min-width: 6.25rem;
+    
+        &:focus {        
+            border-color: $gray-800;
+            border-color: $input-focus-border-color;
+            background-color: transparentize($input-btn-focus-color, 0.2);
+        }
+
+        &[data-htmlenable]{
+            margin-bottom: 0.625rem; 
+        }
+    }
+}
+
+	
+/* ----  /Plain Text  ---- */

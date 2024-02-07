@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2120" xmlns="http://ereg.egov.bg/value/R-2120" xmlns:sc="http://ereg.egov.bg/value/R-2146"  xmlns:dcc="http://ereg.egov.bg/value/0008-000185" xmlns:dcn="http://ereg.egov.bg/value/0008-000186" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+   <xsd:import namespace="http://ereg.egov.bg/value/0008-000185" />
+   <xsd:import namespace="http://ereg.egov.bg/value/0008-000186" />
+   <xsd:import namespace="http://ereg.egov.bg/value/R-2146" />
+  <xsd:element name="TerritorialScopeOfServices" type="TerritorialScopeOfServices" />
+  <xsd:complexType name="TerritorialScopeOfServices">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Териториален обхват, на който ще се осъществява дейността</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ScopeOfCertification" type="sc:ScopeOfCertification" minOccurs="0"  />
+      <xsd:element name="Districts" minOccurs="0"  maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="DistrictGRAOCode" type="dcc:DistrictGRAOCode" />
+            <xsd:element name="DistrictGRAOName" type="dcn:DistrictGRAOName" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

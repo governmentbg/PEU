@@ -1,0 +1,36 @@
+{
+  "name": "mvr_eau_ui",
+  "version": "0.0.2",
+  "description": "Frontend UI",
+  "scripts": {
+    "postinstall": "if not exist ./gulp-tasks-config.json ( echo {\"user\": null} > gulp-tasks-config.json ) else ( echo File \"gulp-tasks-config.json\" already exists!)"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    ">= 1%",
+    "last 1 major version",
+    "not dead",
+    "Chrome >= 45",
+    "Firefox >= 38",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+  ],
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "node-sass": "^6.0.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.42.1"
+  },
+  "dependencies": {}
+}

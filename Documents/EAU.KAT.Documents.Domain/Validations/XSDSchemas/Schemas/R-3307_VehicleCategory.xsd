@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3307"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/segment/R-3307"
+	elementFormDefault="qualified">
+  <xsd:element name="VehicleCategory" type="VehicleCategory" />
+  <xsd:complexType name="VehicleCategory">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Категория на ПС.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Name" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

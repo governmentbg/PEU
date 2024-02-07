@@ -1,0 +1,124 @@
+/* ----  Header  ---- */
+
+.header-bg {
+	background-color: $gray-100;
+}
+
+.header-gerb-bg {
+    background-image: url("../images/header-bg.png");
+    background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.mvr-logo {
+	min-width: 2.8125rem;
+}
+
+.header-container {
+	align-items: center;
+	padding-bottom: $template-padding-vertical * 1.5;
+	padding-top: $template-padding-vertical * 1.5;
+}
+
+.header-title {
+
+	h1,
+	p,
+	.site-name {
+		margin: 0;
+	}
+
+	h1,
+	.site-name {
+		font-size: 1.5rem;
+		font-weight: bold;
+		line-height: 1;
+		color: $blue-dark;
+		padding-top: 0.25rem;
+	}
+
+	p {
+		font-size: 0.875rem;
+		line-height: 1.1;
+	}
+
+	.site-subtitle {
+		font-size: 1.15rem;
+		font-weight: bold;
+		line-height: 1.1;
+		color: $blue-dark;
+		padding-top: 0.125rem;
+	}
+}
+
+.brand-line {
+	box-sizing: content-box;
+	height: 5px;
+	background-color: $primary-dark;
+}
+
+// .brand-line--header {
+// 	border-bottom: 1px solid $white;
+// }
+
+.section-wrapper {
+    width: 100%;
+    padding: 0 $template-padding-vertical * 2;
+    margin: 0 auto;
+}
+
+
+.header--mobile {
+
+	.section-wrapper {
+		padding: 0 $template-padding-vertical;
+	}
+
+	.header-container {
+		padding-bottom: $template-padding-vertical;
+		padding-top: $template-padding-vertical;
+	}
+
+	.header-title {
+		p {
+			padding-top: 0;
+			font-size: 0.66rem;
+		}
+
+		h1,
+		.site-name
+		{
+			font-size: 1.14rem;
+			padding-top: 0;
+		}
+
+		.site-subtitle {
+			font-size: 0.875rem;
+			padding-top: 0;
+		}
+	}
+
+	.mvr-logo {
+		min-width: auto;
+		height: 3.625rem;
+	}
+
+	.header-gerb-bg {
+		background-size: auto 7.1875rem;
+	}
+}
+
+.form-row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -$form-grid-gutter-width / 2;
+	margin-left: -$form-grid-gutter-width / 2;
+
+	> .col,
+	> [class*="col-"] {
+	  padding-right: $form-grid-gutter-width / 2;
+	  padding-left: $form-grid-gutter-width / 2;
+	}
+}
+
+/* ----  /Header  ---- */

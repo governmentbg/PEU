@@ -1,0 +1,121 @@
+/* ----  Alert  ---- */
+
+
+
+.alert.alert-help {
+	@include alert-variant($gray-100, $gray-500, $gray-800);
+
+	p{
+		margin-bottom: 0.3125rem;
+	}
+}
+
+
+.alert {
+	white-space: pre-line;
+	// font-size: .8125rem;
+	// line-height: 1.2;
+
+	margin-top: $template-margin-vertical;
+	margin-bottom: $template-margin-vertical;
+
+	.page-wrapper > &:first-child,
+	.ui-form > &:first-child
+	{
+		margin-top: 0;
+	}
+
+	padding: $alert-padding-y * 1.4 $alert-padding-x * 1.4;
+
+
+	p {
+		margin-bottom: 0.3125rem;
+	}
+
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+
+	ul, ol {
+		margin-top: $template-margin-vertical /2;
+		margin-bottom: $template-margin-vertical /2;	
+		
+		padding-left: 1.25rem;
+		
+		li:not(:last-child){
+			margin-bottom: $template-margin-vertical /5;
+		}
+	}
+
+	.list-unstyled {	
+		padding-left: 0;
+	}
+
+	// &.alert-danger,
+	// &.alert-success,
+	// &.alert-warning,
+	// &.alert-info,
+	// &.alert-help
+	// {
+	// 	border-left-style: solid;
+	// 	border-left-width: 0.25rem;
+	// }
+
+
+	&.alert-warning {
+		color: #986200;
+	}
+
+	&.alert-info {
+		color: $blue-dark;
+		background-color: #eef7fd;
+	}
+
+	//@media (min-width: map-get($grid-breakpoints, md)) {
+		
+		padding-left: $alert-padding-x * 4.5;
+
+		background-position: $alert-padding-x center;
+		background-repeat: no-repeat;
+		background-size: 1.625rem 1.625rem;
+
+		&.alert-danger {
+			background-image: url("../images/icons/stat/alert-danger.svg");		
+		}
+
+		&.alert-success {
+			background-image: url("../images/icons/stat/alert-success.svg");		
+		}
+
+		&.alert-warning {
+			background-image: url("../images/icons/stat/alert-warning.svg");
+		}
+
+		&.alert-info {
+			background-image: url("../images/icons/stat/alert-info.svg");
+		}
+
+		&.alert-help {
+			background-image: url("../images/icons/stat/alert-help.svg");
+		}
+
+
+		&.alert-danger.alert-signature {
+			background-image: url("../images/icons/stat/sign-error.svg");
+		}
+		&.alert-success.alert-signature {
+			background-image: url("../images/icons/stat/sign-success.svg");
+		}
+
+	//}
+
+	button.close{
+		color: inherit;
+	}
+}
+
+.text-warning {
+	color: #986200 !important;
+}
+
+/* ----  /Alert  ---- */

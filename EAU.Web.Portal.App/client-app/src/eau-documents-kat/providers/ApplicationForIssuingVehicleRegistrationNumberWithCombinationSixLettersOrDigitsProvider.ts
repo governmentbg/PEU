@@ -1,0 +1,8 @@
+﻿import { IDocumentProvider } from 'eau-documents'
+import { ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsManager } from '../form-managers/ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsManager'
+import { ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsValidator } from '../validations/forms/ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsValidator'
+
+export const ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsProvider: IDocumentProvider = {
+    getDocumentFormManager:() => new ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsManager(),
+    getValidator: () => new ApplicationForIssuingVehicleRegistrationNumberWithCombinationSixLettersOrDigitsValidator()
+}

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2158" xmlns="http://ereg.egov.bg/value/R-2158" xmlns:dfn="http://ereg.egov.bg/nomenclature/R-1112"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1112" />
+    <xsd:simpleType name="ANDCertificateReason">
+		<xsd:annotation>
+		  <xsd:documentation xml:lang="bg">Причините, за които се иска издаване на удостоверение за права и наложените наказания на водач</xsd:documentation>
+		</xsd:annotation>
+    <xsd:restriction base="dfn:ANDCertificateReasonNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

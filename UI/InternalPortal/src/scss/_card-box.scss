@@ -1,0 +1,122 @@
+/* ----  Card Box ---- */
+	
+.card.card-box {
+    border: 0;
+    // background-color: rgba(#ff00ff, .06);
+
+    margin-bottom: $template-container-margin-vertical * 2;
+
+    &:last-child {
+        margin-bottom: $template-container-margin-vertical;
+    }
+
+    .card-header {        
+
+        padding-top: $template-container-padding-vertical;
+        padding-bottom: $template-container-padding-vertical * 1.5;
+        padding-left: $template-container-padding-horizontal;			
+        padding-right: $template-container-padding-horizontal;			
+        
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;			
+        margin-right: 0;			
+        
+        
+        h3 {
+            margin: -2px 0;            
+        }
+        
+
+        border-bottom: 1px solid $gray-300;
+
+        & + * .card-body, & + .card-body {
+            border-top: 0;
+        }
+        
+    }
+    
+    .card-body {
+
+        border-top: 1px solid $gray-300;
+        border-bottom: 1px solid $gray-300;
+
+        padding-top: $template-container-padding-vertical;
+        padding-bottom: $template-container-padding-vertical;
+        padding-left: $template-container-padding-horizontal;			
+        padding-right: $template-container-padding-horizontal;
+        
+        margin-left: 0;			
+        margin-right: 0;
+        
+                
+        .text-box {
+            margin-bottom: $template-container-margin-vertical * 2;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        .text-box, .plain-text {
+            h4 {
+                margin-top: 0;
+                margin-bottom: 0.4rem;
+            }
+
+            p {
+                line-height: 1.2;
+                margin-bottom: 0.4rem;
+                text-indent: 0;
+                
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+    }
+    
+    .card-footer {
+        padding-top: $template-container-padding-vertical;
+        padding-bottom: $template-container-padding-vertical;
+        padding-left: $template-container-padding-horizontal;			
+        padding-right: $template-container-padding-horizontal;			
+        
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;			
+        margin-right: 0;
+    
+        border-top: none;
+    }
+    
+    .card-navbar { 			
+        // padding-top: $template-container-padding-vertical;
+        // padding-bottom: $template-container-padding-vertical * 2;
+        // padding-left: $template-container-padding-horizontal;			
+        // padding-right: $template-container-padding-horizontal;			
+        
+        // margin-top: $template-container-margin-vertical;
+        // margin-bottom: 0;
+        // margin-left: $template-container-margin-horizontal;			
+        // margin-right: $template-container-margin-horizontal;			
+            
+        // border-bottom: 1px solid $gray-300;
+
+        margin-top: 0;
+    }
+    
+    // hr { 
+    //     border-top: 1px $gray-200;
+    //     margin-top: $template-container-margin-vertical * 2;
+    //     margin-bottom: $template-container-margin-vertical * 2;
+    // }
+
+
+}
+
+
+
+
+/* ----  /Card Box ---- */

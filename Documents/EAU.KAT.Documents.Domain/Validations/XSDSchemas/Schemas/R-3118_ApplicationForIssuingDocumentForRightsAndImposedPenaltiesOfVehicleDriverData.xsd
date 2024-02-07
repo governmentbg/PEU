@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3118" xmlns="http://ereg.egov.bg/segment/R-3118"  xmlns:adr="http://ereg.egov.bg/segment/0009-000094"  xmlns:andcr="http://ereg.egov.bg/value/R-2158" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2158"/>
+
+  <xsd:element name="ApplicationForIssuingDocumentForRightsAndImposedPenaltiesOfVehicleDriverData" type="ApplicationForIssuingDocumentForRightsAndImposedPenaltiesOfVehicleDriverData" />
+  <xsd:complexType name="ApplicationForIssuingDocumentForRightsAndImposedPenaltiesOfVehicleDriverData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за издаване на удостоверение за правата и наложените наказания на водач на МПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>  
+      <xsd:element name="PermanentAddress" type="adr:PersonAddress"  minOccurs="0" />
+      <xsd:element name="CurrentAddress" type="adr:PersonAddress" minOccurs="0"/>
+      <xsd:element name="ANDCertificateReason" type="andcr:ANDCertificateReason" minOccurs="0" /> 
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

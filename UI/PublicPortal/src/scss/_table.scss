@@ -1,0 +1,390 @@
+/* ----  Table  ---- */
+
+// .table-responsive {
+// 	margin-top: $template-margin-vertical;
+// 	margin-bottom: $template-margin-vertical;
+// 	-ms-overflow-style: scrollbar;
+
+// 	@media screen and (max-width: map-get($grid-breakpoints, xs)) {
+
+// 		-ms-overflow-style: scrollbar;
+// 		border: none;
+// 		//border: 1px solid $table-border-color;
+
+
+// 		.table-bordered {
+// 			border: 1px solid $table-border-color;
+// 		}
+
+// 	}
+
+// }
+
+
+// .table {
+
+// 	margin-top: 0;
+// 	margin-bottom: 0;
+
+// 	//font-size: 0.93em;
+
+// 	th {
+// 		font-size: 0.8125rem;
+
+		
+// 		// &.single-icon-td {
+// 		// 	vertical-align: bottom;
+// 		// }
+// 	}
+
+// 	thead th {
+// 		vertical-align: top;
+// 	}	
+
+// 	.buttons-td {
+// 		// padding: 2px 2px;
+// 		text-align: right;
+// 		white-space: nowrap;
+
+// 		.btn {
+// 			margin-left: 0.1875rem;
+// 			margin-right: 0.1875rem;
+// 			//padding: 3px 6px;
+// 		}
+
+// 		.btn:first-child {
+// 			margin-left: 0;
+// 		}
+
+// 		.btn:last-child {
+// 			margin-right: 0;
+// 		}
+
+// 	}
+
+// 	.icons-td {
+// 		white-space: nowrap;
+
+// 		.ui-icon {
+// 			margin-right: $template-margin-horizontal / 2;
+// 		}
+// 	}
+
+
+// 	.single-icon-td {
+// 		width: 2.5rem;
+// 		text-align: center;
+// 		// vertical-align: middle;
+// 	}
+
+// 	td {
+
+// 		// padding-top:0;
+// 		// padding-bottom:0;
+
+// 		&.nowrap {
+// 			white-space: nowrap;
+// 		}
+
+// 		& .fold {
+// 			white-space: pre-wrap;
+// 			word-break: break-all;
+// 			&.collapsed {
+// 				max-width: 28.75rem;
+// 				//height: 1.2em;
+// 				text-overflow: ellipsis;
+// 				overflow: hidden;
+// 				white-space: nowrap;
+// 			}
+// 		}
+
+// 		& > .ui-icon {
+// 			width: 1rem;
+// 			height: 1rem;
+// 			vertical-align: -11%;
+// 		}
+
+
+// 	}
+
+
+// 	.progress {
+// 		vertical-align: text-top;
+// 		height: 1rem;
+// 		display: inline-block;
+// 		width: 3rem;
+// 		margin: .06rem .25rem;
+
+// 		-webkit-box-shadow: none;
+// 		box-shadow: none;
+
+// 		background-color: $gray-500;
+// 	}
+
+// 	.progress-bar {
+// 		line-height: 1rem;
+// 		padding-left: .25rem;
+// 		padding-right: .25rem;
+
+// 		background-color: $gray-800;
+// 	}
+
+
+// 	.thead-invisible {
+// 		th, td {
+// 			border-bottom: 0;
+// 			border-top: 0;
+// 			padding: 0;
+// 		}
+// 	}
+// }
+
+
+.table {
+	
+	margin-top: 0;
+	margin-bottom: 0;
+
+	thead th {
+		vertical-align: top;
+		font-weight: bold;
+		color: $primary-dark;
+		border-top: none;
+		border-bottom: $table-border-width solid $gray-400;
+	}
+	
+	.th-title {
+		// display: block;
+		font-weight: bold;
+		color: $primary-dark;
+		// margin: 0;
+	}
+
+	.td-text {
+		font-weight: normal;
+	}
+
+	.actions-td {
+		padding-top: 0.4375rem;
+		padding-bottom: 0.4375rem;
+		text-align: right;
+		white-space: nowrap;
+
+		// .btn {
+		// 	margin-left: 0.1875rem;
+		// 	margin-right: 0.1875rem;
+		// 	//padding: 3px 6px;
+		// }
+
+		// .btn:first-child {
+		// 	margin-left: 0;
+		// }
+
+		// .btn:last-child {
+		// 	margin-right: 0;
+		// }
+
+
+		.btn {
+			text-align: right;
+		}		
+
+		a,
+		.btn {
+			margin-left: 0.3125rem;
+			margin-right: 0.3125rem;
+		}
+
+		a:first-of-type,
+		.btn:first-of-type {
+			margin-left: 0;
+		}
+
+		a:last-of-type,
+		.btn:last-of-type {
+			margin-right: 0;
+		}
+
+		.text-info {
+			text-align: left;
+			white-space: normal;
+			display: block;
+			max-width: 10rem;
+			@include media-breakpoint-down(xs) {
+				width: 100%;
+			}
+		}
+	}
+
+	.state-icon-td {
+		width: 1rem;
+		max-width: 1rem;
+		text-align: center;
+	}
+
+
+	p {
+		margin-bottom: 0;
+	}
+
+	.row-description {
+			border-top: 0;
+		td {
+			border-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	.table-info {
+		&,
+		> th,
+		> td {
+		  background-color: #eef7fd;
+		}
+	}
+
+	&.table-hover {
+
+		tbody .master-row {
+
+			&:hover {
+
+				& ~ .sub-row {
+					background-color: $table-hover-bg;
+					//color variants
+					@each $color, $value in $theme-colors {
+						&.table-#{$color} {							
+							td {
+								background-color: darken( theme-color-level($color, $table-bg-level), 5%);					
+							}							
+						}
+					}
+					
+				}
+			}
+
+			& ~ .sub-row {
+				td {
+
+					border-top-style: dashed;
+				}
+			}
+		}
+
+	}
+
+}
+
+.table-hover {
+	
+	tbody tr:hover + tr.row-description {
+		background-color: $table-hover-bg;
+	}
+
+	tbody tr.row-description:hover {
+		background-color: initial;
+	}
+
+}
+
+
+.table-responsive-block {
+	overflow-x: auto;
+    margin-top: $template-padding-vertical;
+    margin-bottom: $template-padding-vertical;
+
+    .table {
+
+        @include media-breakpoint-down(xs) {
+
+            td, th {
+
+				display: block;
+				border: 0;
+
+                &:not(:last-child){
+					padding-bottom: 0;
+                }
+
+                &.text-center, &.text-right {
+                    text-align: left !important;
+				}
+				
+				
+			}
+
+			.actions-td {
+				text-align: left;
+				white-space: normal;
+			}
+
+			tr {
+				display: block;	
+				// &:not(.collapsible-row):not(:first-of-type) {
+				// 	margin-top: $template-padding-vertical;
+				// }
+				&:not(:first-child) {
+					border-top: $table-border-width solid $table-border-color;
+					@each $color, $value in $theme-colors {
+						&.table-#{$color} {							
+							border-top-color: theme-color-level($color, $table-border-level);
+						}
+					}
+				}
+
+				&.master-row ~ .sub-row {					
+					border-top-style: dashed;			
+					@each $color, $value in $theme-colors {
+						&.table-#{$color} {							
+							border-color: theme-color-level($color, $table-border-level);
+							border-top-color: theme-color-level($color, $table-border-level);
+						}
+					}
+				}
+			}
+
+			thead {
+				display: none;
+			}
+
+			tr.row-description {
+				border-top: 0;
+			}
+
+
+        }
+
+
+
+    }
+
+	
+}
+
+
+	.columns-sorting {
+		display: none;
+		padding-bottom: $template-padding-vertical;
+		margin-right: $template-margin-horizontal;
+		margin-left: $template-margin-horizontal;
+
+		@include media-breakpoint-down(xs) {
+			display: block;
+		}
+
+		.system-button.sort {
+
+			.ui-icon{
+				float: initial;
+				vertical-align: middle;
+				margin: 0;
+				padding: 0;
+				width: 1.1875rem;
+				height: 1.1875rem;
+			}
+		}
+
+	}
+
+
+/* ----  /Table  ---- */

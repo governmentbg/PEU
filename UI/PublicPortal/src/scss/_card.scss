@@ -1,0 +1,302 @@
+/* ----  Card  ---- */
+	
+// .card {		
+	
+// 	margin-top: $template-margin-vertical;
+// 	margin-bottom: $template-margin-vertical;
+	
+// 	hr { 
+// 		margin-top: $template-margin-vertical;
+// 		margin-bottom: $template-margin-vertical;
+// 	}
+
+// 	@include media-breakpoint-up(sm) {
+// 		.card-deck & {
+// 			margin-bottom: $template-margin-vertical;
+// 		}
+// 	}
+
+// }
+
+// .card-header {
+// 	background-color: transparent;
+
+// 	padding-top: $template-padding-vertical;
+// 	padding-bottom: $template-padding-vertical * 2;
+// 	padding-left: $template-padding-horizontal;			
+// 	padding-right: $template-padding-horizontal;			
+	
+// 	margin-top: $template-margin-vertical;
+// 	margin-bottom: 0;
+// 	margin-left: $template-margin-horizontal;
+// 	margin-right: $template-margin-horizontal;
+// 	// @include media-breakpoint-down(xs) {
+// 	// 	margin-left: 0;
+// 	// 	margin-right: 0;
+// 	// }
+	
+// 	border-top-left-radius: 0px;
+// 	border-top-right-radius: 0px;			
+// 	border-bottom: 0;
+	
+// 	h3 {
+// 		margin: 0;
+// 		color: $gray-800;
+
+// 		// font-size: 1.25rem;		
+// 		// line-height: 1.125;
+// 		// font-weight: bold;
+// 		// font-style: italic;
+// 		// color: $primary;
+// 	}
+
+	
+// 	.toggle-collapse,
+// 	.button-menu
+// 	{
+// 		float: right;
+// 		margin-left: $template-margin-horizontal;		
+// 	}
+
+// 	.toggle-collapse {
+// 		line-height: 1.1;
+// 		.ui-icon {
+// 			width: .8125rem;
+// 			height: .8125rem;
+// 			transition: ease-in-out 0.3s;			
+// 		}
+// 	}
+
+// 	&.collapsed {				
+// 		.ui-icon {
+// 			transform: rotate(180deg);
+// 			transition: ease-in-out 0.3s;
+// 		}
+// 	}
+// }
+
+// .card-body {
+	
+// 	padding-top: $template-padding-vertical;
+// 	padding-bottom: $template-padding-vertical;
+// 	padding-left: $template-padding-horizontal;			
+// 	padding-right: $template-padding-horizontal;
+	
+// 	margin-left: $template-margin-horizontal;			
+// 	margin-right: $template-margin-horizontal;	
+
+// 	// @include media-breakpoint-down(xs) {
+// 	// 	margin-left: 0;
+// 	// 	margin-right: 0;
+// 	// }	
+	
+// 	border-top: 1px solid $gray-300;
+// }
+
+
+// .card-footer {
+	
+// 	padding-top: $template-padding-vertical * 2;
+// 	padding-bottom: $template-padding-vertical;
+// 	padding-left: $template-padding-horizontal;			
+// 	padding-right: $template-padding-horizontal;			
+	
+// 	margin-top: 0;
+// 	margin-bottom: $template-margin-vertical;
+// 	margin-left: $template-margin-horizontal;			
+// 	margin-right: $template-margin-horizontal;
+// 	// @include media-breakpoint-down(xs) {
+// 	// 	margin-left: 0;
+// 	// 	margin-right: 0;
+// 	// }
+	
+// 	border-bottom-left-radius: 0px;
+// 	border-bottom-right-radius: 0px;
+// 	background-color: transparent;
+// 	border-top: 1px solid $gray-300;
+// }
+
+// .card-navbar { 			
+// 	padding-top: $template-padding-vertical;
+// 	padding-bottom: $template-padding-vertical * 2;
+// 	padding-left: $template-padding-horizontal;			
+// 	padding-right: $template-padding-horizontal;			
+	
+// 	margin-top: $template-margin-vertical;
+// 	margin-bottom: 0;
+// 	margin-left: $template-margin-horizontal;			
+// 	margin-right: $template-margin-horizontal;			
+		
+// 	border-bottom: 1px solid $gray-300;
+// }
+
+
+// .card--search {
+// 	// border: none;
+// 	// background-color: $gray-100;
+
+// 	// .card-header {
+
+// 		// h3 {
+// 		// 	font-size: 1.25rem;		
+// 		// 	line-height: 1.125;
+// 		// 	font-weight: bold;
+// 		// 	font-style: italic;
+// 		// 	color: $primary;
+// 		// }
+// 	// }
+
+// 	.interactive-container--focus {
+// 		background-color: $gray-200;
+// 	}
+// }
+
+// .card--borderless {
+// 	border: none;
+// }
+
+// .card--collapsible {
+// 	.card-header {
+// 		display: flex;
+// 		justify-content: space-between;		
+// 	}
+// 	// overflow: hidden;
+// }
+
+
+
+// // card--login
+
+// .card--login {
+
+// 	.card-box__header {
+// 		padding: 0 0 $template-padding-vertical 0;
+// 	}
+// }
+	
+
+
+
+
+.card--box {
+	// border: 0.3125rem solid $gray-200;
+	// border-radius: $border-radius *1.5;
+	border: none;
+
+	.card-header {
+		display: flex;
+		align-items: center;
+		background-color: $gray-200;
+		border-bottom: none;
+		border-top-left-radius: $border-radius *1.5;
+		border-top-right-radius: $border-radius *1.5;
+
+		&.card-header--rounded {
+			border-radius: $border-radius *1.5;
+		}
+
+		.collapsed.toggle-collapse {
+			.ui-icon {
+				transform: rotate(180deg);
+			}
+		}
+	}
+		.card-header__title {
+			flex: 1 1 auto;
+			font-size: 1.25rem;
+			color: $primary-dark;
+			// font-size: 1.125rem;
+			font-weight: bold;
+			// font-style: italic;
+			margin: 0;
+			// padding: $template-padding-vertical/2 0;
+			padding: 0 0;
+		}
+
+		.modal & .card-header__title {
+			font-size: 1.125rem;
+		}
+		
+		.card-header__icon {
+			width: 1.875rem;
+			height: 1.875rem;
+		}
+
+		.card-header__navbar {
+			display: block;
+			flex: 0 1 auto;
+			line-height: 1;
+
+			.nav {
+				margin: 0;
+				justify-content: flex-end;
+
+				@include media-breakpoint-up(md) {
+					flex-wrap: nowrap;
+				}
+
+
+				.nav-item {
+					display: flex;
+					align-items: center;
+					align-content: center;
+				}
+				
+				.nav-link {
+					flex: 0 0 auto;
+					padding: 0;
+					border: none;
+					background-color: transparent;
+				}
+		
+				.ui-icon {
+					width: 1.125rem;
+					height: 1.125rem;
+				}
+		
+			}
+		}
+
+
+	.card-body {
+		background-color: transparent;
+		border-left: 5px solid $gray-200;
+		border-right: 5px solid $gray-200;
+
+		padding-bottom: $template-padding-vertical;
+	}
+
+	.card-footer {
+		// padding-top: 0;
+		background-color: transparent;
+		
+		border: 5px solid $gray-200;
+		border-top: none;
+		border-bottom-left-radius: $border-radius *1.5;
+		border-bottom-right-radius: $border-radius *1.5;
+	}
+
+	.card__button-bar {
+		border-top: 1px solid $gray-300;
+		margin-top: -$template-margin-vertical ;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		padding-top: $template-padding-vertical;
+		padding-bottom: 0;
+	}
+}
+
+.search-box {
+	margin-bottom: $template-margin-vertical * 2;
+}
+
+.search-box-sm {
+	.card-header {
+		padding: $card-spacer-y *.75 $card-spacer-x;
+	}
+}
+
+/* ----  /Card  ---- */
+

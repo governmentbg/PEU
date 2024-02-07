@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1005" xmlns="http://ereg.egov.bg/nomenclature/R-1005" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="VisaTypesNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номенклатура на типовете визи</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- С виза/летищен трансфер -->
+      <xsd:enumeration value="1" />
+      <!-- Краткосрочна -->
+      <xsd:enumeration value="2" />
+      <!-- Транзитна -->
+      <xsd:enumeration value="3" />
+      <!-- Дългосрочна -->
+      <xsd:enumeration value="4" />
+      <!-- Без Виза -->
+      <xsd:enumeration value="5" /> 
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

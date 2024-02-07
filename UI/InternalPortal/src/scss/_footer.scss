@@ -1,0 +1,35 @@
+/* ----  Footer  ---- */
+
+.footer {	
+	color: $gray-700;
+	background-color: $gray-100;
+	font-size: 0.8125rem;
+	border-top: 1px solid $gray-300;		
+	
+	.footer-containter {
+		padding: $template-container-padding-vertical * 2 $template-container-padding-horizontal * 2;
+
+		p {
+			margin-bottom:  $template-container-padding-vertical;
+		}
+	}
+	
+	.brand-line {
+		height:6px;
+		@include brand-gradient();
+		border-top: 1px solid $white;
+		border-bottom: none;
+	}
+	
+	.software-version {
+		width: 100%;
+		color: $gray-500;
+		background-color: $white;		
+		text-align: right;
+		padding: 2px $template-container-padding-horizontal * 2;		
+		border-bottom: 1px solid $gray-300;
+	}
+
+}
+	 
+/* ----  /Footer  ---- */

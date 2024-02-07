@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-3250" 
+			xmlns="http://ereg.egov.bg/value/R-3250" 
+			xmlns:diy="http://ereg.egov.bg/value/R-2059"
+			xmlns:dt="http://ereg.egov.bg/nomenclature/R-1008"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2059" />
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1008" />
+  <xsd:complexType name="IssuedBulgarianIdentityDocumentInfo">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за български личен документ</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IssuingYear" type="diy:DocumentIssuingYear"  />
+	  <xsd:element name="DocType" type="dt:BulgarianIdentityDocumentTypes"  />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

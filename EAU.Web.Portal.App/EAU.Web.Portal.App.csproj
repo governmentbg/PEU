@@ -1,0 +1,309 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptBuildMode>true</TypeScriptBuildMode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <!--Exclude all *.json as content and include as None. They will not apear in the output folder-->
+  <ItemGroup>
+    <Compile Remove="client-app\src\eau-documents-kat\ui\document-forms\**" />
+    <Content Remove="client-app\**\*.json" />
+    <Content Remove="client-app\src\eau-documents-kat\ui\document-forms\**" />
+    <None Include="client-app\**\*.json" />
+    <EmbeddedResource Remove="client-app\src\eau-documents-kat\ui\document-forms\**" />
+    <None Remove="client-app\src\eau-documents-kat\ui\document-forms\**" />
+    <!-- exclude web.config from the publish. -->
+    <Content Remove="web.config" />
+    <None Remove="client-app\src\eau-core\common\ContextInfoHelper.ts" />
+    <None Remove="client-app\src\eau-documents-bds\form-managers\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportManager.ts" />
+    <None Remove="client-app\src\eau-documents-bds\providers\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportProvider.ts" />
+    <None Remove="client-app\src\eau-documents-bds\ui\section-forms\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportDataUI.tsx" />
+    <None Remove="client-app\src\eau-documents-bds\validations\forms\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportValidator.ts" />
+    <None Remove="client-app\src\eau-documents-bds\validations\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportDataVMValidator.ts" />
+    <None Remove="client-app\src\eau-documents-cod\validations\ContractAssignorValidator.ts" />
+    <None Remove="client-app\src\eau-documents-cod\validations\SecurityServiceTypesVMValidator.ts" />
+    <None Remove="client-app\src\eau-documents-cod\validations\SecurityTransportValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\form-managers\DeclarationForLostSRPPManager.ts" />
+    <None Remove="client-app\src\eau-documents-kat\providers\DeclarationForLostSRPPProvider.ts" />
+    <None Remove="client-app\src\eau-documents-kat\services\SPRKRTCODataService.ts" />
+    <None Remove="client-app\src\eau-documents-kat\ui\certificate-forms\index.ts" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\AISKATReasonUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\ApplicationForInitialVehicleRegistrationDataOwnersCollectionVMUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\ApplicationForInitialVehicleRegistrationDataVehicleIdentificationDataUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsDataAuthorizedPersonsUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\EntityDataUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\InitialVehicleRegistrationOwnerDataVMUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\InitialVehicleRegistrationUserOrOwnerOfSRMPSVMUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\MerchantDataCompanyCaseUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\PersonIdentifierKATUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\RoadVehicleRegistrationDataUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\VehicleOwnersCollectionUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\VehicleOwnerUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\field-forms\VehicleRegistrationChangeWithBarterUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\section-forms\DeclarationForLostSRPPSDataUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\section-forms\withApplicationForInitialVehicleRegistrationDataContex.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\ui\VehicleFourDigitRegNumberChoiceUI.tsx" />
+    <None Remove="client-app\src\eau-documents-kat\validations\AISKATReasonValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\ApplicationForInitialVehicleRegistrationDataOwnersCollectionVMValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\ApplicationForInitialVehicleRegistrationDataVehicleIdentificationDataValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsDataAuthorizedPersonsValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\AuthorizedPersonCollectionVMValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\forms\DataForPrintSRMPSValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\forms\DeclarationForLostSRPPSDataValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\forms\DeclarationForLostSRPPSValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\FourDigitSearchCriteriaValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\RoadVehicleRegistrationDataValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\SpecialNumberSearchCriteriaValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\VehicleCategoryValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\VehicleOwnersCollectionValidator.ts" />
+    <None Remove="client-app\src\eau-documents-kat\validations\VehicleOwnersValidator.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\form-managers\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesManager.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\index.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\ModuleBootstrapper.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\ModuleContext.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\providers\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesProvider.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\providers\index.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\ui\certificate-forms\CertificateToWorkWithFluorinatedGreenhouseGassesUI.tsx" />
+    <None Remove="client-app\src\eau-documents-pbzn\ui\field-forms\CertifiedPersonelUI.tsx" />
+    <None Remove="client-app\src\eau-documents-pbzn\ui\field-forms\index.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\ui\section-forms\AppForIssuingDocsOfIncurredAndOtherAccidentsAndProvideInfoOnTheActCarriedOutDataUI.tsx" />
+    <None Remove="client-app\src\eau-documents-pbzn\ui\section-forms\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesDataUI.tsx" />
+    <None Remove="client-app\src\eau-documents-pbzn\ui\section-forms\index.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\validations\AppForIssuingDocsOfIncurredAndOtherAccidentsAndProvideInfoOnTheActCarriedOutDataVMValidator.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\validations\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesDataVMValidator.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\validations\forms\AppForIssuingDocsOfIncurredAndOtherAccidentsAndProvideInfoOnTheActCarriedOutValidator.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\validations\forms\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesValidator.ts" />
+    <None Remove="client-app\src\eau-documents-pbzn\validations\forms\CertificateForAccidentValidator.ts" />
+    <None Remove="client-app\src\eau-documents\cache\ProvinceCodesCache.ts" />
+    <None Remove="client-app\src\eau-documents\cache\VehicleBaseColorCache.ts" />
+    <None Remove="client-app\src\eau-documents\providers\DocumentsWillBeIssuedMessageProvider.ts" />
+    <None Remove="client-app\src\eau-documents\providers\RefusalProvider.ts" />
+    <None Remove="client-app\src\eau-documents\ui\document-forms\DocumentsWillBeIssuedMessageUI.tsx" />
+    <None Remove="client-app\src\eau-documents\ui\document-forms\RefusalUI.tsx" />
+    <None Remove="client-app\src\eau-documents\ui\document-forms\RemovingIrregularitiesInstructionsUI.tsx" />
+    <None Remove="client-app\src\eau-documents\ui\field-forms\DocumentTypeURIUI.tsx" />
+    <None Remove="client-app\src\eau-documents\ui\field-forms\RemovingIrregularitiesInstructionsIrregularityUI.tsx" />
+    <None Remove="client-app\src\eau-documents\ui\field-forms\SelectDeliveryUnitInAdministrationFlatRootChildrenUI.tsx" />
+    <None Remove="client-app\src\eau-documents\ui\field-forms\SelectDeliveryUnitInAdministrationUI.tsx" />
+    <None Remove="client-app\src\eau-documents\ui\field-forms\ServiceApplicantReceiptDataUnitInAdministrationUI.tsx" />
+    <None Remove="client-app\src\eau-documents\validations\EkatteAddressValidator.ts" />
+    <None Remove="client-app\src\eau-documents\validations\forms\ActionsTakenMessageValidator.ts" />
+    <None Remove="client-app\src\eau-documents\validations\forms\DocumentsWillBeIssuedMessageValidator.ts" />
+    <None Remove="client-app\src\eau-documents\validations\forms\ReceiptAcknowledgedMessageValidator.ts" />
+    <None Remove="client-app\src\eau-documents\validations\forms\RefusalValidator.ts" />
+    <None Remove="client-app\src\eau-documents\validations\forms\RemovingIrregularitiesInstructionsValidator.ts" />
+    <None Remove="client-app\src\eau-portal\ui\common\HelpUI.tsx" />
+    <None Remove="client-app\src\eau-portal\ui\shared\PageNotFoundUI.tsx" />
+    <None Remove="client-app\tsconfig.json" />
+    <Content Include="client-app\tsconfig.json" />
+    <None Include="web.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MVR.WAIS.Integration.Notary.Core" Version="1.0.6" />
+    <PackageReference Include="Rebus.Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Rebus.ServiceProvider" Version="6.4.1" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3" />
+    <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.1" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="4.1.2" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="StructureMap" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="client-app\src\assets\images\" />
+    <Folder Include="client-app\src\eau-core\models\sign\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Documents\EAU.BDS.Documents\EAU.BDS.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.COD.Documents\EAU.COD.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.Documents\EAU.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.KAT.Documents\EAU.KAT.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.KOS.Documents\EAU.KOS.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.Migr.Documents\EAU.Migr.Documents.csproj" />
+    <ProjectReference Include="..\Documents\EAU.PBZN.Documents\EAU.PBZN.Documents.csproj" />
+    <ProjectReference Include="..\EAU.Payments\EAU.Payments.csproj" />
+    <ProjectReference Include="..\EAU.Rebus\EAU.Rebus.csproj" />
+    <ProjectReference Include="..\EAU.Services\EAU.Services.csproj" />
+    <ProjectReference Include="..\EAU.Users\EAU.Users.csproj" />
+    <ProjectReference Include="..\EAU.Web.Core\EAU.Web.Core.csproj" />
+    <ProjectReference Include="..\EAU\EAU.csproj" />
+    <ProjectReference Include="..\EAU.ServiceLimits.AspNetCore\EAU.ServiceLimits.AspNetCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="client-app\src\eau-documents-cod\models\ModelsAutoGenerated.ts">
+      <CustomToolNamespace>fff0cc68-dd9e-42d3-8aeb-3dbb5e57f083</CustomToolNamespace>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\ui\field-forms\security-objects\SecurityObjectType1.tsx">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\ui\field-forms\security-objects\SecurityObjectType8.tsx">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\ui\field-forms\security-objects\SecurityObjectType7.tsx">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\ui\field-forms\security-objects\SecurityObjectType5.tsx">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\ui\field-forms\security-objects\SecurityObjectType2.tsx">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\ui\field-forms\security-objects\SecurityObjectType3.tsx">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\ui\field-forms\security-objects\SecurityObjectType9.tsx">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\validations\security-objects\SecurityOfEventsValidator.ts">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\validations\security-objects\SecurityOfSitesRealEstateValidator.ts">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\validations\security-objects\ProtectionPersonsPropertyValidator.ts">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\validations\security-objects\AlarmAndSecurityActivityValidator.ts">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\validations\security-objects\ProtectionOfAgriculturalPropertyValidator.ts">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\validations\security-objects\SecurityTransportingCargoValidator.ts">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents-cod\validations\security-objects\PersonalSecurityValidator.ts">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="client-app\src\eau-documents\models\ModelsAutoGenerated.ts">
+      <CustomToolNamespace>fff0cc68-dd9e-42d3-8aeb-3dbb5e57f083</CustomToolNamespace>
+    </None>
+    <None Update="client-app\src\eau-documents\ui\field-forms\DocumentMustServeToUI.tsx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="client-app\src\eau-core\common\ContextInfoHelper.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-bds\form-managers\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportManager.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-bds\providers\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportProvider.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-bds\ui\section-forms\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportDataUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-bds\validations\forms\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-bds\validations\RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassportDataVMValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-cod\validations\ContractAssignorValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-cod\validations\SecurityServiceTypesVMValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-cod\validations\SecurityTransportValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\form-managers\DeclarationForLostSRPPManager.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\providers\DeclarationForLostSRPPProvider.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\services\SPRKRTCODataService.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\certificate-forms\index.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\ApplicationForInitialVehicleRegistrationDataOwnersCollectionVMUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\ApplicationForInitialVehicleRegistrationDataVehicleIdentificationDataUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsDataAuthorizedPersonsUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\EntityDataUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\InitialVehicleRegistrationOwnerDataVMUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\InitialVehicleRegistrationUserOrOwnerOfSRMPSVMUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\MerchantDataCompanyCaseUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\PersonIdentifierKATUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\AISKATReasonUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\RoadVehicleRegistrationDataUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\VehicleOwnersCollectionUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\VehicleOwnerUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\field-forms\VehicleRegistrationChangeWithBarterUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\section-forms\DeclarationForLostSRPPSDataUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\section-forms\withApplicationForInitialVehicleRegistrationDataContex.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\ui\VehicleFourDigitRegNumberChoiceUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\ApplicationForInitialVehicleRegistrationDataOwnersCollectionVMValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\ApplicationForInitialVehicleRegistrationDataVehicleIdentificationDataValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsDataAuthorizedPersonsValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\AuthorizedPersonCollectionVMValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\forms\DataForPrintSRMPSValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\AISKATReasonValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\DeclarationForLostSRPPSDataValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\forms\DeclarationForLostSRPPSValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\FourDigitSearchCriteriaValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\RoadVehicleRegistrationDataValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\SpecialNumberSearchCriteriaValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\VehicleCategoryValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\VehicleOwnersCollectionValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-kat\validations\VehicleOwnersValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\form-managers\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesManager.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\index.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ModuleBootstrapper.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ModuleContext.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\providers\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesProvider.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\providers\index.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ui\certificate-forms\CertificateToWorkWithFluorinatedGreenhouseGassesUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ui\field-forms\CertifiedPersonelUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ui\field-forms\index.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ui\section-forms\AppForIssuingDocsOfIncurredAndOtherAccidentsAndProvideInfoOnTheActCarriedOutDataUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ui\section-forms\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesDataUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\ui\section-forms\index.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\validations\AppForIssuingDocsOfIncurredAndOtherAccidentsAndProvideInfoOnTheActCarriedOutDataVMValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\validations\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesDataVMValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\validations\forms\AppForIssuingDocsOfIncurredAndOtherAccidentsAndProvideInfoOnTheActCarriedOutValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\validations\forms\ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents-pbzn\validations\forms\CertificateForAccidentValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\cache\ProvinceCodesCache.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\cache\VehicleBaseColorCache.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\providers\DocumentsWillBeIssuedMessageProvider.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\providers\RefusalProvider.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\document-forms\DocumentsWillBeIssuedMessageUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\document-forms\RefusalUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\document-forms\RemovingIrregularitiesInstructionsUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\field-forms\DocumentTypeURIUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\field-forms\SelectDeliveryUnitInAdministrationFlatRootChildrenUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\field-forms\SelectDeliveryUnitInAdministrationUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\field-forms\ServiceApplicantReceiptDataUnitInAdministrationUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\ui\field-forms\RemovingIrregularitiesInstructionsIrregularityUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\validations\EkatteAddressValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\validations\forms\ActionsTakenMessageValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\validations\forms\DocumentsWillBeIssuedMessageValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\validations\forms\ReceiptAcknowledgedMessageValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\validations\forms\RefusalValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-documents\validations\forms\RemovingIrregularitiesInstructionsValidator.ts" />
+    <TypeScriptCompile Include="client-app\src\eau-portal\ui\common\HelpUI.tsx" />
+    <TypeScriptCompile Include="client-app\src\eau-portal\ui\shared\PageNotFoundUI.tsx" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+
+  <Target Name="PrepareClientAppForPublish" AfterTargets="BeforePublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec Command="cd client-app %26%26 npm ci %26%26 npm run build" />
+    <Exec Command="cd .." />
+    <Exec Command="(if exist wwwroot del /s wwwroot\\**) %26%26 xcopy /e /i /y client-app\\build wwwroot" />
+  </Target>
+</Project>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3167" xmlns="http://ereg.egov.bg/segment/R-3167" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:gpt="http://ereg.egov.bg/segment/R-2218"
+           xmlns:pat="http://ereg.egov.bg/segment/R-3165"
+           xmlns:stn="http://ereg.egov.bg/segment/R-2220"
+           xmlns:ct="http://ereg.egov.bg/segment/R-2222"
+           xmlns:st="http://ereg.egov.bg/segment/R-3168"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2218" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3165" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2220" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2222" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3168" />
+  <xsd:complexType name="PersonalSecurity">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Лична охрана на физически лица</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ActualDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="GuardedPersonType" type="gpt:GuardedPersonType" minOccurs="0" />
+      <xsd:element name="GuardedPerson" type="pat:PersonAssignorData" minOccurs="0" />
+      <xsd:element name="Position" type="xsd:string" minOccurs="0" />
+      <xsd:element name="PlaceOfWork" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Address" type="xsd:string" minOccurs="0" />
+      <xsd:element name="SecurityType" type="stn:SecurityType" minOccurs="0" />
+      <xsd:element name="ClothintType" type="ct:ClothintType" minOccurs="0" />
+      <xsd:element name="SecurityTransports" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SecurityTransport" type="st:SecurityTransport" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TerminationDate" type="xsd:date" minOccurs="0" />
+      <xsd:element name="AISCHODDistrictId" type="xsd:string" minOccurs="0" />
+      <xsd:element name="AISCHODDistrictName" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ContractTypeNumberDate" type="xsd:string" minOccurs="0" />
+      <xsd:element name="ContractTerminationNote" type="xsd:string" minOccurs="0" />
+      <xsd:element name="AISCHODObjectID" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

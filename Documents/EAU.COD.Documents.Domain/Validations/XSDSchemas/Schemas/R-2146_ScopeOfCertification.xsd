@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2146" xmlns="http://ereg.egov.bg/value/R-2146" xmlns:scn="http://ereg.egov.bg/nomenclature/R-1105" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1105" />
+  <xsd:simpleType name="ScopeOfCertification">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Заявен обхват за сертификация</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="scn:ScopeOfCertificationNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

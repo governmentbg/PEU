@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2207" xmlns="http://ereg.egov.bg/nomenclature/R-2207" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:simpleType name="NotificationOfEmploymentContractTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номеклатура за типа на уведомлението при трудов договор</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- За сключване на нов трудов договор -->
+      <xsd:enumeration value="2001" />
+      <!-- За прекратяване действието на трудов договор -->
+      <xsd:enumeration value="2002" />  
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

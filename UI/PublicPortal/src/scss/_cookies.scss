@@ -1,0 +1,23 @@
+/* ----  Cookies  ---- */
+
+.cookie-info {		
+	background-color: $primary-dark;
+	color: $white;
+	padding: $template-padding-vertical *2 $template-padding-horizontal *2;
+	box-shadow: 0 -.3rem .75rem rgba($black, .2);
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: $zindex-global-dialog; //$zindex-fixed;
+
+	h5 {			
+		margin-top: 0;
+		margin-bottom: $template-padding-vertical * 1.5;
+		color: $white;
+	}
+}
+
+/* ----  /Cookies  ---- */
+	

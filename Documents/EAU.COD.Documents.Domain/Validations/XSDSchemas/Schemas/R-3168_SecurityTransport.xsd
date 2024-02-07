@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3168" xmlns="http://ereg.egov.bg/segment/R-3168" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:vot="http://ereg.egov.bg/segment/R-2224"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2224" />
+  <xsd:complexType name="SecurityTransport">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Транспортно средство</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="VehicleOwnershipType" type="vot:VehicleOwnershipType" minOccurs="0" />
+      <xsd:element name="RegistrationNumber" type="xsd:string" minOccurs="0" />
+      <xsd:element name="MakeAndModel" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

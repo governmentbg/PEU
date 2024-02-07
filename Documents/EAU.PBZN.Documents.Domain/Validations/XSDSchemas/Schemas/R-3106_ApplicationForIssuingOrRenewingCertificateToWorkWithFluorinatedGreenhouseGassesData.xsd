@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3106" xmlns="http://ereg.egov.bg/segment/R-3106"  xmlns:aed="http://ereg.egov.bg/segment/R-3110" xmlns:apd="http://ereg.egov.bg/segment/R-3111" xmlns:wp="http://ereg.egov.bg/value/R-2039" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3110" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3111" />
+    <xsd:import namespace="http://ereg.egov.bg/value/R-2039" />
+  <xsd:element name="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesData" type="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesData" />
+  <xsd:complexType name="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявяване на услуга за издаване/подновяване на документ за правоспособност за работа с флуорирани парникови газове</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>  
+      <xsd:choice minOccurs="1">
+        <xsd:element name="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesEntityData" type="aed:ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesEntityData" minOccurs="0" />
+        <xsd:element name="ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesPersonData" type="apd:ApplicationForIssuingOrRenewingCertificateToWorkWithFluorinatedGreenhouseGassesPersonData" minOccurs="0" />
+      </xsd:choice>
+    <xsd:element name="WorkPhone" type="wp:WorkPhone"  /> 
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

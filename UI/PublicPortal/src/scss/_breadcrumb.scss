@@ -1,0 +1,39 @@
+.breadcrumbs {
+
+  margin-top: $template-padding-vertical *1.5;
+  
+  .section-wrapper--margin-top > & {
+    margin-top: 0;
+  }
+  
+
+  .breadcrumb {
+    margin-top: 0;
+    padding-top: $breadcrumb-padding-y ;
+  }
+
+  a {
+    text-decoration: none;
+    color: $blue-dark;
+
+    &:hover, &:hover, &:active {
+      color: darken($blue-dark, 10%);
+    }
+  }
+
+}
+
+.breadcrumb-item {
+  margin: 0;
+  &:not(:last-of-type) {
+    padding-right: $breadcrumb-item-padding;
+  }
+
+  & + .breadcrumb-item {
+    padding-left: 0;
+  }
+
+}
+
+
+

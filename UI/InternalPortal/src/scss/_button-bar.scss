@@ -1,0 +1,43 @@
+/* ----  Button Bar  ---- */
+
+.button-bar {
+	width: auto;
+	
+	min-height: 0;	
+	margin-bottom: 0;	
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-wrap: wrap;
+	flex: 1 1 auto;
+
+	justify-content: space-between;
+	flex-direction: row-reverse;
+
+	margin-top: -$template-container-margin-vertical;
+	margin-left: -$template-container-margin-horizontal;
+	margin-right: -$template-container-margin-horizontal;
+
+	.btn {
+		margin-top: $template-container-margin-vertical;
+		margin-left: $template-container-margin-horizontal;
+		margin-right: $template-container-margin-horizontal;
+	}
+
+	.pagination-container {		
+		margin-top: $template-container-margin-vertical;
+		margin-left: $template-container-margin-horizontal;
+		margin-right: $template-container-margin-horizontal;		
+	}
+	
+	.left-side,
+	.right-side {
+		display: flex;
+		flex: 0 1 auto;
+		flex-wrap: wrap;	
+		flex-direction: row-reverse;	
+	}
+
+}
+
+/* ----  /Button Bar  ---- */

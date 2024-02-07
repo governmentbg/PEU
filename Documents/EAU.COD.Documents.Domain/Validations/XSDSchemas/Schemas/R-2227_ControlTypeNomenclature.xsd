@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2227" xmlns="http://ereg.egov.bg/nomenclature/R-2227" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:simpleType name="ControlTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Контрол</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Видеонаблюдение -->
+      <xsd:enumeration value="4" />
+      <!-- Мониторен контрол -->
+      <xsd:enumeration value="5" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

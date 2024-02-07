@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3302" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/segment/R-3302"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:en="http://ereg.egov.bg/value/0008-000029"
+  xmlns:ei="http://ereg.egov.bg/value/0008-000028"
+  xmlns:s="http://ereg.egov.bg/segment/R-3301"
+  xmlns:pa="http://ereg.egov.bg/segment/0009-000094"
+  elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000029" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000028" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3301" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+
+  <xsd:element name="EntityData" type="EntityData" />
+  <xsd:complexType name="EntityData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за юридическо лице.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name" type="en:EntityName" minOccurs="0" />
+      <xsd:element name="NameTrans" type="en:EntityName" minOccurs="0" />
+      <xsd:element name="FullName" type="en:EntityName" minOccurs="0" />
+      <xsd:element name="Identifier" type="ei:EntityIdentifier" minOccurs="0" />
+      <xsd:element name="IdentifierType" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Status" type="s:Status" minOccurs="0" />
+      <!--Html репрезентация на статуса от ТР или регистър БУЛСТАТ-->
+      <xsd:element name="RecStatus" type="xsd:string" minOccurs="0" />
+      <xsd:element name="EntityManagmentAddress" type="pa:PersonAddress" minOccurs="0" />
+      <xsd:element name="LegalForm" type="xs:string" minOccurs="0" />
+      <xsd:element name="LegalFormCode" type="xs:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

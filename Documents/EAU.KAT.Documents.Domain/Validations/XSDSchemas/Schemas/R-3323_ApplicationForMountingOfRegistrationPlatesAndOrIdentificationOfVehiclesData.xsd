@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3323" xmlns="http://ereg.egov.bg/segment/R-3323"
+            xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+
+  <xsd:element name="ApplicationForMountingOfRegistrationPlatesAndOrIdentificationOfVehiclesData" type="ApplicationForMountingOfRegistrationPlatesAndOrIdentificationOfVehiclesData" />
+  <xsd:complexType name="ApplicationForMountingOfRegistrationPlatesAndOrIdentificationOfVehiclesData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за монтаж на регистрационни табели и/или идентификация на превозни средства на територията на областна дирекция на МВР, различна от областната дирекция по местоотчет на превозното средство</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PoliceDepartment" type="pdc:PoliceDepartment" minOccurs="0"  />
+      <xsd:element name="ApplicationText" type="xsd:string" minOccurs="0" />
+      <xsd:element name="Phone" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-2216" xmlns="http://ereg.egov.bg/segment/R-2216"
+            xmlns:gtn="http://ereg.egov.bg/nomenclature/R-2215"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-2215" />
+
+  <xsd:simpleType name="GuardedType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Вид на охранявания обект</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="gtn:GuardedTypeNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

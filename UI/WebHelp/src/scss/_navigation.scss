@@ -1,0 +1,63 @@
+/* ----  Navigation  ---- */
+
+
+// for test only
+
+// #hs-header-m #hs-menu span {
+//     display: block;
+//     width: 26px;
+// 	height: 3px;
+// 	margin-top: 5px;
+// }
+
+// #hs-header-m #hs-menu {
+//     margin-left: 0;
+// }
+// #hs-header-m #hs-menu {
+//     cursor: pointer;
+//     width: 26px;
+//     margin-left: 12px;
+// }
+
+// #hs-header-m #hs-menu span:first-child {
+//     margin-top: 0;
+// }
+
+
+// Menu button for mobile
+
+#hs-header-m #hs-menu {
+	margin-left: 0;
+	display: inline-block;
+}
+
+#hs-header-m #hs-menu span {
+	background-color: $gray-700;
+	border-radius: $border-radius;	
+
+	width: 1.5rem;
+	height: 0.25rem;
+	margin-top: 0.25rem;
+
+	backface-visibility: hidden;
+}
+
+// Left navigation
+
+
+.hs-icons .hs-book.hstree-collapsed > .hstree-node-cnt .hstree-node-icon > i:before {
+    background-position: 0 0;
+    background-image: url('../images/icons/book.svg');
+}
+
+.hs-icons .hs-book.hstree-expanded > .hstree-node-cnt .hstree-node-icon > i:before {
+    background-position: 0 0;
+    background-image: url('../images/icons/book-open.svg');
+}
+
+.hs-icons .hstree-node-cnt .hstree-node-icon > i:before {
+    background-position: 0 0;
+    background-image: url('../images/icons/file-help.svg');
+}
+
+/* ----  /Navigation  ---- */

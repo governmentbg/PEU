@@ -1,0 +1,56 @@
+/* ----  Modal  ---- */
+
+.modal-backdrop {    
+    background-color: $gray-300;
+	
+	&.in {
+		opacity: .9;
+	}
+}
+
+.modal {
+	
+	.modal-header {		
+		padding: $template-container-padding-vertical * 1.5 $template-container-padding-horizontal;
+		
+		margin: 0 $template-container-margin-horizontal;
+		border-bottom: 1px solid $gray-300;
+
+		.modal-title {
+			margin: 0;			
+			color: $gray-800;
+			font-size: 1rem;
+		}
+	}
+
+	.modal-footer {
+		text-align: left;
+		
+		border-top: 1px solid $gray-300;
+		
+		padding: $template-container-padding-vertical * 2 $template-container-padding-horizontal;
+		margin: 0 $template-container-margin-horizontal;
+	}
+	
+	// .modal-content {
+	// 	max-height: 90vh;
+	// }
+
+	.modal-body {		
+		// overflow: auto;
+		padding: $template-container-padding-vertical $template-container-padding-horizontal * 2;
+	}
+	
+}
+
+
+@media (min-width: map-get($grid-breakpoints, md)) {
+
+	.modal-lg {
+		// width: 90%;
+		max-width:  map-get($grid-breakpoints, xxl);
+	}
+
+}
+	
+/* ----  /Modal  ---- */

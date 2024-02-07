@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [eau_owner]
+    WITH PASSWORD = N'Ve+ijvgdFrzpkcf.vuefh5xomsFT7_&#$!~<H7uju4pj4yav', SID = 0xB86800E458567F4D95170D87A1A67955, DEFAULT_DATABASE = [EAU_DEV], DEFAULT_LANGUAGE = [us_english];
+

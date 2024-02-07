@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3124" 
+            xmlns="http://ereg.egov.bg/segment/R-3124" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ea="http://ereg.egov.bg/segment/R-3203" 
+            xmlns:pn="http://ereg.egov.bg/value/0008-000129"
+            xmlns:dctaooi="http://ereg.egov.bg/value/R-2137"       
+            xmlns:dmst="http://ereg.egov.bg/segment/R-3040"
+            elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3203" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000129" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2137" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3040" />
+  
+  <xsd:element name="ApplicationForIssuingDocumentsOfIncurredAndOtherAccidentsAndProvideInformationOnTheActivityCarriedOutData" type="ApplicationForIssuingDocumentsOfIncurredAndOtherAccidentsAndProvideInformationOnTheActivityCarriedOutData" />
+  <xsd:complexType name="ApplicationForIssuingDocumentsOfIncurredAndOtherAccidentsAndProvideInformationOnTheActivityCarriedOutData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">
+        Данни за заявление за издаване на удостоверителни документи за възникнали произшествия и други и за предоставяне на информация за извършваната дейност
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="EntityManagementAddress" type="ea:EntityAddress" minOccurs="0" />
+      <xsd:element name="CorespondingAddress" type="ea:EntityAddress" minOccurs="0" />
+      <xsd:element name="PhoneNumber" type="pn:ElectronicServiceApplicantPhoneNumber" minOccurs="0" />
+	    <xsd:element name="DocumentCertifyingTheAccidentOccurredOrOtherInformation" type="dctaooi:DocumentCertifyingTheAccidentOccurredOrOtherInformation" minOccurs="0"  />
+      <xsd:element name="DocumentMustServeTo" type="dmst:DocumentMustServeTo" minOccurs="0" />
+	  <xsd:element name="IncludeInformation107  " type="xsd:boolean" minOccurs="0" />
+	  <xsd:element name="IncludeInformation133" type="xsd:boolean" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

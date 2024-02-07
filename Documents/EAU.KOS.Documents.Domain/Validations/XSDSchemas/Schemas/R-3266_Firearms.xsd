@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="R-3266_Firearms"
+    targetNamespace="http://ereg.egov.bg/segment/R-3266"
+	xmlns="http://ereg.egov.bg/segment/R-3266"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+	<xsd:element name="Firearms" type="Firearms" />
+	<xsd:complexType name="Firearms">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">
+				Огнестрелно оръжие
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Brand" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Model" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Caliber" type="xsd:string" minOccurs="0" />
+			<xsd:element name="SerialNumber" type="xsd:string" minOccurs="0" />
+			<xsd:element name="KindCode" type="xsd:string" minOccurs="0" />
+			<xsd:element name="KindName" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

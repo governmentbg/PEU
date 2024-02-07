@@ -1,0 +1,231 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Validations\XSDSchemas\Schemas\R-1104_PointOfPrivateSecurityServicesLawNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1105_ScopeOfCertificationNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1106_EmployeeCitizenshipNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1107_EmployeeCitizenshipType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1108_PersonAssignorIdentifierNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1109_PersonAssignorIdentifierType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1110_PersonAssignorCitizenshipNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-1113_PersonAssignorCitizenshipType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2120_TerritorialScopeOfServices.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2121_PointOfPrivateSecurityServicesLaw.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2146_ScopeOfCertification.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2205_ContractTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2206_ContractType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2207_NotificationOfEmploymentContractTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2208_NotificationOfEmploymentContractType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2209_EmployeeIdentifierNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2210_EmployeeIdentifierType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2213_NotificationTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2214_NotificationType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2215_GuardedTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2216_GuardedType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2217_GuardedPersonTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2218_GuardedPersonType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2219_SecurityTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2220_SecurityType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2221_ClothintTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2222_ClothintType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2223_VehicleOwnershipTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2224_VehicleOwnershipType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2225_AccessRegimeTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2226_AccessRegimeType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2227_ControlTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2228_ControlType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2229_AssignorPersonEntityTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2230_AssignorPersonEntityType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3108_RequestForIssuingLicenseForPrivateSecurityServices.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3109_RequestForIssuingLicenseForPrivateSecurityServicesData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3150_NotificationForConcludingOrTerminatingEmploymentContract.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3151_NotificationForConcludingOrTerminatingEmploymentContractData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3152_Employee.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3153_NewEmployeeRequest.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3154_RemoveEmployeeRequest.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3160_NotificationForTakingOrRemovingFromSecurity.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3161_NotificationForTakingOrRemovingFromSecurityData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3162_SecurityObjectsData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3163_SecurityContractData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3164_ContractAssignor.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3165_PersonAssignorData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3166_EntityAssignorData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3167_PersonalSecurity.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3168_SecurityTransport.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3169_ProtectionPersonsProperty.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3170_AlarmAndSecurityActivity.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3171_SelfProtectionPersonsProperty.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3172_SecurityOfSitesRealEstate.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3173_SecurityOfEvents.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3174_SecurityTransportingCargo.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3175_ProtectionOfAgriculturalProperty.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3176_SecurityObject.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1104_PointOfPrivateSecurityServicesLawNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1105_ScopeOfCertificationNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1106_EmployeeCitizenshipNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1107_EmployeeCitizenshipType.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1113_PersonAssignorCitizenshipType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1110_PersonAssignorCitizenshipNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1109_PersonAssignorIdentifierType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2120_TerritorialScopeOfServices.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2121_PointOfPrivateSecurityServicesLaw.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2146_ScopeOfCertification.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2213_NotificationTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2228_ControlType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2229_AssignorPersonEntityTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2230_AssignorPersonEntityType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2227_ControlTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2226_AccessRegimeType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2225_AccessRegimeTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2224_VehicleOwnershipType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2223_VehicleOwnershipTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2222_ClothintType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2221_ClothintTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2220_SecurityType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2219_SecurityTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2218_GuardedPersonType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2217_GuardedPersonTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2216_GuardedType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2214_NotificationType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2215_GuardedTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2205_ContractTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2210_EmployeeIdentifierType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2209_EmployeeIdentifierNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2207_NotificationOfEmploymentContractTypeNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2206_ContractType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2208_NotificationOfEmploymentContractType.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3162_SecurityObjectsData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-1108_PersonAssignorIdentifierNomenclature.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3176_SecurityObject.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3175_ProtectionOfAgriculturalProperty.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3174_SecurityTransportingCargo.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3173_SecurityOfEvents.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3172_SecurityOfSitesRealEstate.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3171_SelfProtectionPersonsProperty.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3170_AlarmAndSecurityActivity.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3169_ProtectionPersonsProperty.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3168_SecurityTransport.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3167_PersonalSecurity.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3166_EntityAssignorData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3165_PersonAssignorData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3164_ContractAssignor.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3163_SecurityContractData.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3161_NotificationForTakingOrRemovingFromSecurityData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3160_NotificationForTakingOrRemovingFromSecurity.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3152_Employee.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3154_RemoveEmployeeRequest.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3153_NewEmployeeRequest.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3151_NotificationForConcludingOrTerminatingEmploymentContractData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3150_NotificationForConcludingOrTerminatingEmploymentContract.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3108_RequestForIssuingLicenseForPrivateSecurityServices.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3109_RequestForIssuingLicenseForPrivateSecurityServicesData.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EAU.Documents.Domain\EAU.Documents.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

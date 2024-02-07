@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3035" xmlns="http://ereg.egov.bg/segment/R-3035" xmlns:fibd="http://ereg.egov.bg/segment/R-3022" 
+            xmlns:td="http://ereg.egov.bg/segment/R-3023" xmlns:pa="http://ereg.egov.bg/segment/0009-000094"
+            xmlns:cn="http://ereg.egov.bg/segment/R-3020" xmlns:wfbc="http://ereg.egov.bg/segment/R-3024" xmlns:pd="http://ereg.egov.bg/segment/R-3005"
+            xmlns:etrob="http://ereg.egov.bg/segment/R-3025" xmlns:paa="http://ereg.egov.bg/value/R-2011"
+            xmlns:ptgd="http://ereg.egov.bg/segment/R-3019" xmlns:mpb="http://ereg.egov.bg/segment/R-3027"
+            xmlns:clifp="http://ereg.egov.bg/segment/R-3028" xmlns:frotf="http://ereg.egov.bg/segment/R-3029" 
+            xmlns:c="http://ereg.egov.bg/segment/0009-000133"  xmlns:idbd="http://ereg.egov.bg/segment/R-3017" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3022" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3023" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3020" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3024" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3025" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2011" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3019" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3027" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3028" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3029" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000133" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3017" />
+  <xsd:complexType name="ApplicationForIssuanceOfIdentityDocumentsAndResidencePermitsOfForeignersInTheRepublicOfBulgariaData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление за издаване на лични документи на чужденци в Република България</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ForeignIdentityBasicData" type="fibd:ForeignIdentityBasicData" />
+      <xsd:element name="TravelDocument" type="td:TravelDocument" minOccurs="0" />
+      <xsd:element name="PreviousIdentityDocument" type="idbd:IdentityDocumentForeignCitizenBasicData" minOccurs="0" />
+      <xsd:element name="OtherIdentityDocument" type="idbd:IdentityDocumentForeignCitizenBasicData" minOccurs="0" />
+      <xsd:element name="StayInBulgaria" type="xsd:string" minOccurs="0" />
+      <xsd:element name="PermanentAddress" type="pa:PersonAddress" minOccurs="0" />
+      <xsd:element name="PresentAddress" type="pa:PersonAddress" minOccurs="0" />
+      <xsd:element name="ChangedNames" type="cn:ChangedNames" minOccurs="0" />
+      <xsd:element name="WasForeignerBulgarianCitizen" type="wfbc:WasForeignerBulgarianCitizen" minOccurs="0" />
+      <xsd:element name="AbroadAddress" type="paa:PersonAbroadAddress" minOccurs="0" />
+      <xsd:element name="EntranceInTheRepublicOfBulgaria" type="etrob:EntranceInTheRepublicOfBulgaria" minOccurs="0" />
+      <xsd:element name="MotherData" type="fibd:ForeignIdentityBasicData" minOccurs="0" />
+      <xsd:element name="FatherData" type="fibd:ForeignIdentityBasicData" minOccurs="0" />
+      <xsd:element name="SpouseData" type="fibd:ForeignIdentityBasicData" minOccurs="0" />
+      <xsd:element name="BrothersSistersData" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="BroderSisterData" type="fibd:ForeignIdentityBasicData" maxOccurs="4" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ChildrensData" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ChildrenData" type="fibd:ForeignIdentityBasicData" maxOccurs="4" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ParentTrusteeGuardianData" type="ptgd:ParentTrusteeGuardianData" minOccurs="0" />
+      <xsd:element name="MaintenanceProvidedBy" type="mpb:MaintenanceProvidedBy" minOccurs="0" />
+      <xsd:element name="ChildrensListedInForeignerPassport" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ChildrenListedInForeignerPassport" type="clifp:ChildrenListedInForeignerPassport" maxOccurs="4" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FormerResidencesOfTheForeigner" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FormerResidenceOfTheForeigner" type="frotf:FormerResidenceOfTheForeigner" maxOccurs="4" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="OtherCitizenship" type="c:Citizenship" minOccurs="0" />
+      <xsd:element name="ImposedCompulsoryAdministrativeMeasure" type="xsd:boolean" minOccurs="0" />      
+      <xsd:element name="ServiceInformation" type="xsd:string" minOccurs="0" />
+	  <xsd:element name="ServiceCode" type="xsd:integer" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3130" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://ereg.egov.bg/segment/R-3130" 
+	xmlns:vdi="http://ereg.egov.bg/segment/R-3128" 
+	xmlns:vdic="http://ereg.egov.bg/segment/R-3129" 
+	elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3128" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3129"/>
+  
+  <xsd:element name="VehicleData" type="VehicleData" />
+  <xsd:complexType name="VehicleData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за ПС в удостоверение за бивша/настояща собственост</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice minOccurs="1" maxOccurs="1">
+        <xsd:element name="VehicleDataItem" type="vdi:VehicleDataItem" minOccurs="0" />
+        <xsd:element name="VehicleDataItemCollection" type="vdic:VehicleDataItemCollection" minOccurs="0" />
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3303" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ereg.egov.bg/segment/R-3303"         
+  xmlns:rn="http://ereg.egov.bg/value/R-2118"
+  xmlns:in="http://ereg.egov.bg/value/R-2139"
+  xmlns:rctn="http://ereg.egov.bg/nomenclature/R-1301"
+  xmlns:pa="http://ereg.egov.bg/segment/0009-000094"
+  xmlns:pd="http://ereg.egov.bg/segment/R-3037"
+  xmlns:vc="http://ereg.egov.bg/segment/R-3307"
+  xmlns:s="http://ereg.egov.bg/segment/R-3301"
+	elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2118" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2139" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2140" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1301" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3307" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3301" />
+  
+  <xsd:element name="VehicleRegistrationData" type="VehicleRegistrationData" />
+  <xsd:complexType name="VehicleRegistrationData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за превозно средство.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="RegistrationNumber" type="rn:RegistrationNumber" minOccurs="0" />
+      <xsd:element name="IdentificationNumber" type="in:IdentificationNumber" minOccurs="0" />
+      <xsd:element name="EngineNumber" type="xsd:string" minOccurs="0" />
+      <xsd:element name="RegistrationCertificateNumber" type="xsd:string" minOccurs="0" />
+      <xsd:element name="RegistrationCertificateType" type="rctn:RegistrationCertificateTypeNomenclature" minOccurs="0" />
+      <xsd:element name="DateOfFirstReg" type="xsd:date" minOccurs="0" />
+      <xsd:element name="RegAddress" type="pa:PersonAddress" minOccurs="0" />
+      <xsd:element name="PoliceDepartment" type="pd:PoliceDepartment" minOccurs="0" />
+      <xsd:element name="NextVehicleInspection" type="xsd:date" minOccurs="0" />
+      <xsd:element name="VehicleCategory" type="vc:VehicleCategory" minOccurs="0" />
+       <xsd:element name="Statuses" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Status" type="s:Status" minOccurs="0" maxOccurs="unbounded" />
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <!--Активен запор-->
+      <xsd:element name="HasActiveSeizure" type="xsd:boolean" minOccurs="0" />
+      <!--Митнически ограничения-->
+      <xsd:element name="HasCustomsLimitation" type="xsd:boolean" minOccurs="0" />
+      <xsd:element name="MakeAndModel" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

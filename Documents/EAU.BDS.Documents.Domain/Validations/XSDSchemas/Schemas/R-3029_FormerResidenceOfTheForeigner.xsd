@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3029" xmlns="http://ereg.egov.bg/segment/R-3029"    xmlns:pa="http://ereg.egov.bg/segment/0009-000094" xmlns:stp="http://ereg.egov.bg/value/R-0454" xmlns:dtp="http://ereg.egov.bg/value/R-0456" xmlns:en="http://ereg.egov.bg/value/0008-000029" xmlns:fcn="http://ereg.egov.bg/segment/0009-000007" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/value/R-0454" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-0456" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:complexType name="FormerResidenceOfTheForeigner">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Предишни пребивавания на чужденеца в Република България</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="FromDate" type="stp:StartDateTimePeriod" minOccurs="0" />
+      <xsd:element name="ToDate" type="dtp:DeadlineTimePeriod" minOccurs="0" />
+      <xsd:element name="PresentAddress" type="pa:PersonAddress" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,55 @@
+/* ----  Skip Link  ---- */
+
+.skip-link { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zindex-global-dialog;
+    &::before { // hack - символ въху който да фокусира NVDA четеца при зареждане на страница, за да може при натискане на tab клавиш да се фокусира skip-link-a
+        content: "\A0";
+    }
+}
+
+a.skip-to-content {
+    color: $white;
+}
+.skip-to-content {
+
+    display: block;
+    position: fixed;
+    padding: $template-padding-vertical $template-padding-horizontal;
+    margin: $template-margin-vertical $template-margin-horizontal;
+    top: -$template-padding-vertical * 12;
+    left: 0;
+    opacity: 0;
+    color: $white;
+    background-color: $info;
+    border-radius: $border-radius;
+
+    transition: top .6s ease-out, opacity .6s .6s ease-out;
+
+    z-index: $zindex-global-dialog;
+    @include box-shadow($dropdown-box-shadow);
+
+    &:focus {
+
+        color: $white;
+
+        left: 0;
+        top: 0;
+        outline: none;
+        transition: top .2s ease-in;
+        opacity: 1;
+    }
+
+    &.btn-link {
+        color: $white;
+        padding: $template-padding-vertical $template-padding-horizontal;
+        margin: $template-margin-vertical $template-margin-horizontal;
+        @include box-shadow($dropdown-box-shadow);
+    }
+
+}
+
+
+/* ----  /Skip Link  ---- */

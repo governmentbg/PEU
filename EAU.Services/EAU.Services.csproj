@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="MVR.WAIS.Integration.MOI.Core" Version="1.0.46" />
+    <PackageReference Include="Rebus" Version="6.5.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Documents\EAU.BDS.Documents.Domain\EAU.BDS.Documents.Domain.csproj" />
+    <ProjectReference Include="..\Documents\EAU.Documents.Domain\EAU.Documents.Domain.csproj" />
+    <ProjectReference Include="..\Documents\EAU.KAT.Documents.Domain\EAU.KAT.Documents.Domain.csproj" />
+    <ProjectReference Include="..\EAU.Core\EAU.Core.csproj" />
+    <ProjectReference Include="..\EAU\EAU.csproj" />
+  </ItemGroup>
+
+</Project>

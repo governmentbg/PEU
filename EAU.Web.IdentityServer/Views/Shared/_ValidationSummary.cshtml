@@ -1,0 +1,19 @@
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer Localizer
+
+@if (ViewContext.ModelState.IsValid == false)
+{
+    var errors = ViewContext.ModelState.Where(s => s.Value.Errors != null && s.Value.Errors.Any());
+
+    if (errors.Any(e => e.Value.Errors.Any(v => string.Compare(v.ErrorMessage, Localizer["GL_TOO_MANY_REQUESTS_E"], true) == 0)))
+    {
+        <div class="alert alert-warning" role="alert"><span>@Html.Raw(Localizer["GL_TOO_MANY_REQUESTS_E"])</span></div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">@foreach (var error in errors)
+        {
+            foreach (var errItem in error.Value.Errors)
+            {@Html.Raw(errItem.ErrorMessage)}
+    }</div>
+    }
+}

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3038" xmlns="http://ereg.egov.bg/segment/R-3038" 
+  xmlns:pi="http://ereg.egov.bg/segment/R-3015" xmlns:dtbif="http://ereg.egov.bg/segment/R-3041" 
+xmlns:afi="http://ereg.egov.bg/value/R-2051"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"   elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3015" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3041" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2051" />
+  <xsd:complexType name="ApplicationForIssuingDocumentData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление за издаване на удостоверение</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+    <xsd:element name="PersonalInformation" type="pi:PersonalInformation" /> 
+    <xsd:element name="DocumentToBeIssuedFor" type="dtbif:DocumentToBeIssuedFor" /> 
+    <xsd:element name="AddressForIssuing" type="afi:AddressForIssuing" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

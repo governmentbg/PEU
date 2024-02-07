@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-2451" xmlns="http://ereg.egov.bg/segment/R-2451" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="OtherNames">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Други имена</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="60" />
+      <xsd:pattern value="^(([A-Za-z]+([' -][A-Za-z]+)*)(?![а-яА-Я]))$|^(([А-Яа-я]+([' -]+[А-Яа-я]+)*)(?![a-zA-Z]))$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

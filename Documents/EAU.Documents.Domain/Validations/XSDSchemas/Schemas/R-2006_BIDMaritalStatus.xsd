@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/value/R-2006" xmlns="http://ereg.egov.bg/value/R-2006" xmlns:msn="http://ereg.egov.bg/nomenclature/R-1002" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1002" />
+  <xsd:simpleType name="BIDMaritalStatus">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Семейно положение</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="msn:BIDMaritalStatusNomenclature" />
+  </xsd:simpleType>
+</xsd:schema>

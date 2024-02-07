@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3131"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://ereg.egov.bg/segment/R-3131"
+	xmlns:voci="http://ereg.egov.bg/segment/0009-000013"
+	xmlns:vopbgi="http://ereg.egov.bg/segment/0009-000008"
+	xmlns:vopfi="http://ereg.egov.bg/segment/0009-000011"
+  xmlns:voa="http://ereg.egov.bg/segment/R-3135"
+	elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000013" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000008" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000011" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3135" />
+
+  <xsd:element name="VehicleOwnerInformationItem" type="VehicleOwnerInformationItem" />
+  <xsd:complexType name="VehicleOwnerInformationItem">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за собственик на ПС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice minOccurs="1" maxOccurs="1">
+        <xsd:element name="VehicleOwnerCompanyInformation" type="voci:EntityBasicData" minOccurs="0" />
+        <xsd:element name="VehicleOwnerPersonalBGInformation" type="vopbgi:PersonBasicData" minOccurs="0" />
+        <xsd:element name="VehicleOwnerPersonalFInformation" type="vopfi:ForeignCitizenBasicData" minOccurs="0" />
+      </xsd:choice>
+      <xsd:element name="Address" type="voa:VehicleOwnerAddress" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

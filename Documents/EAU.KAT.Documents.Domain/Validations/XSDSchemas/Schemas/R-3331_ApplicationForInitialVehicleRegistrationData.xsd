@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3331" xmlns="http://ereg.egov.bg/segment/R-3331"
+            xmlns:ivrod="http://ereg.egov.bg/segment/R-3332"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3332" />
+
+  <xsd:element name="ApplicationForInitialVehicleRegistrationData" type="ApplicationForInitialVehicleRegistrationData" />
+  <xsd:complexType name="ApplicationForInitialVehicleRegistrationData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за извършване на първоначална регистрация на ППС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="VehicleIdentificationData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="IdentificationNumber" type="xsd:string" />
+            <xsd:element name="ApprovalCountryCode">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:pattern value="^e{1}\d{1,2}$" />
+                  <xsd:maxLength value="3" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ImportCountryCode" type="xsd:string"/>
+            <xsd:element name="ImportCountryName" type="xsd:string"/>
+            <xsd:element name="ColorCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ColorName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="AdditionalInfo" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="OwnersCollection">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="unbounded">
+            <xsd:element name="InitialVehicleRegistrationOwnerData" type="ivrod:InitialVehicleRegistrationOwnerData" minOccurs="0" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="OwnerOfRegistrationCoupon" type="ivrod:InitialVehicleRegistrationOwnerData" minOccurs="0" />
+      <xsd:element name="OtherUserVehicleRepresentative" type="xsd:boolean" minOccurs="0" />
+      <xsd:element name="VehicleUserData" type="ivrod:InitialVehicleRegistrationOwnerData" minOccurs="0" />
+      <xsd:element name="Phone" type="xsd:string" />
+      <xsd:element name="AgreementToReceiveERefusal" type="xsd:boolean" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

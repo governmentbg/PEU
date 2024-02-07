@@ -1,0 +1,70 @@
+
+/* ----  Layout  ---- */
+
+
+.layout-wrapper {
+    display: flex;
+    flex-direction: column;
+
+	// background-color: green;
+    height: 100vh;
+}
+
+.header-wrapper,
+.footer-wrapper {
+    flex: 0 0 auto;
+    // background-color: mediumvioletred;
+}
+
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    flex: 1 0 auto;
+	display: flex;
+    flex-direction: column;
+}
+
+
+.main-wrapper  {
+
+    width: 100%;
+    flex: 1 0 auto;
+
+	display: flex;    
+    flex-wrap: nowrap;
+    position: relative;
+    // background-color:olive;
+
+}
+
+
+.page-wrapper {    
+    min-width: 0;
+    width: 100%;
+    flex: 0 1 auto;
+
+    // background-color: purple;
+
+}
+
+
+
+.nav-wrapper {
+    display: flex;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    
+    // background-color: wheat;    
+
+}
+
+
+
+//-----------------------------------------------------------
+
+
+
+
+/* ----  /Layout  ---- */

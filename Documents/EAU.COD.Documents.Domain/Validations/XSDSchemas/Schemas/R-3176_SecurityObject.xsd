@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3176" xmlns="http://ereg.egov.bg/segment/R-3176" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:popssl="http://ereg.egov.bg/value/R-2121"
+            xmlns:ps="http://ereg.egov.bg/segment/R-3167"
+            xmlns:ppp="http://ereg.egov.bg/segment/R-3169"
+            xmlns:aasa="http://ereg.egov.bg/segment/R-3170"
+            xmlns:sppp="http://ereg.egov.bg/segment/R-3171"
+            xmlns:sosre="http://ereg.egov.bg/segment/R-3172"
+            xmlns:soe="http://ereg.egov.bg/segment/R-3173"
+            xmlns:stc="http://ereg.egov.bg/segment/R-3174"
+            xmlns:poap="http://ereg.egov.bg/segment/R-3175"
+           elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2121" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3167" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3169" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3170" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3171" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3172" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3173" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3174" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3175" />
+
+  <xsd:complexType name="SecurityObject">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за обекта за охрана</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PointOfPrivateSecurityServicesLaw" type="popssl:PointOfPrivateSecurityServicesLaw" minOccurs="0" />
+      <xsd:element name="PersonalSecurity" type="ps:PersonalSecurity"  minOccurs="0" />
+      <xsd:element name="ProtectionPersonsProperty" type="ppp:ProtectionPersonsProperty"  minOccurs="0" />
+      <xsd:element name="AlarmAndSecurityActivity" type="aasa:AlarmAndSecurityActivity"  minOccurs="0" />
+      <xsd:element name="SelfProtectionPersonsProperty" type="sppp:SelfProtectionPersonsProperty"  minOccurs="0" />
+      <xsd:element name="SecurityOfSitesRealEstate" type="sosre:SecurityOfSitesRealEstate"  minOccurs="0" />
+      <xsd:element name="SecurityOfEvents" type="soe:SecurityOfEvents"  minOccurs="0" />
+      <xsd:element name="SecurityTransportingCargo" type="stc:SecurityTransportingCargo"  minOccurs="0" />
+      <xsd:element name="ProtectionOfAgriculturalProperty" type="poap:ProtectionOfAgriculturalProperty"  minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

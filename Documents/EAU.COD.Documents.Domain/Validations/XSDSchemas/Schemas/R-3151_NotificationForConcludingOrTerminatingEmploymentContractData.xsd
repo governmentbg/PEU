@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3151" xmlns="http://ereg.egov.bg/segment/R-3151" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pdc="http://ereg.egov.bg/segment/R-3037"
+            xmlns:noect="http://ereg.egov.bg/segment/R-2208"
+            xmlns:ner="http://ereg.egov.bg/segment/R-3153"
+            xmlns:rer="http://ereg.egov.bg/segment/R-3154"
+            elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3037" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-2208" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3153" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3154" />
+
+  <xsd:complexType name="NotificationForConcludingOrTerminatingEmploymentContractData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за заявление по уведомление за сключване или прекратяване на трудов договор между лице, получило лиценз за извършване на частна охранителна дейност, и служител от неговия специализиран персонал</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IssuingPoliceDepartment" type="pdc:PoliceDepartment" />
+      <xsd:element name="NotificationOfEmploymentContractType" type="noect:NotificationOfEmploymentContractType" minOccurs="0" />
+      <xsd:element name="NewEmployeeRequests" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="NewEmployeeRequest" type="ner:NewEmployeeRequest" minOccurs="1" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveEmployeeRequests" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RemoveEmployeeRequest" type="rer:RemoveEmployeeRequest" minOccurs="1" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-1002" xmlns="http://ereg.egov.bg/nomenclature/R-1002" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:simpleType name="BIDMaritalStatusNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Номенклатура на семейното положение</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- ВДОВЕЦ/ВДОВИЦА -->
+      <xsd:enumeration value="355" />
+      <!-- НЕЖЕНЕН/НЕОМЪЖЕНА -->
+      <xsd:enumeration value="356" />
+      <!-- ЖЕНЕН/ОМЪЖЕНА -->
+      <xsd:enumeration value="357" />
+      <!-- РАЗВЕДЕН(А) -->
+      <xsd:enumeration value="358" />
+      <!-- ФАКТ.РАЗДЕЛЕН(А) -->
+      <xsd:enumeration value="359" />
+      <!-- НЕПОКАЗАНО -->
+      <xsd:enumeration value="4832" />     
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

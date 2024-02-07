@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3015" xmlns="http://ereg.egov.bg/segment/R-3015" xmlns:adr="http://ereg.egov.bg/segment/0009-000094" xmlns:mp="http://ereg.egov.bg/value/R-2038" xmlns:wp="http://ereg.egov.bg/value/R-2039" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000094" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2038" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-2039" />
+  <xsd:complexType name="PersonalInformation">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за физическо лице</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PersonAddress" type="adr:PersonAddress" minOccurs="0"/>
+      <xsd:element name="MobilePhone" type="mp:MobilePhone" minOccurs="0" />
+      <xsd:element name="WorkPhone" type="wp:WorkPhone" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

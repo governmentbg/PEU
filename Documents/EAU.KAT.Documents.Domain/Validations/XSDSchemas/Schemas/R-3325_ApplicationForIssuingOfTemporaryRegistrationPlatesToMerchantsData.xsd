@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3325" xmlns="http://ereg.egov.bg/segment/R-3325"
+            xmlns:ea="http://ereg.egov.bg/segment/R-3203"
+            xmlns:pi="http://ereg.egov.bg/segment/0009-000006"
+            xmlns:atrr="http://ereg.egov.bg/value/R-2061"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3203" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000006" />
+  <xsd:import namespace ="http://ereg.egov.bg/value/R-2061"/>
+
+  <xsd:element name="ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsData" type="ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsData" />
+  <xsd:complexType name="ApplicationForIssuingOfTemporaryRegistrationPlatesToMerchantsData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за предоставяне на временни табели с регистрационен номер от лица – търговци, по смисъла на Търговския закон</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TemporaryPlatesCount" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="OperationalNewVehicleMakes" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OperationalSecondHandVehicleMakes" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="VehicleDealershipAddress" type="ea:EntityAddress" />
+      <xsd:sequence>
+        <xsd:element name="AuthorizedPersons" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence >
+              <xsd:element name="FullName">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="150" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Identifier" type="pi:PersonIdentifier"  />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:element name="Phone">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="AgreementToReceiveERefusal" type="atrr:AgreementToReceiveERefusal" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

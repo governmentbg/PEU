@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="R-3267_ControlCouponDataItem"
+    targetNamespace="http://ereg.egov.bg/segment/R-3267"
+	xmlns="http://ereg.egov.bg/segment/R-3267"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ccda="http://ereg.egov.bg/segment/R-3263"
+    xmlns:ccdp="http://ereg.egov.bg/segment/R-3264"
+	xmlns:ccde="http://ereg.egov.bg/segment/R-3265"
+	xmlns:ccdf="http://ereg.egov.bg/segment/R-3266"
+    elementFormDefault="qualified">
+
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3263" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3264" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3265" />
+	<xsd:import namespace="http://ereg.egov.bg/segment/R-3266" />
+
+	<xsd:element name="ControlCouponDataItem" type="ControlCouponDataItem" />
+	<xsd:complexType name="ControlCouponDataItem">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="bg">
+				Елемент от данни за контролен талон.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CategoryCode" type="xsd:string" minOccurs="0" />
+			<xsd:element name="CategoryName" type="xsd:string" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element name="Ammunition" type="ccda:Ammunition" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="Pyrotechnics" type="ccdp:Pyrotechnics" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="Explosives" type="ccde:Explosives" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="Firearms" type="ccdf:Firearms" minOccurs="0" maxOccurs="1" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

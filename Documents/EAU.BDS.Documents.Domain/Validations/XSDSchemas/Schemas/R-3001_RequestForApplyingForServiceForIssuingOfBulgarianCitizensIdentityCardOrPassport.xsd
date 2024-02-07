@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3001" 
+xmlns="http://ereg.egov.bg/segment/R-3001" 
+xmlns:eash="http://ereg.egov.bg/segment/0009-000152" 
+xmlns:stbt="http://ereg.egov.bg/value/0008-000143" 
+xmlns:sard="http://ereg.egov.bg/segment/0009-000141" 
+xmlns:ad="http://ereg.egov.bg/segment/0009-000139"  
+xmlns:easf="http://ereg.egov.bg/segment/0009-000153" 
+xmlns:dm="http://ereg.egov.bg/segment//R-3136"  
+xmlns:pidt="http://ereg.egov.bg/value/0008-000212" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+elementFormDefault="qualified">
+  
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000152" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000143"/>
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000141" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000153" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000212" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000139" />
+  <xsd:import namespace="http://ereg.egov.bg/segment//R-3136" />
+  <xsd:element name="RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassport" type="RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassport" />
+  <xsd:complexType name="RequestForApplyingForServiceForIssuingOfBulgarianCitizensIdentityCardOrPassport">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Искане за заявяване на услуга за издаване на лична карта и/или паспорт на български граждани</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ElectronicAdministrativeServiceHeader" type="eash:ElectronicAdministrativeServiceHeader" minOccurs="0" />
+      <xsd:element name="IdentificationDocuments" minOccurs="0" >
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="IdentificationDocument" type="pidt:IdentityDocumentType" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ServiceTermType" type="stbt:ServiceTermType"  minOccurs="0" />
+      <xsd:element name="ServiceApplicantReceiptData" type="sard:ServiceApplicantReceiptData" minOccurs="0" />
+      <xsd:element name="ElectronicAdministrativeServiceFooter" type="easf:ElectronicAdministrativeServiceFooter" minOccurs="0" />
+	  <xsd:element name="Declarations" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Declaration" type="dm:Declaration" maxOccurs="unbounded" />
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AttachedDocuments" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AttachedDocument" type="ad:AttachedDocument" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

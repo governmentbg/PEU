@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="images/favicon.ico" /> -->
+    </head>
+
+<body>
+
+
+
+
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">   
+                        <div class="col-auto">                      
+                                <img class="mvr-logo" src="images/logo.png"> 
+                        </div>                                                       
+                        <div class="col header-title">
+                            <p>Република България<br />
+                            <strong>Министерство на вътрешните работи</strong></p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">     
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="page-header-wrapper section-wrapper fixed-content-width">
+            
+            <div class="breadcrumbs">
+                
+                <!-- <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Начало</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Моите е-услуги</li>
+                    </ol>
+                </nav> -->
+            
+            </div>
+            
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Моите е-услуги</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+
+            <div class="page-wrapper">
+          
+                <div class="search-box search-box--report">
+                    <fieldset class="card card--box">
+                        <legend class="card-header">
+                            <h2 class="card-header__title">Критерии за търсене</h2>
+                        </legend>
+                        
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="form-group col-sm col-md-4">
+                                    <label class="form-control-label" for="URI">УРИ на преписка</label>
+                                    <input class="form-control" type="text" id="URI">
+                                </div>
+                                
+                                <div class="col-md-auto">
+                                    <fieldset>
+                                        <legend class="form-control-label">Период на заявяване</legend>
+                                        <div class="row period-component">
+                                            <div class="form-group col-auto">
+                                                <div class="d-flex">
+                                                    <label class="mr-2 col-form-label" for="OT">от</label>
+                                                    <div class="input-group date-control">
+                                                        <div class="rdt">
+                                                            <input class="form-control" value="1.12.2020" type="text" id="OT" aria-describedby="HELP-1">
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-auto">
+                                                <div class="d-flex">
+                                                    <label class="mr-2 col-form-label" for="DO">до</label>
+                                                    <div class="input-group date-control">
+                                                        <div class="rdt">
+                                                            <input class="form-control" value="" type="text" id="DO" aria-describedby="HELP-1">
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-light" type="button" tabindex="-1">
+                                                                <i class="ui-icon ui-icon-calendar"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-12 feedback-up">
+                                                <div class="help-text-inline">(Въведете дата във формат "ДД.ММ.ГГГГ".)</div>
+                                                <div class="sr-only" id="HELP-1">Попълнете две цифри за дата, две цифри за месец и четири цифри за година. Разделете цифрите за дата, месец и година с точка.</div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+
+                                <div class="form-group col-md-4 col-lg">
+                                    <label class="form-control-label" for="STAT">Статус на изпълнение</label>
+                                    <select class="form-control" id="STAT">
+                                        <option value="0" selected>Всички</option>
+                                        <option value="1">Текущи</option>
+                                        <option value="2">Изпълнени</option>
+                                        <option value="3">Прекратени</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="form-control-label" for="SERVICE">Вид услуга</label>
+                                    <div class="auto-complete-container">
+                                        <input type="text" class="form-control" id="SERVICE">
+                                        <ul class="auto-complete-options d-none">
+                                            <li class="auto-complete-active-option">Издаване на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически лица</li>
+                                            <li>Промяна на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически лица</li>
+                                            <li>Издаване на Европейски паспорт за огнестрелни оръжия</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="button-bar card__button-bar button-bar--responsive">
+                                <div class="right-side">
+                                    <button type="submit" class="btn btn-primary">Търси</button>
+                                </div>
+                                <div class="left-side">
+                                    <button type="button" class="btn btn-secondary">Изчисти</button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </fieldset>
+                </div>
+
+                <nav class="pagination-container pagination-container--page-top" aria-label="Page navigation">
+                    <div class="result-count">
+                        total: 25
+                    </div>
+                    <ul class="pagination">
+                        <li class="page-item first disabled">
+                            <button type="button" class="page-link" aria-label="First page" disabled>
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">First page</span>
+                            </button>
+                        </li>
+                        <li class="page-item prev disabled">
+                            <button type="button" class="page-link" aria-label="Previous page" disabled>
+                            <span aria-hidden="true">‹</span>
+                            <span class="sr-only">Previous page</span>
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                1
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                2
+                            </button>
+                        </li>
+                        <li class="page-item active">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Current page</span>
+                                3
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                4
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                5
+                            </button>
+                        </li>
+                        <li class="page-item next">
+                            <button type="button" class="page-link" aria-label="Next page">
+                            <span aria-hidden="true">›</span>
+                            <span class="sr-only">Next page</span>
+                            </button>
+                        </li>
+                        <li class="page-item last">
+                            <button type="button" class="page-link" aria-label="Last page">
+                            <span aria-hidden="true">»</span>
+                            <span class="sr-only">Last page</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="table-responsive-block">
+                    <table class="table table-hover" aria-label="Списък със заявени услуги">
+                        <thead class="">
+                            <tr>
+                                <th>Услуга</th>                                    
+                                <th>УРИ</th>
+                                <th>Дата на заявяване</th>
+                                <th>Статус</th>
+                                <th class="actions-td">Към преписка</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <p class="th-title d-sm-none">Услуга</p>
+                                    <p class="td-text"><b>Издаване на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически лица</b></p>
+                                </th>
+                                <td>
+                                    <p class="th-title d-sm-none">УРИ</p>
+                                    <p class="td-text">9896-312-05.09.2019</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Дата на заявяване</p>
+                                    <p class="td-text text-nowrap">05.09.2019 г.</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Статус</p>
+                                    <p class="td-text text-nowrap"><i class="ui-icon ui-icon-state-waiting mr-1" aria-hidden="true"></i>Текуща</p>
+                                    <p class="td-text">Подаване на заявление за отстраняване на нередовности</p>
+                                    <p class="td-text"><a href="#" title="Страницата се отваря в нов таб на браузъра." target="_blank">Указания за отстраняване на нередовности</a></p>
+                                </td>
+                                <td class="actions-td">
+                                    <p class="th-title d-sm-none">Към преписка</p>
+                                    <p class="td-text"><button class="btn btn-link" title="Страницата се отваря в нов таб на браузъра.">Прегледай</button></p>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p class="th-title d-sm-none">Услуга</p>
+                                    <p class="td-text"><b>Промяна на собственост на регистрирано пътно превозно средство - изпълнява се от нотариус</b></p>
+                                </th>
+                                <td>
+                                    <p class="th-title d-sm-none">УРИ</p>
+                                    <p class="td-text">9895-312-05.09.2019</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Дата на заявяване</p>
+                                    <p class="td-text text-nowrap">05.09.2019 г.</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Статус</p>
+                                    <p class="td-text text-nowrap"><i class="ui-icon ui-icon-state-waiting mr-1" aria-hidden="true"></i>Текуща</p>
+                                    <p class="td-text">Изчаква обработка по услугата</p>
+                                </td>
+                                <td class="actions-td">
+                                    <p class="th-title d-sm-none">Към преписка</p>
+                                    <p class="td-text"><button class="btn btn-link" title="Страницата се отваря в нов таб на браузъра.">Прегледай</button></p>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p class="th-title d-sm-none">Услуга</p>
+                                    <p class="td-text"><b>Промяна на разрешения за съхранение на огнестрелни оръжия и боеприпаси за тях от физически лица</b></p>
+                                </th>
+                                <td>
+                                    <p class="th-title d-sm-none">УРИ</p>
+                                    <p class="td-text">9896-305-05.09.2019</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Дата на заявяване</p>
+                                    <p class="td-text text-nowrap">05.09.2019 г.</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Статус</p>
+                                    <p class="td-text text-nowrap"><i class="ui-icon ui-icon-state-waiting mr-1" aria-hidden="true"></i>Текуща</p>
+                                    <p class="td-text">Обработва се в администрацията</p>
+                                </td>
+                                <td class="actions-td">
+                                    <p class="th-title d-sm-none">Към преписка</p>
+                                    <p class="td-text"><button class="btn btn-link" title="Страницата се отваря в нов таб на браузъра.">Прегледай</button></p>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p class="th-title d-sm-none">Услуга</p>
+                                    <p class="td-text"><b>Издаване на разрешения за носене и употреба на огнестрелни оръжия и боеприпаси за тях</b></p>
+                                </th>
+                                <td>
+                                    <p class="th-title d-sm-none">УРИ</p>
+                                    <p class="td-text">9896-302-05.09.2019</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Дата на заявяване</p>
+                                    <p class="td-text text-nowrap">05.09.2019 г.</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Статус</p>
+                                    <p class="td-text text-nowrap"><i class="ui-icon ui-icon-state-waiting mr-1" aria-hidden="true"></i>Текуща</p>
+                                    <p class="td-text">Заплащане на услуга</p>
+                                    <p class="td-text"><a href="#" title="Страницата се отваря в нов таб на браузъра." target="_blank">Указания за заплащане</a></p>
+                                </td>
+                                <td class="actions-td">
+                                    <p class="th-title d-sm-none">Към преписка</p>
+                                    <p class="td-text"><button class="btn btn-link" title="Страницата се отваря в нов таб на браузъра.">Прегледай</button></p>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p class="th-title d-sm-none">Услуга</p>
+                                    <p class="td-text"><b>Допълване на разрешения за търговия с оръжия, боеприпаси, взривни вещества и пиротехнически изделия</b></p>
+                                </th>
+                                <td>
+                                    <p class="th-title d-sm-none">УРИ</p>
+                                    <p class="td-text">9896-301-05.09.2019</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Дата на заявяване</p>
+                                    <p class="td-text text-nowrap">05.09.2019 г.</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Статус</p>
+                                    <p class="td-text text-nowrap"><i class="ui-icon ui-icon-state-active mr-1" aria-hidden="true"></i>Изпълнена</p>
+                                </td>
+                                <td class="actions-td">
+                                    <p class="th-title d-sm-none">Към преписка</p>
+                                    <p class="td-text"><button class="btn btn-link" title="Страницата се отваря в нов таб на браузъра.">Прегледай</button></p>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p class="th-title d-sm-none">Услуга</p>
+                                    <p class="td-text"><b>Издаване на разрешения за ремонтни дейности на оръжия и боеприпаси за тях от физически и юридически лица, регистрирани като търговци</b></p>
+                                </th>
+                                <td>
+                                    <p class="th-title d-sm-none">УРИ</p>
+                                    <p class="td-text">9896-300-03.05.2019</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Дата на заявяване</p>
+                                    <p class="td-text text-nowrap">03.05.2019 г.</p>
+                                </td>
+                                <td>
+                                    <p class="th-title d-sm-none">Статус</p>
+                                    <p class="td-text text-nowrap"><i class="ui-icon ui-icon-state-canceled mr-1" aria-hidden="true"></i>Прекратена</p>
+                                </td>
+                                <td class="actions-td">
+                                    <p class="th-title d-sm-none">Към преписка</p>
+                                    <p class="td-text"><button class="btn btn-link" title="Страницата се отваря в нов таб на браузъра.">Прегледай</button></p>                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <nav class="pagination-container pagination-container--page-bottom" aria-label="Page navigation">
+                    <div class="result-count">
+                        total: 25
+                    </div>
+                    <ul class="pagination">
+                        <li class="page-item first disabled">
+                            <button type="button" class="page-link" aria-label="First" disabled>
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">First page</span>
+                            </button>
+                        </li>
+                        <li class="page-item prev disabled">
+                            <button type="button" class="page-link" aria-label="Previous" disabled>
+                            <span aria-hidden="true">‹</span>
+                            <span class="sr-only">Previous page</span>
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                1
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                2
+                            </button>
+                        </li>
+                        <li class="page-item active">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Current page</span>
+                                3
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                4
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link">
+                                <span class="sr-only">Go to page</span>
+                                5
+                            </button>
+                        </li>
+                        <li class="page-item next">
+                            <button type="button" class="page-link" aria-label="Next page">
+                            <span aria-hidden="true">›</span>
+                            <span class="sr-only">Next page</span>
+                            </button>
+                        </li>
+                        <li class="page-item last">
+                            <button type="button" class="page-link" aria-label="Last page">
+                            <span aria-hidden="true">»</span>
+                            <span class="sr-only">Last page</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+             
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                    <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                    </ul>
+        
+                        <ul>
+                            <li class="footer-link"><a href="#">Помощ</a></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        // Show Navigation
+        function toggleNav() {
+            $(".navbar-top-container--mobile").collapse('toggle');
+        };
+ 
+        $(document).ready(function () {
+
+            // Autocomplete Show
+            $('.auto-complete-container .auto-complete-options').addClass("d-none");
+
+            $('.auto-complete-container .custom-combobox-toggle').on('click', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').toggleClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focus', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').removeClass("d-none");
+            });
+
+            $('.auto-complete-container input').on('focusout', function () {
+                $(this).closest('.auto-complete-container').find('.auto-complete-options').addClass("d-none");
+            });
+
+        });
+
+
+    </script>
+    
+
+  </body>
+</html>

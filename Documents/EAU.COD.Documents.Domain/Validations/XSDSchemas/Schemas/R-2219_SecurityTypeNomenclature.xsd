@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2219" xmlns="http://ereg.egov.bg/nomenclature/R-2219" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  <xsd:simpleType name="SecurityTypeNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Вид на охраната</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Въоръжена -->
+      <xsd:enumeration value="1" />
+      <!-- Невъоръжена -->
+      <xsd:enumeration value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

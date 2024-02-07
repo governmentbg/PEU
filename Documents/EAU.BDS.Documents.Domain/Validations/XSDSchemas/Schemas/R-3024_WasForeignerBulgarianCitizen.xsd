@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3024" xmlns="http://ereg.egov.bg/segment/R-3024" xmlns:stp="http://ereg.egov.bg/value/R-0454" xmlns:dtp="http://ereg.egov.bg/value/R-0456" xmlns:fcn="http://ereg.egov.bg/segment/0009-000007"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xsd:import namespace="http://ereg.egov.bg/value/R-0454" />
+  <xsd:import namespace="http://ereg.egov.bg/value/R-0456" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/0009-000007" />
+  <xsd:complexType name="WasForeignerBulgarianCitizen">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Основни данни за личен документ</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="WasPersonBulgarianCitizen" type="xsd:boolean" minOccurs="0" />
+      <xsd:element name="FromDate" type="stp:StartDateTimePeriod" minOccurs="0" />
+      <xsd:element name="ToDate" type="dtp:DeadlineTimePeriod" minOccurs="0" />
+      <xsd:element name="ForeignCitizenNames" type="fcn:ForeignCitizenNames" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

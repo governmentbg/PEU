@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/nomenclature/R-2235" xmlns="http://ereg.egov.bg/nomenclature/R-2235"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:simpleType name="PlatesContentTypesNomenclature">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Табели в зависимост от броя цифри и букви</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <!-- Произведени с регистрационен номер с 4 цифри -->
+      <xsd:enumeration value="1" />
+      <!-- С регистрационен номер с комбинация от 6 букви и/или цифри -->
+      <xsd:enumeration value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

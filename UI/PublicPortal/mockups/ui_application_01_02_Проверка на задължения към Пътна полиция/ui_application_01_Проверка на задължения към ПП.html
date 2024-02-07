@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <title>Проверка на задължения по фиш, НП или споразумение, издадени от "Пътна полиция" и заплащане - Портал за електронни административни услуги на МВР</title>
+
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base href="../">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="icon" type="image/ico" href="images/favicon.ico">
+    </head>
+
+<body>
+
+<div class="layout-wrapper">
+
+    <div class="header-wrapper">
+        <div class="skip-link">
+            <a href="#PAGE-CONTENT" class="skip-to-content">Пропусни основната навигация</a> 
+        </div>
+        <header class="header">
+            <div class="header-bg">
+                <div class="section-wrapper fixed-content-width header-gerb-bg">
+                    <div class="row header-container ">
+                        <div class="col-auto">
+                            <img class="mvr-logo" src="images/logo.png" alt="">
+                        </div>
+                        <div class="col header-title">
+                            <p>Република България<br>
+                                <strong>Министерство на вътрешните работи</strong>
+                            </p>
+                            <p class="site-name">Портал за електронни административни услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar-top" aria-label="Основна навигация">
+
+            <div class="navbar-top-container fixed-content-width">
+
+                <div class="navbar-top-menu d-lg-none">
+                    <button type="button" class="navbar-top-item" onclick="toggleNav(this)" title="Покажи всички елементи в навигацията" aria-expanded="false">
+                        <i class="ui-icon nav-icon-menu" aria-hidden="true"></i><span class="d-none">Покажи всички елементи в навигацията</span>
+                    </button>
+                </div>
+                
+                <div class="navbar-top-container--mobile collapse">
+                    <ul class="navbar-top-container-left">
+    
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Услуги
+                            </a>
+                        </li>
+                        <li>
+                            <button class="navbar-top-item" type="button" title="Страницата се отваря в нов таб на браузъра."> 
+                                Помощ
+                            </button>
+                        </li>
+                        <li>
+                            <a class="navbar-top-item" href=""> 
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-top-container-right">
+                    <li>
+                        <a class="navbar-top-item" href="">
+                            <span title="Търсене"><i class="ui-icon nav-icon-search mr-0" aria-hidden="true"></i><span class="sr-only">Търсене</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuUser" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuUserMenu">
+                                <span title="Потребителски профил">
+                                    <i class="ui-icon nav-icon-user mr-0 mr-sm-1" aria-hidden="true"></i><span class="sr-only">Потребителски профил ivan.ivanov@yahoomaildot.com</span><span class="navbar-top-text-limited d-none d-sm-inline-block" title="ivan.ivanov@yahoomaildot.com" aria-hidden="true">ivan.ivanov@yahoomaildot.com</span>
+                                </span>
+                            </button>
+                            <div id="dropdownMenuUserMenu" class="dropdown-menu" aria-labelledby="dropdownMenuUser" role="menu">
+                                <span class="navbar-top-text-limited d-sm-none ml-3 mr-3" title="ivan.ivanov@yahoomaildot.com">ivan.ivanov@yahoomaildot.com</span>
+                                <div class="dropdown-divider d-sm-none"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Моите е-услуги</a>
+                                <a class="dropdown-item" href="" role="menuitem">Плащания по услуги</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Потребителски профил</a>
+                                <a class="dropdown-item" href="" role="menuitem">Средства за автентикация</a>
+                                <a class="dropdown-item" href="" role="menuitem">Смяна на парола</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" role="menuitem">Изход</a>
+                            </div>
+                        </div>                        
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuAccessibility" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuAccessibilityMenu"><span title="Достъпност"><i class="ui-icon nav-icon-accessibility" aria-hidden="true"></i><span class="sr-only">Достъпност</span></span></button>
+                            <div id="dropdownMenuAccessibilityMenu" class="dropdown-menu" aria-labelledby="dropdownMenuAccessibility" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem">Функции за достъпност</a>
+                                    <button type="button" class="dropdown-item" role="menuitem" onclick="textOnlyVersion()">Текстова версия</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button id="dropdownMenuLanguage1" type="button" class="navbar-top-item dropdown-toggle" data-boundary="window" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuLanguageMenu1"><span title="Избор на език"><i class="ui-icon nav-icon-globe mr-1" aria-hidden="true"></i><span class="sr-only">Избор на език </span><span aria-hidden="true">bg</span></span></button>
+                            <div id="dropdownMenuLanguageMenu1" class="dropdown-menu" aria-labelledby="dropdownMenuLanguage1" role="menu">
+                                <div class="dropdown-menu--scrollable">
+                                    <a href="" class="dropdown-item" role="menuitem" aria-current="true">bg - български език</a>
+                                    <a href="" class="dropdown-item" role="menuitem">en - English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="navbar-top-font-size d-none d-md-inline">
+                        <div class="navbar-top-item">
+                            <button type="button" onclick="setFontSize(-1);"><span title="Намали шрифта"><i class="ui-icon nav-icon-font-minus" aria-hidden="true"></i><span class="sr-only">Намали шрифта</span></span></button><button type="button" onclick="setFontSize();"><span title="Нормален шрифт"><i class="ui-icon nav-icon-font" aria-hidden="true"></i><span class="sr-only">Нормален шрифт</span></span></button><button type="button" onclick="setFontSize(1);"><span title="Увеличи шрифта"><i class="ui-icon nav-icon-font-plus" aria-hidden="true"></i><span class="sr-only">Увеличи шрифта</span></span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <main class="content-wrapper">
+        
+        <div class="page-header-wrapper section-wrapper section-wrapper--margin-top fixed-content-width">
+            <div class="breadcrumbs">
+                
+                <nav aria-label="Път до текуща страница">
+                    <ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Услуги</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Проверка на задължения по фиш, НП или споразумение, издадени от "Пътна полиция" и заплащане</li>
+                    </ol>
+                </nav>
+            
+            </div>
+        </div>
+        
+        <div class="main-wrapper section-wrapper section-wrapper--margins fixed-content-width">
+            <div class="page-header" id="PAGE-CONTENT">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="page-title">Проверка на задължения по фиш, НП или споразумение, издадени от "Пътна полиция" и заплащане</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-wrapper" id="ARTICLE-CONTENT">
+      
+                <div class="ui-form ui-form--input">
+
+                    <div class="w-100">
+                        <p>Проверка на задължение по конкретен документ от тип фиш, наказателно постановление (НП) или споразумение, с възможност за онлайн плащане през Портала за електронни административни услуги на МВР, можете да направите като въведете тип на документа фиш, НП или споразумение, серия (не се посочва за НП), номер на документа и дължима сума по документа.</p>
+                    </div>
+
+                    <fieldset class="fields-group">
+                        <legend>
+                            <h3 class="field-title">
+                                Данни за проверка
+                            </h3>
+                        </legend>
+
+                        <div class="alert alert-info"><p>В резултата от проверката ще се визуализират документа, обект на проверка (ако е наличен) и всички неплатени връчени и/или невръчени НП, фишове и/или споразумения по Закона за движението по пътищата и/или по Кодекса за застраховането, издадени в качеството Ви на физическо лице или на законен представител на юридическо лице.</p></div>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+
+                                <fieldset>
+                                    <legend class="form-control-label">Тип документ</legend>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" name="RADIO_A" id="RADIO_A1" value="1" type="radio" checked>
+                                        <label class="custom-control-label" for="RADIO_A1">Фиш</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" name="RADIO_A" id="RADIO_A2" value="2" type="radio">
+                                        <label class="custom-control-label" for="RADIO_A2">Наказателно постановление</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" name="RADIO_A" id="RADIO_A3" value="3" type="radio">
+                                        <label class="custom-control-label" for="RADIO_A3">Споразумение</label>
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-4 col-sm-3 col-md-2" id="DATA_0">
+                                <label class="form-control-label required-field" for="SR_1">Серия</label>
+                                <select class="form-control" id="SR_1" required="">
+                                    <option value="0" disabled="" hidden="" selected="">Избери</option>
+                                    <option value="A">A</option>
+                                    <option value="E">E</option>
+                                    <option value="K">K</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="Р">Р</option>
+                                    <option value="M">M</option>
+                                    <option value="Г">Г</option>
+                                    <option value="Н">Н</option>
+                                    <option value="X">X</option>
+                                    <option value="GT">GT</option>
+                                    <option value="Т">Т</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4 col-md-5 col-lg-3" id="DATA_1">
+                                <label class="form-control-label required-field" for="DATA_INPUT_1_1">Документ №</label>
+                                <input type="text" class="form-control" id="DATA_INPUT_1_1" required="">
+                            </div>
+                            <div class="form-group col-sm-5 col-lg-3" id="DATA_2">
+                                <label class="form-control-label required-field" for="DATA_INPUT_1_2">Дължима сума (BGN)</label>
+                                <input type="text" class="form-control" id="DATA_INPUT_1_2" required="">
+                            </div>
+                        </div>
+
+                        <div id="RESULT_1" class="alert alert-danger" role="alert"><p>По технически причини към момента не може да бъде извършена проверка за неплатени задължения по фиш, наказателно постановление или споразумение.</p></div>
+
+                        <div id="RESULT" hidden> <!-- този div е само за да работи прототипа  -->
+                            <div class="alert alert-warning" role="alert"><p>Няма намерени данни.</p></div>
+                        </div>
+
+                    </fieldset>
+
+                    <div class="button-bar button-bar--form button-bar--responsive">
+                        <div class="right-side">
+                            <button type="button" class="btn btn-primary" onclick="showResult()" id="NEXT_1">Провери</button>
+                            <button type="button" class="btn btn-primary" onclick="window.location.assign('ui_application_01_02_Проверка на задължения към Пътна полиция/ui_application_02_Проверка на задължения към ПП_Резултат.html#ARTICLE-CONTENT')" id="NEXT_2" hidden>Провери</button>
+                        </div>
+                        <div class="left-side">
+                            <button type="button" class="btn btn-secondary">Откажи</button>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-containter-bg">
+                <div class="footer-links-container fixed-content-width">  
+                        <ul>
+                            <li class="footer-link"><a href="#">Новини</a></li>
+                            <li class="footer-link"><a href="#">Тестово подписване</a></li>
+                            <li class="footer-link"><a href="#">Преглед на е-документи</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Политика за защита на личните данни</a></li>
+                            <li class="footer-link"><a href="#">Политика за достъпност</a></li>
+                            <li class="footer-link"><a href="#">Политика за сигурност</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="footer-link"><a href="#">Условия за ползване</a></li>
+                            <li class="footer-link"><a href="#">Бисквитки</a></li>
+                            <li class="footer-link"><a href="#">Карта на сайта</a></li>
+                        </ul>
+        
+                        <ul>
+                            <li class="footer-link"><button class="btn btn-link" type="button" title="Страницата се отваря в нов таб на браузъра.">Помощ</button></li>
+                            <li class="footer-link"><a href="#">Контакти</a></li>
+                        </ul>
+            
+                    <div class="fixed-content-width">
+                        <div class="software-version">Версия: 0.5.0.1</div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-containter fixed-content-width">
+                    <div class="col-sm-8 order-sm-2">
+                        <p class="footer-text">Проектът се осъществява с финансовата подкрепа на Оперативна програма „Добро управление”, съфинансирана от Европейския съюз чрез Европейския социален фонд</p>
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-1 text-center text-sm-left">
+                        <img class="" src="images/footer-logo-eu.svg" alt="">
+                    </div>
+                    <div class="col-6 col-sm-2 order-sm-3 text-center text-sm-right">
+                        <img class="" src="images/footer-logo-opdu.svg" alt="">
+                    </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+	<!-- jQuery library -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+	<!-- Page Scripst -->
+	<script>
+ 
+        $(document).ready(function () {
+
+            // превключване на радиобутони "ФИШ/НП/СПОРАЗУМЕНИЕ"
+
+            $('#RADIO_A1').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#DATA_0').prop('hidden', false);
+                    $('#SR_1 option[value="0"]').prop('selected',true);
+                    $('#DATA_INPUT_1_1').val('');
+                    $('#DATA_INPUT_1_2').val('');
+                }
+            });
+
+            $('#RADIO_A2, #RADIO_A3').on('change', function () {
+                if( $(this).is(":checked")) {
+                    $('#DATA_0').prop('hidden', true);
+                    $('#SR_1 option[value="0"]').prop('selected',true);
+                    $('#DATA_INPUT_1_1').val('');
+                    $('#DATA_INPUT_1_2').val('');
+                }
+            });
+
+        });
+        
+        // Показване на съобщение че няма резултат
+        function showResult() {
+            $('#NEXT_1').prop('hidden', true);
+            $('#NEXT_2').prop('hidden', false);
+            $('#RESULT').prop('hidden', false);
+            $('#RESULT_1').prop('hidden', true);
+        }
+
+        // Show Navigation
+        function toggleNav() {
+                $(".navbar-top-container--mobile").collapse('toggle');
+            };
+    
+            // Text Version
+        function textOnlyVersion() {
+            $('[rel="stylesheet"]').attr('media','none');
+        };
+ 
+        // change font size
+        function setFontSize(arg) {
+            var doc = document.getElementsByTagName("html")[0];
+            // var fontSize = getCookie('fontSize');
+            var fontSize = parseInt(doc.style.fontSize);
+            console.log(fontSize);
+            if (!fontSize) fontSize = 100;
+
+            switch (arg) {
+                case -1: if (fontSize > 70) fontSize-=6;
+                    break;
+                case 1: if (fontSize < 130) fontSize+=6
+                    break;
+                default: fontSize = 100;
+            }
+            // setCookie('fontSize', fontSize, 365 * 5);
+            doc.style.fontSize = fontSize + '%';
+        }
+    </script>
+
+  </body>
+</html>

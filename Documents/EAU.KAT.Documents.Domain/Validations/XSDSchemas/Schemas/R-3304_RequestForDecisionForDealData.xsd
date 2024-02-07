@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3304" xmlns="http://ereg.egov.bg/segment/R-3304"
+  xmlns:vr="http://ereg.egov.bg/segment/R-3303"
+  xmlns:pd="http://ereg.egov.bg/segment/R-3300"
+  xmlns:rd="http://ereg.egov.bg/segment/R-3302"
+  xmlns:ea="http://ereg.egov.bg/value/0008-000036"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3302" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3300" />
+  <xsd:import namespace="http://ereg.egov.bg/segment/R-3303" />
+  <xsd:import namespace="http://ereg.egov.bg/value/0008-000036" />
+  <xsd:element name="RequestForDecisionForDealData" type="RequestForDecisionForDealData" />
+  <xsd:complexType name="RequestForDecisionForDealData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни за искане на решение за сделка</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="VehicleRegistrationData" type="vr:VehicleRegistrationData" minOccurs="0" />
+      <xsd:element name="OwnersCollection"  minOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Owner" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence >
+                  <xsd:choice>
+                    <xsd:element name="PersonData" type="pd:PersonData"/>
+                    <xsd:element name="EntityData" type="rd:EntityData"/>
+                  </xsd:choice>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BuyersCollection"  minOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence >
+              <xsd:element name="Buyer" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence >
+                    <xsd:choice>
+                        <xsd:element name="PersonData" type="pd:PersonData"/>
+                        <xsd:element name="EntityData" type="rd:EntityData"/>
+                    </xsd:choice>
+                    <xsd:element name="EmailAddress" type="ea:EmailAddress" minOccurs="0" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Validations\XSDSchemas\Schemas\R-2040_SpecificDataForIssuingDocumentForKOS.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2201_IssuingDocumentForKOS.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2202_WeaponNoticeTypeNomenclature.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-2203_WeaponNoticeType.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3016_ApplicationByFormAnnex9.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3042_ApplicationByFormAnnex9Data.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3050_NotificationForNonFirearm.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3051_NotificationForNonFirearmData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3052_NotificationForFirearm.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3053_NotificationForFirearmData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3054_TechnicalSpecificationOfWeapon.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3113_ApplicationByFormAnnex10.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3114_ApplicationByFormAnnex10Data.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3260_NotificationForControlCoupon.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3261_NotificationForControlCouponData.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3262_LicenseInfo.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3263_Ammunition.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3264_Pyrotechnics.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3265_Explosives.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3266_Firearms.xsd" />
+    <None Remove="Validations\XSDSchemas\Schemas\R-3267_ControlCouponDataItem.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2202_WeaponNoticeTypeNomenclature.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2040_SpecificDataForIssuingDocumentForKOS.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2203_WeaponNoticeType.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-2201_IssuingDocumentForKOS.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3050_NotificationForNonFirearm.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3016_ApplicationByFormAnnex9.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3051_NotificationForNonFirearmData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3042_ApplicationByFormAnnex9Data.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3052_NotificationForFirearm.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3113_ApplicationByFormAnnex10.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3053_NotificationForFirearmData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3054_TechnicalSpecificationOfWeapon.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3114_ApplicationByFormAnnex10Data.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3260_NotificationForControlCoupon.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3261_NotificationForControlCouponData.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3262_LicenseInfo.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3263_Ammunition.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3264_Pyrotechnics.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3265_Explosives.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3266_Firearms.xsd" />
+    <EmbeddedResource Include="Validations\XSDSchemas\Schemas\R-3267_ControlCouponDataItem.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EAU.Documents.Domain\EAU.Documents.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

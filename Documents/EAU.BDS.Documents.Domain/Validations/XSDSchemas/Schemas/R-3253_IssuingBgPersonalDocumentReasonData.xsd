@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://ereg.egov.bg/segment/R-3253" 
+			xmlns="http://ereg.egov.bg/segment/R-3253" 
+			xmlns:r="http://ereg.egov.bg/nomenclature/R-1009"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			elementFormDefault="qualified">
+  <xsd:import namespace="http://ereg.egov.bg/nomenclature/R-1009" />
+  <xsd:complexType name="IssuingBgPersonalDocumentReasonData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="bg">Данни относно изгубване/ кражба/ повреждане/ унищожаване на български личен документ.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+	  <xsd:element name="Reason" type="r:IssuingBgPersonalDocumentReasonNomenclature" minOccurs="1"  />
+	  <xsd:element name="FactsAndCircumstances" type="xsd:string" minOccurs="1" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

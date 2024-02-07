@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "CSS and Mockups - MVR PEAU",
+			"path": "."
+		}
+	],
+	"settings": {
+		"gitlens.autolinks": [
+        
+			{
+				"url": "https://devops/Projects2/MVR-PEAU/_workitems/edit/<num>",
+				"prefix": "#"
+			}
+		],
+	}
+}

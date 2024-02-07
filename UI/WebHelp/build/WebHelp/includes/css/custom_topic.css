@@ -1,0 +1,40 @@
+/* WebHelp PEAU MVR */
+/* SOURCE SASS */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+/* ----  Topic  ---- */
+html {
+  font-family: "Open Sans", "Verdana", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+
+body {
+  color: #202020; }
+
+#content p {
+  color: #202020;
+  font-family: "Open Sans", "Verdana", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4285; }
+
+#content p:first-child {
+  line-height: 1; }
+
+#content span {
+  color: #202020;
+  font-family: "Open Sans", "Verdana", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+
+#content a {
+  color: #0071a6; }
+
+/* ----  /Topic  ---- */
